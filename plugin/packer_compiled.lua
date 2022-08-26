@@ -163,6 +163,12 @@ _G.packer_plugins = {
     path = "/Users/kwanghoopark/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
+  ["nvim-lastplace"] = {
+    config = { "require('settings.nvim-lastplace')" },
+    loaded = true,
+    path = "/Users/kwanghoopark/.local/share/nvim/site/pack/packer/start/nvim-lastplace",
+    url = "https://github.com/ethanholz/nvim-lastplace"
+  },
   ["nvim-lspconfig"] = {
     config = { "require('settings.nvim-lspconfig')" },
     loaded = true,
@@ -203,7 +209,6 @@ _G.packer_plugins = {
     url = "https://github.com/akinsho/toggleterm.nvim"
   },
   ["tokyonight.nvim"] = {
-    config = { "require('styles')" },
     loaded = true,
     path = "/Users/kwanghoopark/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
     url = "https://github.com/folke/tokyonight.nvim"
@@ -250,12 +255,6 @@ _G.packer_plugins = {
     path = "/Users/kwanghoopark/.local/share/nvim/site/pack/packer/opt/vim-jsx-pretty",
     url = "https://github.com/maxmellon/vim-jsx-pretty"
   },
-  ["vim-lastplace"] = {
-    config = { "require('settings.vim-lastplace')" },
-    loaded = true,
-    path = "/Users/kwanghoopark/.local/share/nvim/site/pack/packer/start/vim-lastplace",
-    url = "https://github.com/farmergreg/vim-lastplace"
-  },
   ["vim-surround"] = {
     config = { "require('settings.vim-surround')" },
     loaded = true,
@@ -279,10 +278,18 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: vim-lastplace
-time([[Config for vim-lastplace]], true)
-require('settings.vim-lastplace')
-time([[Config for vim-lastplace]], false)
+-- Config for: nvim-tree.lua
+time([[Config for nvim-tree.lua]], true)
+require('settings.nvim-tree')
+time([[Config for nvim-tree.lua]], false)
+-- Config for: fzf
+time([[Config for fzf]], true)
+require('settings.fzf')
+time([[Config for fzf]], false)
+-- Config for: bufferline.nvim
+time([[Config for bufferline.nvim]], true)
+require('settings.bufferline')
+time([[Config for bufferline.nvim]], false)
 -- Config for: indent-blankline.nvim
 time([[Config for indent-blankline.nvim]], true)
 require('settings.indent-blankline')
@@ -291,76 +298,64 @@ time([[Config for indent-blankline.nvim]], false)
 time([[Config for vim-surround]], true)
 require('settings.vim-surround')
 time([[Config for vim-surround]], false)
--- Config for: lazygit.nvim
-time([[Config for lazygit.nvim]], true)
-require('settings.lualine')
-time([[Config for lazygit.nvim]], false)
--- Config for: toggleterm.nvim
-time([[Config for toggleterm.nvim]], true)
-require('settings.toggleterm')
-time([[Config for toggleterm.nvim]], false)
--- Config for: nvim-lspconfig
-time([[Config for nvim-lspconfig]], true)
-require('settings.nvim-lspconfig')
-time([[Config for nvim-lspconfig]], false)
--- Config for: lualine.nvim
-time([[Config for lualine.nvim]], true)
-require('settings.lualine')
-time([[Config for lualine.nvim]], false)
--- Config for: tokyonight.nvim
-time([[Config for tokyonight.nvim]], true)
-require('styles')
-time([[Config for tokyonight.nvim]], false)
--- Config for: ultisnips
-time([[Config for ultisnips]], true)
-require('settings.ultisnips')
-time([[Config for ultisnips]], false)
--- Config for: mason.nvim
-time([[Config for mason.nvim]], true)
-require('settings.mason')
-time([[Config for mason.nvim]], false)
--- Config for: cmp-nvim-ultisnips
-time([[Config for cmp-nvim-ultisnips]], true)
-try_loadstring("\27LJ\2\nD\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\23cmp_nvim_ultisnips\frequire\0", "config", "cmp-nvim-ultisnips")
-time([[Config for cmp-nvim-ultisnips]], false)
--- Config for: nvim-autopairs
-time([[Config for nvim-autopairs]], true)
-require('settings.nvim-autopairs')
-time([[Config for nvim-autopairs]], false)
--- Config for: vim-easymotion
-time([[Config for vim-easymotion]], true)
-require('settings.easymotion')
-time([[Config for vim-easymotion]], false)
--- Config for: nvim-tree.lua
-time([[Config for nvim-tree.lua]], true)
-require('settings.nvim-tree')
-time([[Config for nvim-tree.lua]], false)
 -- Config for: nvim-cmp
 time([[Config for nvim-cmp]], true)
 require('settings.nvim-cmp')
 time([[Config for nvim-cmp]], false)
+-- Config for: lualine.nvim
+time([[Config for lualine.nvim]], true)
+require('settings.lualine')
+time([[Config for lualine.nvim]], false)
+-- Config for: toggleterm.nvim
+time([[Config for toggleterm.nvim]], true)
+require('settings.toggleterm')
+time([[Config for toggleterm.nvim]], false)
+-- Config for: cmp-nvim-ultisnips
+time([[Config for cmp-nvim-ultisnips]], true)
+try_loadstring("\27LJ\2\nD\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\23cmp_nvim_ultisnips\frequire\0", "config", "cmp-nvim-ultisnips")
+time([[Config for cmp-nvim-ultisnips]], false)
+-- Config for: nvim-lspconfig
+time([[Config for nvim-lspconfig]], true)
+require('settings.nvim-lspconfig')
+time([[Config for nvim-lspconfig]], false)
+-- Config for: mason.nvim
+time([[Config for mason.nvim]], true)
+require('settings.mason')
+time([[Config for mason.nvim]], false)
+-- Config for: ultisnips
+time([[Config for ultisnips]], true)
+require('settings.ultisnips')
+time([[Config for ultisnips]], false)
+-- Config for: nvim-autopairs
+time([[Config for nvim-autopairs]], true)
+require('settings.nvim-autopairs')
+time([[Config for nvim-autopairs]], false)
 -- Config for: nvim-treesitter
 time([[Config for nvim-treesitter]], true)
 require('settings.treesitter')
 time([[Config for nvim-treesitter]], false)
--- Config for: fzf
-time([[Config for fzf]], true)
-require('settings.fzf')
-time([[Config for fzf]], false)
+-- Config for: vim-easymotion
+time([[Config for vim-easymotion]], true)
+require('settings.easymotion')
+time([[Config for vim-easymotion]], false)
+-- Config for: nvim-lastplace
+time([[Config for nvim-lastplace]], true)
+require('settings.nvim-lastplace')
+time([[Config for nvim-lastplace]], false)
+-- Config for: lazygit.nvim
+time([[Config for lazygit.nvim]], true)
+require('settings.lualine')
+time([[Config for lazygit.nvim]], false)
 -- Config for: vim-gitgutter
 time([[Config for vim-gitgutter]], true)
 require('settings.vim-gitgutter')
 time([[Config for vim-gitgutter]], false)
--- Config for: bufferline.nvim
-time([[Config for bufferline.nvim]], true)
-require('settings.bufferline')
-time([[Config for bufferline.nvim]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
 vim.cmd [[au FileType md ++once lua require("packer.load")({'markdown-preview.nvim'}, { ft = "md" }, _G.packer_plugins)]]
-vim.cmd [[au FileType js ++once lua require("packer.load")({'yajs.vim', 'yats.vim', 'vim-js'}, { ft = "js" }, _G.packer_plugins)]]
+vim.cmd [[au FileType js ++once lua require("packer.load")({'vim-js', 'yajs.vim', 'yats.vim'}, { ft = "js" }, _G.packer_plugins)]]
 vim.cmd [[au FileType jsx ++once lua require("packer.load")({'vim-jsx-pretty'}, { ft = "jsx" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
@@ -369,15 +364,15 @@ vim.cmd [[au VimEnter * ++once lua require("packer.load")({'dashboard-nvim'}, { 
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 vim.cmd [[augroup filetypedetect]]
+time([[Sourcing ftdetect script at: /Users/kwanghoopark/.local/share/nvim/site/pack/packer/opt/vim-js/ftdetect/javascript.vim]], true)
+vim.cmd [[source /Users/kwanghoopark/.local/share/nvim/site/pack/packer/opt/vim-js/ftdetect/javascript.vim]]
+time([[Sourcing ftdetect script at: /Users/kwanghoopark/.local/share/nvim/site/pack/packer/opt/vim-js/ftdetect/javascript.vim]], false)
 time([[Sourcing ftdetect script at: /Users/kwanghoopark/.local/share/nvim/site/pack/packer/opt/yats.vim/ftdetect/typescript.vim]], true)
 vim.cmd [[source /Users/kwanghoopark/.local/share/nvim/site/pack/packer/opt/yats.vim/ftdetect/typescript.vim]]
 time([[Sourcing ftdetect script at: /Users/kwanghoopark/.local/share/nvim/site/pack/packer/opt/yats.vim/ftdetect/typescript.vim]], false)
 time([[Sourcing ftdetect script at: /Users/kwanghoopark/.local/share/nvim/site/pack/packer/opt/yats.vim/ftdetect/typescriptreact.vim]], true)
 vim.cmd [[source /Users/kwanghoopark/.local/share/nvim/site/pack/packer/opt/yats.vim/ftdetect/typescriptreact.vim]]
 time([[Sourcing ftdetect script at: /Users/kwanghoopark/.local/share/nvim/site/pack/packer/opt/yats.vim/ftdetect/typescriptreact.vim]], false)
-time([[Sourcing ftdetect script at: /Users/kwanghoopark/.local/share/nvim/site/pack/packer/opt/vim-js/ftdetect/javascript.vim]], true)
-vim.cmd [[source /Users/kwanghoopark/.local/share/nvim/site/pack/packer/opt/vim-js/ftdetect/javascript.vim]]
-time([[Sourcing ftdetect script at: /Users/kwanghoopark/.local/share/nvim/site/pack/packer/opt/vim-js/ftdetect/javascript.vim]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end
 

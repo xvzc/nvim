@@ -1,5 +1,5 @@
 require("nvim-lsp-installer").setup({
-    ensure_installed = {},
+    ensure_installed = { 'sumneko_lua', 'clangd', 'pyright'},
     automatic_installation = false,
 
     ui = {

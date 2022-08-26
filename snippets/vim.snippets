@@ -3,7 +3,6 @@ snippet header standard Vim script file header
 	" Author: ${2:`g:snips_author`}
 	" Description: ${3}
 	${0:" Last Modified: `strftime("%B %d, %Y")`}
-endsnippet
 snippet guard script reload guard
 	if exists('${1:did_`vim_snippets#Filename()`}') || &cp${2: || version < 700}
 		finish

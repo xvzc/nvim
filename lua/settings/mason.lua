@@ -1,6 +1,6 @@
 require("mason").setup({
-    ensure_installed = {},
-    automatic_installation = false,
+    ensure_installed = { 'clangd', 'pyright', 'sumneko_lua' },
+    automatic_installation = true,
 
     ui = {
         check_outdated_servers_on_open = true,
