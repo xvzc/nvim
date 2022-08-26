@@ -4,16 +4,18 @@ packer.reset()
 return packer.startup(function(use)
   -- eager load
   use 'wbthomason/packer.nvim'
-  use 'folke/tokyonight.nvim'
   use { 
     'glepnir/dashboard-nvim', 
     event = "VimEnter", 
     config = [[require('settings.dashboard-nvim')]] 
   }
 
-
-
   use { 
+    {
+      'folke/tokyonight.nvim',
+      before = 'lspconfig',
+      config = "require('styles')"
+    },
     {
       'neovim/nvim-lspconfig', 
       config = "require('settings.nvim-lspconfig')",
