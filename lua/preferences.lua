@@ -66,9 +66,6 @@ vim.o.undodir = global.home..'/.local/share/nvim/undo//'
 --   end
 -- })
 
-vim.cmd([[
-autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-]])
 
 global.autocmd({'FileType'}, {
   pattern = {'vim', 'zsh', 'lua', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'sh'}, 

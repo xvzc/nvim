@@ -6,8 +6,9 @@ return packer.startup(function(use)
   use 'wbthomason/packer.nvim'
   use'folke/tokyonight.nvim'
   use {
-    'ethanholz/nvim-lastplace',
-    config = "require('settings.nvim-lastplace')"
+    'farmergreg/vim-lastplace',
+    event = 'BufReadPost',
+    config = "require('settings.vim-lastplace')"
   }
   use {
     'glepnir/dashboard-nvim',
