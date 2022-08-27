@@ -72,15 +72,23 @@ local smap = function(from, handle, options)
   global.map('s', from, handle, options)
 end
 
-local cur_os = function ()
+local osid = function()
   local uname = io.popen("uname -a")
+  if uname == nil then
+    vim.notify("global:uname() error", 4)
+    return ""
+  end
+
   local result = uname:read("*a")
   uname:close()
 
   if string.find(result, "Darwin") then
     return "mac"
+  elseif string.find(result, "arch") then
+    return "linux-arch"
   else
-    return "linux"
+    vim.notify("global:uname() unknown os", 4)
+    return ""
   end
 end
 
@@ -97,7 +105,7 @@ end
 
 function global:new()
   -- variables
-  self.autocmd = vim.api.nvim_create_autocmd
+  self.osid = osid()
   self.home = os.getenv('HOME')
   self.lsp_config_path = global.home..'/.config/nvim/lua/settings/language-servers'
   self.config_path = global.home..'/.config/nvim/lua/settings'
@@ -116,6 +124,7 @@ function global:new()
   self.trim = trim
   self.dump = dump
   self.find_lua_files = find_lua_files
+  self.autocmd = vim.api.nvim_create_autocmd
 
   return self
 end
