@@ -103,11 +103,15 @@ for _, server in ipairs(mason.get_installed_package_names()) do
   end
 
   if server == "sourcekit" then
-    config.filetypes = {"swift", "objective-c", "objective-cpp"};
+    config.filetypes = { "swift", "objective-c", "objective-cpp" };
+  end
+
+  if server == "gopls" then
+    config.filetypes = { "go" };
   end
 
   if server == "clangd" then
-    config.filetypes = {"c", "cpp"}
+    config.filetypes = { "c", "cpp" }
     config.cmd = {
       'clangd',
       '-header-insertion=never',

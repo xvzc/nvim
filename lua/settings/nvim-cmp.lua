@@ -31,6 +31,7 @@ local kind_icons = {
 }
 
 cmp.setup({
+  preselect = cmp.PreselectMode.None,
   formatting = {
     fields = { "kind", "abbr", "menu" },
     format = function(entry, vim_item)
@@ -81,8 +82,8 @@ cmp.setup({
     end, { 'i' }),
   }),
   sources = cmp.config.sources({
-    { name = 'nvim_lsp', priority = 1 },
-    { name = 'ultisnips' }, -- For ultisnips users.
+    { name = 'nvim_lsp'},
+    { name = 'ultisnips', priority = 1 }, -- For ultisnips users.
     { name = 'path' },
   }, { 
     { name = 'buffer' }, 
