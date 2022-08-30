@@ -28,7 +28,6 @@ end
 local run_python = function()
   vim.cmd("silent w")
   local cur_buffer = vim.api.nvim_buf_get_name(0)
-  local cur_path = vim.fn.getcwd()
   print(syscall('python3 '..cur_buffer..' 2>&1'))
 end
 
