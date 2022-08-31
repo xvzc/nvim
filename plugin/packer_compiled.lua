@@ -280,18 +280,14 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: vim-easymotion
-time([[Config for vim-easymotion]], true)
-require('settings.easymotion')
-time([[Config for vim-easymotion]], false)
+-- Config for: nvim-tree.lua
+time([[Config for nvim-tree.lua]], true)
+require('settings.nvim-tree')
+time([[Config for nvim-tree.lua]], false)
 -- Config for: nvim-cmp
 time([[Config for nvim-cmp]], true)
 require('settings.nvim-cmp')
 time([[Config for nvim-cmp]], false)
--- Config for: vim-gitgutter
-time([[Config for vim-gitgutter]], true)
-require('settings.vim-gitgutter')
-time([[Config for vim-gitgutter]], false)
 -- Config for: nvim-treesitter
 time([[Config for nvim-treesitter]], true)
 require('settings.treesitter')
@@ -300,18 +296,18 @@ time([[Config for nvim-treesitter]], false)
 time([[Config for fzf]], true)
 require('settings.fzf')
 time([[Config for fzf]], false)
--- Config for: indent-blankline.nvim
-time([[Config for indent-blankline.nvim]], true)
-require('settings.indent-blankline')
-time([[Config for indent-blankline.nvim]], false)
 -- Config for: nvim-lspconfig
 time([[Config for nvim-lspconfig]], true)
 require('settings.nvim-lspconfig')
 time([[Config for nvim-lspconfig]], false)
--- Config for: bufferline.nvim
-time([[Config for bufferline.nvim]], true)
-require('settings.bufferline')
-time([[Config for bufferline.nvim]], false)
+-- Config for: indent-blankline.nvim
+time([[Config for indent-blankline.nvim]], true)
+require('settings.indent-blankline')
+time([[Config for indent-blankline.nvim]], false)
+-- Config for: vim-surround
+time([[Config for vim-surround]], true)
+require('settings.vim-surround')
+time([[Config for vim-surround]], false)
 -- Config for: lazygit.nvim
 time([[Config for lazygit.nvim]], true)
 require('settings.lualine')
@@ -328,33 +324,37 @@ time([[Config for lualine.nvim]], false)
 time([[Config for ultisnips]], true)
 require('settings.ultisnips')
 time([[Config for ultisnips]], false)
--- Config for: vim-surround
-time([[Config for vim-surround]], true)
-require('settings.vim-surround')
-time([[Config for vim-surround]], false)
 -- Config for: mason.nvim
 time([[Config for mason.nvim]], true)
 require('settings.mason')
 time([[Config for mason.nvim]], false)
--- Config for: nvim-tree.lua
-time([[Config for nvim-tree.lua]], true)
-require('settings.nvim-tree')
-time([[Config for nvim-tree.lua]], false)
--- Config for: cmp-nvim-ultisnips
-time([[Config for cmp-nvim-ultisnips]], true)
-try_loadstring("\27LJ\2\nD\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\23cmp_nvim_ultisnips\frequire\0", "config", "cmp-nvim-ultisnips")
-time([[Config for cmp-nvim-ultisnips]], false)
 -- Config for: nvim-autopairs
 time([[Config for nvim-autopairs]], true)
 require('settings.nvim-autopairs')
 time([[Config for nvim-autopairs]], false)
+-- Config for: cmp-nvim-ultisnips
+time([[Config for cmp-nvim-ultisnips]], true)
+try_loadstring("\27LJ\2\nD\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\23cmp_nvim_ultisnips\frequire\0", "config", "cmp-nvim-ultisnips")
+time([[Config for cmp-nvim-ultisnips]], false)
+-- Config for: bufferline.nvim
+time([[Config for bufferline.nvim]], true)
+require('settings.bufferline')
+time([[Config for bufferline.nvim]], false)
+-- Config for: vim-easymotion
+time([[Config for vim-easymotion]], true)
+require('settings.easymotion')
+time([[Config for vim-easymotion]], false)
+-- Config for: vim-gitgutter
+time([[Config for vim-gitgutter]], true)
+require('settings.vim-gitgutter')
+time([[Config for vim-gitgutter]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
 vim.cmd [[au FileType jsx ++once lua require("packer.load")({'vim-jsx-pretty'}, { ft = "jsx" }, _G.packer_plugins)]]
-vim.cmd [[au FileType md ++once lua require("packer.load")({'markdown-preview.nvim'}, { ft = "md" }, _G.packer_plugins)]]
 vim.cmd [[au FileType js ++once lua require("packer.load")({'vim-js', 'yajs.vim', 'yats.vim'}, { ft = "js" }, _G.packer_plugins)]]
+vim.cmd [[au FileType md ++once lua require("packer.load")({'markdown-preview.nvim'}, { ft = "md" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
