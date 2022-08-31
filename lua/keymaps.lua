@@ -38,7 +38,7 @@ end)
 global.autocmd({'BufRead', 'BufNewFile'}, {
   pattern = '*.cpp', 
   callback = function()
-    global.nmap('<C-M-t>', ':0r ~/.templates/ps-template.cpp<CR>', silent_noremap )
+    global.nmap('<C-M-t>', ':0r ~/.templates/ps-template.cpp<CR>33ggo', silent_noremap )
   end
 })
 

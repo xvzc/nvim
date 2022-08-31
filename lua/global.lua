@@ -43,7 +43,14 @@ local run_cpp = function()
     return
   end
 
-  print(syscall(cur_path..'/a.out'..' 2>&1'))
+  local output = syscall(cur_path..'/a.out')
+  if output == nil or output == "" then
+    print("Empty output or an erorr occured")
+    return
+  end
+
+  print(output)
+  syscall('rm '..cur_path..'/a.out')
 end
 
 local run_sh = function()
