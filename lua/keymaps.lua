@@ -20,7 +20,6 @@ global.nmap('<leader>a', 'gg<S-v><S-g>', silent_noremap )
 -- move lines
 global.nmap('<C-k>', 'm`:m--<CR>==``', silent_noremap )
 global.nmap('<C-j>', 'm`:m +1<CR>==``', silent_noremap )
-global.nmap('<C-s>', '<C-w>', silent_noremap )
 
 global.nmap('<esc>', function()
   if vim.api.nvim_get_vvar('hlsearch') == 1 then
@@ -30,6 +29,12 @@ global.nmap('<esc>', function()
   return "<esc>"
 end, silent_noremap_expr)
 
+global.nmap('<C-g>', function()
+  local find = vim.fn.input("find? ")
+  local replace = vim.fn.input("replace with? ")
+  vim.cmd(':%s/'..find..'/'..replace..'/gc')
+end)
+
 global.autocmd({'BufRead', 'BufNewFile'}, {
   pattern = '*.cpp', 
   callback = function()
@@ -38,9 +43,9 @@ global.autocmd({'BufRead', 'BufNewFile'}, {
 })
 
 global.autocmd({'BufRead', 'BufNewFile'}, {
-  pattern = '~/*/baekJoon/*.* ', 
+  pattern = '**/baekJoon/*',
   callback = function() 
-    global.nmap('<C-M-s>', ':call require("global").BOJ_SUBMIT()<CR>', silent_noremap )
+    global.nmap('<C-M-s>', ':lua require("global").boj_submit()<CR>', silent_noremap )
   end
 })
 
@@ -64,3 +69,4 @@ global.autocmd({'filetype'}, {
     global.nmap('<C-M-r>', ':lua  require("global").run_sh()<CR>', silent_noremap )
   end
 })
+

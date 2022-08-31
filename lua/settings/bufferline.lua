@@ -44,8 +44,6 @@ vim.keymap.set('n', '<leader>^', '<cmd>lua require("bufferline").go_to_buffer(1,
 vim.keymap.set('n', ']b', ':BufferLineCycleNext<CR>', {silent = true})
 vim.keymap.set('n', '[b', ':BufferLineCyclePrev<CR>', {silent = true})
 
-vim.keymap.set('n', '<C-w>', ':call CloseBuffer()<CR>', {silent = true})
-
 vim.cmd([[
 
 function CloseBuffer() 
