@@ -50,23 +50,30 @@ global.autocmd({'BufRead', 'BufNewFile'}, {
 })
 
 global.autocmd({'filetype'}, {
-  pattern = 'python', 
-  callback = function() 
+  pattern = 'python',
+  callback = function()
     global.nmap('<C-M-r>', ':lua require("global").run_python()<CR>', silent_noremap )
   end
 })
 
 global.autocmd({'filetype'}, {
-  pattern = 'cpp', 
-  callback = function() 
+  pattern = 'cpp',
+  callback = function()
     global.nmap('<C-M-r>', ':lua require("global").run_cpp()<CR>', silent_noremap )
   end
 })
 
 global.autocmd({'filetype'}, {
-  pattern = 'sh', 
-  callback = function() 
-    global.nmap('<C-M-r>', ':lua  require("global").run_sh()<CR>', silent_noremap )
+  pattern = 'sh',
+  callback = function()
+    global.nmap('<C-M-r>', ':lua require("global").run_sh()<CR>', silent_noremap )
+  end
+})
+
+global.autocmd({'filetype'}, {
+  pattern = 'typescript',
+  callback = function()
+    global.nmap('<C-M-r>', ':lua require("global").run_ts()<CR>', silent_noremap )
   end
 })
 

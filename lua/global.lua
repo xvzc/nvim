@@ -58,6 +58,12 @@ local run_sh = function()
   print(vim.fn.system('zsh '..vim.api.nvim_buf_get_name(0)..' 2>&1'))
 end
 
+local run_ts = function()
+  vim.cmd("silent w")
+  local cur_buffer = vim.api.nvim_buf_get_name(0)
+  print(syscall('npx ts-node '..cur_buffer..' 2>&1'))
+end
+
 local boj_submit = function()
   vim.cmd("silent w")
   local cur_buffer = vim.api.nvim_buf_get_name(0)
@@ -129,6 +135,7 @@ function global:new()
   self.run_python = run_python
   self.run_cpp = run_cpp
   self.run_sh = run_sh
+  self.run_ts = run_ts
   self.boj_submit = boj_submit
   self.map = map
   self.nmap = nmap
