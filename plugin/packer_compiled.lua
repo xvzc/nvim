@@ -9,23 +9,26 @@ vim.api.nvim_command('packadd packer.nvim')
 
 local no_errors, error_msg = pcall(function()
 
-  local time
-  local profile_info
-  local should_profile = false
-  if should_profile then
-    local hrtime = vim.loop.hrtime
-    profile_info = {}
-    time = function(chunk, start)
-      if start then
-        profile_info[chunk] = hrtime()
-      else
-        profile_info[chunk] = (hrtime() - profile_info[chunk]) / 1e6
-      end
+_G._packer = _G._packer or {}
+_G._packer.inside_compile = true
+
+local time
+local profile_info
+local should_profile = false
+if should_profile then
+  local hrtime = vim.loop.hrtime
+  profile_info = {}
+  time = function(chunk, start)
+    if start then
+      profile_info[chunk] = hrtime()
+    else
+      profile_info[chunk] = (hrtime() - profile_info[chunk]) / 1e6
     end
-  else
-    time = function(chunk, start) end
   end
-  
+else
+  time = function(chunk, start) end
+end
+
 local function save_profiles(threshold)
   local sorted_times = {}
   for chunk_name, time_taken in pairs(profile_info) do
@@ -38,8 +41,10 @@ local function save_profiles(threshold)
       results[i] = elem[1] .. ' took ' .. elem[2] .. 'ms'
     end
   end
+  if threshold then
+    table.insert(results, '(Only showing plugins that took longer than ' .. threshold .. ' ms ' .. 'to load)')
+  end
 
-  _G._packer = _G._packer or {}
   _G._packer.profile_output = results
 end
 
@@ -280,6 +285,22 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: nvim-lspconfig
+time([[Config for nvim-lspconfig]], true)
+require('settings.nvim-lspconfig')
+time([[Config for nvim-lspconfig]], false)
+-- Config for: vim-gitgutter
+time([[Config for vim-gitgutter]], true)
+require('settings.vim-gitgutter')
+time([[Config for vim-gitgutter]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+require('settings.treesitter')
+time([[Config for nvim-treesitter]], false)
+-- Config for: fzf
+time([[Config for fzf]], true)
+require('settings.fzf')
+time([[Config for fzf]], false)
 -- Config for: indent-blankline.nvim
 time([[Config for indent-blankline.nvim]], true)
 require('settings.indent-blankline')
@@ -300,10 +321,6 @@ time([[Config for toggleterm.nvim]], false)
 time([[Config for lualine.nvim]], true)
 require('settings.lualine')
 time([[Config for lualine.nvim]], false)
--- Config for: nvim-cmp
-time([[Config for nvim-cmp]], true)
-require('settings.nvim-cmp')
-time([[Config for nvim-cmp]], false)
 -- Config for: ultisnips
 time([[Config for ultisnips]], true)
 require('settings.ultisnips')
@@ -312,6 +329,10 @@ time([[Config for ultisnips]], false)
 time([[Config for mason.nvim]], true)
 require('settings.mason')
 time([[Config for mason.nvim]], false)
+-- Config for: nvim-cmp
+time([[Config for nvim-cmp]], true)
+require('settings.nvim-cmp')
+time([[Config for nvim-cmp]], false)
 -- Config for: cmp-nvim-ultisnips
 time([[Config for cmp-nvim-ultisnips]], true)
 try_loadstring("\27LJ\2\nD\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\23cmp_nvim_ultisnips\frequire\0", "config", "cmp-nvim-ultisnips")
@@ -324,37 +345,21 @@ time([[Config for nvim-autopairs]], false)
 time([[Config for vim-easymotion]], true)
 require('settings.easymotion')
 time([[Config for vim-easymotion]], false)
--- Config for: vim-gitgutter
-time([[Config for vim-gitgutter]], true)
-require('settings.vim-gitgutter')
-time([[Config for vim-gitgutter]], false)
--- Config for: nvim-tree.lua
-time([[Config for nvim-tree.lua]], true)
-require('settings.nvim-tree')
-time([[Config for nvim-tree.lua]], false)
--- Config for: nvim-lspconfig
-time([[Config for nvim-lspconfig]], true)
-require('settings.nvim-lspconfig')
-time([[Config for nvim-lspconfig]], false)
 -- Config for: bufferline.nvim
 time([[Config for bufferline.nvim]], true)
 require('settings.bufferline')
 time([[Config for bufferline.nvim]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
-require('settings.treesitter')
-time([[Config for nvim-treesitter]], false)
--- Config for: fzf
-time([[Config for fzf]], true)
-require('settings.fzf')
-time([[Config for fzf]], false)
+-- Config for: nvim-tree.lua
+time([[Config for nvim-tree.lua]], true)
+require('settings.nvim-tree')
+time([[Config for nvim-tree.lua]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
-vim.cmd [[au FileType md ++once lua require("packer.load")({'markdown-preview.nvim'}, { ft = "md" }, _G.packer_plugins)]]
-vim.cmd [[au FileType js ++once lua require("packer.load")({'vim-js', 'yajs.vim', 'yats.vim'}, { ft = "js" }, _G.packer_plugins)]]
 vim.cmd [[au FileType jsx ++once lua require("packer.load")({'vim-jsx-pretty'}, { ft = "jsx" }, _G.packer_plugins)]]
+vim.cmd [[au FileType js ++once lua require("packer.load")({'vim-js', 'yajs.vim', 'yats.vim'}, { ft = "js" }, _G.packer_plugins)]]
+vim.cmd [[au FileType md ++once lua require("packer.load")({'markdown-preview.nvim'}, { ft = "md" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
@@ -373,6 +378,13 @@ time([[Sourcing ftdetect script at: /Users/kwanghoopark/.local/share/nvim/site/p
 vim.cmd [[source /Users/kwanghoopark/.local/share/nvim/site/pack/packer/opt/yats.vim/ftdetect/typescriptreact.vim]]
 time([[Sourcing ftdetect script at: /Users/kwanghoopark/.local/share/nvim/site/pack/packer/opt/yats.vim/ftdetect/typescriptreact.vim]], false)
 vim.cmd("augroup END")
+
+_G._packer.inside_compile = false
+if _G._packer.needs_bufread == true then
+  vim.cmd("doautocmd BufRead")
+end
+_G._packer.needs_bufread = false
+
 if should_profile then save_profiles() end
 
 end)

@@ -1,8 +1,8 @@
 local global = require('global')
 local cli_capa = vim.lsp.protocol.make_client_capabilities()
-local capabilities = require('cmp_nvim_lsp').update_capabilities(cli_capa)
-local lsp_servers = global.home..'/.local/share/nvim/lsp_servers'
-local lspconfig = require('lspconfig')
+-- local capabilities = require('cmp_nvim_lsp').update_capabilities(cli_capa)
+-- local lsp_servers = global.home..'/.local/share/nvim/mason/bin'
+-- local lspconfig = require('lspconfig')
 
 -- :help vim.lsp.diagnostic.on_publish_diagnostics
 local on_attach = function(client, bufnr)
@@ -29,47 +29,49 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
 end
 
-local lsp_flags = {
-  -- This is the default in Nvim 0.7+
-  debounce_text_changes = 150,
-}
+-- local lsp_flags = {
+--   -- This is the default in Nvim 0.7+
+--   debounce_text_changes = 150,
+-- }
 
--------------------- C / CPP
+-- -------------------- C / CPP
 
-local clangd_cmd = lsp_servers..'/clangd/clangd/bin/clangd'
-lspconfig.clangd.setup{
-  on_attach = on_attach,
-  capabilities = capabilities,
-  flags = lsp_flags,
-  filetypes = { 'c', 'cpp' },
-  cmd = { 
-    clangd_cmd, 
-    '-header-insertion=never',
-  },
-}
+-- local clangd_cmd = lsp_servers..'/clangd'
+-- lspconfig.clangd.setup{
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   flags = lsp_flags,
+--   filetypes = { 'c', 'cpp' },
+--   cmd = {
+--     clangd_cmd,
+--     '-header-insertion=never',
+--   },
+-- }
 
--------------------- python
+-- -------------------- python
 
-local pylsp_cmd = lsp_servers..'/pylsp/venv/bin/pylsp'
-lspconfig.pylsp.setup{
-  on_attach = on_attach,
-  flags = lsp_flags,
-  capabilities = capabilities,
-  filetypes = { "python" },
-  cmd = { pylsp_cmd },
-  settings = {
-    pylsp = {
-      plugins = {
-        pycodestyle = {
-          ignore = {
-            'W391',
-            'E201',
-            'E501',
-            'E303'
-          },
-          maxLineLength = 100
-        }
-      }
-    }
-  }
-}
+-- local pylsp_cmd = lsp_servers..'/pyright'
+-- lspconfig.pylsp.setup{
+--   on_attach = on_attach,
+--   flags = lsp_flags,
+--   capabilities = capabilities,
+--   filetypes = { "python" },
+--   cmd = { pylsp_cmd },
+--   settings = {
+--     pylsp = {
+--       plugins = {
+--         pycodestyle = {
+--           ignore = {
+--             'W391',
+--             'E201',
+--             'E501',
+--             'E303'
+--           },
+--           maxLineLength = 100
+--         }
+--       }
+--     }
+--   }
+-- }
+
+-- -------------------- typescript

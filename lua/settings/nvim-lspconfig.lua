@@ -95,19 +95,23 @@ for _, server in ipairs(mason.get_installed_package_names()) do
   local config = make_config()
   if server == 'pyright' then
     config.filetypes = { 'python', 'py' }
+    lspconfig[server].setup(config)
   end
 
   if server == "lua-language-server" then
     server = 'sumneko_lua'
     config = lua_settings
+    lspconfig[server].setup(config)
   end
 
   if server == "sourcekit" then
     config.filetypes = { "swift", "objective-c", "objective-cpp" };
+    lspconfig[server].setup(config)
   end
 
   if server == "gopls" then
     config.filetypes = { "go" };
+    lspconfig[server].setup(config)
   end
 
   if server == "clangd" then
@@ -116,7 +120,23 @@ for _, server in ipairs(mason.get_installed_package_names()) do
       'clangd',
       '-header-insertion=never',
     }
+    lspconfig[server].setup(config)
   end
 
-  lspconfig[server].setup(config)
+  if server == "typescript-language-server" then
+    config.filetypes = {
+      "javascript",
+      "javascriptreact",
+      "javascript.jsx",
+      "typescript",
+      "typescriptreact",
+      "typescript.tsx"
+    }
+    config.cmd = {
+      'typescript-language-server',
+      "--stdio",
+    }
+    lspconfig["tsserver"].setup(config)
+  end
+
 end
