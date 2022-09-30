@@ -16,6 +16,7 @@ return packer.startup(function(use)
     config = [[require('settings.dashboard-nvim')]]
   }
 
+
   use {
     {
       'neovim/nvim-lspconfig',
@@ -111,6 +112,15 @@ return packer.startup(function(use)
     {
       'lukas-reineke/indent-blankline.nvim',
       config = "require('settings.indent-blankline')"
+    },
+    {
+      'keaising/im-select.nvim',
+      config = function() 
+        require('im_select').setup {
+          default_im_select  = "com.apple.keylayout.ABC",
+          disable_auto_restore = 0,
+        }
+      end
     },
     event = 'BufWinEnter',
   }
