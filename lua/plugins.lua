@@ -115,12 +115,15 @@ return packer.startup(function(use)
     },
     {
       'keaising/im-select.nvim',
-      config = function() 
+      config = function()
         require('im_select').setup {
           default_im_select  = "com.apple.keylayout.ABC",
           disable_auto_restore = 0,
         }
       end
+    },
+    {
+      'hashivim/vim-terraform',
     },
     event = 'BufWinEnter',
   }

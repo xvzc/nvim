@@ -139,4 +139,11 @@ for _, server in ipairs(mason.get_installed_package_names()) do
     lspconfig["tsserver"].setup(config)
   end
 
+  if server == "terraform-ls" then
+    lspconfig.terraformls.setup{}
+  end
+
+  if server == "tflint" then
+    lspconfig.tflint.setup{}
+  end
 end

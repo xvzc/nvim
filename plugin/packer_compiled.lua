@@ -126,7 +126,7 @@ _G.packer_plugins = {
     url = "https://github.com/junegunn/fzf.vim"
   },
   ["im-select.nvim"] = {
-    config = { "\27LJ\2\n\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\22default_im_select\28com.apple.keylayout.ABC\25disable_auto_restore\3\0\nsetup\14im_select\frequire\0" },
+    config = { "\27LJ\2\n\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\25disable_auto_restore\3\0\22default_im_select\28com.apple.keylayout.ABC\nsetup\14im_select\frequire\0" },
     loaded = true,
     path = "/Users/jerry/.local/share/nvim/site/pack/packer/start/im-select.nvim",
     url = "https://github.com/keaising/im-select.nvim"
@@ -274,6 +274,11 @@ _G.packer_plugins = {
     path = "/Users/jerry/.local/share/nvim/site/pack/packer/start/vim-surround",
     url = "https://github.com/tpope/vim-surround"
   },
+  ["vim-terraform"] = {
+    loaded = true,
+    path = "/Users/jerry/.local/share/nvim/site/pack/packer/start/vim-terraform",
+    url = "https://github.com/hashivim/vim-terraform"
+  },
   ["yajs.vim"] = {
     loaded = false,
     needs_bufread = false,
@@ -291,14 +296,26 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: fzf
-time([[Config for fzf]], true)
-require('settings.fzf')
-time([[Config for fzf]], false)
+-- Config for: vim-gitgutter
+time([[Config for vim-gitgutter]], true)
+require('settings.vim-gitgutter')
+time([[Config for vim-gitgutter]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+require('settings.treesitter')
+time([[Config for nvim-treesitter]], false)
+-- Config for: im-select.nvim
+time([[Config for im-select.nvim]], true)
+try_loadstring("\27LJ\2\n\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\25disable_auto_restore\3\0\22default_im_select\28com.apple.keylayout.ABC\nsetup\14im_select\frequire\0", "config", "im-select.nvim")
+time([[Config for im-select.nvim]], false)
 -- Config for: nvim-lspconfig
 time([[Config for nvim-lspconfig]], true)
 require('settings.nvim-lspconfig')
 time([[Config for nvim-lspconfig]], false)
+-- Config for: cmp-nvim-ultisnips
+time([[Config for cmp-nvim-ultisnips]], true)
+try_loadstring("\27LJ\2\nD\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\23cmp_nvim_ultisnips\frequire\0", "config", "cmp-nvim-ultisnips")
+time([[Config for cmp-nvim-ultisnips]], false)
 -- Config for: indent-blankline.nvim
 time([[Config for indent-blankline.nvim]], true)
 require('settings.indent-blankline')
@@ -327,10 +344,14 @@ time([[Config for ultisnips]], false)
 time([[Config for mason.nvim]], true)
 require('settings.mason')
 time([[Config for mason.nvim]], false)
--- Config for: im-select.nvim
-time([[Config for im-select.nvim]], true)
-try_loadstring("\27LJ\2\n\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\22default_im_select\28com.apple.keylayout.ABC\25disable_auto_restore\3\0\nsetup\14im_select\frequire\0", "config", "im-select.nvim")
-time([[Config for im-select.nvim]], false)
+-- Config for: nvim-tree.lua
+time([[Config for nvim-tree.lua]], true)
+require('settings.nvim-tree')
+time([[Config for nvim-tree.lua]], false)
+-- Config for: fzf
+time([[Config for fzf]], true)
+require('settings.fzf')
+time([[Config for fzf]], false)
 -- Config for: nvim-cmp
 time([[Config for nvim-cmp]], true)
 require('settings.nvim-cmp')
@@ -339,37 +360,21 @@ time([[Config for nvim-cmp]], false)
 time([[Config for vim-easymotion]], true)
 require('settings.easymotion')
 time([[Config for vim-easymotion]], false)
--- Config for: vim-gitgutter
-time([[Config for vim-gitgutter]], true)
-require('settings.vim-gitgutter')
-time([[Config for vim-gitgutter]], false)
 -- Config for: nvim-autopairs
 time([[Config for nvim-autopairs]], true)
 require('settings.nvim-autopairs')
 time([[Config for nvim-autopairs]], false)
--- Config for: nvim-tree.lua
-time([[Config for nvim-tree.lua]], true)
-require('settings.nvim-tree')
-time([[Config for nvim-tree.lua]], false)
 -- Config for: bufferline.nvim
 time([[Config for bufferline.nvim]], true)
 require('settings.bufferline')
 time([[Config for bufferline.nvim]], false)
--- Config for: cmp-nvim-ultisnips
-time([[Config for cmp-nvim-ultisnips]], true)
-try_loadstring("\27LJ\2\nD\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\23cmp_nvim_ultisnips\frequire\0", "config", "cmp-nvim-ultisnips")
-time([[Config for cmp-nvim-ultisnips]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
-require('settings.treesitter')
-time([[Config for nvim-treesitter]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
-vim.cmd [[au FileType md ++once lua require("packer.load")({'markdown-preview.nvim'}, { ft = "md" }, _G.packer_plugins)]]
-vim.cmd [[au FileType js ++once lua require("packer.load")({'yajs.vim', 'yats.vim', 'vim-js'}, { ft = "js" }, _G.packer_plugins)]]
 vim.cmd [[au FileType jsx ++once lua require("packer.load")({'vim-jsx-pretty'}, { ft = "jsx" }, _G.packer_plugins)]]
+vim.cmd [[au FileType js ++once lua require("packer.load")({'vim-js', 'yajs.vim', 'yats.vim'}, { ft = "js" }, _G.packer_plugins)]]
+vim.cmd [[au FileType md ++once lua require("packer.load")({'markdown-preview.nvim'}, { ft = "md" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
@@ -378,15 +383,15 @@ vim.cmd [[au VimEnter * ++once lua require("packer.load")({'dashboard-nvim'}, { 
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 vim.cmd [[augroup filetypedetect]]
+time([[Sourcing ftdetect script at: /Users/jerry/.local/share/nvim/site/pack/packer/opt/vim-js/ftdetect/javascript.vim]], true)
+vim.cmd [[source /Users/jerry/.local/share/nvim/site/pack/packer/opt/vim-js/ftdetect/javascript.vim]]
+time([[Sourcing ftdetect script at: /Users/jerry/.local/share/nvim/site/pack/packer/opt/vim-js/ftdetect/javascript.vim]], false)
 time([[Sourcing ftdetect script at: /Users/jerry/.local/share/nvim/site/pack/packer/opt/yats.vim/ftdetect/typescript.vim]], true)
 vim.cmd [[source /Users/jerry/.local/share/nvim/site/pack/packer/opt/yats.vim/ftdetect/typescript.vim]]
 time([[Sourcing ftdetect script at: /Users/jerry/.local/share/nvim/site/pack/packer/opt/yats.vim/ftdetect/typescript.vim]], false)
 time([[Sourcing ftdetect script at: /Users/jerry/.local/share/nvim/site/pack/packer/opt/yats.vim/ftdetect/typescriptreact.vim]], true)
 vim.cmd [[source /Users/jerry/.local/share/nvim/site/pack/packer/opt/yats.vim/ftdetect/typescriptreact.vim]]
 time([[Sourcing ftdetect script at: /Users/jerry/.local/share/nvim/site/pack/packer/opt/yats.vim/ftdetect/typescriptreact.vim]], false)
-time([[Sourcing ftdetect script at: /Users/jerry/.local/share/nvim/site/pack/packer/opt/vim-js/ftdetect/javascript.vim]], true)
-vim.cmd [[source /Users/jerry/.local/share/nvim/site/pack/packer/opt/vim-js/ftdetect/javascript.vim]]
-time([[Sourcing ftdetect script at: /Users/jerry/.local/share/nvim/site/pack/packer/opt/vim-js/ftdetect/javascript.vim]], false)
 vim.cmd("augroup END")
 
 _G._packer.inside_compile = false
