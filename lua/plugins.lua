@@ -13,7 +13,6 @@ return packer.startup(function(use)
   }
   use {
     'glepnir/dashboard-nvim',
-    event = "VimEnter",
     config = "require('settings.dashboard-nvim')"
   }
   use {
@@ -22,48 +21,52 @@ return packer.startup(function(use)
   }
 
   use {
+    'keaising/im-select.nvim',
+    config = function()
+      require('im_select').setup {
+        default_im_select  = "com.apple.keylayout.ABC",
+        disable_auto_restore = 0,
+      }
+    end
+  }
+
+  use {
     {
       'neovim/nvim-lspconfig',
       config = "require('settings.nvim-lspconfig')",
-      event = 'BufWinEnter',
+      event = 'VimEnter',
     },
-    use {
+    {
       'hrsh7th/nvim-cmp',
       after = { 'nvim-lspconfig' },
       config = "require('settings.nvim-cmp')",
-      event = 'BufWinEnter',
-    },
-    {
-      'hrsh7th/cmp-nvim-lsp',
-      after = { 'nvim-cmp' },
-      event = 'BufWinEnter',
-    },
-    {
-      'hrsh7th/cmp-cmdline',
-      after = { 'nvim-cmp' },
-      event = 'BufWinEnter',
-    },
-    {
-      'hrsh7th/cmp-path',
-      after = { 'nvim-cmp' },
-      event = 'BufWinEnter',
-    },
-    {
-      'hrsh7th/cmp-buffer',
-      after = { 'nvim-cmp' },
-      event = 'BufWinEnter',
+      event = 'VimEnter',
     },
     {
       'SirVer/ultisnips',
-      before = { 'cmp-nvim-ultisnips' },
       config = "require('settings.ultisnips')",
-      event = 'BufWinEnter'
+      event = 'VimEnter'
+    },
+    {
+      'hrsh7th/cmp-nvim-lsp',
+      event = 'UIEnter',
+    },
+    {
+      'hrsh7th/cmp-cmdline',
+      event = 'UIEnter',
+    },
+    {
+      'hrsh7th/cmp-path',
+      event = 'UIEnter',
+    },
+    {
+      'hrsh7th/cmp-buffer',
+      event = 'UIEnter',
     },
     {
       'quangnguyen30192/cmp-nvim-ultisnips',
-      after = { 'nvim-cmp' },
       config = function() require("cmp_nvim_ultisnips").setup{} end,
-      event = 'BufWinEnter'
+      event = 'UIEnter'
     },
   }
 
@@ -74,72 +77,69 @@ return packer.startup(function(use)
     { 'HerringtonDarkholme/yats.vim', ft = { 'js' } },
     { 'maxmellon/vim-jsx-pretty', ft = { 'jsx' } },
     { 'iamcco/markdown-preview.nvim', ft = { 'md' }, },
+    { 'hashivim/vim-terraform', ft = { 'tf', 'terraform' }, },
   }
 
   use {
+    {
+      "nvim-treesitter/nvim-treesitter",
+      run = ":TSUpdate",
+      config = "require('settings.treesitter')",
+      event = 'UIEnter',
+    },
     {
       'junegunn/fzf',
       requires = { 'junegunn/fzf.vim' },
       run = './install --bin',
       config = "require('settings.fzf')",
-      event = 'BufWinEnter',
+      event = 'UIEnter',
     },
     {
       'tpope/vim-fugitive',
-      event = 'BufWinEnter',
+      event = 'UIEnter',
     },
     {
       'airblade/vim-gitgutter',
       config = "require('settings.vim-gitgutter')",
-      event = 'BufWinEnter',
+      event = 'UIEnter',
     },
     {
       'easymotion/vim-easymotion',
       config = "require('settings.easymotion')",
-      event = 'BufWinEnter',
+      event = 'UIEnter',
     },
     {
       'tpope/vim-surround',
       config = "require('settings.vim-surround')",
-      event = 'BufWinEnter',
+      event = 'UIEnter',
     },
     {
       'windwp/nvim-autopairs',
       config = "require('settings.nvim-autopairs')",
-      event = 'BufWinEnter',
+      event = 'UIEnter',
     },
     { 
       'godlygeek/tabular' ,
-      event = 'BufWinEnter',
+      event = 'UIEnter',
     },
     { 
       'tpope/vim-commentary',
-      event = 'BufWinEnter',
+      event = 'UIEnter',
     },
     {
       'kdheepak/lazygit.nvim',
-      config = "require('settings.lualine')",
-      event = 'BufWinEnter',
-    },
-    {
-      "nvim-treesitter/nvim-treesitter",
-      run = ":TSUpdate",
-      config = "require('settings.treesitter')",
-      event = 'BufWinEnter',
+      config = "require('settings.lazygit')",
+      event = 'UIEnter',
     },
     {
       'akinsho/toggleterm.nvim',
       config = "require('settings.toggleterm')",
-      event = 'BufWinEnter',
+      event = 'UIEnter',
     },
     {
       'lukas-reineke/indent-blankline.nvim',
       config = "require('settings.indent-blankline')",
-      event = 'BufWinEnter',
-    },
-    {
-      'hashivim/vim-terraform',
-      event = 'BufWinEnter',
+      event = 'UIEnter',
     },
   }
 
@@ -163,5 +163,4 @@ return packer.startup(function(use)
       config = "require('settings.nvim-tree')",
     },
   }
-
 end)
