@@ -4,7 +4,8 @@ packer.reset()
 return packer.startup(function(use)
   -- eager load
   use 'wbthomason/packer.nvim'
-  use'folke/tokyonight.nvim'
+
+  use 'folke/tokyonight.nvim'
   use {
     'farmergreg/vim-lastplace',
     event = 'BufReadPost',
@@ -13,52 +14,58 @@ return packer.startup(function(use)
   use {
     'glepnir/dashboard-nvim',
     event = "VimEnter",
-    config = [[require('settings.dashboard-nvim')]]
+    config = "require('settings.dashboard-nvim')"
   }
-
+  use {
+    'hrsh7th/nvim-cmp',
+    config = "require('settings.nvim-cmp')",
+  }
 
   use {
     {
-      'neovim/nvim-lspconfig',
-      config = "require('settings.nvim-lspconfig')",
-      before = 'nvim-cmp'
+      'williamboman/mason.nvim',
+      before = { 'nvim-lspconfig' },
+      config = "require('settings.mason')",
+      event = 'BufWinenter',
     },
     {
-      'hrsh7th/nvim-cmp',
-      config = "require('settings.nvim-cmp')",
+      'neovim/nvim-lspconfig',
+      before = { 'nvim-cmp' },
+      config = "require('settings.nvim-lspconfig')",
+      event = 'BufWinenter',
     },
     {
       'hrsh7th/cmp-nvim-lsp',
-      requires = { 'nvim-cmp' }
-    },
-    {
-      'hrsh7th/cmp-buffer',
-      requires = { 'nvim-cmp' }
+      after = { 'nvim-cmp' },
+      event = 'BufWinenter'
     },
     {
       'hrsh7th/cmp-cmdline',
-      requires = { 'nvim-cmp' }
+      after = { 'nvim-cmp' },
+      event = 'BufWinenter'
     },
     {
       'hrsh7th/cmp-path',
-      requires = { 'nvim-cmp' }
+      after = { 'nvim-cmp' },
+      event = 'BufWinenter'
     },
     {
-      'quangnguyen30192/cmp-nvim-ultisnips',
-      config = function() require("cmp_nvim_ultisnips").setup{} end
+      'hrsh7th/cmp-buffer',
+      after = { 'nvim-cmp' },
+      event = 'BufWinenter'
     },
     {
       'SirVer/ultisnips',
-      before = 'nvim-cmp',
-      config = "require('settings.ultisnips')"
+      before = { 'cmp-nvim-ultisnips' },
+      config = "require('settings.ultisnips')",
+      event = 'BufWinenter'
     },
     {
-      'williamboman/mason.nvim',
-      before = 'nvim-lspconfig',
-      config = "require('settings.mason')",
+      'quangnguyen30192/cmp-nvim-ultisnips',
+      after = { 'nvim-cmp' },
+      config = function() require("cmp_nvim_ultisnips").setup{} end,
+      event = 'BufWinenter'
     },
-
-    event = 'BufWinenter'
   }
 
   -- syntax
@@ -75,57 +82,66 @@ return packer.startup(function(use)
       'junegunn/fzf',
       requires = { 'junegunn/fzf.vim' },
       run = './install --bin',
-      config = "require('settings.fzf')"
+      config = "require('settings.fzf')",
+      event = 'BufWinEnter',
     },
-    { 'tpope/vim-fugitive', },
+    {
+      'tpope/vim-fugitive',
+      event = 'BufWinEnter',
+    },
     {
       'airblade/vim-gitgutter',
-      config = "require('settings.vim-gitgutter')"
+      config = "require('settings.vim-gitgutter')",
+      event = 'BufWinEnter',
     },
     {
       'easymotion/vim-easymotion',
-      config = "require('settings.easymotion')"
+      config = "require('settings.easymotion')",
+      event = 'BufWinEnter',
     },
     {
       'tpope/vim-surround',
-      config = "require('settings.vim-surround')"
+      config = "require('settings.vim-surround')",
+      event = 'BufWinEnter',
     },
     {
       'windwp/nvim-autopairs',
-      config = "require('settings.nvim-autopairs')"
+      config = "require('settings.nvim-autopairs')",
+      event = 'BufWinEnter',
     },
-    { 'godlygeek/tabular' },
-    { 'tpope/vim-commentary' },
+    { 
+      'godlygeek/tabular' ,
+      event = 'BufWinEnter',
+    },
+    { 
+      'tpope/vim-commentary',
+      event = 'BufWinEnter',
+    },
     {
       'kdheepak/lazygit.nvim',
-      config = "require('settings.lualine')"
+      config = "require('settings.lualine')",
+      event = 'BufWinEnter',
     },
     {
       "nvim-treesitter/nvim-treesitter",
       run = ":TSUpdate",
-      config = "require('settings.treesitter')"
+      config = "require('settings.treesitter')",
+      event = 'BufWinEnter',
     },
     {
       'akinsho/toggleterm.nvim',
-      config = "require('settings.toggleterm')"
+      config = "require('settings.toggleterm')",
+      event = 'BufWinEnter',
     },
     {
       'lukas-reineke/indent-blankline.nvim',
-      config = "require('settings.indent-blankline')"
-    },
-    {
-      'keaising/im-select.nvim',
-      config = function()
-        require('im_select').setup {
-          default_im_select  = "com.apple.keylayout.ABC",
-          disable_auto_restore = 0,
-        }
-      end
+      config = "require('settings.indent-blankline')",
+      event = 'BufWinEnter',
     },
     {
       'hashivim/vim-terraform',
+      event = 'BufWinEnter',
     },
-    event = 'BufWinEnter',
   }
 
   -- plugins that are dependant on web-devicons
@@ -133,22 +149,21 @@ return packer.startup(function(use)
     {
       'nvim-lualine/lualine.nvim',
       requires = { 'kyazdani42/nvim-web-devicons' },
-      config = "require('settings.lualine')"
+      config = "require('settings.lualine')",
     },
     {
       'akinsho/bufferline.nvim',
       requires = { 'kyazdani42/nvim-web-devicons' },
       tag = 'v2.*',
-      config = "require('settings.bufferline')"
+      config = "require('settings.bufferline')",
     },
     {
       'kyazdani42/nvim-tree.lua',
       tag = 'nightly', -- optional, updated every week. (see issue #1193)
 
       requires = { 'kyazdani42/nvim-web-devicons', },
-      config = "require('settings.nvim-tree')"
+      config = "require('settings.nvim-tree')",
     },
-
   }
 
 end)

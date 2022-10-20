@@ -91,9 +91,6 @@ cmp.setup({
   experimental = {
     ghost_text = false,
   },
-  completion = {
-    completeopt = 'menu,menuone,noinsert'
-  }
 })
 
 cmp.setup.filetype('gitcommit', {
