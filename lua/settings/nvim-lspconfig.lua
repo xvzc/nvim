@@ -88,8 +88,8 @@ local lua_settings = {
 
 -----------------------------------------------------------------
 
-local mason = require('mason-registry')
 local lspconfig = require('lspconfig')
+local mason = require('mason-registry')
 
 for _, server in ipairs(mason.get_installed_package_names()) do
   local config = make_config()

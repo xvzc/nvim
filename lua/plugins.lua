@@ -17,54 +17,53 @@ return packer.startup(function(use)
     config = "require('settings.dashboard-nvim')"
   }
   use {
-    'hrsh7th/nvim-cmp',
-    config = "require('settings.nvim-cmp')",
+    'williamboman/mason.nvim',
+    config = "require('settings.mason')",
   }
 
   use {
     {
-      'williamboman/mason.nvim',
-      before = { 'nvim-lspconfig' },
-      config = "require('settings.mason')",
-      event = 'BufWinenter',
-    },
-    {
       'neovim/nvim-lspconfig',
-      before = { 'nvim-cmp' },
       config = "require('settings.nvim-lspconfig')",
-      event = 'BufWinenter',
+      event = 'BufWinEnter',
+    },
+    use {
+      'hrsh7th/nvim-cmp',
+      after = { 'nvim-lspconfig' },
+      config = "require('settings.nvim-cmp')",
+      event = 'BufWinEnter',
     },
     {
       'hrsh7th/cmp-nvim-lsp',
       after = { 'nvim-cmp' },
-      event = 'BufWinenter'
+      event = 'BufWinEnter',
     },
     {
       'hrsh7th/cmp-cmdline',
       after = { 'nvim-cmp' },
-      event = 'BufWinenter'
+      event = 'BufWinEnter',
     },
     {
       'hrsh7th/cmp-path',
       after = { 'nvim-cmp' },
-      event = 'BufWinenter'
+      event = 'BufWinEnter',
     },
     {
       'hrsh7th/cmp-buffer',
       after = { 'nvim-cmp' },
-      event = 'BufWinenter'
+      event = 'BufWinEnter',
     },
     {
       'SirVer/ultisnips',
       before = { 'cmp-nvim-ultisnips' },
       config = "require('settings.ultisnips')",
-      event = 'BufWinenter'
+      event = 'BufWinEnter'
     },
     {
       'quangnguyen30192/cmp-nvim-ultisnips',
       after = { 'nvim-cmp' },
       config = function() require("cmp_nvim_ultisnips").setup{} end,
-      event = 'BufWinenter'
+      event = 'BufWinEnter'
     },
   }
 
@@ -160,7 +159,6 @@ return packer.startup(function(use)
     {
       'kyazdani42/nvim-tree.lua',
       tag = 'nightly', -- optional, updated every week. (see issue #1193)
-
       requires = { 'kyazdani42/nvim-web-devicons', },
       config = "require('settings.nvim-tree')",
     },
