@@ -4,7 +4,7 @@ local opts = { noremap=true, silent=true }
 
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+-- vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 -- vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 
 
@@ -51,99 +51,3 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
 end
 
-local function make_config()
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities.textDocument.completion.completionItem.snippetSupport = true
-  return {
-    capabilities = capabilities,
-    on_attach = on_attach,
-    lsp_flags = {
-      debounce_text_changes = 150,
-    }
-  }
-end
-
-local lua_settings = {
-  settings = {
-      Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = 'LuaJIT',
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
-      },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file("", true),
-      },
-      -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = {
-        enable = false,
-      },
-    },
-  },
-}
-
------------------------------------------------------------------
-
-local lspconfig = require('lspconfig')
-local mason = require('mason-registry')
-
-for _, server in ipairs(mason.get_installed_package_names()) do
-  local config = make_config()
-  if server == 'pyright' then
-    config.filetypes = { 'python', 'py' }
-    lspconfig[server].setup(config)
-  end
-
-  if server == "lua-language-server" then
-    server = 'sumneko_lua'
-    config = lua_settings
-    lspconfig[server].setup(config)
-  end
-
-  if server == "sourcekit" then
-    config.filetypes = { "swift", "objective-c", "objective-cpp" };
-    lspconfig[server].setup(config)
-  end
-
-  if server == "gopls" then
-    config.filetypes = { "go" };
-    lspconfig[server].setup(config)
-  end
-
-  if server == "clangd" then
-    config.filetypes = { "c", "cpp" }
-    config.cmd = {
-      'clangd',
-      '-header-insertion=never',
-    }
-    lspconfig[server].setup(config)
-  end
-
-  if server == "typescript-language-server" then
-    config.filetypes = {
-      "javascript",
-      "javascriptreact",
-      "javascript.jsx",
-      "typescript",
-      "typescriptreact",
-      "typescript.tsx"
-    }
-    config.cmd = {
-      'typescript-language-server',
-      "--stdio",
-    }
-    lspconfig["tsserver"].setup(config)
-  end
-
-  if server == "terraform-ls" then
-    lspconfig.terraformls.setup{}
-  end
-
-  if server == "tflint" then
-    lspconfig.tflint.setup{}
-  end
-end

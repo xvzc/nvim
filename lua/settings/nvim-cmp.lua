@@ -83,7 +83,7 @@ cmp.setup({
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp'},
-    { name = 'ultisnips', priority = 1 }, -- For ultisnips users.
+    { name = 'ultisnips', priority = 1000 }, -- For ultisnips users.
     { name = 'path' },
   }, {
     { name = 'buffer' },
