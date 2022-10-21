@@ -144,13 +144,8 @@ local function init()
       'tpope/vim-fugitive',
       event = 'VimEnter',
     }
-    use { 
-      'godlygeek/tabular' ,
-      event = 'VimEnter',
-    }
     use {
-      'airblade/vim-gitgutter',
-      config = "require('settings.vim-gitgutter')",
+      'godlygeek/tabular' ,
       event = 'VimEnter',
     }
     use {
