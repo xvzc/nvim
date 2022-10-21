@@ -149,6 +149,11 @@ local function init()
       event = 'VimEnter',
     }
     use {
+      'lewis6991/gitsigns.nvim',
+      config = "require('settings.gitsigns')",
+      event = 'VimEnter',
+    }
+    use {
       'easymotion/vim-easymotion',
       config = "require('settings.easymotion')",
       event = 'VimEnter',
