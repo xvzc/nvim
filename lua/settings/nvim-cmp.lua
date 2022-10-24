@@ -36,13 +36,16 @@ cmp.setup({
     fields = { "kind", "abbr", "menu" },
     format = function(entry, vim_item)
       -- Kind icons
-      vim_item.kind = kind_icons[vim_item.kind] -- This concatonates the icons with the name of the item kind
+      vim_item.kind = kind_icons[vim_item.kind]
+
+      -- This concatonates the icons with the name of the item kind
       vim_item.abbr = global.trim(vim_item.abbr)
       if entry.source.name == 'nvim_lsp' then
         vim_item.abbr = ' •'..vim_item.abbr
       else
         vim_item.abbr = ' '..vim_item.abbr
       end
+
       -- Source
       vim_item.menu = ({
         buffer = "[BUF]",
@@ -50,6 +53,7 @@ cmp.setup({
         ultisnips = "[SNI]",
         latex_symbols = "[LTX]",
       })[entry.source.name]
+
       return vim_item
     end
   },
