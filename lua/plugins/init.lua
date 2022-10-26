@@ -1,16 +1,3 @@
--- local ensure_packer = function()
---   local fn = vim.fn
---   local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
---   if fn.empty(fn.glob(install_path)) > 0 then
---     fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
---     vim.cmd [[packadd packer.nvim]]
---     return true
---   end
---   return false
--- end
-
--- local packer_bootstrap = ensure_packer()
---
 local packer = nil
 
 local function init()
@@ -57,29 +44,29 @@ local function init()
 
   use {
     'farmergreg/vim-lastplace',
-    config = "require('settings.vim-lastplace')",
+    config = "require('plugins.vim-lastplace')",
     event = "BufWinEnter",
   }
   use {
     'glepnir/dashboard-nvim',
-    config = "require('settings.dashboard-nvim')",
+    config = "require('plugins.dashboard-nvim')",
     event = "BufWinEnter"
   }
   use {
     'neovim/nvim-lspconfig',
-    config = "require('settings.nvim-lspconfig')",
+    config = "require('plugins.nvim-lspconfig')",
     event = 'BufWinEnter',
   }
 
   use {
     'williamboman/mason.nvim',
-    config = "require('settings.mason')",
+    config = "require('plugins.mason')",
     event = "VimEnter"
   }
 
   use {
     'SirVer/ultisnips',
-    config = "require('settings.ultisnips')",
+    config = "require('plugins.ultisnips')",
     event = 'VimEnter',
   }
 
@@ -95,7 +82,7 @@ local function init()
 
   use {
     'hrsh7th/nvim-cmp',
-    config = [[require('settings.nvim-cmp')]],
+    config = [[require('plugins.nvim-cmp')]],
     event = 'InsertEnter',
     requires = {
       { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
@@ -128,7 +115,7 @@ local function init()
     use {
       "nvim-treesitter/nvim-treesitter",
       run = ":TSUpdate",
-      config = "require('settings.treesitter')",
+      config = "require('plugins.treesitter')",
       event = 'VimEnter',
     }
 
@@ -136,7 +123,7 @@ local function init()
       'junegunn/fzf',
       requires = { 'junegunn/fzf.vim' },
       run = './install --bin',
-      config = "require('settings.fzf')",
+      config = "require('plugins.fzf')",
       event = 'VimEnter',
     }
 
@@ -150,37 +137,37 @@ local function init()
     }
     use {
       'lewis6991/gitsigns.nvim',
-      config = "require('settings.gitsigns')",
+      config = "require('plugins.gitsigns')",
       event = 'VimEnter',
     }
     use {
       'easymotion/vim-easymotion',
-      config = "require('settings.easymotion')",
+      config = "require('plugins.easymotion')",
       event = 'VimEnter',
     }
     use {
       'tpope/vim-surround',
-      config = "require('settings.vim-surround')",
+      config = "require('plugins.vim-surround')",
       event = 'VimEnter',
     }
     use {
       'windwp/nvim-autopairs',
-      config = "require('settings.nvim-autopairs')",
+      config = "require('plugins.nvim-autopairs')",
       event = 'VimEnter',
     }
     use {
       'kdheepak/lazygit.nvim',
-      config = "require('settings.lazygit')",
+      config = "require('plugins.lazygit')",
       event = 'VimEnter',
     }
     use {
       'akinsho/toggleterm.nvim',
-      config = "require('settings.toggleterm')",
+      config = "require('plugins.toggleterm')",
       event = 'VimEnter',
     }
     use {
       'lukas-reineke/indent-blankline.nvim',
-      config = "require('settings.indent-blankline')",
+      config = "require('plugins.indent-blankline')",
       event = 'VimEnter',
     }
 
@@ -188,20 +175,20 @@ local function init()
     use {
       'nvim-lualine/lualine.nvim',
       requires = { 'kyazdani42/nvim-web-devicons' },
-      config = "require('settings.lualine')",
+      config = "require('plugins.lualine')",
       event = 'InsertEnter',
     }
     use {
       'akinsho/bufferline.nvim',
       requires = { 'kyazdani42/nvim-web-devicons' },
-      config = "require('settings.bufferline')",
+      config = "require('plugins.bufferline')",
       event = 'BufWinEnter',
     }
     use {
       'kyazdani42/nvim-tree.lua',
       tag = 'nightly', -- optional, updated every week. (see issue #1193)
       requires = { 'kyazdani42/nvim-web-devicons', },
-      config = "require('settings.nvim-tree')",
+      config = "require('plugins.nvim-tree')",
       keys = "<leader>e",
       opt = true
     }
