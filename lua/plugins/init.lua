@@ -35,6 +35,7 @@ local function init()
   -- eager load
   use 'wbthomason/packer.nvim'
   use 'lewis6991/impatient.nvim'
+  use "nvim-lua/plenary.nvim"
   use {
     'tpope/vim-commentary',
     event = 'VimEnter',
@@ -56,6 +57,12 @@ local function init()
     'neovim/nvim-lspconfig',
     config = "require('plugins.nvim-lspconfig')",
     event = 'BufWinEnter',
+    requires = { 'nvim-lspconfig' }
+  }
+
+  use {
+    'jose-elias-alvarez/null-ls.nvim',
+    config = "require('plugins.null-ls')",
   }
 
   use {
@@ -83,7 +90,7 @@ local function init()
   use {
     'hrsh7th/nvim-cmp',
     config = [[require('plugins.nvim-cmp')]],
-    event = 'InsertEnter',
+    event = 'VimEnter',
     requires = {
       { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
       {'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp'},
@@ -176,7 +183,7 @@ local function init()
       'nvim-lualine/lualine.nvim',
       requires = { 'kyazdani42/nvim-web-devicons' },
       config = "require('plugins.lualine')",
-      event = 'InsertEnter',
+      event = 'VimEnter',
     }
     use {
       'akinsho/bufferline.nvim',

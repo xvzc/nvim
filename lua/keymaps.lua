@@ -3,6 +3,8 @@ local global = require('global')
 local silent_noremap = {silent = true, noremap = true}
 local silent_noremap_expr = {silent = true, noremap = true, expr = true}
 
+
+
 global.nmap('<leader>-', ':sp<CR><C-w>j', silent_noremap )
 global.nmap('<leader>_', ':vsp<CR><C-w>l', silent_noremap )
  
@@ -16,6 +18,12 @@ global.nmap('<leader>D', '"+D', silent_noremap )
 global.nmap('<leader>p', '"+p', silent_noremap )
 global.nmap('<F5>', '<C-l>', silent_noremap )
 global.nmap('<leader>a', 'gg<S-v><S-g>', silent_noremap )
+
+-- diagnostics
+global.nmap('[d', vim.diagnostic.goto_prev, { noremap=true, silent=true })
+global.nmap(']d', vim.diagnostic.goto_next, { noremap=true, silent=true })
+-- vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+-- vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 
 -- move lines
 global.nmap('<C-k>', 'm`:m--<CR>==``', silent_noremap )

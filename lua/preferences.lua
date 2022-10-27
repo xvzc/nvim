@@ -75,15 +75,22 @@ global.autocmd({'FileType'}, {
 })
 
 global.autocmd({'BufRead', 'BufNewFile'}, {
-  pattern = {'*/etc/nginx/*', '*/usr/local/nginx/conf/*', 'nginx.conf', '*.nginx', }, 
-  callback = function() 
+  pattern = {'*/etc/nginx/*', '*/usr/local/nginx/conf/*', 'nginx.conf', '*.nginx', },
+  callback = function()
     vim.cmd('set ft=nginx')
   end
 })
 
 global.autocmd({'BufRead', 'BufNewFile'}, {
-  pattern = 'Dockerfile.*', 
+  pattern = 'Dockerfile.*',
   callback = function()
-    vim.cmd('set ft=dockerfile') 
+    vim.cmd('set ft=dockerfile')
+  end
+})
+
+global.autocmd({'CursorHold'}, {
+  pattern = '*',
+  callback = function()
+    vim.diagnostic.open_float(nil, {focus=false})
   end
 })
