@@ -24,6 +24,7 @@ treesitter.setup {
     "typescript",
     "javascript",
     "yaml",
+    "hcl",
   },
   highlight = {
     enable = true,
