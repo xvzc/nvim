@@ -116,7 +116,7 @@ local function init()
     { 'HerringtonDarkholme/yats.vim', ft = { 'js' } },
     { 'maxmellon/vim-jsx-pretty', ft = { 'jsx' } },
     { 'iamcco/markdown-preview.nvim', ft = { 'md' }, },
-    { 'hashivim/vim-terraform', ft = { 'tf', 'terraform' }, },
+    { 'hashivim/vim-terraform', ft = { 'tf', 'terraform', 'hcl' }, },
   }
 
     use {

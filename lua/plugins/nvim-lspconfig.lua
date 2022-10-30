@@ -101,7 +101,7 @@ lspconfig["gopls"].setup(go_config)
 local cpp_config = make_config()
 cpp_config.filetypes = { "c", "cpp" }
 cpp_config.cmd = {
-  'clangd',
+  '/usr/bin/clangd',
   '-header-insertion=never',
 }
 lspconfig["clangd"].setup(cpp_config)
@@ -127,6 +127,13 @@ lspconfig["tsserver"].setup(ts_config)
 -- terraform config
 
 local tf_config = make_config()
+
+tf_config.filetypes = {
+  "terraform",
+  "tf",
+  "hcl",
+}
+
 lspconfig.terraformls.setup(tf_config)
 lspconfig.tflint.setup(tf_config)
 lspconfig.eslint.setup {}
