@@ -146,6 +146,7 @@ function global:new()
   self.dump = dump
   self.find_lua_files = find_lua_files
   self.autocmd = vim.api.nvim_create_autocmd
+  self.augroup = vim.api.nvim_create_augroup
 
   return self
 end

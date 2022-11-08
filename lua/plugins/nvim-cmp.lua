@@ -35,6 +35,8 @@ cmp.setup({
   formatting = {
     fields = { "kind", "abbr", "menu" },
     format = function(entry, vim_item)
+      -- print(global.dump(vim_item))
+
       -- Kind icons
       vim_item.kind = kind_icons[vim_item.kind]
 
@@ -72,7 +74,7 @@ cmp.setup({
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    -- ['<CR>'] = cmp.mapping.confirm({ select = true }),
     ['<Tab>'] = cmp.mapping(function(fallback)
       if vim.call('UltiSnips#CanJumpForwards') == 1 then
         fallback()
@@ -86,7 +88,14 @@ cmp.setup({
     end, { 'i' }),
   }),
   sources = cmp.config.sources({
-    { name = 'nvim_lsp'},
+    {
+      name = 'nvim_lsp',
+      entry_filter = function(entry, _)
+        local kind = require('cmp.types').lsp.CompletionItemKind[entry:get_kind()]
+        if kind == "Text" then return false end
+        return true
+      end
+    },
     { name = 'ultisnips', priority = 1000 }, -- For ultisnips users.
     { name = 'path' },
   }, {

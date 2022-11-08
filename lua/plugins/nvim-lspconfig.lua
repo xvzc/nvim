@@ -135,6 +135,6 @@ tf_config.filetypes = {
 }
 
 lspconfig.terraformls.setup(tf_config)
-lspconfig.tflint.setup(tf_config)
+-- lspconfig.tflint.setup(tf_config)
 lspconfig.eslint.setup {}
 
