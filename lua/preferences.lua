@@ -19,7 +19,7 @@ vim.o.background = 'dark'
 
 vim.o.cindent = true -- C sytle auto indent
 
-vim.o.scrolloff = 2 
+vim.o.scrolloff = 2
 vim.o.shiftwidth = 4
 
 vim.o.expandtab = true
@@ -43,6 +43,7 @@ vim.o.cursorline = true
 
 vim.o.shortmess = vim.o.shortmess..'c'
 vim.o.mouse = ''
+
 -- n    Normal mode
 -- v	Visual mode
 -- i	Insert mode

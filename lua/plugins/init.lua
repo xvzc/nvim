@@ -36,12 +36,8 @@ local function init()
   use 'wbthomason/packer.nvim'
   use 'lewis6991/impatient.nvim'
   use "nvim-lua/plenary.nvim"
-  use {
-    'tpope/vim-commentary',
-    event = 'VimEnter',
-  }
-
   use 'folke/tokyonight.nvim'
+  use 'morhetz/gruvbox'
 
   use {
     'farmergreg/vim-lastplace',
@@ -81,7 +77,7 @@ local function init()
     'keaising/im-select.nvim',
     config = function()
       require('im_select').setup {
-        default_im_select  = "com.apple.keylayout.ABC",
+        default_im_select    = "com.apple.keylayout.ABC",
         disable_auto_restore = 0,
       }
     end
@@ -93,7 +89,7 @@ local function init()
     event = 'VimEnter',
     requires = {
       { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
-      {'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp'},
+      { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' },
       { 'hrsh7th/cmp-nvim-lsp-signature-help', after = 'nvim-cmp' },
       { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
       { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' },
@@ -104,101 +100,94 @@ local function init()
       {
         'quangnguyen30192/cmp-nvim-ultisnips',
         after = 'nvim-cmp',
-        config = function() require("cmp_nvim_ultisnips").setup{} end,
+        config = function() require("cmp_nvim_ultisnips").setup {} end,
       },
     },
   }
 
-  -- syntax
+  -- plugins that are dependant on web-devicons
   use {
-    { 'yuezk/vim-js', ft = { 'js' } },
-    { 'othree/yajs.vim', ft = { 'js' } },
-    { 'HerringtonDarkholme/yats.vim', ft = { 'js' } },
-    { 'maxmellon/vim-jsx-pretty', ft = { 'jsx' } },
-    { 'iamcco/markdown-preview.nvim', ft = { 'md' }, },
-    { 'hashivim/vim-terraform', ft = { 'tf', 'terraform', 'hcl' }, },
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons' },
+    config = "require('plugins.lualine')",
+    event = 'VimEnter',
+  }
+  use {
+    'akinsho/bufferline.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons' },
+    config = "require('plugins.bufferline')",
+    event = 'BufWinEnter',
+  }
+  use {
+    'kyazdani42/nvim-tree.lua',
+    tag = 'nightly', -- optional, updated every week. (see issue #1193)
+    requires = { 'kyazdani42/nvim-web-devicons', },
+    config = "require('plugins.nvim-tree')",
+    keys = "<leader>e",
+    opt = true
   }
 
-    use {
-      "nvim-treesitter/nvim-treesitter",
-      run = ":TSUpdate",
-      config = "require('plugins.treesitter')",
-      event = 'VimEnter',
-    }
+  -- syntax
+  use { 'yuezk/vim-js', ft = { 'js' } }
+  use { 'othree/yajs.vim', ft = { 'js' } }
+  use { 'HerringtonDarkholme/yats.vim', ft = { 'js' } }
+  use { 'maxmellon/vim-jsx-pretty', ft = { 'jsx' } }
+  use { 'iamcco/markdown-preview.nvim', ft = { 'md' }, }
+  use { 'hashivim/vim-terraform', ft = { 'tf', 'terraform' }, }
+  use {
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate",
+    config = "require('plugins.treesitter')",
+    branch = "v0.8.0",
+    event = 'VimEnter',
+  }
 
-    use {
-      'junegunn/fzf',
-      requires = { 'junegunn/fzf.vim' },
-      run = './install --bin',
-      config = "require('plugins.fzf')",
-      event = 'VimEnter',
-    }
+  use {
+    'junegunn/fzf',
+    requires = { 'junegunn/fzf.vim' },
+    run = './install --bin',
+    config = "require('plugins.fzf')",
+    event = 'VimEnter',
+  }
 
-    use {
-      'tpope/vim-fugitive',
-      event = 'VimEnter',
-    }
-    use {
-      'godlygeek/tabular' ,
-      event = 'VimEnter',
-    }
-    use {
-      'lewis6991/gitsigns.nvim',
-      config = "require('plugins.gitsigns')",
-      event = 'VimEnter',
-    }
-    use {
-      'easymotion/vim-easymotion',
-      config = "require('plugins.easymotion')",
-      event = 'VimEnter',
-    }
-    use {
-      'tpope/vim-surround',
-      config = "require('plugins.vim-surround')",
-      event = 'VimEnter',
-    }
-    use {
-      'windwp/nvim-autopairs',
-      config = "require('plugins.nvim-autopairs')",
-      event = 'VimEnter',
-    }
-    use {
-      'kdheepak/lazygit.nvim',
-      config = "require('plugins.lazygit')",
-      event = 'VimEnter',
-    }
-    use {
-      'akinsho/toggleterm.nvim',
-      config = "require('plugins.toggleterm')",
-      event = 'VimEnter',
-    }
-    use {
-      'lukas-reineke/indent-blankline.nvim',
-      config = "require('plugins.indent-blankline')",
-      event = 'VimEnter',
-    }
-
-  -- plugins that are dependant on web-devicons
-    use {
-      'nvim-lualine/lualine.nvim',
-      requires = { 'kyazdani42/nvim-web-devicons' },
-      config = "require('plugins.lualine')",
-      event = 'VimEnter',
-    }
-    use {
-      'akinsho/bufferline.nvim',
-      requires = { 'kyazdani42/nvim-web-devicons' },
-      config = "require('plugins.bufferline')",
-      event = 'BufWinEnter',
-    }
-    use {
-      'kyazdani42/nvim-tree.lua',
-      tag = 'nightly', -- optional, updated every week. (see issue #1193)
-      requires = { 'kyazdani42/nvim-web-devicons', },
-      config = "require('plugins.nvim-tree')",
-      keys = "<leader>e",
-      opt = true
-    }
+  use { 'tpope/vim-commentary', event = 'VimEnter', }
+  use { 'tpope/vim-fugitive', event = 'VimEnter', }
+  use { 'godlygeek/tabular', event = 'VimEnter', }
+  use {
+    'lewis6991/gitsigns.nvim',
+    config = "require('plugins.gitsigns')",
+    event = 'VimEnter',
+  }
+  use {
+    'easymotion/vim-easymotion',
+    config = "require('plugins.easymotion')",
+    event = 'VimEnter',
+  }
+  use {
+    'tpope/vim-surround',
+    config = "require('plugins.vim-surround')",
+    event = 'VimEnter',
+  }
+  use {
+    'windwp/nvim-autopairs',
+    config = "require('plugins.nvim-autopairs')",
+    event = 'VimEnter',
+  }
+  use {
+    'kdheepak/lazygit.nvim',
+    config = "require('plugins.lazygit')",
+    event = 'VimEnter',
+  }
+  use {
+    'akinsho/toggleterm.nvim',
+    config = "require('plugins.toggleterm')",
+    event = 'VimEnter',
+  }
+  use {
+    'lukas-reineke/indent-blankline.nvim',
+    config = "require('plugins.indent-blankline')",
+    event = 'VimEnter',
+  }
 end
 
 local plugins = setmetatable({}, {
