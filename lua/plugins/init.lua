@@ -149,8 +149,12 @@ local function init()
     config = "require('plugins.fzf')",
     event = 'VimEnter',
   }
+  use {
+    'numToStr/Comment.nvim',
+    config = "require('plugins.comment')",
+    event = 'VimEnter'
+}
 
-  use { 'tpope/vim-commentary', event = 'VimEnter', }
   use { 'tpope/vim-fugitive', event = 'VimEnter', }
   use { 'godlygeek/tabular', event = 'VimEnter', }
   use {
