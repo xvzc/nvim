@@ -105,6 +105,8 @@ local osid = function()
     return "mac"
   elseif string.find(result, "arch") then
     return "linux-arch"
+  elseif string.find(result, "Ubuntu") then
+    return "linux-ubuntu"
   else
     vim.notify("global:uname() unknown os", 4)
     return ""
