@@ -43,6 +43,7 @@ vim.o.cursorline = true
 
 vim.o.shortmess = vim.o.shortmess..'c'
 vim.o.mouse = ''
+vim.o.viminfo = '50,<1000,s100'
 
 -- n    Normal mode
 -- v	Visual mode
