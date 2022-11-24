@@ -4,7 +4,7 @@ if global.osid == 'mac' then
   vim.cmd("lang en_US")
 end
 
-if global.osid == 'linux-arch' then
+if global.osid == 'linux-arch' or global.osid == 'linux-ubuntu' then
   local clipboard = {}
 
   clipboard['name'] = 'xclip-xfce4-clipman'
