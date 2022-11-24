@@ -42,6 +42,7 @@ vim.o.showtabline = 0
 vim.o.cursorline = true
 
 vim.o.shortmess = vim.o.shortmess..'c'
+vim.o.mouse=''
 vim.o.viminfo="'100,<1000,s100,h"
 
 -- n    Normal mode
