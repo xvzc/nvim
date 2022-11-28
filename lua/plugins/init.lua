@@ -127,7 +127,8 @@ local function init()
     opt = true
   }
 
-  -- syntax
+  -- language supports
+  use { 'fatih/vim-go', ft = { 'go' } }
   use { 'yuezk/vim-js', ft = { 'js' } }
   use { 'othree/yajs.vim', ft = { 'js' } }
   use { 'HerringtonDarkholme/yats.vim', ft = { 'js' } }

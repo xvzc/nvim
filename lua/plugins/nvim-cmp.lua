@@ -76,11 +76,11 @@ cmp.setup({
     ['<C-e>'] = cmp.mapping.abort(),
     -- ['<CR>'] = cmp.mapping.confirm({ select = true }),
     ['<Tab>'] = cmp.mapping(function(fallback)
-      if vim.call('UltiSnips#CanJumpForwards') == 1 then
-        fallback()
-        return
-      elseif cmp.visible() then
+      if cmp.visible() then
         cmp.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true })
+        return
+      elseif vim.call('UltiSnips#CanJumpForwards') == 1 then
+        fallback()
         return
       else
         fallback()
