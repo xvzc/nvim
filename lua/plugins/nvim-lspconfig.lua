@@ -107,7 +107,7 @@ lspconfig["gopls"].setup(go_config)
 local cpp_config = make_config()
 cpp_config.filetypes = { "c", "cpp" }
 cpp_config.cmd = {
-  '/usr/bin/clangd',
+  '~/.local/share/nvim/mason/bin/clangd',
   '-header-insertion=never',
 }
 lspconfig["clangd"].setup(cpp_config)
