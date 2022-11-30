@@ -103,12 +103,13 @@ end
 local function make_config()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
+
   return {
     capabilities = capabilities,
     on_attach = on_attach,
     lsp_flags = {
       debounce_text_changes = 150,
-    }
+    },
   }
 end
 
@@ -154,6 +155,7 @@ lspconfig["gopls"].setup(go_config)
 
 local cpp_config = make_config()
 cpp_config.filetypes = { "c", "cpp" }
+cpp_config.capabilities.offsetEncoding = { "utf-16" }
 cpp_config.cmd = {
   'clangd',
   '-header-insertion=never',
