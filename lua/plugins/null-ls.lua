@@ -1,8 +1,17 @@
-require("null-ls").setup({
+local null_ls = require('null-ls')
+
+null_ls.setup({
   sources = {
-    require("null-ls").builtins.formatting.prettier,
-    require("null-ls").builtins.diagnostics.eslint,
-    require("null-ls").builtins.completion.spell,
+    null_ls.builtins.diagnostics.eslint_d,
+    null_ls.builtins.formatting.prettierd,
+    null_ls.builtins.formatting.json_tool.with({
+      generator_opts = {
+        command = "python3",
+        args = { "-m", "json.tool", "--no-ensure-ascii" },
+        to_stdin = true,
+      },
+    }),
+    null_ls.builtins.completion.spell,
   },
   debounce = 250,
   debug = false,

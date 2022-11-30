@@ -56,6 +56,13 @@ local function init()
     requires = { 'nvim-lspconfig' }
   }
 
+  use({
+    "glepnir/lspsaga.nvim",
+    branch = "main",
+    config = "require('plugins.lspsaga')"
+  })
+
+
   use {
     'jose-elias-alvarez/null-ls.nvim',
     config = "require('plugins.null-ls')",
@@ -154,7 +161,7 @@ local function init()
     'numToStr/Comment.nvim',
     config = "require('plugins.comment')",
     event = 'VimEnter'
-}
+  }
 
   use { 'tpope/vim-fugitive', event = 'VimEnter', }
   use { 'godlygeek/tabular', event = 'VimEnter', }
