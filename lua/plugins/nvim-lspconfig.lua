@@ -23,14 +23,10 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   update_in_insert = false,
 })
 
--- local ignored_formatter = { "tsserver", "json_tool" }
 local do_format = function(bufnr)
   vim.lsp.buf.format({
     async = true,
     bufnr = bufnr,
-    filter = function(client)
-      return client.name == "null-ls"
-    end,
   })
 end
 --
@@ -41,11 +37,6 @@ local on_attach = function(client, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
   if client.name == "tsserver" then
     client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
-  end
-
-  if client.supports_method("textDocument/formatting") then
-    vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-    vim.keymap.set('n', '<C-M-f>', do_format, bufopts)
   end
 
   -- Enable completion triggered by <c-x><c-o>
@@ -204,5 +195,4 @@ augroup MyLuaHLBugFix
   autocmd!
   autocmd! ColorScheme,VimEnter * highlight! link luaParenError Normal | highlight! link luaError Normal
 augroup END
-
 ]]
