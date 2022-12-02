@@ -10,4 +10,3 @@ require('clipboard')
 require('preferences')
 require('keymaps')
 require('styles')
-

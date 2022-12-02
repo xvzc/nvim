@@ -14,7 +14,7 @@ treesitter.setup {
     "lua",
     "vim",
     "bash",
-    "dockerfile",
+    -- "dockerfile",
     "kotlin",
     "java",
     "python",

@@ -1,3 +1,5 @@
+local global = require('global')
+
 -- vim.g.UltiSnipsExpandTrigger = '<Tab>'
 -- vim.g.UltiSnipsJumpForwardTrigger = '<Tab>'
 -- vim.g.UltiSnipsJumpBackwardTrigger = '<S-Tab>'
@@ -35,5 +37,11 @@ function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-
 ]])
+
+global.autocmd({ 'BufRead', 'BufNewFile' }, {
+  pattern = '**/docker-compose.*',
+  callback = function()
+      vim.cmd('UltiSnipsAddFiletypes yaml.docker-compose')
+  end
+})

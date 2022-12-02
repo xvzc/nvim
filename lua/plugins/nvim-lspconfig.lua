@@ -30,14 +30,14 @@ local do_format = function(bufnr)
   })
 end
 --
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
---
 -- :help vim.lsp.diagnostic.on_publish_diagnostics
 local on_attach = function(client, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
   if client.name == "tsserver" then
     client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
   end
+
+  vim.keymap.set('n', '<C-M-f>',do_format, bufopts)
 
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -93,11 +93,6 @@ local on_attach = function(client, bufnr)
   -- vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
   -- vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
   -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<C-M-f>', function()
-    vim.lsp.buf.format {
-      async = true,
-    }
-  end, bufopts)
 end
 
 local function make_config()
