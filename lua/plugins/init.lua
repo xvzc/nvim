@@ -142,7 +142,6 @@ local function init()
   use { 'maxmellon/vim-jsx-pretty', ft = { 'jsx' } }
   use { 'iamcco/markdown-preview.nvim', ft = { 'md' }, }
   use { 'hashivim/vim-terraform', ft = { 'tf', 'terraform' }, }
-  use { 'ekalinin/Dockerfile.vim', ft = { 'dockerfile' }, }
   use {
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",

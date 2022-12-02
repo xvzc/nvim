@@ -75,3 +75,4 @@ global.autocmd({ 'BufRead', 'BufNewFile' }, {
     vim.cmd('set ft=dockerfile')
   end
 })
+
