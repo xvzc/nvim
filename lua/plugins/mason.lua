@@ -30,6 +30,7 @@ local ensure_installed = {
   'clangd',
   'eslint_d',
   'prettierd',
+  'black',
 }
 
 local servers = ''
