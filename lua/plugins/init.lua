@@ -70,8 +70,13 @@ local function init()
 
   use {
     'williamboman/mason.nvim',
-    config = "require('plugins.mason')",
-    event = "VimEnter"
+    event = "VimEnter",
+    requires = {
+      {
+        "williamboman/mason-lspconfig.nvim",
+        config = "require('plugins.mason')",
+      },
+    }
   }
 
   use {
@@ -157,6 +162,7 @@ local function init()
     config = "require('plugins.fzf')",
     event = 'VimEnter',
   }
+
   use {
     'numToStr/Comment.nvim',
     config = "require('plugins.comment')",

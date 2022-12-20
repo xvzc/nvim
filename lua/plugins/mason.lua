@@ -1,7 +1,4 @@
 require("mason").setup({
-  ensure_installed = { 'clangd', 'pyright', 'sumneko_lua' },
-  automatic_installation = true,
-
   ui = {
     check_outdated_servers_on_open = true,
 
@@ -25,3 +22,24 @@ require("mason").setup({
 })
 
 ------------------------------------
+
+local mason_registry = require('mason-registry')
+local ensure_installed = {
+  'typescript-language-server',
+  'pyright',
+  'clangd',
+  'eslint_d',
+  'prettierd',
+}
+
+local servers = ''
+for _, name in ipairs(ensure_installed) do
+  if not mason_registry.is_installed(name) then
+    servers = servers..' '..name
+  end
+end
+
+if servers ~= '' then
+  vim.cmd(':MasonInstall '..servers)
+end
+
