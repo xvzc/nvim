@@ -70,11 +70,12 @@ local function init()
 
   use {
     'williamboman/mason.nvim',
-    event = "VimEnter",
+    event = "BufWinEnter",
     requires = {
       {
         "williamboman/mason-lspconfig.nvim",
         config = "require('plugins.mason')",
+        after = 'mason.nvim'
       },
     }
   }

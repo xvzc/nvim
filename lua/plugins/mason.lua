@@ -25,6 +25,7 @@ require("mason").setup({
 
 local mason_registry = require('mason-registry')
 local ensure_installed = {
+  'lua-language-server',
   'typescript-language-server',
   'pyright',
   'clangd',
