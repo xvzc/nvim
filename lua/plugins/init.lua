@@ -151,7 +151,6 @@ local function init()
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
     config = "require('plugins.treesitter')",
-    branch = "v0.8.0",
     event = 'VimEnter',
   }
 
