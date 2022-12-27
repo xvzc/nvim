@@ -184,7 +184,7 @@ tf_config.filetypes = {
 }
 
 lspconfig.terraformls.setup(tf_config)
--- lspconfig.tflint.setup(tf_config)
+lspconfig.tflint.setup(tf_config)
 
 -- until this issue solved: https://github.com/neovim/neovim/issues/20456
 vim.cmd[[
