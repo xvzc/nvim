@@ -75,6 +75,7 @@ local function init()
       {
         "williamboman/mason-lspconfig.nvim",
         config = "require('plugins.mason')",
+        after = "mason.nvim"
       },
     }
   }
