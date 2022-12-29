@@ -9,6 +9,7 @@ vim.o.foldmethod = 'indent'
 vim.o.foldlevel = 99
 
 vim.o.ignorecase = true
+vim.o.smartcase = true
 
 vim.o.mousehide = true -- Hide the mouse cursor while typing
 
