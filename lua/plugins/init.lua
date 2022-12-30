@@ -1,4 +1,5 @@
 local packer = nil
+local global = require('global')
 
 local function init()
   if packer == nil then
@@ -31,6 +32,18 @@ local function init()
 
   local use = packer.use
   packer.reset()
+
+  if global.osid == 'mac' then
+    use {
+      'keaising/im-select.nvim',
+      config = function()
+        require('im_select').setup {
+          default_im_select    = "com.apple.keylayout.ABC",
+          disable_auto_restore = 0,
+        }
+      end
+    }
+  end
 
   -- eager load
   use 'wbthomason/packer.nvim'
@@ -84,16 +97,6 @@ local function init()
     'SirVer/ultisnips',
     config = "require('plugins.ultisnips')",
     event = 'VimEnter',
-  }
-
-  use {
-    'keaising/im-select.nvim',
-    config = function()
-      require('im_select').setup {
-        default_im_select    = "com.apple.keylayout.ABC",
-        disable_auto_restore = 0,
-      }
-    end
   }
 
   use {

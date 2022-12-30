@@ -46,7 +46,7 @@ local on_attach = function(client, bufnr)
   -- if there is no implement it will hide
   -- when you use action in finder like open vsplit then you can
   -- use <C-t> to jump back
-  global.nmap("gr", "<cmd>Lspsaga lsp_finder<CR>", bufopts)
+  global.nmap("gf", "<cmd>Lspsaga lsp_finder<CR>", bufopts)
 
   -- Code action
   global.nmap("<leader>ca", "<cmd>Lspsaga code_action<CR>", bufopts)
