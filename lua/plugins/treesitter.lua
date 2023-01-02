@@ -3,10 +3,7 @@ if not ok then
   return
 end
 
-local config = {}
-
-
-treesitter.setup {
+local config = {
   ensure_installed = {
     "c",
     "cpp",
@@ -25,9 +22,12 @@ treesitter.setup {
     "javascript",
     "yaml",
     "hcl",
+    "cmake",
   },
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
   },
 }
+
+treesitter.setup(config)
