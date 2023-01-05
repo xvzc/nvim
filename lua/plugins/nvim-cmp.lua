@@ -70,17 +70,29 @@ cmp.setup({
     documentation = cmp.config.window.bordered(),
   },
   mapping = cmp.mapping.preset.insert({
-    ['<C-y>'] = cmp.mapping.scroll_docs(-1),
-    ['<C-e>'] = cmp.mapping.scroll_docs(1),
+    ['<C-e>'] = cmp.mapping.scroll_docs(-2),
+    ['<C-y>'] = cmp.mapping.scroll_docs(2),
     ['<C-Space>'] = cmp.mapping.complete(),
-    -- ['<CR>'] = cmp.mapping.confirm({ select = true }),
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true })
-        return
-      elseif vim.call('UltiSnips#CanJumpForwards') == 1 then
+      else
         fallback()
         return
+      end
+      -- available options
+      -- vim.call('UltiSnips#CanJumpForwards') == 1
+    end, { 'i' }),
+    ['<CR>'] = cmp.mapping(function(fallback)
+      if cmp.get_active_entry () then
+        cmp.confirm({ behavior = cmp.ConfirmBehavior.Insert })
+      else
+        fallback()
+      end
+    end, { 'i' }),
+    ['<C-d>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.abort()
       else
         fallback()
       end
@@ -128,3 +140,11 @@ cmp.setup.cmdline(':', {
     { name = 'cmdline' }
   })
 })
+
+-- Events
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done()
+)
+

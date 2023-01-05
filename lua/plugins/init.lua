@@ -157,6 +157,11 @@ local function init()
     config = "require('plugins.treesitter')",
     event = 'VimEnter',
   }
+  use {
+    'github/copilot.vim',
+    config = "require('plugins.copilot')",
+    event = 'VimEnter',
+  }
 
   use {
     'junegunn/fzf',
