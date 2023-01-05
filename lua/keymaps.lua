@@ -27,6 +27,7 @@ global.nmap(']d', vim.diagnostic.goto_next, { noremap = true, silent = true })
 global.nmap('<C-k>', 'm`:m--<CR>==``', silent_noremap)
 global.nmap('<C-j>', 'm`:m +1<CR>==``', silent_noremap)
 
+-- open file
 global.nmap('go', 'gf', silent_noremap)
 
 local is_sidebar = function()
