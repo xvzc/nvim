@@ -53,6 +53,16 @@ local function init()
   use 'morhetz/gruvbox'
 
   use {
+    "zbirenbaum/copilot.lua",
+    event = "VimEnter",
+    config = function()
+      vim.defer_fn(function()
+        require('plugins.copilot')
+      end, 100)
+    end,
+  }
+
+  use {
     'farmergreg/vim-lastplace',
     config = "require('plugins.vim-lastplace')",
     event = "BufWinEnter",
@@ -72,13 +82,14 @@ local function init()
   use({
     "glepnir/lspsaga.nvim",
     branch = "main",
-    config = "require('plugins.lspsaga')"
+    config = "require('plugins.lspsaga')",
+    event = 'BufWinEnter',
   })
-
 
   use {
     'jose-elias-alvarez/null-ls.nvim',
     config = "require('plugins.null-ls')",
+    event = 'BufWinEnter',
   }
 
   use {
@@ -109,14 +120,13 @@ local function init()
       { 'hrsh7th/cmp-nvim-lsp-signature-help', after = 'nvim-cmp' },
       { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
       { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' },
-      { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
       'lukas-reineke/cmp-under-comparator',
       { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' },
       { 'hrsh7th/cmp-nvim-lsp-document-symbol', after = 'nvim-cmp' },
       {
         'quangnguyen30192/cmp-nvim-ultisnips',
         after = 'nvim-cmp',
-        config = function() require("cmp_nvim_ultisnips").setup {} end,
+        config = function() require('cmp_nvim_ultisnips').setup {} end,
       },
     },
   }
@@ -155,11 +165,6 @@ local function init()
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
     config = "require('plugins.treesitter')",
-    event = 'VimEnter',
-  }
-  use {
-    'github/copilot.vim',
-    config = "require('plugins.copilot')",
     event = 'VimEnter',
   }
 

@@ -1,6 +1,7 @@
 local global = require('global')
 
 local cmp = require('cmp')
+local copilot = require('copilot.suggestion')
 
 local kind_icons = {
   Text = "",
@@ -27,8 +28,21 @@ local kind_icons = {
   Struct = "פּ",
   Event = "",
   Operator = "",
-  TypeParameter = ""
+  TypeParameter = "",
 }
+
+local sources = {
+    {
+      name = 'nvim_lsp',
+      entry_filter = function(entry, _)
+        local kind = require('cmp.types').lsp.CompletionItemKind[entry:get_kind()]
+        if kind == "Text" then return false end
+        return true
+      end
+    },
+    { name = 'ultisnips', priority = 1000 }, -- For ultisnips users.
+    { name = 'path' },
+  }
 
 cmp.setup({
   preselect = cmp.PreselectMode.None,
@@ -41,11 +55,19 @@ cmp.setup({
       vim_item.kind = kind_icons[vim_item.kind]
 
       -- This concatonates the icons with the name of the item kind
-      vim_item.abbr = global.trim(vim_item.abbr)
+      local MAX_LABEL_LENGTH = 20
+      local label = global.trim(vim_item.abbr)
+      if string.len(label) > MAX_LABEL_LENGTH then
+        label = vim.fn.strcharpart(label, 0, MAX_LABEL_LENGTH)..".."
+      end
+
+
+      vim_item.abbr = label
+
       if entry.source.name == 'nvim_lsp' then
-        vim_item.abbr = ' •'..vim_item.abbr
+        vim_item.abbr = ' •' .. vim_item.abbr
       else
-        vim_item.abbr = ' '..vim_item.abbr
+        vim_item.abbr = ' ' .. vim_item.abbr
       end
 
       -- Source
@@ -75,17 +97,22 @@ cmp.setup({
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
-        cmp.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true })
-      else
-        fallback()
+        cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })
         return
       end
+
+      if copilot.is_visible() then
+        copilot.accept()
+        return
+      end
+
+      fallback()
       -- available options
       -- vim.call('UltiSnips#CanJumpForwards') == 1
     end, { 'i' }),
     ['<CR>'] = cmp.mapping(function(fallback)
-      if cmp.get_active_entry () then
-        cmp.confirm({ behavior = cmp.ConfirmBehavior.Insert })
+      if cmp.get_active_entry() then
+        cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace })
       else
         fallback()
       end
@@ -98,18 +125,7 @@ cmp.setup({
       end
     end, { 'i' }),
   }),
-  sources = cmp.config.sources({
-    {
-      name = 'nvim_lsp',
-      entry_filter = function(entry, _)
-        local kind = require('cmp.types').lsp.CompletionItemKind[entry:get_kind()]
-        if kind == "Text" then return false end
-        return true
-      end
-    },
-    { name = 'ultisnips', priority = 1000 }, -- For ultisnips users.
-    { name = 'path' },
-  }, {
+  sources = cmp.config.sources(sources, {
     { name = 'buffer' },
   }),
   experimental = {
@@ -148,3 +164,10 @@ cmp.event:on(
   cmp_autopairs.on_confirm_done()
 )
 
+cmp.event:on("menu_opened", function()
+  vim.b.copilot_suggestion_hidden = true
+end)
+
+cmp.event:on("menu_closed", function()
+  vim.b.copilot_suggestion_hidden = false
+end)
