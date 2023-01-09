@@ -219,6 +219,15 @@ local function init()
     config = "require('plugins.indent-blankline')",
     event = 'VimEnter',
   }
+
+  use {
+    'glepnir/template.nvim',
+    cmd = 'Template',
+    config = function() require('template').setup({
+      temp_dir = '~/.config/nvim/templates',
+      author = 'xvzc',
+    }) end
+  }
 end
 
 local plugins = setmetatable({}, {

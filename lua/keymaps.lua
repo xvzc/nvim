@@ -63,18 +63,11 @@ global.nmap('<esc>', function()
   return "<esc>"
 end, silent_noremap_expr)
 
-global.nmap('<C-g>', function()
-  local find = vim.fn.input("find? ")
-  local replace = vim.fn.input("replace with? ")
-  vim.cmd(':%s/' .. find .. '/' .. replace .. '/gc')
-end)
-
 global.autocmd({ 'BufRead', 'BufNewFile' }, {
-  pattern = '*.cpp',
   callback = function()
     global.nmap(
       '<C-M-t>',
-      ':0r ~/.templates/ps-template.cpp<CR>33ggo',
+      ':FTemplate<CR>',
       silent_noremap)
   end
 })
@@ -132,6 +125,9 @@ global.autocmd({ 'filetype' }, {
 global.autocmd({ 'filetype' }, {
   pattern = 'json',
   callback = function()
-    global.nmap('<C-M-f>', ":execute ':%!python3 -m json.tool --no-ensure-ascii'<CR>", silent_noremap)
+    global.nmap(
+      '<C-M-f>',
+      ":execute ':%!python3 -m json.tool --no-ensure-ascii'<CR>",
+      silent_noremap)
   end
 })
