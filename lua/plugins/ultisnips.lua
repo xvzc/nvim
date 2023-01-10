@@ -1,4 +1,4 @@
-local global = require('global')
+local util = require('util')
 
 -- vim.g.UltiSnipsExpandTrigger = '<Tab>'
 -- vim.g.UltiSnipsJumpForwardTrigger = '<Tab>'
@@ -39,7 +39,7 @@ function! CheckBackspace() abort
 endfunction
 ]])
 
-global.autocmd({ 'BufRead', 'BufNewFile' }, {
+util.autocmd({ 'BufRead', 'BufNewFile' }, {
   pattern = '**/docker-compose.*',
   callback = function()
       vim.cmd('UltiSnipsAddFiletypes yaml.docker-compose')

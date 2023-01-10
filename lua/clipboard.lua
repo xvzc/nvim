@@ -1,10 +1,10 @@
-local global = require('global')
+local profile = require('profile')
 
-if global.osid == 'mac' then
+if profile.osid == 'mac' then
   vim.cmd("lang en_US")
 end
 
-if global.osid == 'linux-arch' or global.osid == 'linux-ubuntu' then
+if profile.osid == 'linux-arch' or profile.osid == 'linux-ubuntu' then
   local clipboard = {}
 
   clipboard['name'] = 'xclip-xfce4-clipman'

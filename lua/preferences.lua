@@ -1,4 +1,5 @@
-local global = require('global')
+local util = require('util')
+local profile = require('profile')
 
 vim.g.mapleader = ' '
 vim.o.undofile = true
@@ -49,28 +50,28 @@ vim.o.viminfo = "'100,<1000,s100,h"
 vim.o.sol = false
 vim.o.showmode = false
 
-vim.o.backupdir = global.home .. '/.local/share/nvim/backup//'
-vim.o.directory = global.home .. '/.local/share/nvim/backup//'
-vim.o.undodir = global.home .. '/.local/share/nvim/undo//'
+vim.o.backupdir = profile.home .. '/.local/share/nvim/backup//'
+vim.o.directory = profile.home .. '/.local/share/nvim/backup//'
+vim.o.undodir = profile.home .. '/.local/share/nvim/undo//'
 
 -- no comment when adding a new line from a commented line
 vim.cmd 'autocmd BufNewFile,BufRead * setlocal formatoptions-=cro'
 
-global.autocmd({ 'FileType' }, {
+util.autocmd({ 'FileType' }, {
   pattern = { 'vim', 'zsh', 'lua', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'sh' },
   callback = function()
     vim.cmd('set shiftwidth=2 tabstop=2')
   end
 })
 
-global.autocmd({ 'BufRead', 'BufNewFile' }, {
+util.autocmd({ 'BufRead', 'BufNewFile' }, {
   pattern = { '*/etc/nginx/*', '*/usr/local/nginx/conf/*', 'nginx.conf', '*.nginx', },
   callback = function()
     vim.cmd('set ft=nginx')
   end
 })
 
-global.autocmd({ 'BufRead', 'BufNewFile' }, {
+util.autocmd({ 'BufRead', 'BufNewFile' }, {
   pattern = 'Dockerfile.*',
   callback = function()
     vim.cmd('set ft=dockerfile')

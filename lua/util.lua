@@ -1,4 +1,4 @@
-local global = {}
+local util = {}
 
 local trim = function(s)
   return (string.gsub(s, "^%s*(.-)%s*$", "%1"))
@@ -76,22 +76,30 @@ local map = function(mode, from, handle, options)
 end
 
 local nmap = function(from, handle, options)
-  global.map('n', from, handle, options)
+  util.map('n', from, handle, options)
 end
 
 local vmap = function (from, handle, options)
-  global.map('v', from, handle, options)
+  util.map('v', from, handle, options)
 end
 
 local imap = function(from, handle, options)
-  global.map('i', from, handle, options)
+  util.map('i', from, handle, options)
 end
 
 local smap = function(from, handle, options)
-  global.map('s', from, handle, options)
+  util.map('s', from, handle, options)
 end
 
-local osid = function()
+local feedkeys = function(keys, mode, opt)
+  vim.api.nvim_feedkeys(keys, mode, opt)
+end
+
+local replace_termcodes = function(str, from_part, do_lt, special)
+  return vim.api.nvim_replace_termcodes(str, from_part, do_lt, special)
+end
+
+local get_osid = function()
   local uname = io.popen("uname -a")
   if uname == nil then
     vim.notify("global:uname() error", 4)
@@ -124,15 +132,7 @@ local find_lua_files = function(path)
   return list
 end
 
-function global:new()
-  -- variables
-  self.osid = osid()
-  self.home = os.getenv('HOME')
-  self.lsp_config_path = global.home..'/.config/nvim/lua/settings/language-servers'
-  self.config_path = global.home..'/.config/nvim/lua/settings'
-  self.language_servers_path = global.config_path..'/language-servers' 
-
-  -- functions()
+function util:new()
   self.syscall = syscall
   self.run_python = run_python
   self.run_cpp = run_cpp
@@ -144,6 +144,8 @@ function global:new()
   self.vmap = vmap
   self.imap = imap
   self.smap = smap
+  self.feedkeys = feedkeys
+  self.replace_termcodes = replace_termcodes
   self.trim = trim
   self.dump = dump
   self.find_lua_files = find_lua_files
@@ -153,5 +155,5 @@ function global:new()
   return self
 end
 
-return global:new()
+return util:new()
 

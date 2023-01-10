@@ -1,4 +1,4 @@
-local global = require('global')
+local util = require('util')
 
 require("nvim-tree").setup({
   open_on_setup = false,
@@ -25,4 +25,4 @@ require("nvim-tree").setup({
 })
 
 
-global.nmap('<leader>e', ':NvimTreeToggle<cr>', { silent = true, noremap = true })
+util.nmap('<leader>e', ':NvimTreeToggle<cr>', { silent = true, noremap = true })

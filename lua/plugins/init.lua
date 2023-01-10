@@ -1,5 +1,5 @@
 local packer = nil
-local global = require('global')
+local profile = require('profile')
 
 local function init()
   if packer == nil then
@@ -33,7 +33,7 @@ local function init()
   local use = packer.use
   packer.reset()
 
-  if global.osid == 'mac' then
+  if profile.osid == 'mac' then
     use {
       'keaising/im-select.nvim',
       config = function()
@@ -131,7 +131,7 @@ local function init()
     },
   }
 
-  -- plugins that are dependant on web-devicons
+  -- utils
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons' },
@@ -152,6 +152,11 @@ local function init()
     keys = "<leader>e",
     opt = true
   }
+  use {
+    'ibhagwan/fzf-lua',
+    requires = { 'nvim-tree/nvim-web-devicons' },
+    config = "require('plugins.fzf-lua')",
+  }
 
   -- language supports
   use { 'fatih/vim-go', ft = { 'go' } }
@@ -168,13 +173,13 @@ local function init()
     event = 'VimEnter',
   }
 
-  use {
-    'junegunn/fzf',
-    requires = { 'junegunn/fzf.vim' },
-    run = './install --bin',
-    config = "require('plugins.fzf')",
-    event = 'VimEnter',
-  }
+  -- use {
+  --   'junegunn/fzf',
+  --   requires = { 'junegunn/fzf.vim' },
+  --   run = './install --bin',
+  --   config = "require('plugins.fzf')",
+  --   event = 'VimEnter',
+  -- }
 
   use {
     'numToStr/Comment.nvim',
@@ -224,9 +229,10 @@ local function init()
     'glepnir/template.nvim',
     cmd = 'Template',
     config = function() require('template').setup({
-      temp_dir = '~/.config/nvim/templates',
-      author = 'xvzc',
-    }) end
+        temp_dir = '~/.config/nvim/templates',
+        author = 'xvzc',
+      })
+    end
   }
 end
 

@@ -1,4 +1,4 @@
-local global = require('global')
+local util = require('util')
 local copilot = require("copilot")
 local copilot_suggestion = require('copilot.suggestion')
 
@@ -12,7 +12,7 @@ copilot.setup({
 
 local silent_noremap = { silent = true, noremap = true }
 
-global.imap('<Tab>', function()
+util.imap('<Tab>', function()
   if copilot_suggestion.is_visible() then
     copilot_suggestion.accept()
     return
@@ -21,7 +21,7 @@ global.imap('<Tab>', function()
   vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Tab>', true, true, true), 'n')
 end, silent_noremap)
 
-global.imap('<C-j>', function()
+util.imap('<C-j>', function()
   if copilot_suggestion.is_visible() then
     copilot_suggestion.next()
   else
@@ -29,7 +29,7 @@ global.imap('<C-j>', function()
   end
 end, silent_noremap)
 
-global.imap('<C-k>', function()
+util.imap('<C-k>', function()
   if copilot_suggestion.is_visible() then
     copilot_suggestion.prev()
   else
@@ -37,7 +37,7 @@ global.imap('<C-k>', function()
   end
 end, silent_noremap)
 
-global.imap('<C-\\>', function()
+util.imap('<C-\\>', function()
   if copilot_suggestion.is_visible() then
     copilot_suggestion.dismiss()
   else

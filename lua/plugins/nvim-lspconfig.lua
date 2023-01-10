@@ -1,5 +1,5 @@
 local lspconfig = require('lspconfig')
-local global = require('global')
+local util = require('util')
 
 vim.diagnostic.config({
   float = {
@@ -37,7 +37,7 @@ local on_attach = function(client, bufnr)
     client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
   end
 
-  vim.keymap.set('n', '<C-M-f>',do_format, bufopts)
+  vim.keymap.set('n', '<C-l>', do_format, bufopts)
 
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -46,39 +46,39 @@ local on_attach = function(client, bufnr)
   -- if there is no implement it will hide
   -- when you use action in finder like open vsplit then you can
   -- use <C-t> to jump back
-  global.nmap("gf", "<cmd>Lspsaga lsp_finder<CR>", bufopts)
+  util.nmap("gf", "<cmd>Lspsaga lsp_finder<CR>", bufopts)
 
   -- Code action
-  global.nmap("<leader>ca", "<cmd>Lspsaga code_action<CR>", bufopts)
-  global.vmap("<leader>ca", "<cmd>Lspsaga code_action<CR>", bufopts)
+  util.nmap("<leader>ca", "<cmd>Lspsaga code_action<CR>", bufopts)
+  util.vmap("<leader>ca", "<cmd>Lspsaga code_action<CR>", bufopts)
 
   -- Rename
-  global.nmap("<leader>rn", "<cmd>Lspsaga rename<CR>", bufopts)
+  util.nmap("<leader>rn", "<cmd>Lspsaga rename<CR>", bufopts)
 
   -- Show line diagnostics
-  global.nmap("<leader>i", "<cmd>Lspsaga show_line_diagnostics<CR>", bufopts)
+  util.nmap("<leader>i", "<cmd>Lspsaga show_line_diagnostics<CR>", bufopts)
 
   -- Show cursor diagnostic
   -- global.nmap("<leader>cd", "<cmd>Lspsaga show_cursor_diagnostics<CR>", { silent = true })
 
   -- Diagnsotic jump can use `<c-o>` to jump back
-  global.nmap("[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", bufopts)
-  global.nmap("]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", bufopts)
+  util.nmap("[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", bufopts)
+  util.nmap("]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", bufopts)
 
   -- Only jump to error
-  global.nmap("[e", function()
+  util.nmap("[e", function()
     require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
   end, { silent = true })
 
-  global.nmap("]e", function()
+  util.nmap("]e", function()
     require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
   end, { silent = true })
 
   -- Outline
-  global.nmap("<leader>o", "<cmd>LSoutlineToggle<CR>", { silent = true })
+  util.nmap("<leader>o", "<cmd>LSoutlineToggle<CR>", { silent = true })
 
   -- Hover Doc
-  global.nmap("<leader>h", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
+  util.nmap("<leader>h", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
   -- vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   -- vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   -- vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
@@ -187,7 +187,7 @@ lspconfig.terraformls.setup(tf_config)
 lspconfig.tflint.setup(tf_config)
 
 -- until this issue solved: https://github.com/neovim/neovim/issues/20456
-vim.cmd[[
+vim.cmd [[
 augroup MyLuaHLBugFix
   autocmd!
   autocmd! ColorScheme,VimEnter * highlight! link luaParenError Normal | highlight! link luaError Normal

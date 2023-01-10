@@ -1,4 +1,4 @@
-local global = require('global')
+local util = require('util')
 local cmp = require('cmp')
 
 local kind_icons = {
@@ -54,7 +54,7 @@ cmp.setup({
 
       -- This concatonates the icons with the name of the item kind
       local MAX_LABEL_LENGTH = 20
-      local label = global.trim(vim_item.abbr)
+      local label = util.trim(vim_item.abbr)
       if string.len(label) > MAX_LABEL_LENGTH then
         label = vim.fn.strcharpart(label, 0, MAX_LABEL_LENGTH) .. ".."
       end
