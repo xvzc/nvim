@@ -1,7 +1,8 @@
 local global = require('global')
+local copilot = require("copilot")
 local copilot_suggestion = require('copilot.suggestion')
 
-require("copilot").setup({
+copilot.setup({
   suggestion = {
     enabled = true,
     auto_trigger = true,
@@ -10,6 +11,15 @@ require("copilot").setup({
 })
 
 local silent_noremap = { silent = true, noremap = true }
+
+global.imap('<Tab>', function()
+  if copilot_suggestion.is_visible() then
+    copilot_suggestion.accept()
+    return
+  end
+
+  vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Tab>', true, true, true), 'n')
+end, silent_noremap)
 
 global.imap('<C-j>', function()
   if copilot_suggestion.is_visible() then

@@ -1,7 +1,5 @@
 local global = require('global')
-
 local cmp = require('cmp')
-local copilot = require('copilot.suggestion')
 
 local kind_icons = {
   Text = "",
@@ -32,17 +30,17 @@ local kind_icons = {
 }
 
 local sources = {
-    {
-      name = 'nvim_lsp',
-      entry_filter = function(entry, _)
-        local kind = require('cmp.types').lsp.CompletionItemKind[entry:get_kind()]
-        if kind == "Text" then return false end
-        return true
-      end
-    },
-    { name = 'ultisnips', priority = 1000 }, -- For ultisnips users.
-    { name = 'path' },
-  }
+  {
+    name = 'nvim_lsp',
+    entry_filter = function(entry, _)
+      local kind = require('cmp.types').lsp.CompletionItemKind[entry:get_kind()]
+      if kind == "Text" then return false end
+      return true
+    end
+  },
+  { name = 'ultisnips', priority = 1000 }, -- For ultisnips users.
+  { name = 'path' },
+}
 
 cmp.setup({
   preselect = cmp.PreselectMode.None,
@@ -58,7 +56,7 @@ cmp.setup({
       local MAX_LABEL_LENGTH = 20
       local label = global.trim(vim_item.abbr)
       if string.len(label) > MAX_LABEL_LENGTH then
-        label = vim.fn.strcharpart(label, 0, MAX_LABEL_LENGTH)..".."
+        label = vim.fn.strcharpart(label, 0, MAX_LABEL_LENGTH) .. ".."
       end
 
 
@@ -98,11 +96,6 @@ cmp.setup({
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })
-        return
-      end
-
-      if copilot.is_visible() then
-        copilot.accept()
         return
       end
 

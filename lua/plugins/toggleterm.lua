@@ -6,7 +6,7 @@ require('toggleterm').setup {
       return vim.o.columns * 0.4
     end
   end,
-  open_mapping = [[<c-\>]],
+  open_mapping = [[<F1>]],
   hide_numbers = true,
   start_in_insert = true,
   insert_mappings = true,
@@ -18,7 +18,7 @@ require('toggleterm').setup {
   float_opts = {
     border = 'single',
     width = 100,
-    height = 40,
+    height = 45,
     highlights = {
       border = "Normal",
       background = "Normal",
