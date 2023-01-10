@@ -12,3 +12,8 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
 ```
 pip install pynvim
 ```
+
+## Environment variables
+```
+export Author='xvzc' # This name will be automatically inserted when loading templates
+```
