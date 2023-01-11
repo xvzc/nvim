@@ -53,7 +53,10 @@ local function init()
   use 'morhetz/gruvbox'
   use {
     'xvzc/skeleton.nvim',
-    config = "require('skeleton')",
+    config = function()
+      require('skeleton').setup({
+      })
+    end,
   }
 
   use {
@@ -227,16 +230,6 @@ local function init()
     'lukas-reineke/indent-blankline.nvim',
     config = "require('plugins.indent-blankline')",
     event = 'VimEnter',
-  }
-
-  use {
-    'glepnir/template.nvim',
-    cmd = 'Template',
-    config = function() require('template').setup({
-        temp_dir = '~/.config/nvim/templates',
-        author = 'xvzc',
-      })
-    end
   }
 end
 
