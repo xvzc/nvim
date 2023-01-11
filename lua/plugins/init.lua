@@ -51,6 +51,10 @@ local function init()
   use "nvim-lua/plenary.nvim"
   use 'folke/tokyonight.nvim'
   use 'morhetz/gruvbox'
+  use {
+    'xvzc/skeleton.nvim',
+    config = "require('skeleton')",
+  }
 
   use {
     "zbirenbaum/copilot.lua",
