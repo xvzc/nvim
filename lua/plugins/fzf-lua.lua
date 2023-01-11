@@ -28,12 +28,16 @@ end
 
 local replace_tags = function()
   local timestamp = vim.fn.strftime("%Y-%m-%d %a %H:%M")
-  local cmd_timestamp = ":%s/{{ _timestamp_ }}/Created by " .. profile.author
-  cmd_timestamp = cmd_timestamp.."(Github), "
-  cmd_timestamp = cmd_timestamp .. timestamp .. "<CR>"
-  local cmd_cursor = ":%s/.*{{ _cursor_ }}.*//<CR>"
+  local cmd_timestamp = ":%s/{{ timestamp }}/" .. timestamp .. "<CR>"
+  local cmd_author = ":%s/{{ author }}/" .. profile.author .. "<CR>"
+  local cmd_cursor = ":%s/.*{{ cursor }}.*//<CR>"
   util.feedkeys(
     util.replace_termcodes(cmd_timestamp, true, false, true),
+    'm',
+    true
+  )
+  util.feedkeys(
+    util.replace_termcodes(cmd_author, true, false, true),
     'm',
     true
   )
@@ -49,6 +53,7 @@ util.nmap(
   '<C-M-t>',
   function()
     fzf_lua.files({
+      git_icons = false,
       cwd = template_path,
       preview = "bat --style=plain {}",
       fzf_opts = { ['--preview-window'] = 'nohidden,down,50%' },
