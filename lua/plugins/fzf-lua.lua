@@ -1,17 +1,21 @@
 local fzf_lua = require('fzf-lua')
 local util = require('util')
-local profile = require('profile')
 
 fzf_lua.setup {
   keymap = {
     builtin = {
+      ['<F1>'] = 'toggle-help',
+      ['<F2>'] = 'toggle-preview',
+      ['<F3>'] = 'toggle-preview-wrap',
       ['<C-e>'] = 'preview-page-up',
       ['<C-y>'] = 'preview-page-down',
     },
+    fzf = {
+      ['ctrl-e'] = nil,
+    }
   },
   winopts = {
     preview = {
-      delay = 0
     },
     height = 0.8,
     width = 0.8,
@@ -21,13 +25,6 @@ fzf_lua.setup {
 local function files()
   fzf_lua.files({
     prompt = 'FILES>',
-    preview_opts = vim.o.columns < 95 and 'hidden' or 'nohidden',
-  })
-end
-
-local function live_grep()
-  fzf_lua.live_grep({
-    prompt = 'LIVE_GREP>',
     preview_opts = vim.o.columns < 95 and 'hidden' or 'nohidden',
   })
 end
@@ -55,11 +52,34 @@ local function templates()
   })
 end
 
+local function live_grep()
+  fzf_lua.live_grep({
+    prompt = 'LIVE_GREP>',
+    preview_opts = vim.o.columns < 95 and 'hidden' or 'nohidden',
+  })
+end
+
+local function file_commits()
+  fzf_lua.git_bcommits({
+    prompt = 'COMMITS>',
+    preview_opts = vim.o.columns < 95 and 'hidden' or 'nohidden',
+  })
+end
+
+local function project_commits()
+  fzf_lua.git_commits({
+    prompt = 'COMMITS>',
+    preview_opts = vim.o.columns < 95 and 'hidden' or 'nohidden',
+  })
+end
+
 local function commands()
   local command_table = {
     ['1) Files'] = files,
     ['2) Tamplates'] = templates,
     ['3) Live grep'] = live_grep,
+    ['4) File commits'] = file_commits,
+    ['5) Project commits'] = project_commits,
   }
 
   local keys = {}
@@ -82,6 +102,12 @@ local function commands()
       end,
       ['3'] = function(_, _)
         command_table[keys[3]]()
+      end,
+      ['4'] = function(_, _)
+        command_table[keys[4]]()
+      end,
+      ['5'] = function(_, _)
+        command_table[keys[5]]()
       end,
     }
   })

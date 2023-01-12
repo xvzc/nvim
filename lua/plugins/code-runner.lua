@@ -1,21 +1,51 @@
 local code_runner = require('code_runner')
 local util = require('util')
 
-vim.cmd[[
+vim.cmd [[
 hi CodeRunner guifg=#D0C8C8 guibg=#1C2219
 hi CodeRunnerBorder guifg=#949693 guibg=#1C2219
 ]]
 
+local filetypes = {
+  python = "python3 -u",
+  typescript = "deno run",
+  rust = "cd $dir && rustc $fileName && $dir/$fileNameWithoutExt",
+  cpp = {
+      "cd $dir",
+      "&&",
+      "g++ -std=c++17 -O2 -Wall -Wno-sign-compare -DLOCAL",
+      "$fileName -o $fileNameWithoutExt",
+      "&&",
+      "$dir/$fileNameWithoutExt",
+      "&&",
+      "rm $dir/$fileNameWithoutExt",
+  },
+  sh = "bash",
+  terraform = "terraform plan"
+}
+
+function filetypes.stringify()
+  for k, v in pairs(filetypes) do
+    if type(v) == 'table' then
+      local command = table.concat(v, " ")
+      filetypes[k] = command
+    end
+  end
+
+  return filetypes
+end
+
 code_runner.setup({
   mode = 'float',
-  float ={
+  float = {
     border = "solid",
     float_hl = "CodeRunner",
-    border_hl = "CodeRunnerBorder"
+    border_hl = "CodeRunnerBorder",
   },
-  filetype_path = vim.fn.expand('~/.config/nvim/code-runner.json'),
-  project_path = vim.fn.expand('~/.config/nvim/project-runner.json')
+  filetype = filetypes.stringify(),
+  filetype_path = "",
+  project_path = vim.fn.expand('~/.config/nvim/project-runner.json'),
 })
 
-local buf_opts = { noremap = true, silent = true}
+local buf_opts = { noremap = true, silent = true }
 util.nmap('<C-M-r>', ':w<CR>:RunCode<CR>', buf_opts)
