@@ -1,8 +1,0 @@
-{
-    "python": "python3 -u",
-    "typescript": "deno run",
-    "rust": "cd $dir && rustc $fileName && $dir/$fileNameWithoutExt",
-    "cpp": "cd $dir && g++ -std=c++17 -O2 -Wall -Wno-sign-compare -DLOCAL $fileName -o $fileNameWithoutExt && $dir/$fileNameWithoutExt && rm $dir/$fileNameWithoutExt",
-    "sh": "bash",
-    "terraform": "terraform plan"
-}
