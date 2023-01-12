@@ -165,7 +165,7 @@ local function init()
     'CRAG666/code_runner.nvim',
     requires = 'nvim-lua/plenary.nvim',
     config = "require('plugins.code-runner')",
-    event = 'VimEnter',
+    envet = 'VimEnter',
   }
 
 
