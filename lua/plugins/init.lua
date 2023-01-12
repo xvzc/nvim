@@ -48,26 +48,22 @@ local function init()
   -- eager load
   use 'wbthomason/packer.nvim'
   use 'lewis6991/impatient.nvim'
-  use "nvim-lua/plenary.nvim"
   use 'folke/tokyonight.nvim'
   use 'morhetz/gruvbox'
   use {
     'xvzc/skeleton.nvim',
-    config = function()
-      require('skeleton').setup({
-      })
-    end,
+    config = "require('plugins.skeleton')"
   }
 
-  use {
-    "zbirenbaum/copilot.lua",
-    event = "VimEnter",
-    config = function()
-      vim.defer_fn(function()
-        require('plugins.copilot')
-      end, 100)
-    end,
-  }
+  -- use {
+  --   "zbirenbaum/copilot.lua",
+  --   event = "VimEnter",
+  --   config = function()
+  --     vim.defer_fn(function()
+  --       require('plugins.copilot')
+  --     end, 100)
+  --   end,
+  -- }
 
   use {
     'farmergreg/vim-lastplace',
@@ -163,7 +159,15 @@ local function init()
     'ibhagwan/fzf-lua',
     requires = { 'nvim-tree/nvim-web-devicons' },
     config = "require('plugins.fzf-lua')",
+    event = 'VimEnter',
   }
+  use {
+    'CRAG666/code_runner.nvim',
+    requires = 'nvim-lua/plenary.nvim',
+    config = "require('plugins.code-runner')",
+    event = 'VimEnter',
+  }
+
 
   -- language supports
   use { 'fatih/vim-go', ft = { 'go' } }

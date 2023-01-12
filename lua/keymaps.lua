@@ -73,52 +73,12 @@ util.autocmd({ 'BufRead', 'BufNewFile' }, {
   end
 })
 
-util.autocmd({ 'filetype' }, {
-  pattern = 'python',
-  callback = function()
-    util.nmap(
-      '<C-M-r>',
-      ':lua require("util").run_python()<CR>',
-      silent_noremap)
-  end
-})
-
-util.autocmd({ 'filetype' }, {
-  pattern = 'cpp',
-  callback = function()
-    util.nmap(
-      '<C-M-r>',
-      ':lua require("util").run_cpp()<CR>',
-      silent_noremap)
-  end
-})
-
-util.autocmd({ 'filetype' }, {
-  pattern = 'sh',
-  callback = function()
-    util.nmap(
-      '<C-M-r>',
-      ':lua require("util").run_sh()<CR>',
-      silent_noremap)
-  end
-})
-
-util.autocmd({ 'filetype' }, {
-  pattern = 'typescript',
-  callback = function()
-    util.nmap(
-      '<C-M-r>',
-      ':lua require("util").run_ts()<CR>',
-      silent_noremap)
-  end
-})
-
-util.autocmd({ 'filetype' }, {
-  pattern = 'json',
-  callback = function()
-    util.nmap(
-      '<C-M-f>',
-      ":execute ':%!python3 -m json.tool --no-ensure-ascii'<CR>",
-      silent_noremap)
-  end
-})
+-- util.autocmd({ 'filetype' }, {
+--   pattern = 'json',
+--   callback = function()
+--     util.nmap(
+--       '<C-l>',
+--       ":execute ':%!python3 -m json.tool --no-ensure-ascii'<CR>",
+--       silent_noremap)
+--   end
+-- })

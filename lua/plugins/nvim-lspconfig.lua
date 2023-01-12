@@ -23,21 +23,16 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   update_in_insert = false,
 })
 
-local do_format = function(bufnr)
-  vim.lsp.buf.format({
-    async = true,
-    bufnr = bufnr,
-  })
-end
---
 -- :help vim.lsp.diagnostic.on_publish_diagnostics
 local on_attach = function(client, bufnr)
-  local bufopts = { noremap = true, silent = true, buffer = bufnr }
+  local buf_opts = { noremap = true, silent = true, buffer = bufnr }
   if client.name == "tsserver" then
     client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
   end
 
-  vim.keymap.set('n', '<C-l>', do_format, bufopts)
+  util.nmap('<C-l>', function(nr)
+    vim.lsp.buf.format({ async = true, bufnr = nr, })
+  end, buf_opts)
 
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -46,24 +41,24 @@ local on_attach = function(client, bufnr)
   -- if there is no implement it will hide
   -- when you use action in finder like open vsplit then you can
   -- use <C-t> to jump back
-  util.nmap("gf", "<cmd>Lspsaga lsp_finder<CR>", bufopts)
+  util.nmap("gf", "<cmd>Lspsaga lsp_finder<CR>", buf_opts)
 
   -- Code action
-  util.nmap("<leader>ca", "<cmd>Lspsaga code_action<CR>", bufopts)
-  util.vmap("<leader>ca", "<cmd>Lspsaga code_action<CR>", bufopts)
+  util.nmap("<leader>ca", "<cmd>Lspsaga code_action<CR>", buf_opts)
+  util.vmap("<leader>ca", "<cmd>Lspsaga code_action<CR>", buf_opts)
 
   -- Rename
-  util.nmap("<leader>rn", "<cmd>Lspsaga rename<CR>", bufopts)
+  util.nmap("<leader>rn", "<cmd>Lspsaga rename<CR>", buf_opts)
 
   -- Show line diagnostics
-  util.nmap("<leader>i", "<cmd>Lspsaga show_line_diagnostics<CR>", bufopts)
+  util.nmap("<leader>i", "<cmd>Lspsaga show_line_diagnostics<CR>", buf_opts)
 
   -- Show cursor diagnostic
   -- global.nmap("<leader>cd", "<cmd>Lspsaga show_cursor_diagnostics<CR>", { silent = true })
 
   -- Diagnsotic jump can use `<c-o>` to jump back
-  util.nmap("[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", bufopts)
-  util.nmap("]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", bufopts)
+  util.nmap("[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", buf_opts)
+  util.nmap("]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", buf_opts)
 
   -- Only jump to error
   util.nmap("[e", function()
@@ -75,7 +70,7 @@ local on_attach = function(client, bufnr)
   end, { silent = true })
 
   -- Outline
-  util.nmap("<leader>o", "<cmd>LSoutlineToggle<CR>", { silent = true })
+  util.nmap("<leader>o", "<cmd>Lspsaga outline<CR>", { silent = true })
 
   -- Hover Doc
   util.nmap("<leader>h", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
@@ -83,7 +78,7 @@ local on_attach = function(client, bufnr)
   -- vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   -- vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
   -- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set('n', 'K', vim.lsp.buf.signature_help, bufopts)
+  vim.keymap.set('n', 'K', vim.lsp.buf.signature_help, buf_opts)
   -- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
   -- vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
   -- vim.keymap.set('n', '<space>wl', function()
@@ -94,6 +89,8 @@ local on_attach = function(client, bufnr)
   -- vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
   -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
 end
+
+
 
 local function make_config()
   local capabilities = vim.lsp.protocol.make_client_capabilities()

@@ -99,28 +99,6 @@ local replace_termcodes = function(str, from_part, do_lt, special)
   return vim.api.nvim_replace_termcodes(str, from_part, do_lt, special)
 end
 
-local get_osid = function()
-  local uname = io.popen("uname -a")
-  if uname == nil then
-    vim.notify("global:uname() error", 4)
-    return ""
-  end
-
-  local result = uname:read("*a")
-  uname:close()
-
-  if string.find(result, "Darwin") then
-    return "mac"
-  elseif string.find(result, "arch") then
-    return "linux-arch"
-  elseif string.find(result, "Ubuntu") then
-    return "linux-ubuntu"
-  else
-    vim.notify("global:uname() unknown os", 4)
-    return ""
-  end
-end
-
 local find_lua_files = function(path)
   local pattern = [[v:val =~ '\.lua$']]
 
