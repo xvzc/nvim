@@ -156,6 +156,12 @@ local commands = {
       preview_opts = vim.o.columns < 95 and 'hidden' or 'nohidden',
     })
   end,
+  ['Code actions'] = function()
+    fzf_lua.lsp_code_actions({
+      prompt = '>',
+      preview_opts = vim.o.columns < 95 and 'hidden' or 'nohidden',
+    })
+  end,
 }
 
 function commands.load()
