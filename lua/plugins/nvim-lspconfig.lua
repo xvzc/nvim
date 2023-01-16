@@ -61,13 +61,13 @@ local on_attach = function(client, bufnr)
   util.nmap("]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", buf_opts)
 
   -- Only jump to error
-  util.nmap("[e", function()
-    require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
-  end, { silent = true })
-
-  util.nmap("]e", function()
-    require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
-  end, { silent = true })
+  -- util.nmap("[e", function()
+  --   require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
+  -- end, { silent = true })
+  --
+  -- util.nmap("]e", function()
+  --   require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
+  -- end, { silent = true })
 
   -- Outline
   util.nmap("<leader>o", "<cmd>Lspsaga outline<CR>", { silent = true })

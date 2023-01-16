@@ -11,18 +11,23 @@ local filetypes = {
   typescript = "deno run",
   rust = "cd $dir && rustc $fileName && $dir/$fileNameWithoutExt",
   cpp = {
-      "cd $dir",
-      "&&",
-      "g++ -std=c++17 -O2 -Wall -Wno-sign-compare -DLOCAL",
-      "$fileName -o $fileNameWithoutExt",
-      "&&",
-      "$dir/$fileNameWithoutExt",
-      "&&",
-      "rm $dir/$fileNameWithoutExt",
+    "cd $dir",
+    "&&",
+    "g++ -std=c++17 -O2 -Wall -Wno-sign-compare -DLOCAL",
+    "$fileName -o $fileNameWithoutExt",
+    "&&",
+    "$dir/$fileNameWithoutExt",
+    "&&",
+    "rm $dir/$fileNameWithoutExt",
   },
   sh = "bash",
   terraform = "terraform plan"
 }
+
+local ok, project = pcall(require, "project")
+if not ok then
+  project = {}
+end
 
 function filetypes.stringify()
   for k, v in pairs(filetypes) do
@@ -42,9 +47,10 @@ code_runner.setup({
     float_hl = "CodeRunner",
     border_hl = "CodeRunnerBorder",
   },
-  filetype = filetypes.stringify(),
   filetype_path = "",
-  project_path = vim.fn.expand('~/.config/nvim/project-runner.json'),
+  project_path = "",
+  filetype = filetypes.stringify(),
+  project = project,
 })
 
 local buf_opts = { noremap = true, silent = true }

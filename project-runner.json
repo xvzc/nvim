@@ -1,8 +1,0 @@
-{
-    "~/dir/to/project": {
-        "name": "Example project",
-        "description": "This is an example project",
-        "file_name": "foo/bar.ts",
-        "command": "yarn run"
-    }
-}

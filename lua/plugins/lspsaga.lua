@@ -1,16 +1,29 @@
 local saga = require('lspsaga')
 
-saga.init_lsp_saga({
-  show_outline = {
-    win_position = 'left',
+saga.setup({
+  outline = {
+    win_position = 'right',
+    win_with = '',
+    win_width = 30,
+    show_detail = true,
+    auto_preview = true,
+    auto_refresh = true,
+    auto_close = true,
+    custom_sort = nil,
+    keys = {
+      jump = '<CR>',
+      expand_collapse = 'u',
+      quit = 'q',
+    },
   },
-  code_action_lightbulb = {
+  lightbulb = {
+    enable = true,
+    enable_in_insert = true,
     sign = true,
-    virtual_text = false,
+    sign_priority = 40,
+    virtual_text = true,
   },
-  -- symbol_in_winbar = {
-  --   in_custom = true
-  -- }
+  symbol_in_winbar = {
+    in_custom = true
+  }
 })
-
-

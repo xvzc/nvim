@@ -79,7 +79,9 @@ local function init()
     'neovim/nvim-lspconfig',
     config = "require('plugins.nvim-lspconfig')",
     event = 'BufWinEnter',
-    requires = { 'nvim-lspconfig' }
+    requires = {
+      'lspsaga.nvim',
+    }
   }
 
   use({
