@@ -21,7 +21,7 @@ saga.setup({
     enable_in_insert = true,
     sign = true,
     sign_priority = 40,
-    virtual_text = true,
+    virtual_text = false,
   },
   symbol_in_winbar = {
     in_custom = true
