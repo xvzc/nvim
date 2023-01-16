@@ -25,23 +25,27 @@ require("mason").setup({
 
 local mason_registry = require('mason-registry')
 local ensure_installed = {
-  'lua-language-server',
-  'typescript-language-server',
-  'pyright',
+  'black',
   'clangd',
   'eslint_d',
+  'lua-language-server',
   'prettierd',
-  'black',
+  'pyright',
+  'rust-analyzer',
+  'rustfmt',
+  'terraform-ls',
+  'tflint',
+  'typescript-language-server',
 }
+
 
 local servers = ''
 for _, name in ipairs(ensure_installed) do
   if not mason_registry.is_installed(name) then
-    servers = servers..' '..name
+    servers = servers .. ' ' .. name
   end
 end
 
 if servers ~= '' then
-  vim.cmd(':MasonInstall '..servers)
+  vim.cmd(':MasonInstall ' .. servers)
 end
-

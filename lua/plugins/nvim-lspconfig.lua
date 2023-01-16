@@ -156,7 +156,6 @@ cpp_config.cmd = {
 lspconfig["clangd"].setup(cpp_config)
 
 -- typescript config
-
 local ts_config = make_config()
 ts_config.filetypes = {
   'javascript',
