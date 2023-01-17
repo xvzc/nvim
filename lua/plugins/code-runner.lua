@@ -24,11 +24,6 @@ local filetypes = {
   terraform = "terraform plan"
 }
 
-local ok, project = pcall(require, "project")
-if not ok then
-  project = {}
-end
-
 function filetypes.stringify()
   for k, v in pairs(filetypes) do
     if type(v) == 'table' then
@@ -40,12 +35,25 @@ function filetypes.stringify()
   return filetypes
 end
 
+local ok, project = pcall(require, "project")
+if not ok then
+  project = {}
+end
+
 code_runner.setup({
-  mode = 'float',
-  float = {
-    border = "solid",
-    float_hl = "CodeRunner",
-    border_hl = "CodeRunnerBorder",
+  -- mode = 'float',
+  -- float = {
+  --   border = "solid",
+  --   float_hl = "CodeRunner",
+  --   border_hl = "CodeRunnerBorder",
+  -- },
+    -- choose default mode (valid term, tab, float, toggle, buf)
+  mode = 'term',
+  focus = true,
+  startinsert = true,
+  term = {
+    position = "bot",
+    size = 10,
   },
   filetype_path = "",
   project_path = "",
