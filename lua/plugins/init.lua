@@ -122,6 +122,7 @@ local function init()
     config = [[require('plugins.nvim-cmp')]],
     event = 'VimEnter',
     requires = {
+      { 'windwp/nvim-autopairs', config = "require('plugins.nvim-autopairs')" },
       { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
       { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' },
       { 'hrsh7th/cmp-nvim-lsp-signature-help', after = 'nvim-cmp' },
@@ -132,19 +133,13 @@ local function init()
       { 'hrsh7th/cmp-nvim-lsp-document-symbol', after = 'nvim-cmp' },
       {
         'quangnguyen30192/cmp-nvim-ultisnips',
-        after = 'nvim-cmp',
         config = function() require('cmp_nvim_ultisnips').setup {} end,
+        after = 'nvim-cmp',
       },
     },
   }
 
   -- utils
-  use {
-    'windwp/nvim-autopairs',
-    config = "require('plugins.nvim-autopairs')",
-    event = 'VimEnter',
-    before = 'nvim-cmp'
-  }
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons' },
@@ -193,14 +188,6 @@ local function init()
     config = "require('plugins.treesitter')",
     event = 'VimEnter',
   }
-
-  -- use {
-  --   'junegunn/fzf',
-  --   requires = { 'junegunn/fzf.vim' },
-  --   run = './install --bin',
-  --   config = "require('plugins.fzf')",
-  --   event = 'VimEnter',
-  -- }
 
   use {
     'numToStr/Comment.nvim',
