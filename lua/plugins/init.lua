@@ -1,5 +1,6 @@
 local packer = nil
 local profile = require('profile')
+local util = require('packer.util')
 
 local function init()
   if packer == nil then
@@ -115,6 +116,7 @@ local function init()
     event = 'VimEnter',
   }
 
+  -- cmp
   use {
     'hrsh7th/nvim-cmp',
     config = [[require('plugins.nvim-cmp')]],
@@ -125,7 +127,7 @@ local function init()
       { 'hrsh7th/cmp-nvim-lsp-signature-help', after = 'nvim-cmp' },
       { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
       { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' },
-      'lukas-reineke/cmp-under-comparator',
+      { 'lukas-reineke/cmp-under-comparator', after = 'nvim-cmp' },
       { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' },
       { 'hrsh7th/cmp-nvim-lsp-document-symbol', after = 'nvim-cmp' },
       {
@@ -137,6 +139,12 @@ local function init()
   }
 
   -- utils
+  use {
+    'windwp/nvim-autopairs',
+    config = "require('plugins.nvim-autopairs')",
+    event = 'VimEnter',
+    before = 'nvim-cmp'
+  }
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons' },
@@ -215,11 +223,6 @@ local function init()
   use {
     'tpope/vim-surround',
     config = "require('plugins.vim-surround')",
-    event = 'VimEnter',
-  }
-  use {
-    'windwp/nvim-autopairs',
-    config = "require('plugins.nvim-autopairs')",
     event = 'VimEnter',
   }
   use {
