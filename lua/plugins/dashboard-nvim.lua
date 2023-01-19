@@ -20,32 +20,32 @@ db.custom_center = {
   {
     icon = '  ',
     desc = 'Recently Opened Files ',
-    action = 'History',
+    action = "lua require('fzf-lua').oldfiles({ prompt = '>', preview_opts = vim.o.columns < 95 and 'hidden' or 'nohidden', })",
   },
   {
     icon = 'ﳎ  ',
     desc = 'Home Directory        ',
-    action = 'FZF ~',
+    action = "lua require('fzf-lua').files({ cwd = '~', prompt = '>', preview_opts = vim.o.columns < 95 and 'hidden' or 'nohidden', })",
   },
   {
     icon = '  ',
     desc = 'Current Directory     ',
-    action = 'FZF',
+    action = "lua require('fzf-lua').files({ prompt = '>', preview_opts = vim.o.columns < 95 and 'hidden' or 'nohidden', })",
   },
   {
     icon = '  ',
-    desc = 'Find Word             ',
-    action = 'Rg',
+    desc = 'Live Grep             ',
+    action = "lua require('fzf-lua').live_grep({ prompt = '>', preview_opts = vim.o.columns < 95 and 'hidden' or 'nohidden', })",
   },
   {
     icon = '  ',
     desc = 'Commit History        ',
-    action = 'Commits',
+    action = "lua require('fzf-lua').git_commits({ prompt = '>', preview_opts = vim.o.columns < 95 and 'hidden' or 'nohidden', })",
   },
   {
     icon = '  ',
-    desc = 'Open Personal Dotfiles',
-    action = 'FZF ~/.stowfiles',
+    desc = 'Configs               ',
+    action = "lua require('fzf-lua').files({ cwd = '~/.config', prompt = '>', preview_opts = vim.o.columns < 95 and 'hidden' or 'nohidden', })",
   }
 }
 

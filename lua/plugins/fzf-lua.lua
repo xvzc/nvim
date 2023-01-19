@@ -25,8 +25,6 @@ fzf_lua.setup {
         "<cmd>lua vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<C-p>', true, false, true), 'n', true)<CR>",
         { nowait = true, noremap = true })
     end,
-    preview = {
-    },
     height = 0.8,
     width = 0.8,
   }
