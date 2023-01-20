@@ -21,7 +21,8 @@ local filetypes = {
     "rm $dir/$fileNameWithoutExt",
   },
   sh = "bash",
-  terraform = "terraform plan"
+  terraform = "terraform plan",
+  go = "go run ./..."
 }
 
 function filetypes.stringify()

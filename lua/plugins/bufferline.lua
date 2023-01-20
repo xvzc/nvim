@@ -1,8 +1,7 @@
-
 local global = require('util')
 
 require('bufferline').setup {
-    options = {
+  options = {
     buffer_close_icon = " ",
     modified_icon = "●",
     close_icon = " ",
@@ -33,18 +32,18 @@ require('bufferline').setup {
   }
 }
 
-global.nmap('<leader>1', '<cmd>lua require("bufferline").go_to_buffer(1, true)<cr>', {silent = true})
-global.nmap('<leader>2', '<cmd>lua require("bufferline").go_to_buffer(2, true)<cr>', {silent = true})
-global.nmap('<leader>3', '<cmd>lua require("bufferline").go_to_buffer(3, true)<cr>', {silent = true})
-global.nmap('<leader>4', '<cmd>lua require("bufferline").go_to_buffer(4, true)<cr>', {silent = true})
-global.nmap('<leader>5', '<cmd>lua require("bufferline").go_to_buffer(5, true)<cr>', {silent = true})
-global.nmap('<leader>6', '<cmd>lua require("bufferline").go_to_buffer(6, true)<cr>', {silent = true})
-global.nmap('<leader>7', '<cmd>lua require("bufferline").go_to_buffer(7, true)<cr>', {silent = true})
-global.nmap('<leader>8', '<cmd>lua require("bufferline").go_to_buffer(8, true)<cr>', {silent = true})
-global.nmap('<leader>9', '<cmd>lua require("bufferline").go_to_buffer(9, true)<cr>', {silent = true})
-global.nmap('<leader>0', '<cmd>lua require("bufferline").go_to_buffer(10, true)<cr>', {silent = true})
-global.nmap('<leader>$', '<cmd>lua require("bufferline").go_to_buffer(-1, true)<cr>', {silent = true})
-global.nmap('<leader>^', '<cmd>lua require("bufferline").go_to_buffer(1, true)<cr>', {silent = true})
-global.nmap('<leader>q', '<cmd>bd<cr>', {silent = true})
-global.nmap(']b', ':BufferLineCycleNext<CR>', {silent = true})
-global.nmap('[b', ':BufferLineCyclePrev<CR>', {silent = true})
+global.nmap('<leader>1', '<cmd>lua require("bufferline").go_to_buffer(1, true)<cr>', { silent = true })
+global.nmap('<leader>2', '<cmd>lua require("bufferline").go_to_buffer(2, true)<cr>', { silent = true })
+global.nmap('<leader>3', '<cmd>lua require("bufferline").go_to_buffer(3, true)<cr>', { silent = true })
+global.nmap('<leader>4', '<cmd>lua require("bufferline").go_to_buffer(4, true)<cr>', { silent = true })
+global.nmap('<leader>5', '<cmd>lua require("bufferline").go_to_buffer(5, true)<cr>', { silent = true })
+global.nmap('<leader>6', '<cmd>lua require("bufferline").go_to_buffer(6, true)<cr>', { silent = true })
+global.nmap('<leader>7', '<cmd>lua require("bufferline").go_to_buffer(7, true)<cr>', { silent = true })
+global.nmap('<leader>8', '<cmd>lua require("bufferline").go_to_buffer(8, true)<cr>', { silent = true })
+global.nmap('<leader>9', '<cmd>lua require("bufferline").go_to_buffer(9, true)<cr>', { silent = true })
+global.nmap('<leader>0', '<cmd>lua require("bufferline").go_to_buffer(10, true)<cr>', { silent = true })
+global.nmap('<leader>$', '<cmd>lua require("bufferline").go_to_buffer(-1, true)<cr>', { silent = true })
+global.nmap('<leader>^', '<cmd>lua require("bufferline").go_to_buffer(1, true)<cr>', { silent = true })
+global.nmap('<leader>q', '<cmd>bd<cr>', { silent = true })
+global.nmap(']b', ':BufferLineCycleNext<CR>', { silent = true })
+global.nmap('[b', ':BufferLineCyclePrev<CR>', { silent = true })
