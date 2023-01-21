@@ -23,6 +23,7 @@ local config = {
     "yaml",
     "hcl",
     "cmake",
+    "markdown",
   },
   highlight = {
     enable = true,

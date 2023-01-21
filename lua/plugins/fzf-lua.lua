@@ -160,6 +160,13 @@ local commands = {
       preview_opts = vim.o.columns < 95 and 'hidden' or 'nohidden',
     })
   end,
+  ['Neovim configs'] = function()
+    fzf_lua.files({
+      cwd = '~/.config/nvim',
+      prompt = '>',
+      preview_opts = vim.o.columns < 95 and 'hidden' or 'nohidden',
+    })
+  end,
 }
 
 function commands.load()
