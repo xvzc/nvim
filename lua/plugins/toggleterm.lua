@@ -14,14 +14,22 @@ require('toggleterm').setup {
   direction = 'float',
   close_on_exit = true,
   shell = vim.o.shell,
+  highlights = {
+    Normal = {
+      guibg = "#1E2659",
+    },
+    NormalFloat = {
+      link = "1E2659"
+    },
+    FloatBorder = {
+      guifg = "#1E2659",
+      guibg = "#1E2659",
+    },
+  },
 
   float_opts = {
     border = 'single',
-    width = 100,
+    width = 130,
     height = 45,
-    highlights = {
-      border = "Normal",
-      background = "Normal",
-    }
   }
 }

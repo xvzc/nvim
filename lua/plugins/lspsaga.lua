@@ -51,5 +51,9 @@ saga.setup({
   },
   symbol_in_winbar = {
     in_custom = true
-  }
+  },
+  colors = {
+    --float window normal background color
+    normal_bg = '#1d1536',
+  },
 })
