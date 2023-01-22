@@ -72,13 +72,12 @@ local on_attach = function(client, bufnr)
 
   -- Outline
   util.nmap("<leader>o", "<cmd>Lspsaga outline<CR>", { silent = true })
-
-  -- Hover Doc
   util.nmap("<leader>h", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, buf_opts)
+  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, buf_opts)
+
   -- vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-  -- vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   -- vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-  -- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.signature_help, buf_opts)
   -- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
   -- vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
@@ -142,6 +141,9 @@ lspconfig.sourcekit.setup(sourcekit_config)
 -- golang config
 local go_config = make_config()
 lspconfig.gopls.setup(go_config)
+
+local golangci_lint_ls_config = make_config()
+lspconfig.golangci_lint_ls.setup(golangci_lint_ls_config)
 
 -- clangd config
 local cpp_config = make_config()

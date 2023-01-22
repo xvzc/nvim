@@ -8,7 +8,7 @@ require("nvim-tree").setup({
     mappings = {
       list = {
         { key = "u", action = "dir_up" },
-        -- { key = "<ESC>", action = "close_node" },
+        { key = "<ESC>", action = "close" },
         { key = "yf", action = "copy" },
         { key = "yn", action = "copy_name" },
         { key = "yp", action = "copy_path" },
