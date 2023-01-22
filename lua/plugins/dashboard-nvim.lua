@@ -13,14 +13,14 @@ db.custom_header = {
 
 db.custom_center = {
   {
-    icon = '  ',
-    desc = 'Empty Buffer          ',
-    action = 'enew',
-  },
-  {
     icon = '  ',
     desc = 'Recently Opened Files ',
     action = "lua require('fzf-lua').oldfiles({ prompt = '>', preview_opts = vim.o.columns < 95 and 'hidden' or 'nohidden', })",
+  },
+  {
+    icon = '  ',
+    desc = 'Empty Buffer          ',
+    action = 'enew',
   },
   {
     icon = 'ﳎ  ',

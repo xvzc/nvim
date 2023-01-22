@@ -49,7 +49,8 @@ local on_attach = function(client, bufnr)
   util.vmap("<leader>ca", "<cmd>Lspsaga code_action<CR>", buf_opts)
 
   -- Rename
-  util.nmap("<leader>rn", "<cmd>Lspsaga rename<CR>", buf_opts)
+  util.nmap("<leader>rn", "<cmd>Lspsaga rename ++project<CR>", buf_opts)
+  -- util.nmap("<leader>rn", vim.lsp.buf.rename, buf_opts)
 
   -- Show line diagnostics
   util.nmap("<leader>i", "<cmd>Lspsaga show_line_diagnostics<CR>", buf_opts)
@@ -76,18 +77,18 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, buf_opts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, buf_opts)
 
-  -- vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-  -- vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+  -- vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, buf_optss)
+  -- vim.keymap.set('n', 'K', vim.lsp.buf.hover, buf_opts)
   vim.keymap.set('n', 'K', vim.lsp.buf.signature_help, buf_opts)
-  -- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-  -- vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+  -- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, buf_opts)
+  -- vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, buf_opts)
   -- vim.keymap.set('n', '<space>wl', function()
   --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  -- end, bufopts)
-  -- vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-  -- vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-  -- vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-  -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+  -- end, buf_opts)
+  -- vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, buf_opts)
+  -- vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, buf_opts)
+  -- vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, buf_opts)
+  -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, buf_opts)
 end
 
 local function make_config()
