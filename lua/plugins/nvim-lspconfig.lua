@@ -127,25 +127,23 @@ lua_config.settings = {
 -- python config
 
 local python_config = make_config()
-lspconfig['pyright'].setup(python_config)
+lspconfig.pyright.setup(python_config)
 
 -- lua config
 
-lspconfig['sumneko_lua'].setup(lua_config)
+lspconfig.sumneko_lua.setup(lua_config)
 
 -- source-kit config
 
 local sourcekit_config = make_config()
 sourcekit_config.filetypes = { "swift", "objective-c", "objective-cpp" };
-lspconfig["sourcekit"].setup(sourcekit_config)
+lspconfig.sourcekit.setup(sourcekit_config)
 
 -- golang config
-
 local go_config = make_config()
-lspconfig["gopls"].setup(go_config)
+lspconfig.gopls.setup(go_config)
 
 -- clangd config
-
 local cpp_config = make_config()
 cpp_config.filetypes = { "c", "cpp" }
 cpp_config.capabilities.offsetEncoding = { "utf-16" }
@@ -153,7 +151,7 @@ cpp_config.cmd = {
   'clangd',
   '-header-insertion=never',
 }
-lspconfig["clangd"].setup(cpp_config)
+lspconfig.clangd.setup(cpp_config)
 
 -- typescript config
 local ts_config = make_config()
@@ -170,7 +168,7 @@ ts_config.cmd = {
   'typescript-language-server',
   '--stdio',
 }
-lspconfig["tsserver"].setup(ts_config)
+lspconfig.tsserver.setup(ts_config)
 
 -- terraform config
 local tf_config = make_config()
@@ -182,6 +180,11 @@ tf_config.filetypes = {
 
 lspconfig.terraformls.setup(tf_config)
 lspconfig.tflint.setup(tf_config)
+
+-- json config
+local jsonls_config = make_config()
+lspconfig.jsonls.setup(jsonls_config)
+
 
 -- until this issue solved: https://github.com/neovim/neovim/issues/20456
 vim.cmd [[

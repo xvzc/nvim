@@ -25,9 +25,16 @@ require("mason").setup({
 
 local mason_registry = require('mason-registry')
 local ensure_installed = {
+  'json-lsp',
   'black',
   'clangd',
   'eslint_d',
+  'fixjson',
+  'goimports',
+  'golangci-lint',
+  'golines',
+  'gomodifytags',
+  'gopls',
   'lua-language-server',
   'prettierd',
   'pyright',

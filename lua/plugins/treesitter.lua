@@ -24,6 +24,7 @@ local config = {
     "hcl",
     "cmake",
     "markdown",
+    "gomod",
   },
   highlight = {
     enable = true,

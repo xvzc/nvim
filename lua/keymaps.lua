@@ -43,18 +43,18 @@ local is_sidebar = function()
 end
 
 util.nmap('<esc>', function()
-  local cur_winid = vim.api.nvim_get_current_win()
-  local cur_win = vim.api.nvim_win_get_config(cur_winid)
-  if cur_win.zindex then
-    return ":close<CR>"
-  end
+  -- local cur_winid = vim.api.nvim_get_current_win()
+  -- local cur_win = vim.api.nvim_win_get_config(cur_winid)
+  -- if cur_win.zindex then
+  --   return ":close<CR>"
+  -- end
 
-  local wins = vim.api.nvim_tabpage_list_wins(0)
-  for _, winid in pairs(wins) do
-    if vim.api.nvim_win_get_config(winid).zindex and not is_sidebar() then
-      return "<C-w>o"
-    end
-  end
+  -- local wins = vim.api.nvim_tabpage_list_wins(0)
+  -- for _, winid in pairs(wins) do
+  --   if vim.api.nvim_win_get_config(winid).zindex and not is_sidebar() then
+  --     return "<C-w>o"
+  --   end
+  -- end
 
   if vim.api.nvim_get_vvar('hlsearch') == 1 then
     return ":nohl<CR><esc>"
