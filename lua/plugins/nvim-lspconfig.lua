@@ -35,6 +35,20 @@ local on_attach = function(client, bufnr)
     vim.lsp.buf.format({ async = true, bufnr = nr, })
   end, buf_opts)
 
+  util.autocmd({ 'CursorHold', 'CursorHoldI' }, {
+    callback = function()
+      vim.lsp.buf.document_highlight()
+    end,
+    buffer = 0
+  })
+
+  util.autocmd({ 'CursorMoved' }, {
+    callback = function()
+      vim.lsp.buf.clear_references()
+    end,
+    buffer = 0
+  })
+
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
