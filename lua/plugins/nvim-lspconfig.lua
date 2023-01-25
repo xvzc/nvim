@@ -31,16 +31,19 @@ local on_attach = function(client, bufnr)
     client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
   end
 
+
   util.nmap('<C-l>', function(nr)
     vim.lsp.buf.format({ async = true, bufnr = nr, })
   end, buf_opts)
 
+  if client.name ~= 'jsonls' then
   util.autocmd({ 'CursorHold', 'CursorHoldI' }, {
     callback = function()
       vim.lsp.buf.document_highlight()
     end,
     buffer = 0
   })
+end
 
   util.autocmd({ 'CursorMoved' }, {
     callback = function()
