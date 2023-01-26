@@ -74,7 +74,7 @@ local function init()
   use {
     'glepnir/dashboard-nvim',
     config = "require('plugins.dashboard-nvim')",
-    event = "BufWinEnter"
+    event = "VimEnter"
   }
   use {
     'neovim/nvim-lspconfig',

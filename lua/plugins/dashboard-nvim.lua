@@ -1,25 +1,27 @@
-local db = require('dashboard')
+local dashboard = require('dashboard')
 
-db.custom_header = {
- ' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
- ' ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
- ' ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
- ' ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
- ' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
- ' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
- '',
+local header = {
+  '',
+  '',
+  '',
+  '',
+  ' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
+  ' ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
+  ' ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
+  ' ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
+  ' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
+  ' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
+  '',
 }
 
-
-db.custom_center = {
+local center = {
   {
     icon = '  ',
     desc = 'Recently Opened Files ',
     action = "lua require('fzf-lua').oldfiles({ prompt = '>', preview_opts = vim.o.columns < 95 and 'hidden' or 'nohidden', })",
   },
   {
-    icon = '  ',
-    desc = 'Empty Buffer          ',
+    desc = '  Empty Buffer          ',
     action = 'enew',
   },
   {
@@ -49,3 +51,10 @@ db.custom_center = {
   }
 }
 
+dashboard.setup({
+  theme = 'doom', --  theme is doom and hyper default is hyper
+  config = {
+    header = header,
+    center = center,
+  }
+})
