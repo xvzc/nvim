@@ -5,16 +5,16 @@ local trim = function(s)
 end
 
 local function dump(o)
-   if type(o) == 'table' then
-      local s = '{ '
-      for k,v in pairs(o) do
-         if type(k) ~= 'number' then k = '"'..k..'"' end
-         s = s .. '['..k..'] = ' .. dump(v) .. ','
-      end
-      return s .. '} '
-   else
-      return tostring(o)
-   end
+  if type(o) == 'table' then
+    local s = '{ '
+    for k, v in pairs(o) do
+      if type(k) ~= 'number' then k = '"' .. k .. '"' end
+      s = s .. '[' .. k .. '] = ' .. dump(v) .. ','
+    end
+    return s .. '} '
+  else
+    return tostring(o)
+  end
 end
 
 local syscall = function(cmd)
@@ -28,13 +28,13 @@ end
 local run_python = function()
   vim.cmd("silent w")
   local cur_buffer = vim.api.nvim_buf_get_name(0)
-  print(syscall('python3 '..cur_buffer..' 2>&1'))
+  print(syscall('python3 ' .. cur_buffer .. ' 2>&1'))
 end
 
 local run_cpp = function()
   vim.cmd("silent w")
   local cur_buffer = vim.api.nvim_buf_get_name(0)
-  local compile_cmd = 'g++ -std=c++17 -O2 -Wall -Wno-sign-compare -DLOCAL '..cur_buffer..' -o ./a.out 2>&1'
+  local compile_cmd = 'g++ -std=c++17 -O2 -Wall -Wno-sign-compare -DLOCAL ' .. cur_buffer .. ' -o ./a.out 2>&1'
   local compile_out = vim.fn.system(compile_cmd)
   local cur_path = vim.fn.getcwd()
 
@@ -43,31 +43,31 @@ local run_cpp = function()
     return
   end
 
-  local output = syscall(cur_path..'/a.out')
+  local output = syscall(cur_path .. '/a.out')
   if output == nil or output == "" then
     print("Empty output or an erorr occured")
     return
   end
 
   print(output)
-  syscall('rm '..cur_path..'/a.out')
+  syscall('rm ' .. cur_path .. '/a.out')
 end
 
 local run_sh = function()
   vim.cmd("silent w")
-  print(vim.fn.system('zsh '..vim.api.nvim_buf_get_name(0)..' 2>&1'))
+  print(vim.fn.system('zsh ' .. vim.api.nvim_buf_get_name(0) .. ' 2>&1'))
 end
 
 local run_ts = function()
   vim.cmd("silent w")
   local cur_buffer = vim.api.nvim_buf_get_name(0)
-  print(syscall('npx ts-node '..cur_buffer..' 2>&1'))
+  print(syscall('npx ts-node ' .. cur_buffer .. ' 2>&1'))
 end
 
 local boj_submit = function()
   vim.cmd("silent w")
   local cur_buffer = vim.api.nvim_buf_get_name(0)
-  local output = syscall('python3 $BAEKJOON_CLI/boj-submit.py '..cur_buffer)
+  local output = syscall('python3 $BAEKJOON_CLI/boj-submit.py ' .. cur_buffer)
   print(output)
 end
 
@@ -79,7 +79,7 @@ local nmap = function(from, handle, options)
   util.map('n', from, handle, options)
 end
 
-local vmap = function (from, handle, options)
+local vmap = function(from, handle, options)
   util.map('v', from, handle, options)
 end
 
@@ -134,4 +134,3 @@ function util:new()
 end
 
 return util:new()
-

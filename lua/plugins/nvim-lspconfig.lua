@@ -37,11 +37,8 @@ local on_attach = function(client, bufnr)
     end
   })
 
-  -- util.nmap('<C-l>', function(nr)
-  --   vim.lsp.buf.format({ async = true, bufnr = nr, })
-  -- end, buf_opts)
-
-  if client.name ~= 'jsonls' then
+  local capabilities = client.server_capabilities
+  if capabilities.document_highlight then
     util.autocmd({ 'CursorHold', 'CursorHoldI' }, {
       callback = function()
         vim.lsp.buf.document_highlight()
@@ -195,12 +192,6 @@ lspconfig.tsserver.setup(ts_config)
 
 -- terraform config
 local tf_config = make_config()
-tf_config.filetypes = {
-  "terraform",
-  "tf",
-  "hcl",
-}
-
 lspconfig.terraformls.setup(tf_config)
 lspconfig.tflint.setup(tf_config)
 
