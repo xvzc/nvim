@@ -21,7 +21,7 @@ local filetypes = {
     "rm $dir/$fileNameWithoutExt",
   },
   sh = "bash",
-  terraform = "terraform plan",
+  terraform = "terraform plan $end",
   go = "go run ./..."
 }
 
@@ -48,7 +48,7 @@ code_runner.setup({
   --   float_hl = "CodeRunner",
   --   border_hl = "CodeRunnerBorder",
   -- },
-    -- choose default mode (valid term, tab, float, toggle, buf)
+  -- choose default mode (valid term, tab, float, toggle, buf)
   mode = 'term',
   focus = true,
   startinsert = true,

@@ -146,7 +146,7 @@ lspconfig.pyright.setup(python_config)
 
 -- lua config
 
-lspconfig.sumneko_lua.setup(lua_config)
+lspconfig.lua_ls.setup(lua_config)
 
 -- source-kit config
 
