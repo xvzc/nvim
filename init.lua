@@ -1,9 +1,19 @@
 vim.cmd('filetype plugin indent on')
 
-local ok, _ = pcall(require, "impatient")
-if not ok then
-  print('impatient is not installed. run :PackerInstall')
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
+
+vim.g.mapleader = " "
 
 require('plugins')
 require('clipboard')

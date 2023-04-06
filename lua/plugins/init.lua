@@ -1,202 +1,189 @@
-local packer = nil
-local profile = require('profile')
-local util = require('packer.util')
-
-return require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'
-  use 'lewis6991/impatient.nvim'
-
-  use {
+require("lazy").setup({
+  performance = {
+    cache = {
+      enabled = true,
+      -- disable_events = {},
+    },
+  },
+  -- {
+  --   'lewis6991/impatient.nvim',
+  --   config = function() pcall(require, "impatient") end
+  -- },
+  { 'nvim-lua/plenary.nvim' },
+  {
+    'williamboman/mason.nvim',
+    dependencies = {
+      "williamboman/mason-lspconfig.nvim",
+      config = function() require('plugins.mason') end,
+    }
+  },
+  {
     'neovim/nvim-lspconfig',
     config = function() require('plugins.nvim-lspconfig') end,
-    event = 'BufWinEnter',
-  }
-  use {
-    "glepnir/lspsaga.nvim",
-    branch = "main",
-    config = function() require('plugins.lspsaga') end,
-    event = 'BufWinEnter',
-    after = 'mason.nvim'
-  }
-  use {
-    'jose-elias-alvarez/null-ls.nvim',
-    config = function() require('plugins.null-ls') end,
-    event = 'BufWinEnter',
-    after = 'mason.nvim'
-  }
-  use {
-    'williamboman/mason.nvim',
-    event = "BufWinEnter",
-  }
-  use {
-    "williamboman/mason-lspconfig.nvim",
-    config = function() require('plugins.mason') end,
-    after = 'mason.nvim'
-  }
-
+    dependencies = {
+      {
+        "glepnir/lspsaga.nvim",
+        branch = "main",
+        event = "VeryLazy",
+        config = function() require('plugins.lspsaga') end,
+      },
+      {
+        'jose-elias-alvarez/null-ls.nvim',
+        config = function() require('plugins.null-ls') end,
+        event = "VeryLazy",
+      },
+    }
+  },
   ---------------------------------------------------
   -- AUTO COMPLETION                               --
   ---------------------------------------------------
-  use {
+  {
     'SirVer/ultisnips',
     config = function() require('plugins.ultisnips') end,
-    event = 'VimEnter',
-  }
-  use {
+    event = 'VeryLazy',
+  },
+  {
     'hrsh7th/nvim-cmp',
     config = function() require('plugins.nvim-cmp') end,
-    event = 'VimEnter',
-  }
-  use {
-    'windwp/nvim-autopairs',
-    config = function()
-      require('plugins.nvim-autopairs')
-    end,
-    after = 'nvim-cmp',
-  }
-  use {
-    'hrsh7th/cmp-buffer',
-    after = 'nvim-cmp',
-  }
-  use {
-    'hrsh7th/cmp-nvim-lsp',
-    after = 'nvim-cmp',
-  }
-  use {
-    'hrsh7th/cmp-nvim-lsp-signature-help',
-    after = 'nvim-cmp',
-  }
-  use {
-    'hrsh7th/cmp-path',
-    after = 'nvim-cmp',
-  }
-  use {
-    'hrsh7th/cmp-nvim-lua',
-    after = 'nvim-cmp',
-  }
-  use {
-    'lukas-reineke/cmp-under-comparator',
-    after = 'nvim-cmp',
-  }
-  use {
-    'hrsh7th/cmp-cmdline',
-    after = 'nvim-cmp',
-  }
-  use {
-    'hrsh7th/cmp-nvim-lsp-document-symbol',
-    after = 'nvim-cmp',
-  }
-  use {
-    'quangnguyen30192/cmp-nvim-ultisnips',
-    config = function() require('cmp_nvim_ultisnips').setup {} end,
-    after = 'nvim-cmp',
-  }
-
+    event = 'VeryLazy',
+    dependencies = {
+      {
+        'windwp/nvim-autopairs',
+        config = function()
+          require('plugins.nvim-autopairs')
+        end,
+      },
+      { 'hrsh7th/cmp-buffer', },
+      { 'hrsh7th/cmp-nvim-lsp', },
+      { 'hrsh7th/cmp-nvim-lsp-signature-help', },
+      { 'hrsh7th/cmp-path', },
+      { 'hrsh7th/cmp-nvim-lua', },
+      { 'lukas-reineke/cmp-under-comparator', },
+      { 'hrsh7th/cmp-cmdline', },
+      { 'hrsh7th/cmp-nvim-lsp-document-symbol', },
+      {
+        'quangnguyen30192/cmp-nvim-ultisnips',
+        config = function() require('cmp_nvim_ultisnips').setup {} end,
+      },
+    }
+  },
   ---------------------------------------------------
   -- SYNTAX                                        --
   ---------------------------------------------------
-  -- use { 'fatih/vim-go', ft = { 'go' } }
-  use { 'yuezk/vim-js', ft = { 'js' } }
-  use { 'othree/yajs.vim', ft = { 'js' } }
-  use { 'HerringtonDarkholme/yats.vim', ft = { 'js' } }
-  use { 'maxmellon/vim-jsx-pretty', ft = { 'jsx' } }
-  use { 'iamcco/markdown-preview.nvim', ft = { 'md' }, }
-  use { 'hashivim/vim-terraform', ft = { 'tf', 'terraform' }, }
-  use {
+  --  { 'fatih/vim-go', ft = { 'go' } }
+  { 'yuezk/vim-js',                 ft = { 'js' } },
+  { 'othree/yajs.vim',              ft = { 'js' } },
+  { 'HerringtonDarkholme/yats.vim', ft = { 'js' } },
+  { 'maxmellon/vim-jsx-pretty',     ft = { 'jsx' } },
+  { 'iamcco/markdown-preview.nvim', ft = { 'md' }, },
+  { 'hashivim/vim-terraform',       ft = { 'tf', 'terraform' }, },
+  {
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
-    event = 'VimEnter',
+    event = 'BufWinEnter',
     config = function() require('plugins.treesitter') end,
-  }
-
+  },
   ---------------------------------------------------
   -- THEME                                         --
   ---------------------------------------------------
-  use 'folke/tokyonight.nvim'
-  use 'morhetz/gruvbox'
-
+  {
+    'folke/tokyonight.nvim',
+    priority = 1000,
+    event = "VeryLazy"
+  },
+  {
+    'morhetz/gruvbox',
+    priority = 1000,
+    event = "VeryLazy"
+  },
   ---------------------------------------------------
   -- UTILS                                         --
   ---------------------------------------------------
-  use {
-    'xvzc/skeleton.nvim',
-    config = function() require('plugins.skeleton') end,
-  }
-  use {
+  {
     'farmergreg/vim-lastplace',
     config = function() require('plugins.vim-lastplace') end,
-    event = "BufWinEnter",
-  }
-  use {
+  },
+  {
+    'xvzc/skeleton.nvim',
+    config = function() require('plugins.skeleton') end,
+    event = "VeryLazy"
+  },
+  {
     'glepnir/dashboard-nvim',
     config = function() require('plugins.dashboard-nvim') end,
     event = "VimEnter"
-  }
-  use {
+  },
+  {
     'numToStr/Comment.nvim',
-    event = 'VimEnter',
     config = function() require('plugins.comment') end,
-  }
-  use { 'tpope/vim-fugitive', event = 'VimEnter', }
-  use { 'godlygeek/tabular', event = 'VimEnter', }
-  use {
+    event = "VeryLazy",
+  },
+  { 'tpope/vim-fugitive', event = 'VeryLazy', },
+  { 'godlygeek/tabular',  event = 'VeryLazy', },
+  {
     'lewis6991/gitsigns.nvim',
-    event = 'VimEnter',
     config = function() require('plugins.gitsigns') end,
-  }
-  use {
+    event = "VeryLazy",
+  },
+  {
     'easymotion/vim-easymotion',
-    event = 'VimEnter',
     config = function() require('plugins.easymotion') end,
-  }
-  use {
+    event = "VeryLazy",
+  },
+  {
     'tpope/vim-surround',
-    event = 'VimEnter',
     config = function() require('plugins.vim-surround') end,
-  }
-  use {
+    event = "VeryLazy",
+  },
+  {
     'kdheepak/lazygit.nvim',
-    event = 'VimEnter',
     config = function() require('plugins.lazygit') end,
-  }
-  use {
+    event = "VeryLazy",
+  },
+  {
     'akinsho/toggleterm.nvim',
-    event = 'VimEnter',
     config = function() require('plugins.toggleterm') end,
-  }
-  use {
+    event = "VeryLazy",
+  },
+  {
     'lukas-reineke/indent-blankline.nvim',
-    event = 'VimEnter',
     config = function() require('plugins.indent-blankline') end,
-  }
-  use {
+    event = "BufWinEnter",
+  },
+  { "nvim-tree/nvim-web-devicons", lazy = true },
+  {
     'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons' },
     config = function() require('plugins.lualine') end,
-    event = 'VimEnter',
-  }
-  use {
+    event = "BufWinEnter",
+  },
+  {
     'akinsho/bufferline.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons' },
-    event = 'BufWinEnter',
     config = function() require('plugins.bufferline') end,
-  }
-  use {
-    'kyazdani42/nvim-tree.lua',
-    tag = 'nightly', -- optional, updated every week. (see issue #1193)
-    requires = { 'kyazdani42/nvim-web-devicons', },
-    config = function() require('plugins.nvim-tree') end,
-  }
-  use {
+    event = "BufWinEnter",
+  },
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v2.x",
+    config = function() require('plugins.neo-tree') end,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+    },
+  },
+  -- {
+  --   'kyazdani42/nvim-tree.lua',
+  --   config = function() require('plugins.nvim-tree') end,
+  --   event = "VeryLazy",
+  -- },
+  {
     'ibhagwan/fzf-lua',
-    requires = { 'nvim-tree/nvim-web-devicons' },
-    event = 'VimEnter',
     config = function() require('plugins.fzf-lua') end,
-  }
-  use {
+    event = "VeryLazy",
+  },
+  {
     'CRAG666/code_runner.nvim',
-    requires = 'nvim-lua/plenary.nvim',
-    envet = 'VimEnter',
     config = function() require('plugins.code-runner') end,
-  }
-end)
+    event = "VeryLazy",
+  },
+})

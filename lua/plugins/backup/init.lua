@@ -5,35 +5,33 @@ local util = require('packer.util')
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'lewis6991/impatient.nvim'
+
   use {
     'neovim/nvim-lspconfig',
     config = function() require('plugins.nvim-lspconfig') end,
     event = 'BufWinEnter',
-    requires = {
-      'lspsaga.nvim',
-    }
   }
-  use({
+  use {
     "glepnir/lspsaga.nvim",
     branch = "main",
     config = function() require('plugins.lspsaga') end,
     event = 'BufWinEnter',
-  })
+    after = 'mason.nvim'
+  }
   use {
     'jose-elias-alvarez/null-ls.nvim',
     config = function() require('plugins.null-ls') end,
     event = 'BufWinEnter',
+    after = 'mason.nvim'
   }
   use {
     'williamboman/mason.nvim',
     event = "BufWinEnter",
-    requires = {
-      {
-        "williamboman/mason-lspconfig.nvim",
-        config = function() require('plugins.mason') end,
-        after = 'mason.nvim'
-      },
-    }
+  }
+  use {
+    "williamboman/mason-lspconfig.nvim",
+    config = function() require('plugins.mason') end,
+    after = 'mason.nvim'
   }
 
   ---------------------------------------------------
@@ -48,52 +46,50 @@ return require('packer').startup(function(use)
     'hrsh7th/nvim-cmp',
     config = function() require('plugins.nvim-cmp') end,
     event = 'VimEnter',
-    requires = {
-      {
-        'windwp/nvim-autopairs',
-        after = 'nvim-cmp',
-        config = function()
-          require('plugins.nvim-autopairs')
-        end
-      },
-      {
-        'hrsh7th/cmp-buffer',
-        after = 'nvim-cmp'
-      },
-      {
-        'hrsh7th/cmp-nvim-lsp',
-        after = 'nvim-cmp'
-      },
-      {
-        'hrsh7th/cmp-nvim-lsp-signature-help',
-        after = 'nvim-cmp'
-      },
-      {
-        'hrsh7th/cmp-path',
-        after = 'nvim-cmp'
-      },
-      {
-        'hrsh7th/cmp-nvim-lua',
-        after = 'nvim-cmp'
-      },
-      {
-        'lukas-reineke/cmp-under-comparator',
-        after = 'nvim-cmp'
-      },
-      {
-        'hrsh7th/cmp-cmdline',
-        after = 'nvim-cmp'
-      },
-      {
-        'hrsh7th/cmp-nvim-lsp-document-symbol',
-        after = 'nvim-cmp'
-      },
-      {
-        'quangnguyen30192/cmp-nvim-ultisnips',
-        config = function() require('cmp_nvim_ultisnips').setup {} end,
-        after = 'nvim-cmp'
-      },
-    },
+  }
+  use {
+    'windwp/nvim-autopairs',
+    config = function()
+      require('plugins.nvim-autopairs')
+    end,
+    after = 'nvim-cmp',
+  }
+  use {
+    'hrsh7th/cmp-buffer',
+    after = 'nvim-cmp',
+  }
+  use {
+    'hrsh7th/cmp-nvim-lsp',
+    after = 'nvim-cmp',
+  }
+  use {
+    'hrsh7th/cmp-nvim-lsp-signature-help',
+    after = 'nvim-cmp',
+  }
+  use {
+    'hrsh7th/cmp-path',
+    after = 'nvim-cmp',
+  }
+  use {
+    'hrsh7th/cmp-nvim-lua',
+    after = 'nvim-cmp',
+  }
+  use {
+    'lukas-reineke/cmp-under-comparator',
+    after = 'nvim-cmp',
+  }
+  use {
+    'hrsh7th/cmp-cmdline',
+    after = 'nvim-cmp',
+  }
+  use {
+    'hrsh7th/cmp-nvim-lsp-document-symbol',
+    after = 'nvim-cmp',
+  }
+  use {
+    'quangnguyen30192/cmp-nvim-ultisnips',
+    config = function() require('cmp_nvim_ultisnips').setup {} end,
+    after = 'nvim-cmp',
   }
 
   ---------------------------------------------------
