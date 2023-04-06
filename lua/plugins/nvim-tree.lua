@@ -24,5 +24,5 @@ require("nvim-tree").setup({
   },
 })
 
-
 util.nmap('<leader>e', ':NvimTreeToggle<cr>', { silent = true, noremap = true })
+
