@@ -82,6 +82,10 @@ require("lazy").setup({
     run = ":TSUpdate",
     event = 'BufWinEnter',
     config = function() require('plugins.treesitter') end,
+    dependencies = {
+      tag = "*",
+      'nvim-treesitter/nvim-treesitter-textobjects'
+    }
   },
   ---------------------------------------------------
   -- THEME                                         --

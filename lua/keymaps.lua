@@ -13,6 +13,7 @@ util.nmap('<leader>d', '"+d', silent_noremap)
 util.vmap('<leader>d', '"+d', silent_noremap)
 util.nmap('<leader>D', '"+D', silent_noremap)
 
+-- select
 util.nmap('<leader>p', '"+p', silent_noremap)
 util.nmap('<F5>', '<C-l>', silent_noremap)
 util.nmap('<leader>a', 'gg<S-v><S-g>', silent_noremap)
@@ -21,8 +22,6 @@ util.nmap('<leader>a', 'gg<S-v><S-g>', silent_noremap)
 util.nmap('[d', vim.diagnostic.goto_prev, { noremap = true, silent = true })
 util.nmap(']d', vim.diagnostic.goto_next, { noremap = true, silent = true })
 util.nmap('<C-s>', ':w<CR>', { noremap = true, silent = true })
--- vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
--- vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 
 -- move lines
 -- global.nmap('<C-k>', 'm`:m--<CR>==``', silent_noremap)
