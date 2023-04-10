@@ -71,19 +71,19 @@ require("lazy").setup({
   -- SYNTAX                                        --
   ---------------------------------------------------
   --  { 'fatih/vim-go', ft = { 'go' } }
-  { 'yuezk/vim-js',                 ft = { 'js' } },
-  { 'othree/yajs.vim',              ft = { 'js' } },
-  { 'HerringtonDarkholme/yats.vim', ft = { 'js' } },
-  { 'maxmellon/vim-jsx-pretty',     ft = { 'jsx' } },
-  { 'iamcco/markdown-preview.nvim', ft = { 'md' }, },
-  { 'hashivim/vim-terraform',       ft = { 'tf', 'terraform' }, },
+  { 'yuezk/vim-js',                  ft = { 'js' } },
+  { 'othree/yajs.vim',               ft = { 'js' } },
+  { 'HerringtonDarkholme/yats.vim',  ft = { 'js' } },
+  { 'maxmellon/vim-jsx-pretty',      ft = { 'jsx' } },
+  { 'iamcco/markdown-preview.nvim',  ft = { 'md' }, },
+  { 'hashivim/vim-terraform',        ft = { 'tf', 'terraform' }, },
+  -- { 'Vimjas/vim-python-pep8-indent', ft = { 'python' }, },
   {
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
     event = 'BufWinEnter',
     config = function() require('plugins.treesitter') end,
     dependencies = {
-      tag = "*",
       'nvim-treesitter/nvim-treesitter-textobjects'
     }
   },
@@ -175,6 +175,13 @@ require("lazy").setup({
       "MunifTanjim/nui.nvim",
     },
   },
+  -- {
+  --   "nvim-tree/nvim-tree.lua",
+  --   config = function() require('plugins.nvim-tree') end,
+  --   dependencies = {
+  --     "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+  --   },
+  -- },
   -- {
   --   'kyazdani42/nvim-tree.lua',
   --   config = function() require('plugins.nvim-tree') end,

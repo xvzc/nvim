@@ -30,7 +30,7 @@ require("neo-tree").setup({
     icon = {
       folder_closed = "",
       folder_open = "",
-      folder_empty = "ﰊ",
+      folder_empty = "",
       default = "*",
       highlight = "NeoTreeFileIcon"
     },
@@ -49,7 +49,6 @@ require("neo-tree").setup({
         modified  = "",
         deleted   = "✖",
         renamed   = "",
-
         -- Status type
         untracked = "",
         ignored   = "i",
@@ -103,7 +102,7 @@ require("neo-tree").setup({
   nesting_rules = {},
   filesystem = {
     filtered_items = {
-      visible = false, 
+      visible = false,
       hide_dotfiles = true,
       hide_gitignored = true,
       hide_hidden = true,
