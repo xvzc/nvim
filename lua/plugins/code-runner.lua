@@ -8,7 +8,7 @@ hi CodeRunnerBorder guifg=#949693 guibg=#1C2219
 
 local filetypes = {
   python = "python3 -u",
-  typescript = "deno run",
+  typescript = "yarn run ts-node",
   rust = "cd $dir && rustc $fileName && $dir/$fileNameWithoutExt",
   cpp = {
     "cd $dir",
