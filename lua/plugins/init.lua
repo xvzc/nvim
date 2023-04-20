@@ -34,9 +34,10 @@ require("lazy").setup({
       },
     }
   },
-  ---------------------------------------------------
-  -- AUTO COMPLETION                               --
-  ---------------------------------------------------
+
+-- ########################################################
+-- # AUTO COMPLETION                                      #
+-- ########################################################
   {
     'SirVer/ultisnips',
     config = function() require('plugins.ultisnips') end,
@@ -67,9 +68,10 @@ require("lazy").setup({
       },
     }
   },
-  ---------------------------------------------------
-  -- SYNTAX                                        --
-  ---------------------------------------------------
+
+-- ########################################################
+-- # SYNTAX                                               #
+-- ########################################################
   --  { 'fatih/vim-go', ft = { 'go' } }
   { 'yuezk/vim-js',                  ft = { 'js' } },
   { 'othree/yajs.vim',               ft = { 'js' } },
@@ -87,9 +89,10 @@ require("lazy").setup({
       'nvim-treesitter/nvim-treesitter-textobjects'
     }
   },
-  ---------------------------------------------------
-  -- THEME                                         --
-  ---------------------------------------------------
+
+-- ########################################################
+-- # THEME                                                #
+-- ########################################################
   {
     'folke/tokyonight.nvim',
     priority = 1000,
@@ -100,9 +103,10 @@ require("lazy").setup({
     priority = 1000,
     event = "VeryLazy"
   },
-  ---------------------------------------------------
-  -- UTILS                                         --
-  ---------------------------------------------------
+
+-- ########################################################
+-- # UTILS                                                #
+-- ########################################################
   {
     'farmergreg/vim-lastplace',
     config = function() require('plugins.vim-lastplace') end,
@@ -175,18 +179,6 @@ require("lazy").setup({
       "MunifTanjim/nui.nvim",
     },
   },
-  -- {
-  --   "nvim-tree/nvim-tree.lua",
-  --   config = function() require('plugins.nvim-tree') end,
-  --   dependencies = {
-  --     "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-  --   },
-  -- },
-  -- {
-  --   'kyazdani42/nvim-tree.lua',
-  --   config = function() require('plugins.nvim-tree') end,
-  --   event = "VeryLazy",
-  -- },
   {
     'ibhagwan/fzf-lua',
     config = function() require('plugins.fzf-lua') end,
