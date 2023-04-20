@@ -25,6 +25,7 @@ treesitter.setup({
     "cmake",
     "markdown",
     "gomod",
+    "sql",
   },
   indent = {
     enable = true,
