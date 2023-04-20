@@ -12,4 +12,3 @@ hi PmenuSel blend=0
 -- hi Cursor cterm=none gui=none guifg=#646466 ctermfg=black
 -- hi Cursor guifg=#121212 guibg=#afd700
 
-
