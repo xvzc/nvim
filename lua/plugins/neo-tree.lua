@@ -6,7 +6,7 @@ require("neo-tree").setup({
   close_if_last_window = true,
   popup_border_style = "rounded",
   enable_git_status = true,
-  enable_diagnostics = true,
+  enable_diagnostics = false,
   open_files_do_not_replace_types = { "terminal", "trouble", "qf" },
   sort_case_insensitive = false,
   sort_function = nil,
@@ -14,6 +14,7 @@ require("neo-tree").setup({
     container = {
       enable_character_fade = true
     },
+
     indent = {
       indent_size = 2,
       padding = 1, -- extra padding on left hand side
@@ -58,6 +59,7 @@ require("neo-tree").setup({
       }
     },
   },
+
   window = {
     position = "left",
     width = 40,
@@ -151,6 +153,7 @@ require("neo-tree").setup({
       },
     }
   },
+
   buffers = {
     follow_current_file = true,
     group_empty_dirs = true,

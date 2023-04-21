@@ -183,7 +183,7 @@ function commands.load()
         commands[selected[1]]()
       end,
       ['Tab'] = {
-        function(selected, _)
+        function(_, _)
           vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-n>', true, true, true), 'n')
         end,
       }
