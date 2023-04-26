@@ -25,6 +25,35 @@ local syscall = function(cmd)
   return s
 end
 
+function table_merge(...)
+  local tables_to_merge = { ... }
+  assert(#tables_to_merge > 1, "There should be at least two tables to merge them")
+
+  for k, t in ipairs(tables_to_merge) do
+    assert(type(t) == "table", string.format("Expected a table as function parameter %d", k))
+  end
+
+  local result = tables_to_merge[1]
+
+  for i = 2, #tables_to_merge do
+    local from = tables_to_merge[i]
+    for k, v in pairs(from) do
+      if type(k) == "number" then
+        table.insert(result, v)
+      elseif type(k) == "string" then
+        if type(v) == "table" then
+          result[k] = result[k] or {}
+          result[k] = table_merge(result[k], v)
+        else
+          result[k] = v
+        end
+      end
+    end
+  end
+
+  return result
+end
+
 local run_python = function()
   vim.cmd("silent w")
   local cur_buffer = vim.api.nvim_buf_get_name(0)
@@ -129,6 +158,7 @@ function util:new()
   self.find_lua_files = find_lua_files
   self.autocmd = vim.api.nvim_create_autocmd
   self.augroup = vim.api.nvim_create_augroup
+  self.table_merge = table_merge
 
   return self
 end

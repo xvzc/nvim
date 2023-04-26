@@ -166,12 +166,6 @@ lspconfig.tflint.setup {
   on_attach = on_attach,
 }
 
--- json config
-lspconfig.jsonls.setup({
-  capabilities = capabilities,
-  on_attach = on_attach,
-})
-
 -- until this issue solved: https://github.com/neovim/neovim/issues/20456
 vim.cmd [[
 augroup MyLuaHLBugFix
@@ -179,3 +173,9 @@ augroup MyLuaHLBugFix
   autocmd! ColorScheme,VimEnter * highlight! link luaParenError Normal | highlight! link luaError Normal
 augroup END
 ]]
+
+local M = {
+  on_attach = on_attach
+}
+
+return M
