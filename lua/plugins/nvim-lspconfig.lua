@@ -155,6 +155,7 @@ lspconfig.tsserver.setup {
   }
 }
 
+
 -- terraform config
 lspconfig.terraformls.setup {
   capabilities = capabilities,

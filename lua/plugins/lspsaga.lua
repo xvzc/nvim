@@ -41,7 +41,6 @@ saga.setup({
     confirm = '<CR>',
     in_select = true,
   },
-
   lightbulb = {
     enable = true,
     enable_in_insert = true,
@@ -55,5 +54,18 @@ saga.setup({
   colors = {
     --float window normal background color
     normal_bg = '#1d1536',
+  },
+  finder = {
+    max_height = 0.5,
+    min_width = 30,
+    force_max_height = false,
+    keys = {
+      jump_to = 'p',
+      expand_or_jump = '<CR>',
+      vsplit = 'v',
+      split = 's',
+      quit = { 'q', '<ESC>' },
+      close_in_preview = '<ESC>',
+    },
   },
 })

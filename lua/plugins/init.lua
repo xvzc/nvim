@@ -34,10 +34,9 @@ require("lazy").setup({
       },
     }
   },
-
--- ########################################################
--- # AUTO COMPLETION                                      #
--- ########################################################
+  -- ########################################################
+  -- # AUTO COMPLETION                                      #
+  -- ########################################################
   {
     'SirVer/ultisnips',
     config = function() require('plugins.ultisnips') end,
@@ -68,17 +67,16 @@ require("lazy").setup({
       },
     }
   },
-
--- ########################################################
--- # SYNTAX                                               #
--- ########################################################
+  -- ########################################################
+  -- # SYNTAX                                               #
+  -- ########################################################
   --  { 'fatih/vim-go', ft = { 'go' } }
-  { 'yuezk/vim-js',                  ft = { 'js' } },
-  { 'othree/yajs.vim',               ft = { 'js' } },
-  { 'HerringtonDarkholme/yats.vim',  ft = { 'js' } },
-  { 'maxmellon/vim-jsx-pretty',      ft = { 'jsx' } },
-  { 'iamcco/markdown-preview.nvim',  ft = { 'md' }, },
-  { 'hashivim/vim-terraform',        ft = { 'tf', 'terraform' }, },
+  { 'yuezk/vim-js',                 ft = { 'js' } },
+  { 'othree/yajs.vim',              ft = { 'js' } },
+  { 'HerringtonDarkholme/yats.vim', ft = { 'js' } },
+  { 'maxmellon/vim-jsx-pretty',     ft = { 'jsx' } },
+  { 'iamcco/markdown-preview.nvim', ft = { 'md' }, },
+  { 'hashivim/vim-terraform',       ft = { 'tf', 'terraform' }, },
   -- { 'Vimjas/vim-python-pep8-indent', ft = { 'python' }, },
   {
     "nvim-treesitter/nvim-treesitter",
@@ -89,10 +87,9 @@ require("lazy").setup({
       'nvim-treesitter/nvim-treesitter-textobjects'
     }
   },
-
--- ########################################################
--- # THEME                                                #
--- ########################################################
+  -- ########################################################
+  -- # THEME                                                #
+  -- ########################################################
   {
     'folke/tokyonight.nvim',
     priority = 1000,
@@ -103,10 +100,9 @@ require("lazy").setup({
     priority = 1000,
     event = "VeryLazy"
   },
-
--- ########################################################
--- # UTILS                                                #
--- ########################################################
+  -- ########################################################
+  -- # UTILS                                                #
+  -- ########################################################
   {
     'farmergreg/vim-lastplace',
     config = function() require('plugins.vim-lastplace') end,

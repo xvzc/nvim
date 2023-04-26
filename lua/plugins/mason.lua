@@ -25,10 +25,11 @@ require("mason").setup({
 
 local mason_registry = require('mason-registry')
 local ensure_installed = {
+  -- 'prettierd',
+  -- 'eslint_d',
   'json-lsp',
   'black',
   'clangd',
-  'eslint_d',
   'fixjson',
   'goimports',
   'golangci-lint',
@@ -36,7 +37,6 @@ local ensure_installed = {
   'gomodifytags',
   'gopls',
   'lua-language-server',
-  'prettierd',
   'pyright',
   'rust-analyzer',
   'rustfmt',
