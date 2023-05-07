@@ -1,5 +1,9 @@
 local null_ls = require('null-ls')
 
+local diagnostics = {
+  null_ls.builtins.diagnostics.eslint_d.with {}
+}
+
 local formatting = {
   null_ls.builtins.formatting.prettierd.with {
     disabled_filetypes = { "json" }
@@ -15,10 +19,7 @@ local formatting = {
   null_ls.builtins.formatting.black.with {},
   null_ls.builtins.formatting.gofmt.with {},
   null_ls.builtins.formatting.goimports.with {},
-}
-
-local diagnostics = {
-  null_ls.builtins.diagnostics.eslint_d.with {}
+  null_ls.builtins.formatting.sqlfluff.with {},
 }
 
 local code_actions = {

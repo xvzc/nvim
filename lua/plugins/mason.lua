@@ -25,8 +25,8 @@ require("mason").setup({
 
 local mason_registry = require('mason-registry')
 local ensure_installed = {
-  -- 'prettierd',
-  -- 'eslint_d',
+  'prettierd',
+  'eslint_d',
   'json-lsp',
   'black',
   'clangd',

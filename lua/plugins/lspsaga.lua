@@ -37,7 +37,7 @@ saga.setup({
   rename = {
     quit = '<ESC>',
     exec = '<CR>',
-    mark = 'x',
+    mark = 'i',
     confirm = '<CR>',
     in_select = true,
   },
