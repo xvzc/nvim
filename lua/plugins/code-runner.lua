@@ -54,7 +54,7 @@ code_runner.setup({
   startinsert = true,
   term = {
     position = "bot",
-    size = 10,
+    size = 15,
   },
   filetype_path = "",
   project_path = "",

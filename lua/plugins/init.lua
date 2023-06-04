@@ -65,6 +65,10 @@ require("lazy").setup({
         'quangnguyen30192/cmp-nvim-ultisnips',
         config = function() require('cmp_nvim_ultisnips').setup {} end,
       },
+      {
+        'abecodes/tabout.nvim',
+        config = function() require('plugins.tabout') end,
+      }
     }
   },
   -- ########################################################
