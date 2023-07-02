@@ -5,10 +5,10 @@ require("lazy").setup({
       -- disable_events = {},
     },
   },
-  -- {
-  --   'lewis6991/impatient.nvim',
-  --   config = function() pcall(require, "impatient") end
-  -- },
+  {
+    'lewis6991/impatient.nvim',
+    config = function() pcall(require, "impatient") end
+  },
   { 'nvim-lua/plenary.nvim' },
   {
     'williamboman/mason.nvim',
@@ -81,7 +81,6 @@ require("lazy").setup({
   { 'maxmellon/vim-jsx-pretty',     ft = { 'jsx' } },
   { 'iamcco/markdown-preview.nvim', ft = { 'md' }, },
   { 'hashivim/vim-terraform',       ft = { 'tf', 'terraform' }, },
-  -- { 'Vimjas/vim-python-pep8-indent', ft = { 'python' }, },
   {
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
@@ -117,11 +116,6 @@ require("lazy").setup({
     'farmergreg/vim-lastplace',
     config = function() require('plugins.vim-lastplace') end,
   },
-  -- {
-  --   'glepnir/template.nvim',
-  --   cmd = { 'Template', 'TemProject' },
-  --   config = function() require('plugins.template') end
-  -- },
   {
     'xvzc/skeleton.nvim',
     config = function() require('plugins.skeleton') end,
@@ -190,11 +184,11 @@ require("lazy").setup({
       "MunifTanjim/nui.nvim",
     },
   },
-  -- {
-  --   'ibhagwan/fzf-lua',
-  --   config = function() require('plugins.fzf-lua') end,
-  --   event = "VeryLazy",
-  -- },
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = require('plugins.todo-comments')
+  },
   {
     'nvim-telescope/telescope.nvim',
     config = function() require('plugins.telescope') end,

@@ -27,6 +27,8 @@ function profile:new()
   self.osid = get_osid()
   self.home = os.getenv('HOME')
   self.author = os.getenv("AUTHOR")
+  self.work_dir = os.getenv('WORK_DIR')
+  self.personal_dir = os.getenv("PERSONAL_DIR")
   if (self.author == nil or self.author == '') then
     self.author = "anonymous"
   end

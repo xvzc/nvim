@@ -26,13 +26,14 @@ treesitter.setup({
     "gomod",
     "sql",
     "terraform",
+    "org"
   },
   indent = {
     enable = true,
   },
   highlight = {
     enable = true,
-    -- additional_vim_regex_highlighting = false
+    additional_vim_regex_highlighting = { 'org' },
   },
   textobjects = {
     select = {

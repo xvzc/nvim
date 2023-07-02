@@ -132,6 +132,10 @@ command_center.add({
     desc = "neovim_search_in_buffer",
     cmd = "<CMD>Telescope current_buffer_fuzzy_find<CR>",
   },
+  {
+    desc = "neovim_todo",
+    cmd = "<CMD>TodoTelescope<CR>",
+  },
 })
 
 local buf_opt = { noremap = true, silent = true }
