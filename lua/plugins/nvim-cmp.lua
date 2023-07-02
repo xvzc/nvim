@@ -85,10 +85,6 @@ cmp.setup({
       vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
     end,
   },
-  window = {
-    completion = cmp.config.window.bordered(),
-    documentation = cmp.config.window.bordered(),
-  },
   mapping = cmp.mapping.preset.insert({
     ['<C-e>'] = cmp.mapping.scroll_docs(-2),
     ['<C-y>'] = cmp.mapping.scroll_docs(2),

@@ -17,7 +17,7 @@ vim.o.mousehide = true -- Hide the mouse cursor while typing
 vim.o.termguicolors = true
 
 vim.o.conceallevel = 1
-vim.o.background = 'dark'
+-- vim.o.background = 'dark'
 
 vim.o.cindent = true -- C sytle auto indent
 
@@ -36,7 +36,7 @@ vim.o.number = true
 -- gitgutter sign column
 vim.o.signcolumn = 'yes'
 vim.o.pumheight = 10
-vim.o.pumblend = 13
+vim.o.pumblend = 10
 
 -- vim.o.noshowmode = true
 vim.o.showtabline = 0

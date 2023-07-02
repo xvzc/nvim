@@ -104,6 +104,12 @@ require("lazy").setup({
     priority = 1000,
     event = "VeryLazy"
   },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
+    config = function() require('plugins.catpuccin') end,
+  },
   -- ########################################################
   -- # UTILS                                                #
   -- ########################################################
@@ -111,6 +117,11 @@ require("lazy").setup({
     'farmergreg/vim-lastplace',
     config = function() require('plugins.vim-lastplace') end,
   },
+  -- {
+  --   'glepnir/template.nvim',
+  --   cmd = { 'Template', 'TemProject' },
+  --   config = function() require('plugins.template') end
+  -- },
   {
     'xvzc/skeleton.nvim',
     config = function() require('plugins.skeleton') end,
@@ -179,10 +190,19 @@ require("lazy").setup({
       "MunifTanjim/nui.nvim",
     },
   },
+  -- {
+  --   'ibhagwan/fzf-lua',
+  --   config = function() require('plugins.fzf-lua') end,
+  --   event = "VeryLazy",
+  -- },
   {
-    'ibhagwan/fzf-lua',
-    config = function() require('plugins.fzf-lua') end,
-    event = "VeryLazy",
+    'nvim-telescope/telescope.nvim',
+    config = function() require('plugins.telescope') end,
+    dependencies = {
+      { 'nvim-lua/plenary.nvim' },
+      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+      { "FeiyouG/command_center.nvim" }
+    }
   },
   {
     'CRAG666/code_runner.nvim',

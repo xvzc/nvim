@@ -31,13 +31,13 @@ fzf_lua.setup {
 }
 
 local commands = {
-  ['Files'] = function()
+  ['find_files'] = function()
     fzf_lua.files({
       prompt = '>',
       preview_opts = vim.o.columns < 95 and 'hidden' or 'nohidden',
     })
   end,
-  ['Templates'] = function()
+  ['templates'] = function()
     local template_path = vim.fn.stdpath('config') .. '/templates'
     fzf_lua.files({
       prompt = '>',
@@ -59,110 +59,110 @@ local commands = {
       }
     })
   end,
-  ['Live grep'] = function()
+  ['find_in_files'] = function()
     fzf_lua.live_grep({
       prompt = '>',
       preview_opts = vim.o.columns < 95 and 'hidden' or 'nohidden',
     })
   end,
-  ['File commits'] = function()
+  ['git_file_commits'] = function()
     fzf_lua.git_bcommits({
       prompt = '>',
       preview_opts = vim.o.columns < 95 and 'hidden' or 'nohidden',
     })
   end,
-  ['Project commits'] = function()
+  ['git_project_commits'] = function()
     fzf_lua.git_commits({
       prompt = '>',
       preview_opts = vim.o.columns < 95 and 'hidden' or 'nohidden',
     })
   end,
-  ['Registers'] = function()
-    fzf_lua.registers({
-      prompt = '>',
-    })
-  end,
-  ['Command history'] = function()
-    fzf_lua.command_history({
-      prompt = '>',
-      preview_opts = vim.o.columns < 95 and 'hidden' or 'nohidden',
-    })
-  end,
-  ['Neovim commands'] = function()
-    fzf_lua.commands({
-      prompt = '>',
-      preview_opts = vim.o.columns < 95 and 'hidden' or 'nohidden',
-    })
-  end,
-  ['References'] = function()
+  ['lsp_references'] = function()
     fzf_lua.lsp_references({
       prompt = '>',
       preview_opts = vim.o.columns < 95 and 'hidden' or 'nohidden',
     })
   end,
-  ['LSP Definitions'] = function()
+  ['lsp_definitions'] = function()
     fzf_lua.lsp_definitions({
       prompt = '>',
       preview_opts = vim.o.columns < 95 and 'hidden' or 'nohidden',
     })
   end,
-  ['LSP Declarations'] = function()
+  ['lsp_declarations'] = function()
     fzf_lua.lsp_declarations({
       prompt = '>',
       preview_opts = vim.o.columns < 95 and 'hidden' or 'nohidden',
     })
   end,
-  ['LSP Implementations'] = function()
+  ['lsp_implementations'] = function()
     fzf_lua.lsp_implementations({
       prompt = '>',
       preview_opts = vim.o.columns < 95 and 'hidden' or 'nohidden',
     })
   end,
-  ['LSP Document diagnostics'] = function()
+  ['lsp_document_diagnostics'] = function()
     fzf_lua.lsp_document_diagnostics({
       prompt = '>',
       preview_opts = vim.o.columns < 95 and 'hidden' or 'nohidden',
     })
   end,
-  ['LSP Workspace diagnostics'] = function()
+  ['lsp_workspace_diagnostics'] = function()
     fzf_lua.lsp_workspace_diagnostics({
       prompt = '>',
       preview_opts = vim.o.columns < 95 and 'hidden' or 'nohidden',
     })
   end,
-  ['Quick fix'] = function()
+  ['lsp_quick_fix'] = function()
     fzf_lua.quickfix({
       prompt = '>',
       preview_opts = vim.o.columns < 95 and 'hidden' or 'nohidden',
     })
   end,
-  ['Tabs'] = function()
-    fzf_lua.tabs({
-      prompt = '>',
-      preview_opts = vim.o.columns < 95 and 'hidden' or 'nohidden',
-    })
-  end,
-  ['buffers'] = function()
-    fzf_lua.buffers({
-      prompt = '>',
-      preview_opts = vim.o.columns < 95 and 'hidden' or 'nohidden',
-    })
-  end,
-  ['Jumps'] = function()
-    fzf_lua.tabs({
-      prompt = '>',
-      preview_opts = vim.o.columns < 95 and 'hidden' or 'nohidden',
-    })
-  end,
-  ['Code actions'] = function()
+  ['lsp_code_actions'] = function()
     fzf_lua.lsp_code_actions({
       prompt = '>',
       preview_opts = vim.o.columns < 95 and 'hidden' or 'nohidden',
     })
   end,
-  ['Neovim configs'] = function()
+  ['neovim_tabs'] = function()
+    fzf_lua.tabs({
+      prompt = '>',
+      preview_opts = vim.o.columns < 95 and 'hidden' or 'nohidden',
+    })
+  end,
+  ['neovim_buffers'] = function()
+    fzf_lua.buffers({
+      prompt = '>',
+      preview_opts = vim.o.columns < 95 and 'hidden' or 'nohidden',
+    })
+  end,
+  ['neovim_jumps'] = function()
+    fzf_lua.tabs({
+      prompt = '>',
+      preview_opts = vim.o.columns < 95 and 'hidden' or 'nohidden',
+    })
+  end,
+  ['neovim_configs'] = function()
     fzf_lua.files({
       cwd = '~/.config/nvim',
+      prompt = '>',
+      preview_opts = vim.o.columns < 95 and 'hidden' or 'nohidden',
+    })
+  end,
+  ['neovim_registers'] = function()
+    fzf_lua.registers({
+      prompt = '>',
+    })
+  end,
+  ['neovim_command_history'] = function()
+    fzf_lua.command_history({
+      prompt = '>',
+      preview_opts = vim.o.columns < 95 and 'hidden' or 'nohidden',
+    })
+  end,
+  ['neovim_commands'] = function()
+    fzf_lua.commands({
       prompt = '>',
       preview_opts = vim.o.columns < 95 and 'hidden' or 'nohidden',
     })
@@ -197,3 +197,4 @@ util.nmap(
   commands.load,
   buf_opt
 )
+

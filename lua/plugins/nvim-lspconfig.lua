@@ -160,10 +160,12 @@ lspconfig.tsserver.setup {
 lspconfig.terraformls.setup {
   capabilities = capabilities,
   on_attach = on_attach,
+  filetypes = { "tf", "hcl", "terraform" },
 }
 lspconfig.tflint.setup {
   capabilities = capabilities,
   on_attach = on_attach,
+  filetypes = { "tf", "hcl", "terraform" },
 }
 
 -- until this issue solved: https://github.com/neovim/neovim/issues/20456

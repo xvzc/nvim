@@ -25,7 +25,7 @@ local syscall = function(cmd)
   return s
 end
 
-function table_merge(...)
+local function table_merge(...)
   local tables_to_merge = { ... }
   assert(#tables_to_merge > 1, "There should be at least two tables to merge them")
 
