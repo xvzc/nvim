@@ -1,10 +1,8 @@
 local util = require('util')
 
 local telescope = require('telescope')
-local themes = require('telescope.themes')
 local actions = require('telescope.actions')
 local command_center = require('command_center')
-
 
 local ivy = {
   prompt_prefix = '🔍 ',
@@ -15,8 +13,8 @@ local ivy = {
   },
   border = true,
   borderchars = {
-    prompt = { "─", " ", " ", " ", "─", "─", " ", " " },
-    results = { " " },
+    prompt = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+    results = { "─", " ", "─", "│", "├", "┤", "─", "└" },
     preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
   },
   results_title = false,
@@ -64,7 +62,9 @@ telescope.setup {
       prompt_title = "Actions",
       theme = function(opts)
         local theme = require("telescope.themes").command_center(opts)
-        theme.borderchars.prompt = ivy.borderchars.preview
+        theme.borderchars.prompt = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
+        theme.borderchars.results = { "─", "│", "─", "│", "├", "┤", "┘", "└" }
+        theme.borderchars.preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
         return theme
       end,
     }
@@ -140,4 +140,3 @@ util.nmap(
   "<CMD>Telescope command_center<CR>",
   buf_opt
 )
-
