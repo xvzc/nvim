@@ -2,7 +2,6 @@ require("lazy").setup({
   performance = {
     cache = {
       enabled = true,
-      -- disable_events = {},
     },
   },
   {
@@ -139,14 +138,15 @@ require("lazy").setup({
     event = "VeryLazy",
   },
   {
-    'easymotion/vim-easymotion',
-    config = function() require('plugins.easymotion') end,
+    'phaazon/hop.nvim',
+    config = function() require('plugins.hop') end,
     event = "VeryLazy",
   },
   {
-    'tpope/vim-surround',
-    config = function() require('plugins.vim-surround') end,
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
+    config = function() require("plugins.nvim-surround") end
   },
   {
     'kdheepak/lazygit.nvim',
@@ -156,6 +156,11 @@ require("lazy").setup({
   {
     'akinsho/toggleterm.nvim',
     config = function() require('plugins.toggleterm') end,
+    event = "VeryLazy",
+  },
+  {
+    'karb94/neoscroll.nvim',
+    config = function() require('plugins.neoscroll') end,
     event = "VeryLazy",
   },
   {
