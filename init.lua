@@ -1,3 +1,11 @@
+if vim.g.neovide then
+  vim.g.neovide_padding_top = 0
+  vim.g.neovide_padding_bottom = 0
+  vim.g.neovide_padding_right = 0
+  vim.g.neovide_padding_left = 0
+  vim.g.neovide_touch_deadzone = 6.0
+end
+
 vim.cmd('filetype plugin indent on')
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -20,4 +28,3 @@ require('clipboard')
 require('preferences')
 require('keymaps')
 require('styles')
-

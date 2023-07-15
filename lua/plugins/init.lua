@@ -35,6 +35,10 @@ require("lazy").setup({
         'simrat39/symbols-outline.nvim',
         config = function() require('plugins.symbols-outline') end,
       },
+      {
+        "smjonas/inc-rename.nvim",
+        config = function() require('inc_rename').setup()  end,
+      }
     }
   },
   -- ########################################################

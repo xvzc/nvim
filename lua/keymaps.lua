@@ -6,6 +6,11 @@ local silent_noremap_expr = { silent = true, noremap = true, expr = true }
 util.nmap('<leader>-', ':sp<CR><C-w>j', silent_noremap)
 util.nmap('<leader>_', ':vsp<CR><C-w>l', silent_noremap)
 
+util.nmap('<leader>h', '<C-w>h', silent_noremap)
+util.nmap('<leader>j', '<C-w>j', silent_noremap)
+util.nmap('<leader>k', '<C-w>k', silent_noremap)
+util.nmap('<leader>l', '<C-w>l', silent_noremap)
+
 util.nmap('<leader>y', '"+y', silent_noremap)
 util.vmap('<leader>y', '"+y', silent_noremap)
 

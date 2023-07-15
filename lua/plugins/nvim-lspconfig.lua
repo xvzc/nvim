@@ -59,7 +59,9 @@ local on_attach = function(client, bufnr)
 
   -- Code action
   util.vmap("<leader>ca", "<cmd>Lspsaga code_action<CR>", buf_opts)
-  util.nmap("<leader>rn", "<cmd>Lspsaga rename ++project<CR>", buf_opts)
+  util.nmap("<leader>rn", function()
+    return ":IncRename " .. vim.fn.expand("<cword>")
+  end, { expr = true, noremap = true, silent = true })
   util.nmap("<leader>i", "<cmd>Lspsaga show_line_diagnostics<CR>", buf_opts)
   util.nmap("[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", buf_opts)
   util.nmap("]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", buf_opts)
