@@ -1,21 +1,6 @@
 local saga = require('lspsaga')
 
 saga.setup({
-  outline = {
-    win_position = 'right',
-    win_with = '',
-    win_width = 30,
-    show_detail = true,
-    auto_preview = true,
-    auto_refresh = true,
-    auto_close = true,
-    custom_sort = nil,
-    keys = {
-      jump = '<CR>',
-      expand_collapse = 'u',
-      quit = '<ESC>',
-    },
-  },
   code_action = {
     num_shortcut = true,
     keys = {

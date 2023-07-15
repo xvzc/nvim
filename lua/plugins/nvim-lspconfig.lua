@@ -59,17 +59,16 @@ local on_attach = function(client, bufnr)
 
   -- Code action
   util.vmap("<leader>ca", "<cmd>Lspsaga code_action<CR>", buf_opts)
-  util.nmap("<leader>ca", "<cmd>Lspsaga code_action<CR>", buf_opts)
   util.nmap("<leader>rn", "<cmd>Lspsaga rename ++project<CR>", buf_opts)
   util.nmap("<leader>i", "<cmd>Lspsaga show_line_diagnostics<CR>", buf_opts)
   util.nmap("[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", buf_opts)
   util.nmap("]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", buf_opts)
-  util.nmap("<leader>o", "<cmd>Lspsaga outline<CR>", { silent = true })
-  util.nmap("<leader>h", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
+  util.nmap("<leader>o", "<cmd>SymbolsOutline<CR>", { noremap = true, silent = true })
+  util.nmap("<F1>", vim.lsp.buf.signature_help, { noremap = true, silent = true })
 
-  util.nmap('gd', vim.lsp.buf.definition, buf_opts)
-  util.nmap('gi', vim.lsp.buf.implementation, buf_opts)
-  util.nmap('K', vim.lsp.buf.signature_help, buf_opts)
+  -- util.nmap('gd', vim.lsp.buf.definition, buf_opts)
+  -- util.nmap('gi', vim.lsp.buf.implementation, buf_opts)
+  -- util.nmap('K', vim.lsp.buf.signature_help, buf_opts)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

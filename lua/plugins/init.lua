@@ -31,6 +31,10 @@ require("lazy").setup({
         config = function() require('plugins.null-ls') end,
         event = "VeryLazy",
       },
+      {
+        'simrat39/symbols-outline.nvim',
+        config = function() require('plugins.symbols-outline') end,
+      },
     }
   },
   -- ########################################################
@@ -153,11 +157,11 @@ require("lazy").setup({
     config = function() require('plugins.lazygit') end,
     event = "VeryLazy",
   },
-  {
-    'akinsho/toggleterm.nvim',
-    config = function() require('plugins.toggleterm') end,
-    event = "VeryLazy",
-  },
+  -- {
+  --   'akinsho/toggleterm.nvim',
+  --   config = function() require('plugins.toggleterm') end,
+  --   event = "VeryLazy",
+  -- },
   {
     'karb94/neoscroll.nvim',
     config = function() require('plugins.neoscroll') end,
