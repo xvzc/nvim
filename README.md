@@ -1,9 +1,7 @@
 # nvim
-Personal neovim config 
+Neovim config 
 
 # Prerequisite
-
-## pynvim
 ```
 pip install pynvim
 ```

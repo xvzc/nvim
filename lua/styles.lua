@@ -13,3 +13,9 @@
 -- hi Cursor guifg=#121212 guibg=#afd700
 
 vim.cmd.colorscheme "catppuccin"
+
+
+vim.cmd([[
+set winminheight=0
+hi WinSeparator guifg=#FFFFFF
+]])
