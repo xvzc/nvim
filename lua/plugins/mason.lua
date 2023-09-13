@@ -37,7 +37,7 @@ local ensure_installed = {
   'gomodifytags',
   'gopls',
   'lua-language-server',
-  'pyright',
+  'python-lsp-server',
   'rust-analyzer',
   'rustfmt',
   'terraform-ls',

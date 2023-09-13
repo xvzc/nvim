@@ -100,9 +100,20 @@ lspconfig.lua_ls.setup {
 }
 
 -- python config
-lspconfig.pyright.setup {
+lspconfig.pylsp.setup {
   capabilities = capabilities,
   on_attach = on_attach,
+  settings = {
+    pylsp = {
+      plugins = {
+        black = { enabled = true },
+        pycodestyle = {
+          ignore = { 'W391' },
+          maxLineLength = 100
+        }
+      }
+    }
+  }
 }
 
 

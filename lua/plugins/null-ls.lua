@@ -16,7 +16,6 @@ local formatting = {
       to_stdin = true,
     },
   },
-  null_ls.builtins.formatting.black.with {},
   null_ls.builtins.formatting.gofmt.with {},
   null_ls.builtins.formatting.goimports.with {},
   null_ls.builtins.formatting.sqlfluff.with {},
