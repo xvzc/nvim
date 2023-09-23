@@ -19,6 +19,10 @@ local formatting = {
   null_ls.builtins.formatting.gofmt.with {},
   null_ls.builtins.formatting.goimports.with {},
   null_ls.builtins.formatting.sqlfluff.with {},
+  null_ls.builtins.formatting.black.with({
+    extra_args = { "--line-length=80" }
+  }),
+  null_ls.builtins.formatting.isort,
 }
 
 local code_actions = {

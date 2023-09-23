@@ -1,5 +1,6 @@
 local lspconfig = require('lspconfig')
 local util = require('util')
+local List = require('plenary.collections.py_list')
 
 vim.diagnostic.config({
   float = {
@@ -24,10 +25,13 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     update_in_insert = false,
   })
 
+
 -- :help vim.lsp.diagnostic.on_publish_diagnostics
 local on_attach = function(client, bufnr)
   local buf_opts = { noremap = true, silent = true, buffer = bufnr }
-  if client.name == "tsserver" then
+
+  local ignores = List{"tsserver", "pylsp"}
+  if ignores:contains(client.name) then
     client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
   end
 

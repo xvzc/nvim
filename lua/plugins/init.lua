@@ -4,16 +4,18 @@ require("lazy").setup({
       enabled = true,
     },
   },
+  { 'nvim-lua/plenary.nvim' },
   {
     'lewis6991/impatient.nvim',
     config = function() pcall(require, "impatient") end
   },
-  { 'nvim-lua/plenary.nvim' },
   {
     'williamboman/mason.nvim',
     dependencies = {
-      "williamboman/mason-lspconfig.nvim",
-      config = function() require('plugins.mason') end,
+      {
+        "williamboman/mason-lspconfig.nvim",
+        config = function() require('plugins.mason') end,
+      },
     }
   },
   {
@@ -157,11 +159,11 @@ require("lazy").setup({
     config = function() require('plugins.lazygit') end,
     event = "VeryLazy",
   },
-  -- {
-  --   'akinsho/toggleterm.nvim',
-  --   config = function() require('plugins.toggleterm') end,
-  --   event = "VeryLazy",
-  -- },
+  {
+    'akinsho/toggleterm.nvim',
+    config = function() require('plugins.toggleterm') end,
+    event = "VeryLazy",
+  },
   {
     'karb94/neoscroll.nvim',
     config = function() require('plugins.neoscroll') end,
@@ -188,23 +190,24 @@ require("lazy").setup({
     branch = "v2.x",
     config = function() require('plugins.neo-tree') end,
     dependencies = {
-      "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim",
     },
   },
   {
     "folke/todo-comments.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
     opts = require('plugins.todo-comments')
   },
   {
     'nvim-telescope/telescope.nvim',
     config = function() require('plugins.telescope') end,
     dependencies = {
-      { 'nvim-lua/plenary.nvim' },
       { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-      { "FeiyouG/command_center.nvim" }
+      {
+        "FeiyouG/commander.nvim",
+        config = function() require('plugins.commander') end,
+        dependencies = { 'nvim-telescope/telescope.nvim', }
+      },
     }
   },
   {

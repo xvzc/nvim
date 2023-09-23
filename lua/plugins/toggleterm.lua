@@ -15,16 +15,16 @@ require('toggleterm').setup {
   close_on_exit = true,
   shell = vim.o.shell,
   highlights = {
-    Normal = {
-      guibg = "#1E2659",
-    },
-    NormalFloat = {
-      link = "1E2659"
-    },
-    FloatBorder = {
-      guifg = "#1E2659",
-      guibg = "#1E2659",
-    },
+    -- Normal = {
+    --   guibg = "1E2659",
+    -- },
+    -- NormalFloat = {
+    --   link = '1E2659'
+    -- },
+    -- FloatBorder = {
+    --   guifg = "<VALUE-HERE>",
+    --   guibg = "<VALUE-HERE>",
+    -- },
   },
 
   float_opts = {
