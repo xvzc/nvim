@@ -28,11 +28,11 @@ require("lazy").setup({
         event = "VeryLazy",
         config = function() require('plugins.lspsaga') end,
       },
-      {
-        'jose-elias-alvarez/null-ls.nvim',
-        config = function() require('plugins.null-ls') end,
-        event = "VeryLazy",
-      },
+      -- {
+      --   'jose-elias-alvarez/null-ls.nvim',
+      --   config = function() require('plugins.null-ls') end,
+      --   event = "VeryLazy",
+      -- },
       {
         'simrat39/symbols-outline.nvim',
         config = function() require('plugins.symbols-outline') end,
@@ -43,6 +43,14 @@ require("lazy").setup({
       }
     }
   },
+  {
+    "nvimdev/guard.nvim",
+    config = function() require('plugins.guard') end,
+    dependencies = {
+      "nvimdev/guard-collection",
+    },
+  },
+
   -- ########################################################
   -- # AUTO COMPLETION                                      #
   -- ########################################################

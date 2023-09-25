@@ -30,7 +30,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 local on_attach = function(client, bufnr)
   local buf_opts = { noremap = true, silent = true, buffer = bufnr }
 
-  local ignores = List{"tsserver", "pylsp"}
+  local ignores = List{"tsserver"}
   if ignores:contains(client.name) then
     client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
   end
@@ -51,10 +51,6 @@ local on_attach = function(client, bufnr)
     end,
     buffer = 0
   })
-
-  util.nmap('<C-l>', function(nr)
-    vim.lsp.buf.format({ async = true, bufnr = nr, })
-  end, buf_opts)
 
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
