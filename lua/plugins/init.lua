@@ -28,6 +28,7 @@ require("lazy").setup({
         event = "VeryLazy",
         config = function() require('plugins.lspsaga') end,
       },
+      { "nvim-tree/nvim-web-devicons", lazy = true },
       -- {
       --   'jose-elias-alvarez/null-ls.nvim',
       --   config = function() require('plugins.null-ls') end,
@@ -50,7 +51,6 @@ require("lazy").setup({
       "nvimdev/guard-collection",
     },
   },
-
   -- ########################################################
   -- # AUTO COMPLETION                                      #
   -- ########################################################
