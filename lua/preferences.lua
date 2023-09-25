@@ -38,6 +38,8 @@ vim.o.number = true
 vim.o.signcolumn = 'yes'
 vim.o.pumheight = 10
 vim.o.pumblend = 10
+vim.opt.listchars = { space = '_', tab = '>~', trail = ' ' }
+
 
 -- vim.o.noshowmode = true
 vim.o.showtabline = 0
