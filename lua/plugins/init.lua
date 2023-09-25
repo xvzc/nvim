@@ -107,21 +107,24 @@ require("lazy").setup({
   -- # THEME                                                #
   -- ########################################################
   {
-    'folke/tokyonight.nvim',
+    "rebelot/kanagawa.nvim",
     priority = 1000,
-    event = "VeryLazy"
+    config = function() require('plugins.kanagawa') end,
   },
-  {
-    'morhetz/gruvbox',
-    priority = 1000,
-    event = "VeryLazy"
-  },
-  {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    priority = 1000,
-    config = function() require('plugins.catpuccin') end,
-  },
+  -- {
+  --   "catppuccin/nvim",
+  --   name = "catppuccin",
+  --   priority = 1000,
+  --   config = function() require('plugins.catpuccin') end,
+  -- },
+  -- {
+  --   'folke/tokyonight.nvim',
+  --   priority = 1000,
+  -- },
+  -- {
+  --   'morhetz/gruvbox',
+  --   priority = 1000,
+  -- },
   -- ########################################################
   -- # UTILS                                                #
   -- ########################################################
