@@ -23,10 +23,6 @@ local center = {
     action = "lua require('telescope.builtin').oldfiles()"
   },
   {
-    desc = '  Empty Buffer          ',
-    action = 'enew',
-  },
-  {
     icon = '  ',
     desc = 'Current Directory     ',
     action = "lua require('telescope.builtin').find_files()"
