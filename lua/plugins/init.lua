@@ -180,11 +180,11 @@ require("lazy").setup({
     config = function() require('plugins.neoscroll') end,
     event = "VeryLazy",
   },
-  {
-    'lukas-reineke/indent-blankline.nvim',
-    config = function() require('plugins.indent-blankline') end,
-    event = "BufWinEnter",
-  },
+  -- {
+  --   'lukas-reineke/indent-blankline.nvim',
+  --   config = function() require('plugins.indent-blankline') end,
+  --   event = "BufWinEnter",
+  -- },
   { "nvim-tree/nvim-web-devicons", lazy = true },
   {
     'nvim-lualine/lualine.nvim',
