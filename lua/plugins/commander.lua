@@ -1,5 +1,6 @@
 local util = require('util')
 local commander = require('commander')
+
 commander.setup({
   integration = {
     telescope = {
@@ -7,6 +8,7 @@ commander.setup({
     }
   }
 })
+
 commander.add({
   {
     desc = "find_files",

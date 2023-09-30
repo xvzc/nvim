@@ -10,7 +10,7 @@ saga.setup({
     },
   },
   diagnostic = {
-    show_code_action = true,
+    show_code_action = false,
     show_source = true,
     jump_num_shortcut = true,
     keys = {
@@ -20,11 +20,13 @@ saga.setup({
     },
   },
   rename = {
-    quit = '<ESC>',
-    exec = '<CR>',
-    mark = 'i',
-    confirm = '<CR>',
     in_select = true,
+    keys = {
+      mark = 'i',
+      exec = '<CR>',
+      quit = '<ESC>',
+      go_action = 'g'
+    },
   },
   lightbulb = {
     enable = true,
@@ -45,12 +47,11 @@ saga.setup({
     min_width = 30,
     force_max_height = false,
     keys = {
-      jump_to = 'p',
-      expand_or_jump = '<CR>',
+      tabe = 't',
+      toggle_or_open = '<CR>',
       vsplit = 'v',
       split = 's',
       quit = { 'q', '<ESC>' },
-      close_in_preview = '<ESC>',
     },
   },
 })
