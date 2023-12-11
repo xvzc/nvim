@@ -2,8 +2,17 @@ local ft = require('guard.filetype')
 local util = require('util')
 
 -- Assuming you have guard-collection
-ft('python'):fmt('black')
-    :lint('pylint')
+ft('python')
+    :fmt('black')
+    :lint({
+      cmd = 'pylint',
+      args = '--init-hook'
+    })
+
+ft('cpp')
+    :fmt({
+      cmd = 'clang-format',
+    })
 
 -- -- Call setup() LAST!
 -- require('guard').setup({

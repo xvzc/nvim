@@ -1,12 +1,24 @@
 local util = require('util')
 local commander = require('commander')
+local common = require("plugins.telescope.common")
 
 commander.setup({
   integration = {
     telescope = {
       enable = true,
-    }
-  }
+      theme = require("telescope.themes").commander(common.theme.ivy)
+    },
+  },
+  separator = " ",
+  auto_replace_desc_with_cmd = false,
+  prompt_title = "Actions",
+  theme = function(opts)
+    local theme = require("telescope.themes").command_center(opts)
+    theme.borderchars.prompt = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
+    theme.borderchars.results = { "─", "│", "─", "│", "├", "┤", "┘", "└" }
+    theme.borderchars.preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
+    return theme
+  end,
 })
 
 commander.add({

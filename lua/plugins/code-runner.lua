@@ -6,35 +6,45 @@ hi CodeRunner guifg=#D0C8C8 guibg=#1C2219
 hi CodeRunnerBorder guifg=#949693 guibg=#1C2219
 ]]
 
-local filetypes = {
-  python = "python3 -u",
+local filetype = {
+  boj = "boj submit $fileName",
+  python = function()
+    if string.find(vim.api.nvim_buf_get_name(0), "/algorithms/boj") then
+      return "boj run $fileName"
+    end
+
+    return "python3 -u"
+  end,
   typescript = "yarn run ts-node",
   rust = "cd $dir && rustc $fileName && $dir/$fileNameWithoutExt",
-  cpp = {
-    "cd $dir",
-    "&&",
-    "g++ -std=c++17 -O2 -Wall -Wno-sign-compare -DLOCAL",
-    "$fileName -o $fileNameWithoutExt",
-    "&&",
-    "$dir/$fileNameWithoutExt",
-    "&&",
-    "rm $dir/$fileNameWithoutExt",
-  },
+  cpp = function()
+    if string.find(vim.api.nvim_buf_get_name(0), "/algorithms/boj") then
+      return "boj run $fileName"
+    end
+
+    local commands = {
+      "cd $dir",
+      "&&",
+      "g++ -std=c++17 -O2 -Wall -Wno-sign-compare -DLOCAL",
+      "$fileName -o $fileNameWithoutExt",
+      "&&",
+      "$dir/$fileNameWithoutExt &&",
+      "rm $dir/$fileNameWithoutExt",
+    }
+
+    return table.concat(commands, " ")
+  end,
+  -- cpp = {
+  --   "cd $dir &&",
+  --   "g++ -std=c++17 -O2 -Wall -Wno-sign-compare -DLOCAL $fileName -o $fileNameWithoutExt &&",
+  --   "$dir/$fileNameWithoutExt &&",
+  --   "rm $dir/$fileNameWithoutExt",
+  -- },
+  zsh = "zsh",
   sh = "bash",
   terraform = "terraform plan $end",
   go = "go run ./..."
 }
-
-function filetypes.stringify()
-  for k, v in pairs(filetypes) do
-    if type(v) == 'table' then
-      local command = table.concat(v, " ")
-      filetypes[k] = command
-    end
-  end
-
-  return filetypes
-end
 
 local ok, project = pcall(require, "project")
 if not ok then
@@ -58,9 +68,10 @@ code_runner.setup({
   },
   filetype_path = "",
   project_path = "",
-  filetype = filetypes.stringify(),
+  filetype = filetype,
   project = project,
 })
 
 local buf_opts = { noremap = true, silent = true }
 util.nmap('<C-M-r>', ':w<CR>:RunCode<CR>', buf_opts)
+util.nmap('<C-M-s>', ':w<CR>:RunCode boj<CR>', buf_opts)

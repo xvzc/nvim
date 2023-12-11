@@ -28,7 +28,6 @@ require("lazy").setup({
         event = "VeryLazy",
         config = function() require('plugins.lspsaga') end,
       },
-      { "nvim-tree/nvim-web-devicons", lazy = true },
       -- {
       --   'jose-elias-alvarez/null-ls.nvim',
       --   config = function() require('plugins.null-ls') end,
@@ -41,7 +40,15 @@ require("lazy").setup({
       {
         "smjonas/inc-rename.nvim",
         config = function() require('inc_rename').setup() end,
-      }
+      },
+      { "nvim-tree/nvim-web-devicons",  lazy = true },
+      { 'simrat39/rust-tools.nvim',     ft = { 'rust' } },
+      { 'yuezk/vim-js',                 ft = { 'js' } },
+      { 'othree/yajs.vim',              ft = { 'js' } },
+      { 'HerringtonDarkholme/yats.vim', ft = { 'js' } },
+      { 'maxmellon/vim-jsx-pretty',     ft = { 'jsx' } },
+      { 'iamcco/markdown-preview.nvim', ft = { 'md' }, },
+      { 'hashivim/vim-terraform',       ft = { 'tf', 'terraform' }, },
     }
   },
   {
@@ -62,7 +69,7 @@ require("lazy").setup({
   {
     'hrsh7th/nvim-cmp',
     config = function() require('plugins.nvim-cmp') end,
-    event = 'VeryLazy',
+    event = 'InsertEnter',
     dependencies = {
       {
         'windwp/nvim-autopairs',
@@ -82,24 +89,22 @@ require("lazy").setup({
         'quangnguyen30192/cmp-nvim-ultisnips',
         config = function() require('cmp_nvim_ultisnips').setup {} end,
       },
+      {
+        'abecodes/tabout.nvim',
+        config = function() require('plugins.tabout') end,
+      },
     }
   },
   -- ########################################################
-  -- # SYNTAX                                               #
+  -- # SYNTAX/LANGUAGES                                     #
   -- ########################################################
   --  { 'fatih/vim-go', ft = { 'go' } }
-  { 'yuezk/vim-js',                 ft = { 'js' } },
-  { 'othree/yajs.vim',              ft = { 'js' } },
-  { 'HerringtonDarkholme/yats.vim', ft = { 'js' } },
-  { 'maxmellon/vim-jsx-pretty',     ft = { 'jsx' } },
-  { 'iamcco/markdown-preview.nvim', ft = { 'md' }, },
-  { 'hashivim/vim-terraform',       ft = { 'tf', 'terraform' }, },
   {
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
     config = function() require('plugins.treesitter') end,
     dependencies = {
-      'nvim-treesitter/nvim-treesitter-textobjects'
+      'nvim-treesitter/nvim-treesitter-textobjects',
     }
   },
   -- ########################################################
@@ -146,8 +151,8 @@ require("lazy").setup({
     config = function() require('plugins.comment') end,
     event = "VeryLazy",
   },
-  { 'tpope/vim-fugitive', event = 'VeryLazy', },
-  { 'godlygeek/tabular',  event = 'VeryLazy', },
+  { 'tpope/vim-fugitive',   event = 'VeryLazy', },
+  { 'godlygeek/tabular',    event = 'VeryLazy', },
   {
     'lewis6991/gitsigns.nvim',
     config = function() require('plugins.gitsigns') end,
@@ -213,11 +218,6 @@ require("lazy").setup({
     config = function() require('plugins.telescope') end,
     dependencies = {
       { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-      {
-        "FeiyouG/commander.nvim",
-        config = function() require('plugins.commander') end,
-        dependencies = { 'nvim-telescope/telescope.nvim', }
-      },
     }
   },
   {

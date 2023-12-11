@@ -61,7 +61,7 @@ vim.o.undodir = profile.home .. '/.local/share/nvim/undo//'
 vim.cmd 'autocmd BufNewFile,BufRead * setlocal formatoptions-=cro'
 
 util.autocmd({ 'FileType' }, {
-  pattern = { 'vim', 'zsh', 'lua', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'sh', 'json' },
+  pattern = { 'vim', 'zsh', 'lua', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'sh', 'json', 'cpp' },
   callback = function()
     vim.cmd('set shiftwidth=2 tabstop=2')
   end

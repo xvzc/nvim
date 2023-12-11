@@ -8,7 +8,7 @@ require('bufferline').setup {
     left_trunc_marker = "",
     right_trunc_marker = "",
     max_name_length = 30,
-    max_prefix_length = 30, -- prefix used when a buffer is de-duplicated
+    max_prefix_length = 30,   -- prefix used when a buffer is de-duplicated
     tab_size = 20,
     diagnostics = "nvim_lsp", -- | "nvim_lsp" | "coc",
     diagnostics_update_in_insert = false,
@@ -29,6 +29,33 @@ require('bufferline').setup {
     buffer_selected = {
       italic = false,
     },
+    -- fill = {
+    --   fg = '#241e30',
+    --   bg = '#241e30',
+    --   underline = true
+    -- },
+    -- background = {
+    --   fg = '#241e30',
+    --   bg = '#241e30',
+    -- },
+    -- offset_separator = {
+    --   fg = '#241e30',
+    --   bg = '#241e30',
+    -- },
+    -- tab = {
+    --   fg = '<colour-value-here>',
+    --   bg = '<colour-value-here>',
+    -- },
+    -- tab_separator = {
+    --   fg = '<colour-value-here>',
+    --   bg = '<colour-value-here>',
+    -- },
+    -- tab_separator_selected = {
+    --   fg = '<colour-value-here>',
+    --   bg = '<colour-value-here>',
+    --   sp = '<colour-value-here>',
+    --   underline = '<colour-value-here>',
+    -- },
   }
 }
 

@@ -1,32 +1,32 @@
 local util = require('util')
 local cmp = require('cmp')
-
 local kind_icons = {
-  Text = "",
-  Method = "",
-  Function = "",
+  Text = "󰉿",
+  Method = "󰆧",
+  Function = "󰊕",
   Constructor = "",
-  Field = "ﰠ",
-  Variable = "",
-  Class = "ﴯ",
+  Field = "",
+  Variable = "󰀫",
+  Class = "󰠱",
   Interface = "",
   Module = "",
-  Property = "ﰠ",
-  Unit = "塞",
-  Value = "",
+  Property = "󰜢",
+  Unit = "󰑭",
+  Value = "󰎠",
   Enum = "",
-  Keyword = "",
+  Keyword = "󰌋",
   Snippet = "",
-  Color = "",
-  File = "",
-  Reference = "",
-  Folder = "",
-  EnumMember = "",
-  Constant = "",
-  Struct = "פּ",
+  Color = "󰏘",
+  File = "󰈙",
+  Reference = "",
+  Folder = "󰉋",
+  EnumMember = " ",
+  Constant = "󰏿",
+  Struct = "",
   Event = "",
-  Operator = "",
-  TypeParameter = "",
+  Operator = "󰆕",
+  TypeParameter = " ",
+  Misc = " ",
 }
 
 local sources = {
@@ -63,9 +63,9 @@ cmp.setup({
       vim_item.abbr = label
 
       if entry.source.name == 'nvim_lsp' then
-        vim_item.abbr = ' •' .. vim_item.abbr
-      else
-        vim_item.abbr = ' ' .. vim_item.abbr
+        vim_item.abbr = '•' .. vim_item.abbr
+        -- else
+        --   vim_item.abbr = '' .. vim_item.abbr
       end
 
       -- Source
@@ -119,6 +119,14 @@ cmp.setup({
   }),
   experimental = {
     ghost_text = false,
+  },
+  window = {
+    completion = cmp.config.window.bordered({
+      border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
+    }),
+    documentation = cmp.config.window.bordered({
+      border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
+    }),
   },
 })
 
