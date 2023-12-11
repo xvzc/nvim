@@ -37,7 +37,7 @@ vim.o.number = true
 -- gitgutter sign column
 vim.o.signcolumn = 'yes'
 vim.o.pumheight = 10
-vim.o.pumblend = 10
+vim.o.pumblend = 0
 vim.opt.listchars = { space = '_', tab = '>~', trail = ' ' }
 
 
@@ -63,7 +63,7 @@ vim.cmd 'autocmd BufNewFile,BufRead * setlocal formatoptions-=cro'
 util.autocmd({ 'FileType' }, {
   pattern = { 'vim', 'zsh', 'lua', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'sh', 'json', 'cpp' },
   callback = function()
-    vim.cmd('set shiftwidth=2 tabstop=2')
+    vim.cmd("set shiftwidth=2 tabstop=2")
   end
 })
 
