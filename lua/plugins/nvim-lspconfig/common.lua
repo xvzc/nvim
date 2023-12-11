@@ -9,6 +9,7 @@ local on_attach = function(client, bufnr)
   if ignores:contains(client.name) then
     client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
   end
+  client.server_capabilities.semanticTokensProvider = nil
 
   if client.server_capabilities.document_highlight then
     util.autocmd({ 'CursorHold', 'CursorHoldI' }, {

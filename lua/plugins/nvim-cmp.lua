@@ -120,14 +120,16 @@ cmp.setup({
   experimental = {
     ghost_text = false,
   },
-  window = {
-    completion = cmp.config.window.bordered({
-      border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
-    }),
-    documentation = cmp.config.window.bordered({
-      border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
-    }),
-  },
+  -- window = {
+  --   completion = cmp.config.window.bordered({
+  --     border = { "", "", "", "", "", "", "", "" },
+  --     winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None",
+  --   }),
+  --   documentation = cmp.config.window.bordered({
+  --     border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
+  --     winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None",
+  --   }),
+  -- },
 })
 
 cmp.setup.filetype('gitcommit', {
