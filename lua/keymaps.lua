@@ -29,8 +29,12 @@ util.nmap(']d', vim.diagnostic.goto_next, { noremap = true, silent = true })
 util.nmap('<C-s>', ':w<CR>', { noremap = true, silent = true })
 
 -- move lines
--- global.nmap('<C-k>', 'm`:m--<CR>==``', silent_noremap)
--- global.nmap('<C-j>', 'm`:m +1<CR>==``', silent_noremap)
+-- util.nmap('<C-j>', ':m .+1<CR>==', silent_noremap)
+-- util.nmap('<C-k>', ':m .-2<CR>==', silent_noremap)
+-- util.vmap('<C-j>', "om1om2:m '>+1<CR>`1V`2==`1V`2", silent_noremap)
+-- util.vmap('<C-k>', "om1om2:m '<-2<CR>`1V`2==`1V`2", silent_noremap)
+-- util.vmap("<C-j>", ":m '>+1<CR>gv", silent_noremap) -- move line up(v)
+-- util.vmap("<C-k>", ":m '<-2<CR>gv", silent_noremap) -- move line down(v)
 
 -- open file
 util.nmap('go', 'gf', silent_noremap)
