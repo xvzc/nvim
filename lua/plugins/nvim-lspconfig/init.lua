@@ -1,4 +1,4 @@
-local lspconfig = require('lspconfig')
+require('lspconfig')
 
 vim.diagnostic.config({
   float = {
@@ -22,18 +22,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     virtual_text = false,
     update_in_insert = false,
   })
-
-
--- require("plugins.nvim-lspconfig.lua")
--- require("plugins.nvim-lspconfig.python")
-
--- -- source-kit config
--- lspconfig.sourcekit.setup({
---   filetypes = { "swift", "objective-c", "objective-cpp" },
---   capabilities = capabilities,
---   on_attach = on_attach,
--- })
--- --
 
 local config_dir = vim.fn.stdpath "config" .. "/lua/plugins/nvim-lspconfig/languages"
 for _, file in ipairs(vim.fn.readdir(config_dir, [[v:val =~ '\.lua$']])) do

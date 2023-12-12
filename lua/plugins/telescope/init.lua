@@ -1,7 +1,6 @@
 local util = require('util')
 local telescope = require('telescope')
 local actions = require('telescope.actions')
-local custom = require('plugins.telescope.custom')
 local common = require("plugins.telescope.common")
 
 -- require("plugins.telescope.commander")
@@ -41,7 +40,11 @@ telescope.setup {
   },
 }
 
+local config_dir = vim.fn.stdpath "config" .. "/lua/plugins/telescope/custom"
+for _, file in ipairs(vim.fn.readdir(config_dir, [[v:val =~ '\.lua$']])) do
+  require('plugins.telescope.custom.' .. file:gsub('%.lua$', ''))
+end
+
 telescope.load_extension('fzf')
--- telescope.load_extension("commander")
 telescope.load_extension('skeleton')
 telescope.load_extension('todo-comments')

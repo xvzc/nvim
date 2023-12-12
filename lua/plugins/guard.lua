@@ -6,12 +6,13 @@ ft('python')
     :fmt('black')
     :lint({
       cmd = 'pylint',
-      args = '--init-hook'
+      args = { '--init-hook' }
     })
 
 ft('cpp')
     :fmt({
       cmd = 'clang-format',
+      args = { '-style=google' }
     })
 
 -- -- Call setup() LAST!
@@ -29,4 +30,4 @@ require('guard').setup({
   lsp_as_default_formatter = true,
 })
 
-util.nmap('<C-l>', '<cmd>GuardFmt<CR>', { noremap = true, silent = true })
+util.nmap('<C-l>', '<cmd>GuardFmt<CR>', { noremap = true })
