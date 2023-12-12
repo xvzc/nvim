@@ -48,11 +48,21 @@ util.nmap('<esc>', function()
 end, silent_noremap_expr)
 
 util.autocmd({ 'BufRead', 'BufNewFile' }, {
-  pattern = '**/baekJoon/*',
+  pattern = '**/algorithm/boj/*',
   callback = function()
     util.nmap(
       '<C-M-s>',
-      ':lua require("util").boj_submit()<CR>',
+      ':!boj submit',
+      silent_noremap)
+  end
+})
+
+util.autocmd({ 'BufRead', 'BufNewFile' }, {
+  pattern = '**/algorithm/boj/*',
+  callback = function()
+    util.nmap(
+      '<C-M-r>',
+      ':!boj run',
       silent_noremap)
   end
 })

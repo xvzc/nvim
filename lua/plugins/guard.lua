@@ -15,6 +15,8 @@ ft('cpp')
       args = { '-style=google' }
     })
 
+
+ft('typescript,javascript,typescriptreact'):fmt('prettier'):lint("eslint_d")
 -- -- Call setup() LAST!
 -- require('guard').setup({
 --     -- the only options for the setup function
