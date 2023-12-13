@@ -1,9 +1,5 @@
 local profile = require('profile')
 
-if profile.osid == 'mac' then
-  vim.cmd("lang en_US")
-end
-
 if profile.osid == 'linux-arch' or profile.osid == 'linux-ubuntu' then
   local clipboard = {}
 
