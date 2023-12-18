@@ -4,73 +4,90 @@ local builtin = require "telescope.builtin"
 local pickers = require "telescope.pickers"
 local finders = require "telescope.finders"
 local conf = require("telescope.config").values
-local util = require("util")
 local actions = require "telescope.actions"
 local action_state = require "telescope.actions.state"
 
 local commands = {
   {
-    name = "Find files",
+    name = "find files",
     func = builtin.find_files,
   },
   {
-    name = "Find all files",
+    name = "find all files",
     func = builtin.find_files,
     opts = {
       hidden = true
     }
   },
   {
-    name = "Find live grep",
+    name = "ripgrep",
     func = builtin.live_grep,
   },
   {
-    name = "Git buffer commits",
+    name = "git buffer commits",
     func = builtin.git_bcommits
   },
   {
-    name = "Git commits",
+    name = "git commits",
     func = builtin.git_commits
   },
   {
-    name = "Git stash",
+    name = "git stash",
     func = builtin.git_stash
   },
   {
-    name = "Git branches",
+    name = "git branches",
     func = builtin.git_branches
   },
   {
-    name = "LSP diagnostics",
-    func = builtin.lsp_diagnostics
+    name = "lsp diagnostics",
+    func = builtin.diagnostics
   },
   {
-    name = "LSP definitions",
+    name = "lsp definitions",
     func = builtin.lsp_definitions
   },
   {
-    name = "LSP references",
+    name = "lsp references",
     func = builtin.lsp_references
   },
   {
-    name = "LSP implementations",
+    name = "lsp implementations",
     func = builtin.implementations
   },
   {
-    name = "Misc registers",
+    name = "registers",
     func = builtin.registers
   },
   {
-    name = "Misc search in buffer",
+    name = "search in buffer",
     func = builtin.current_buffer_fuzzy_find
   },
   {
-    name = "Misc To-do",
+    name = "todo",
     func = telescope.extensions["todo-comments"].todo
   },
   {
-    name = "Misc Laod templates",
+    name = "load templates",
     func = telescope.extensions.skeleton.load_template,
+  },
+  {
+    name = "chezmoi",
+    func = telescope.extensions.chezmoi.find_files,
+  },
+  {
+    name = "edit snippets",
+    func = builtin.find_files,
+    opts = {
+      cwd = "~/.config/nvim/snippets"
+    }
+  },
+  {
+    name = "neovim config",
+    func = builtin.find_files,
+    opts = {
+      cwd = "~/.config/nvim"
+    }
   },
 }
 
@@ -107,7 +124,7 @@ local command_picker = function(opts)
       actions.select_default:replace(function()
         actions.close(prompt_bufnr)
         local selection = action_state.get_selected_entry()
-        selection.func(selection.opts)
+        selection.func(selection.opts or {})
       end)
       return true
     end,
@@ -117,7 +134,7 @@ end
 
 -- to execute the function
 local buf_opt = { noremap = true, silent = true }
-util.nmap(
+vim.keymap.set('n',
   '<C-g>',
   function() command_picker(common.theme.dropdown()) end,
   buf_opt

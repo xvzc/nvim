@@ -1,4 +1,3 @@
-local util = require('util')
 local cmp = require('cmp')
 local kind_icons = {
   Text = "󰉿",
@@ -44,6 +43,7 @@ local sources = {
 
 cmp.setup({
   preselect = cmp.PreselectMode.None,
+  mapping = require("plugins.nvim-cmp.mapping"),
   formatting = {
     fields = { "kind", "abbr", "menu" },
     format = function(entry, vim_item)
@@ -52,9 +52,10 @@ cmp.setup({
       -- Kind icons
       vim_item.kind = kind_icons[vim_item.kind]
 
+
       -- This concatonates the icons with the name of the item kind
       local MAX_LABEL_LENGTH = 20
-      local label = util.trim(vim_item.abbr)
+      local label = vim.trim(vim_item.abbr)
       if string.len(label) > MAX_LABEL_LENGTH then
         label = vim.fn.strcharpart(label, 0, MAX_LABEL_LENGTH) .. ".."
       end
@@ -85,35 +86,6 @@ cmp.setup({
       vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
     end,
   },
-  mapping = cmp.mapping.preset.insert({
-    ['<C-e>'] = cmp.mapping.scroll_docs(-2),
-    ['<C-y>'] = cmp.mapping.scroll_docs(2),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })
-        return
-      end
-
-      fallback()
-      -- available options
-      -- vim.call('UltiSnips#CanJumpForwards') == 1
-    end, { 'i' }),
-    ['<CR>'] = cmp.mapping(function(fallback)
-      if cmp.get_active_entry() then
-        cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace })
-      else
-        fallback()
-      end
-    end, { 'i' }),
-    ['<C-d>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.abort()
-      else
-        fallback()
-      end
-    end, { 'i' }),
-  }),
   sources = cmp.config.sources(sources, {
     { name = 'buffer' },
   }),

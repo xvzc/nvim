@@ -1,5 +1,5 @@
 local lspconfig = require("lspconfig")
-local common = require("plugins.nvim-lspconfig.common")
+local common = require("plugins.lspconfig.common")
 
 -- python config
 lspconfig.pylsp.setup {
@@ -9,6 +9,7 @@ lspconfig.pylsp.setup {
     pylsp = {
       plugins = {
         black = { enabled = true },
+        pylint = { enabled = true },
         pycodestyle = {
           ignore = { 'W391' },
           maxLineLength = 100
@@ -17,4 +18,3 @@ lspconfig.pylsp.setup {
     }
   }
 }
-

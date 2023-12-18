@@ -1,9 +1,5 @@
-local util = require('util')
-
 require("nvim-surround").setup {
-  -- Configuration here, or leave empty to use defaults
 }
 
-vim.cmd('nmap <leader>s ysiw') -- somehow not working with pure lua ..
-vim.cmd('vmap <leader>s S')
-
+vim.keymap.set('n', '<leader>s', 'ysiw', { silent = true, remap = true })
+vim.keymap.set('v', '<leader>s', 'S', {silent = true, remap = true})

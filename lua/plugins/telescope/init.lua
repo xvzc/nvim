@@ -1,35 +1,40 @@
-local util = require('util')
 local telescope = require('telescope')
 local actions = require('telescope.actions')
 local common = require("plugins.telescope.common")
 
--- require("plugins.telescope.commander")
-telescope.setup {
-  defaults = util.table_merge(
-    {
-      results_title = false,
-      preview_title = false,
-      mappings = {
-        i = {
-          ["<esc>"] = actions.close,
-          ["<C-s>"] = actions.cycle_previewers_next,
-          ["<C-a>"] = actions.cycle_previewers_prev,
-        },
+local function merge_config(opts)
+  opts.defaults = opts.defaults or {}
+  opts.theme = opts.theme or {}
+  return vim.tbl_deep_extend("force", opts.theme, opts.defaults)
+end
+
+local defaults = merge_config({
+  theme = common.theme.bottom_pane(),
+  defaults = {
+    results_title = false,
+    preview_title = false,
+    mappings = {
+      i = {
+        ["<esc>"] = actions.close,
+        ["<C-s>"] = actions.cycle_previewers_next,
+        ["<C-a>"] = actions.cycle_previewers_prev,
       },
-      vimgrep_arguments = {
-        "rg",
-        "--color=never",
-        "--no-heading",
-        "--with-filename",
-        "--line-number",
-        "--column",
-        "--smart-case",
-        "--trim" -- add this value
-      }
-    }, common.theme.bottom_pane()
-  ),
-  pickers = {
+    },
+    vimgrep_arguments = {
+      "rg",
+      "--color=never",
+      "--no-heading",
+      "--with-filename",
+      "--line-number",
+      "--column",
+      "--smart-case",
+      "--trim"
+    }
   },
+})
+
+telescope.setup {
+  defaults = defaults,
   extensions = {
     fzf = {
       fuzzy = true,
@@ -47,4 +52,6 @@ end
 
 telescope.load_extension('fzf')
 telescope.load_extension('skeleton')
+telescope.load_extension('chezmoi')
 telescope.load_extension('todo-comments')
+

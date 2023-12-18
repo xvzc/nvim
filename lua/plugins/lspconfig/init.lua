@@ -23,9 +23,9 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     update_in_insert = false,
   })
 
-local config_dir = vim.fn.stdpath "config" .. "/lua/plugins/nvim-lspconfig/languages"
+local config_dir = vim.fn.stdpath "config" .. "/lua/plugins/lspconfig/languages"
 for _, file in ipairs(vim.fn.readdir(config_dir, [[v:val =~ '\.lua$']])) do
-  require('plugins.nvim-lspconfig.languages.' .. file:gsub('%.lua$', ''))
+  require('plugins.lspconfig.languages.' .. file:gsub('%.lua$', ''))
 end
 
 -- until this issue solved: https://github.com/neovim/neovim/issues/20456

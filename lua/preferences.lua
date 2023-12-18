@@ -1,11 +1,8 @@
-local util = require('util')
-local profile = require('profile')
-
 vim.g.mapleader = ' '
 
 vim.o.undofile = true
 vim.o.encoding = 'UTF-8'
-vim.o.tenc = 'UTF-8' -- terminal's encoding
+-- vim.o.tenc = 'UTF-8' -- terminal's encoding
 
 vim.o.foldmethod = 'indent'
 vim.o.foldlevel = 99
@@ -53,30 +50,30 @@ vim.o.viminfo = "'100,<1000,s100,h"
 vim.o.sol = false
 vim.o.showmode = false
 
-vim.o.backupdir = profile.home .. '/.local/share/nvim/backup//'
-vim.o.directory = profile.home .. '/.local/share/nvim/backup//'
-vim.o.undodir = profile.home .. '/.local/share/nvim/undo//'
-
 -- no comment when adding a new line from a commented line
-vim.cmd 'autocmd BufNewFile,BufRead * setlocal formatoptions-=cro'
-
-util.autocmd({ 'FileType' }, {
-  pattern = { 'vim', 'zsh', 'lua', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'sh', 'json', 'cpp' },
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   callback = function()
-    vim.cmd("set shiftwidth=2 tabstop=2")
+    vim.opt_local.formatoptions:remove({"c", "r", "o"})
   end
 })
 
-util.autocmd({ 'BufRead', 'BufNewFile' }, {
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
   pattern = { '*/etc/nginx/*', '*/usr/local/nginx/conf/*', 'nginx.conf', '*.nginx', },
   callback = function()
-    vim.cmd('set ft=nginx')
+    vim.bo.filetype = 'nginx'
   end
 })
 
-util.autocmd({ 'BufRead', 'BufNewFile' }, {
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
   pattern = 'Dockerfile.*',
   callback = function()
-    vim.cmd('set ft=dockerfile')
+    vim.bo.filetype = 'dockerfile'
+  end
+})
+
+vim.api.nvim_create_autocmd({ 'BufEnter' }, {
+  pattern = '*.snippets',
+  callback = function()
+    vim.o.filetype = 'snippets'
   end
 })

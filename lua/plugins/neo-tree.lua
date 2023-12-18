@@ -1,7 +1,3 @@
-local util = require('util')
-
-util.nmap("<leader>e", ":NeoTreeFocusToggle<cr>", { silent = true })
-
 require("neo-tree").setup({
   close_if_last_window = true,
   popup_border_style = "rounded",
@@ -181,3 +177,5 @@ require("neo-tree").setup({
     }
   },
 })
+
+vim.keymap.set('n', "<leader>e", ":NeoTreeFocusToggle<cr>", { silent = true })

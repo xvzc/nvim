@@ -16,9 +16,6 @@ snippet mainn
 # #include <...>
 snippet inc
 	#include <${1:stdio}.h>
-# #include "..."
-snippet Inc
-	#include "${1:`vim_snippets#Filename("$1.h")`}"
 # ifndef...define...endif
 snippet ndef
 	#ifndef $1
@@ -27,25 +24,19 @@ snippet ndef
 # define
 snippet def
 	#define
+
 # ifdef...endif
 snippet ifdef
 	#ifdef ${1:FOO}
 		${2:#define }
 	#endif
+
 # if
 snippet #if
 	#if ${1:FOO}
 		${0:${VISUAL}}
 	#endif
-# header include guard
-snippet once
-	#ifndef ${1:`toupper(vim_snippets#Filename('$1_H', 'UNTITLED_H'))`}
 
-	#define $1
-
-	${0}
-
-	#endif /* end of include guard: $1 */
 # Disable C++ name mangling in C headers
 snippet nocxx
 	#ifdef __cplusplus

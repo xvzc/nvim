@@ -1,5 +1,3 @@
-local util = require('util')
-
 require("nvim-tree").setup({
   open_on_setup = false,
   sort_by = "case_sensitive",
@@ -24,5 +22,5 @@ require("nvim-tree").setup({
   },
 })
 
-util.nmap('<leader>e', ':NvimTreeToggle<cr>', { silent = true, noremap = true })
+vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<cr>', { silent = true, noremap = true })
 

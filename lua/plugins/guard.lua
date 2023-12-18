@@ -1,12 +1,10 @@
 local ft = require('guard.filetype')
-local util = require('util')
 
 -- Assuming you have guard-collection
 ft('python')
     :fmt('black')
     :lint({
       cmd = 'pylint',
-      args = { '--init-hook' }
     })
 
 ft('cpp')
@@ -17,6 +15,12 @@ ft('cpp')
 
 
 ft('typescript,javascript,typescriptreact'):fmt('prettier'):lint("eslint_d")
+
+ft('sh,bash,zsh')
+    :fmt('shfmt')
+    :lint({
+      cmd = 'shellcheck',
+    })
 -- -- Call setup() LAST!
 -- require('guard').setup({
 --     -- the only options for the setup function
@@ -31,5 +35,3 @@ require('guard').setup({
   -- Use lsp if no formatter was defined for this filetype
   lsp_as_default_formatter = true,
 })
-
-util.nmap('<C-l>', '<cmd>GuardFmt<CR>', { noremap = true })

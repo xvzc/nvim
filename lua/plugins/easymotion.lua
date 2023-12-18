@@ -1,14 +1,12 @@
-local test = require('util')
-
 vim.g.EasyMotion_do_mapping = 0
 vim.g.EasyMotion_keys = 'hklyuiopnmqwertzxcvbasdgjf'
 vim.g.EasyMotion_smartcase = 1
 
-test.nmap('<leader>f', '<Plug>(easymotion-s)', { silent = true, noremap = true })
-test.nmap('<leader><leader>f', '<Plug>(easymotion-s2)', { silent = true, noremap = true })
+vim.keymap.set('n', '<leader>f', '<Plug>(easymotion-s)', { silent = true, noremap = true })
+vim.keymap.set('n', '<leader><leader>f', '<Plug>(easymotion-s2)', { silent = true, noremap = true })
 
 
-test.autocmd('User', {
+vim.api.nvim_create_autocmd('User', {
   pattern = 'EasyMotionPromptBegin',
   callback = function()
     vim.diagnostic.disable()
@@ -16,7 +14,7 @@ test.autocmd('User', {
   end
 })
 
-test.autocmd('User', {
+vim.api.nvim_create_autocmd('User', {
   pattern = 'EasyMotionPromptEnd',
   callback = function()
     local timer = vim.loop.new_timer()

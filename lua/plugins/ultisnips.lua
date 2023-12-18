@@ -1,17 +1,10 @@
-local util = require('util')
-
--- vim.g.UltiSnipsExpandTrigger = '<Tab>'
--- vim.g.UltiSnipsJumpForwardTrigger = '<Tab>'
--- vim.g.UltiSnipsJumpBackwardTrigger = '<S-Tab>'
+vim.g.UltiSnipsExpandTrigger = '<Nop>'
+vim.g.UltiSnipsJumpForwardTrigger = '<Nop>'
+vim.g.UltiSnipsJumpBackwardTrigger = '<Nop>'
 --
-vim.g.UltiSnipsExpandTrigger = '<C-F19>'
-vim.g.UltiSnipsJumpForwardTrigger = '<C-F19>'
-vim.g.UltiSnipsJumpBackwardTrigger = '<C-F19>'
-
- --vim.g.UltiSnipsSnippetsDir = '~/.config/nvim/snippets'
- --vim.g.UltiSnipsSnippetDirectories = {'snippets'}
 vim.g.UltiSnipsEnableSnipMate = 1
-vim.g.UltiSnipsEditSplit="vertical"
+vim.g.UltiSnipsEditSplit = "vertical"
+vim.g.UltiSnipsSnippetStorageDirectoryForUltiSnipsEdit = "~/.config/nvim/snippets/"
 
 vim.cmd([[
 inoremap <silent><expr> <Tab>
@@ -39,9 +32,9 @@ function! CheckBackspace() abort
 endfunction
 ]])
 
-util.autocmd({ 'BufRead', 'BufNewFile' }, {
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
   pattern = '**/docker-compose.*',
   callback = function()
-      vim.cmd('UltiSnipsAddFiletypes yaml.docker-compose')
+    vim.cmd('UltiSnipsAddFiletypes yaml.docker-compose')
   end
 })

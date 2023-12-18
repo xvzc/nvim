@@ -1,5 +1,5 @@
 local lspconfig = require("lspconfig")
-local common = require("plugins.nvim-lspconfig.common")
+local common = require("plugins.lspconfig.common")
 
 -- terraform config
 lspconfig.terraformls.setup {

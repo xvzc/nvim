@@ -4,23 +4,22 @@ require("lazy").setup({
       enabled = true,
     },
   },
-  { 'nvim-lua/plenary.nvim' },
+  { 'nvim-lua/plenary.nvim', },
   {
     'lewis6991/impatient.nvim',
     config = function() pcall(require, "impatient") end
   },
   {
     'williamboman/mason.nvim',
+    config = function() require('plugins.mason') end,
+    priority = 1000,
     dependencies = {
-      {
-        "williamboman/mason-lspconfig.nvim",
-        config = function() require('plugins.mason') end,
-      },
+      { "williamboman/mason-lspconfig.nvim", },
     }
   },
   {
     'neovim/nvim-lspconfig',
-    config = function() require('plugins.nvim-lspconfig') end,
+    config = function() require('plugins.lspconfig') end,
     dependencies = {
       {
         "glepnir/lspsaga.nvim",
@@ -28,21 +27,18 @@ require("lazy").setup({
         event = "VeryLazy",
         config = function() require('plugins.lspsaga') end,
       },
-      -- {
-      --   'jose-elias-alvarez/null-ls.nvim',
-      --   config = function() require('plugins.null-ls') end,
-      --   event = "VeryLazy",
-      -- },
       {
         'simrat39/symbols-outline.nvim',
+        event = "VeryLazy",
         config = function() require('plugins.symbols-outline') end,
       },
       {
         "smjonas/inc-rename.nvim",
+        event = "VeryLazy",
         config = function() require('inc_rename').setup() end,
       },
-      { "nvim-tree/nvim-web-devicons",  lazy = true },
-      { 'simrat39/rust-tools.nvim',     ft = { 'rust' } },
+      { "nvim-tree/nvim-web-devicons",  event = "VeryLazy" },
+      -- { 'simrat39/rust-tools.nvim',     ft = { 'rust' } },
       { 'yuezk/vim-js',                 ft = { 'js' } },
       { 'othree/yajs.vim',              ft = { 'js' } },
       { 'HerringtonDarkholme/yats.vim', ft = { 'js' } },
@@ -53,6 +49,7 @@ require("lazy").setup({
   },
   {
     "nvimdev/guard.nvim",
+    event = "VeryLazy",
     config = function() require('plugins.guard') end,
     dependencies = {
       "nvimdev/guard-collection",
@@ -69,7 +66,7 @@ require("lazy").setup({
   {
     'hrsh7th/nvim-cmp',
     config = function() require('plugins.nvim-cmp') end,
-    event = 'InsertEnter',
+    event = 'VeryLazy',
     dependencies = {
       {
         'windwp/nvim-autopairs',
@@ -89,16 +86,11 @@ require("lazy").setup({
         'quangnguyen30192/cmp-nvim-ultisnips',
         config = function() require('cmp_nvim_ultisnips').setup {} end,
       },
-      -- {
-      --   'abecodes/tabout.nvim',
-      --   config = function() require('plugins.tabout') end,
-      -- },
     }
   },
   -- ########################################################
   -- # SYNTAX/LANGUAGES                                     #
   -- ########################################################
-  --  { 'fatih/vim-go', ft = { 'go' } }
   {
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
@@ -133,7 +125,25 @@ require("lazy").setup({
   -- # UTILS                                                #
   -- ########################################################
   {
+    "petertriho/nvim-scrollbar",
+    event = "VeryLazy",
+    config = function()
+      require("scrollbar").setup()
+    end
+  },
+  {
+    'xvzc/chezmoi.nvim',
+    -- dir = "~/_jry/chezmoi.nvim/",
+    event = "VeryLazy",
+    config = function() require('plugins.chezmoi') end,
+  },
+  {
+    'rcarriga/nvim-notify',
+    config = function() vim.notify = require("notify") end,
+  },
+  {
     "keaising/im-select.nvim",
+    event = "VeryLazy",
     config = function() require('plugins.im-select') end,
   },
   {
@@ -155,8 +165,8 @@ require("lazy").setup({
     config = function() require('plugins.comment') end,
     event = "VeryLazy",
   },
-  { 'tpope/vim-fugitive',   event = 'VeryLazy', },
-  { 'godlygeek/tabular',    event = 'VeryLazy', },
+  { 'tpope/vim-fugitive',    event = 'VeryLazy', },
+  { 'godlygeek/tabular',     event = 'VeryLazy', },
   {
     'lewis6991/gitsigns.nvim',
     config = function() require('plugins.gitsigns') end,
@@ -189,24 +199,20 @@ require("lazy").setup({
     config = function() require('plugins.neoscroll') end,
     event = "VeryLazy",
   },
-  -- {
-  --   'lukas-reineke/indent-blankline.nvim',
-  --   config = function() require('plugins.indent-blankline') end,
-  --   event = "BufWinEnter",
-  -- },
   { "nvim-tree/nvim-web-devicons", lazy = true },
-  {
-    'nvim-lualine/lualine.nvim',
-    config = function() require('plugins.lualine') end,
-    event = "BufWinEnter",
-  },
   {
     'akinsho/bufferline.nvim',
     config = function() require('plugins.bufferline') end,
-    event = "BufWinEnter",
+    event = "VimEnter",
+  },
+  {
+    'nvim-lualine/lualine.nvim',
+    config = function() require('plugins.lualine') end,
+    event = "VeryLazy",
   },
   {
     "nvim-neo-tree/neo-tree.nvim",
+    event = "VeryLazy",
     branch = "v2.x",
     config = function() require('plugins.neo-tree') end,
     dependencies = {
@@ -216,10 +222,12 @@ require("lazy").setup({
   },
   {
     "folke/todo-comments.nvim",
+    event = "VeryLazy",
     opts = require('plugins.todo-comments')
   },
   {
     'nvim-telescope/telescope.nvim',
+    event = "VeryLazy",
     config = function() require('plugins.telescope') end,
     dependencies = {
       { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
@@ -227,7 +235,7 @@ require("lazy").setup({
   },
   {
     'CRAG666/code_runner.nvim',
-    config = function() require('plugins.code-runner') end,
     event = "VeryLazy",
+    config = function() require('plugins.code-runner') end,
   },
 })

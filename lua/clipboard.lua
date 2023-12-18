@@ -1,6 +1,4 @@
-local profile = require('profile')
-
-if profile.osid == 'linux-arch' or profile.osid == 'linux-ubuntu' then
+if vim.loop.os_uname().sysname == "Linux" then
   local clipboard = {}
 
   clipboard['name'] = 'xclip-xfce4-clipman'

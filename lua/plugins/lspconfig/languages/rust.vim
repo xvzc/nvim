@@ -1,5 +1,5 @@
 local lspconfig = require("lspconfig")
-local common = require("plugins.nvim-lspconfig.common")
+local common = require("plugins.lspconfig.common")
 local lsp_util = require("lspconfig/util")
 
 local opts = {
@@ -55,5 +55,4 @@ local opts = {
 -- }
 
 local rt = require("rust-tools")
-
 rt.setup(opts)

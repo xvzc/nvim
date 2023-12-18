@@ -30,9 +30,10 @@ local ensure_installed = {
   'json-lsp',
   'black',
   'clangd',
+  'clang-format',
   'fixjson',
   'goimports',
-  'golangci-lint',
+  'golangci-lint-langserver',
   'golines',
   'gomodifytags',
   'gopls',
@@ -43,8 +44,10 @@ local ensure_installed = {
   'terraform-ls',
   'tflint',
   'typescript-language-server',
+  'bash-language-server',
+  'shfmt',
+  'shellcheck'
 }
-
 
 local servers = ''
 for _, name in ipairs(ensure_installed) do

@@ -1,5 +1,4 @@
 local code_runner = require('code_runner')
-local util = require('util')
 
 vim.cmd [[
 hi CodeRunner guifg=#D0C8C8 guibg=#1C2219
@@ -7,14 +6,6 @@ hi CodeRunnerBorder guifg=#949693 guibg=#1C2219
 ]]
 
 local filetype = {
-  boj = "boj submit $fileName",
-  python = function()
-    if string.find(vim.api.nvim_buf_get_name(0), "/algorithms/boj") then
-      return "boj run $fileName"
-    end
-
-    return "python3 -u"
-  end,
   typescript = "yarn run ts-node",
   rust = "cd $dir && rustc $fileName && $dir/$fileNameWithoutExt",
   cpp = function()
@@ -72,6 +63,4 @@ code_runner.setup({
   project = project,
 })
 
-local buf_opts = { noremap = true, silent = true }
-util.nmap('<C-M-r>', ':w<CR>:RunCode<CR>', buf_opts)
-util.nmap('<C-M-s>', ':w<CR>:RunCode boj<CR>', buf_opts)
+vim.keymap.set('n', '<C-M-r>', ':w<CR>:RunCode<CR>', { silent = true })

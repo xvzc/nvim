@@ -1,8 +1,8 @@
 local dropdown = function(opts)
-    opts = opts or {}
+  opts = opts or {}
 
   local theme_opts = {
-    theme = "dropdown",
+    -- theme = "dropdown",
 
     results_title = false,
 
@@ -44,9 +44,9 @@ local bottom_pane = function(opts)
   opts = opts or {}
 
   local theme_opts = {
-    theme = "ivy",
+    -- theme = "ivy",
 
-  prompt_prefix = '🔍 ',
+    prompt_prefix = '🔍 ',
     sorting_strategy = "ascending",
 
     layout_strategy = "bottom_pane",

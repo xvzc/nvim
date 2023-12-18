@@ -1,5 +1,5 @@
 local lspconfig = require("lspconfig")
-local common = require("plugins.nvim-lspconfig.common")
+local common = require("plugins.lspconfig.common")
 
 -- lua config
 lspconfig.lua_ls.setup {
@@ -8,9 +8,9 @@ lspconfig.lua_ls.setup {
       runtime = {
         version = 'LuaJIT',
       },
-      diagnostics = {
-        globals = { 'vim' },
-      },
+      -- diagnostics = {
+      --   globals = { 'vim' },
+      -- },
       workspace = {
         library = vim.api.nvim_get_runtime_file("", true),
         checkThirdParty = false, -- removes asking for luassert
@@ -21,5 +21,9 @@ lspconfig.lua_ls.setup {
     },
   },
   capabilities = common.capabilities,
-  on_attach = common.on_attach,
+  on_attach = function(client, bufnr)
+    common.on_attach(client, bufnr)
+    vim.bo.shiftwidth = 2
+    vim.bo.tabstop = 2
+  end
 }
