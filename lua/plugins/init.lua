@@ -61,7 +61,6 @@ require("lazy").setup({
   {
     'SirVer/ultisnips',
     config = function() require('plugins.ultisnips') end,
-    event = 'VeryLazy',
   },
   {
     'hrsh7th/nvim-cmp',

@@ -2,9 +2,9 @@ vim.g.UltiSnipsExpandTrigger = '<Nop>'
 vim.g.UltiSnipsJumpForwardTrigger = '<Nop>'
 vim.g.UltiSnipsJumpBackwardTrigger = '<Nop>'
 --
-vim.g.UltiSnipsEnableSnipMate = 1
+-- vim.g.UltiSnipsEnableSnipMate = 1
 vim.g.UltiSnipsEditSplit = "vertical"
-vim.g.UltiSnipsSnippetStorageDirectoryForUltiSnipsEdit = "~/.config/nvim/snippets/"
+-- vim.g.UltiSnipsSnippetStorageDirectoryForUltiSnipsEdit = "~/.config/nvim/snippets/"
 
 vim.cmd([[
 inoremap <silent><expr> <Tab>

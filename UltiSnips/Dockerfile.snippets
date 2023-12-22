@@ -1,0 +1,127 @@
+snippet F
+FROM ${1:ubuntu}
+endsnippet
+
+snippet f
+FROM ${1:ubuntu}
+endsnippet
+
+snippet M
+LABEL maintainer="${1:name}"
+endsnippet
+
+snippet m
+LABEL maintainer="${1:name}"
+endsnippet
+
+snippet R
+RUN ${1:command}
+endsnippet
+
+snippet r
+RUN ${1:command}
+endsnippet
+
+snippet C
+CMD ${1:command}
+endsnippet
+
+snippet c
+CMD ${1:command}
+endsnippet
+
+snippet CP
+COPY ${1:src} ${2:dest}
+endsnippet
+
+snippet cp
+COPY ${1:src} ${2:dest}
+endsnippet
+
+snippet EXP
+EXPOSE ${1:port}
+endsnippet
+
+snippet exp
+EXPOSE ${1:port}
+endsnippet
+
+snippet E
+ENV ${1:key} ${2:value}
+endsnippet
+
+snippet e
+ENV ${1:key} ${2:value}
+endsnippet
+
+snippet A
+ADD ${1:src} ${2:dst}
+endsnippet
+
+snippet a
+ADD ${1:src} ${2:dst}
+endsnippet
+
+snippet ENT
+ENTRYPOINT ${1:command}
+endsnippet
+
+snippet ent
+ENTRYPOINT ${1:command}
+endsnippet
+
+snippet V
+VOLUME ["${1:path}"]
+endsnippet
+
+snippet v
+VOLUME ["${1:path}"]
+endsnippet
+
+snippet U
+USER ${1:name}
+endsnippet
+
+snippet u
+USER ${1:name}
+endsnippet
+
+snippet W
+WORKDIR ${1:path}
+endsnippet
+
+snippet w
+WORKDIR ${1:path}
+endsnippet
+
+snippet upd
+# update packages
+RUN echo "deb http://archive.ubuntu.com/ubuntu ${1:precise} main universe" > /etc/apt/sources.list; \
+	apt-get update && apt-get -y upgrade; \
+	${2}
+	;rm -rf /var/lib/apt/lists/*
+endsnippet
+
+snippet head
+# ${1:Description}
+#
+# VERSION ${2:0.1.0}
+${3}
+endsnippet
+
+snippet O
+ONBUILD ${1}
+endsnippet
+
+snippet o
+ONBUILD ${1}
+endsnippet
+
+snippet L
+LABEL ${1:label}="${2:value}"
+endsnippet
+
+snippet l
+LABEL ${1:label}="${2:value}"
+endsnippet
+
