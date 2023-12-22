@@ -11,6 +11,7 @@ end
 local defaults = merge_config({
   theme = common.theme.bottom_pane(),
   defaults = {
+    file_ignore_patterns = { "^snippets/" },
     results_title = false,
     preview_title = false,
     mappings = {
@@ -54,4 +55,3 @@ telescope.load_extension('fzf')
 telescope.load_extension('skeleton')
 telescope.load_extension('chezmoi')
 telescope.load_extension('todo-comments')
-

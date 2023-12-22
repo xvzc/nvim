@@ -7,68 +7,20 @@ local conf = require("telescope.config").values
 local actions = require "telescope.actions"
 local action_state = require "telescope.actions.state"
 
-local commands = {
+local custom = {
   {
-    name = "find files",
-    func = builtin.find_files,
-  },
-  {
-    name = "find all files",
+    name = "find_all_files",
     func = builtin.find_files,
     opts = {
       hidden = true
     }
   },
   {
-    name = "ripgrep",
-    func = builtin.live_grep,
-  },
-  {
-    name = "git buffer commits",
-    func = builtin.git_bcommits
-  },
-  {
-    name = "git commits",
-    func = builtin.git_commits
-  },
-  {
-    name = "git stash",
-    func = builtin.git_stash
-  },
-  {
-    name = "git branches",
-    func = builtin.git_branches
-  },
-  {
-    name = "lsp diagnostics",
-    func = builtin.diagnostics
-  },
-  {
-    name = "lsp definitions",
-    func = builtin.lsp_definitions
-  },
-  {
-    name = "lsp references",
-    func = builtin.lsp_references
-  },
-  {
-    name = "lsp implementations",
-    func = builtin.implementations
-  },
-  {
-    name = "registers",
-    func = builtin.registers
-  },
-  {
-    name = "search in buffer",
-    func = builtin.current_buffer_fuzzy_find
-  },
-  {
     name = "todo",
     func = telescope.extensions["todo-comments"].todo
   },
   {
-    name = "load templates",
+    name = "load_templates",
     func = telescope.extensions.skeleton.load_template,
   },
   {
@@ -76,58 +28,64 @@ local commands = {
     func = telescope.extensions.chezmoi.find_files,
   },
   {
-    name = "edit snippets",
+    name = "edit_snippets",
     func = builtin.find_files,
     opts = {
       cwd = "~/.config/nvim/snippets"
     }
   },
   {
-    name = "neovim config",
+    name = "neovim_config",
     func = builtin.find_files,
     opts = {
-      cwd = "~/.config/nvim"
+      cwd = "~/.config/nvim",
+      file_ignore_patterns = { "^snippets/" },
     }
   },
 }
 
-local flatten = function(tbl)
-  local results = {}
-  for _, command in ipairs(tbl) do
-    local item = { command.name, command.func }
-    if command.opts ~= nil then
-      table.insert(item, command.opts)
+local exclude = { "fd", "builtin" }
+
+local function make_commands(list, ignore)
+  local ret = vim.deepcopy(list)
+  for k, v in pairs(require("telescope.builtin")) do
+    if not vim.tbl_contains(ignore, k) then
+      table.insert(ret, { name = k, func = v })
     end
-    table.insert(results, item)
   end
 
-  return results
+  table.sort(ret, function(a, b) return a.name < b.name end)
+
+  return ret
+end
+
+local function entry_maker(entry)
+  return {
+    value = entry,
+    ordinal = entry.name,
+    display = entry.name,
+    func = entry.func,
+    opts = entry.opts,
+  }
+end
+
+local function attach_mappings(prompt_bufnr, _)
+  actions.select_default:replace(function()
+    actions.close(prompt_bufnr)
+    local selection = action_state.get_selected_entry()
+    selection.func(selection.opts or {})
+  end)
+  return true
 end
 
 -- our picker function: colors
 local command_picker = function(opts)
   pickers.new(opts, {
-    prompt_title = "Actions",
     finder = finders.new_table {
-      results = flatten(commands),
-      entry_maker = function(entry)
-        return {
-          value = entry,
-          ordinal = entry[1],
-          display = entry[1],
-          func = entry[2],
-          opts = entry[3]
-        }
-      end
+      results = make_commands(custom, exclude),
+      entry_maker = entry_maker,
     },
-    attach_mappings = function(prompt_bufnr, _)
-      actions.select_default:replace(function()
-        actions.close(prompt_bufnr)
-        local selection = action_state.get_selected_entry()
-        selection.func(selection.opts or {})
-      end)
-      return true
-    end,
+    attach_mappings = attach_mappings,
     sorter = conf.generic_sorter(opts),
   }):find()
 end

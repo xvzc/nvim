@@ -94,14 +94,13 @@ vim.keymap.set('n',
 )
 
 vim.keymap.set('n',
-  ']b',
+  '<M-Tab>',
   ':BufferLineCycleNext<CR>',
   { silent = true }
 )
 
 vim.keymap.set('n',
-  '[b',
+  '<M-S-Tab>',
   ':BufferLineCyclePrev<CR>',
   { silent = true }
 )
-

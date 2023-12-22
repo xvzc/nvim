@@ -97,7 +97,11 @@ require("lazy").setup({
     event = "VeryLazy",
     config = function() require('plugins.treesitter') end,
     dependencies = {
-      'nvim-treesitter/nvim-treesitter-textobjects',
+      {
+        'nvim-treesitter/nvim-treesitter-textobjects',
+        dir = "~/_personal/nvim-treesitter-textobjects/"
+      },
+      { 'nvim-treesitter/playground' }
     }
   },
   -- ########################################################

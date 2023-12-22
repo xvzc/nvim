@@ -7,8 +7,6 @@ lspconfig.tsserver.setup {
   on_attach = function(client, bufnr)
     common.on_attach(client, bufnr)
     client.server_capabilities.documentFormattingProvider = false
-    vim.bo.tabstop = 2
-    vim.bo.shiftwidth = 2
   end,
   filetypes = {
     'javascript',
@@ -23,4 +21,3 @@ lspconfig.tsserver.setup {
     '--stdio',
   }
 }
-

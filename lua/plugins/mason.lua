@@ -49,6 +49,14 @@ local ensure_installed = {
   'shellcheck'
 }
 
+local clangd = vim.F.npcall(require('mason-registry').get_package, 'clangd')
+if clangd then
+  clangd:on("install:success", vim.schedule_wrap(function()
+    local include_path = vim.fn.globpath(clangd:get_install_path(), "**/include")
+    vim.fn.system("cp -r ~/.config/assets/clangd/bits " .. include_path)
+  end))
+end
+
 local servers = ''
 for _, name in ipairs(ensure_installed) do
   if not mason_registry.is_installed(name) then

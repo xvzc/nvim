@@ -1,64 +1,86 @@
 local ok, treesitter = pcall(require, "nvim-treesitter.configs")
 if not ok then
-  return
+	return
 end
 
 treesitter.setup({
-  auto_install = true,
-  sync_install = false,
-  ignore_install = {},
-  modules = {},
-  indent = {
-    enable = true,
-  },
-  ensure_installed = {
-    "c",
-    "cpp",
-    "go",
-    "lua",
-    "vim",
-    "bash",
-    "dockerfile",
-    "kotlin",
-    "java",
-    "python",
-    "regex",
-    "ruby",
-    "tsx",
-    "typescript",
-    "javascript",
-    "hcl",
-    "cmake",
-    "markdown",
-    "gomod",
-    "sql",
-    "terraform",
-    "org"
-  },
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = { 'org' },
-  },
-  textobjects = {
-    select = {
-      enable = true,
-      lookahead = true,
-    },
-    keymaps = {
-      -- You can use the capture groups defined in textobjects.scm
-      ["af"] = "@function.outer",
-      ["if"] = "@function.inner",
-      ["ac"] = "@class.outer",
-      -- You can optionally set descriptions to the mappings (used in the desc parameter of
-      -- nvim_buf_set_keymap) which plugins like which-key display
-      ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
-      -- You can also use captures from other query groups like `locals.scm`
-      ["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
-    },
-  },
+	auto_install = true,
+	sync_install = false,
+	ignore_install = {},
+	modules = {},
+	indent = {
+		enable = true,
+	},
+	ensure_installed = {
+    "query",
+		"c",
+		"cpp",
+		"go",
+		"lua",
+		"vim",
+		"bash",
+		"dockerfile",
+		"kotlin",
+		"java",
+		"python",
+		"regex",
+		"ruby",
+		"tsx",
+		"typescript",
+		"javascript",
+		"hcl",
+		"cmake",
+		"markdown",
+		"gomod",
+		"sql",
+		"terraform",
+		"org",
+	},
+	highlight = {
+		enable = true,
+		additional_vim_regex_highlighting = { "org" },
+	},
+	textobjects = {
+		select = {
+			enable = true,
+			lookahead = true,
+			keymaps = {
+				["ab"] = "@block.outer",
+				["ib"] = "@block.inner",
+				["af"] = "@function.outer",
+				["if"] = "@function.inner",
+				["ai"] = "@conditional.outer",
+				["ii"] = "@conditional.inner",
+				["an"] = "@parameter.outer",
+				["in"] = "@parameter.inner",
+				["al"] = "@loop.outer",
+				["il"] = "@loop.inner",
+				["ao"] = "@call.outer",
+				["io"] = "@call.inner",
+				["ac"] = "@class.outer",
+				["ic"] = "@class.inner",
+				["ar"] = "@return.outer",
+				["ir"] = "@return.inner",
+				["cc"] = "@comment.outer",
+				["vn"] = "@number.inner",
+				["aa"] = "@assignment.outer",
+				["ia"] = "@assignment.inner",
+				["ra"] = "@assignment.lhs",
+				["la"] = "@assignment.rhs",
+				["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
+				["is"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
+			},
+			selection_modes = {
+				["@parameter.outer"] = "v", -- charwise
+				["@function.outer"] = "V", -- linewise
+				["@function.inner"] = "V", -- linewise
+				["@class.outer"] = "<c-v>", -- blockwise
+			},
+		},
+	},
 })
 
-local ts_repeat_move = require "nvim-treesitter.textobjects.repeatable_move"
+local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
 
 -- Repeat movement with ; and ,
 -- ensure ; goes forward and , goes backward regardless of the last direction

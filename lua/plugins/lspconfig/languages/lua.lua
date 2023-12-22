@@ -23,7 +23,5 @@ lspconfig.lua_ls.setup {
   capabilities = common.capabilities,
   on_attach = function(client, bufnr)
     common.on_attach(client, bufnr)
-    vim.bo.shiftwidth = 2
-    vim.bo.tabstop = 2
   end
 }
