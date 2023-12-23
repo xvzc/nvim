@@ -55,9 +55,9 @@ require("lazy").setup({
       "nvimdev/guard-collection",
     },
   },
-  -- ########################################################
-  -- # AUTO COMPLETION                                      #
-  -- ########################################################
+  -- ┌─────────────────┐
+  -- │ AUTO COMPLETION │
+  -- └─────────────────┘
   {
     'SirVer/ultisnips',
     config = function() require('plugins.ultisnips') end,
@@ -87,9 +87,9 @@ require("lazy").setup({
       },
     }
   },
-  -- ########################################################
-  -- # SYNTAX/LANGUAGES                                     #
-  -- ########################################################
+  -- ┌────────────────────┐
+  -- │ SYNTAX / LANGUAGES │
+  -- └────────────────────┘
   {
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
@@ -103,9 +103,9 @@ require("lazy").setup({
       { 'nvim-treesitter/playground' }
     }
   },
-  -- ########################################################
-  -- # THEME                                                #
-  -- ########################################################
+  -- ┌───────┐
+  -- │ THEME │
+  -- └───────┘
   {
     "rebelot/kanagawa.nvim",
     priority = 1000,
@@ -125,9 +125,9 @@ require("lazy").setup({
   --   'morhetz/gruvbox',
   --   priority = 1000,
   -- },
-  -- ########################################################
-  -- # UTILS                                                #
-  -- ########################################################
+  -- ┌───────┐
+  -- │ UTILS │
+  -- └───────┘
   {
     "petertriho/nvim-scrollbar",
     event = "VeryLazy",
