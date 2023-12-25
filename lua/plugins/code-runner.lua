@@ -25,6 +25,7 @@ local filetype = {
 
     return table.concat(commands, " ")
   end,
+  python = { "python3" },
   -- cpp = {
   --   "cd $dir &&",
   --   "g++ -std=c++17 -O2 -Wall -Wno-sign-compare -DLOCAL $fileName -o $fileNameWithoutExt &&",

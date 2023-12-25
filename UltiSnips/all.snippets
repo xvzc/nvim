@@ -10,7 +10,7 @@ priority -60
 # NICE BOXES #
 ##############
 global !p
-from snippets import comment
+from snippets import box_comment
 
 LOREM = """
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod \
@@ -70,21 +70,33 @@ def t_get(index, default=''):
     except IndexError:
         return default
 endglobal
-#
+
+global !p
+def t_len(idx):
+    # Get the value of the placeholder `t`, but avoids IndexError.
+    try: 
+        ret = 0
+        for c in t[idx]:
+            ret += 2 if ord(c) > 127 else 1
+        return ret
+    except IndexError: 
+        return 0
+endglobal
+
 # ┏━━━━━━━┓
 # ┃ Boxes ┃
 # ┗━━━━━━━┛
 snippet box "Box (uses thiner unicode ──)"
-`!p snip.rv = comment()[0] + ' ┌' + '─' * (len(t_get(1)) + 2) + '┐ ' + comment()[1]`
-`!p snip.rv = comment()[0]` │ $1 │ `!p snip.rv = comment()[1]`
-`!p snip.rv = comment()[0] + ' └' + '─' * (len(t_get(1)) + 2) + '┘ ' + comment()[1]`
+`!p snip.rv = box_comment("top")[0] + ' ┌' + '─' * (t_len(1) + 2) + '┐ ' + box_comment("top")[1]`
+`!p snip.rv = box_comment("mid")[0]` │ $1 │ `!p snip.rv = box_comment("mid")[1]`
+`!p snip.rv = box_comment("bot")[0] + ' └' + '─' * (t_len(1) + 2) + '┘ ' + box_comment("bot")[1]`
 $0
 endsnippet
 
 snippet bbox "Box (uses thicker unicode ━━)"
-`!p snip.rv = comment()[0] + ' ┏' + '━' * (len(t_get(1)) + 2) + '┓ ' + comment()[1]`
-`!p snip.rv = comment()` ┃ $1 ┃ `!p snip.rv = comment()[1]`
-`!p snip.rv = comment() + ' ┗' + '━' * (len(t_get(1)) + 2) + '┛ ' + comment()[1]`
+`!p snip.rv = box_comment("top")[0] + ' ┏' + '━' * (t_len(1) + 2) + '┓ ' + box_comment("top")[1]`
+`!p snip.rv = box_comment("mid")[0]` ┃ $1 ┃ `!p snip.rv = box_comment("mid")[1]`
+`!p snip.rv = box_comment("bot")[0] + ' ┗' + '━' * (t_len(1) + 2) + '┛ ' + box_comment("bot")[1]`
 $0
 endsnippet
 

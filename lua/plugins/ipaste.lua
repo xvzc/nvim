@@ -1,0 +1,2 @@
+require("ipaste").setup({
+})

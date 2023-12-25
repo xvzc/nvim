@@ -43,29 +43,20 @@ def _parse_comments(s):
         return rv
 
 
-def get_comment_format():
-    commentstring = vim.eval("&commentstring")
-    if commentstring.endswith("%s"):
-        c = commentstring[:-2]
-        return (c.rstrip(), c.rstrip(), c.rstrip(), "")
-    comments = _parse_comments(vim.eval("&comments"))
-    for c in comments:
-        if c[0] == "SINGLE_CHAR":
-            return c[1:]
-    return comments[0][1:]
-
-
-def comment():
+def box_comment(line: str):
     commentstring = vim.eval("&commentstring")
     if commentstring.endswith("%s"):
         c = commentstring[:-2]
         return (c.rstrip(), "")
-    elif "%s" in commentstring:
-        c = commentstring.split("%s")
-        return (c[0], c[1])
 
-    comments = _parse_comments(vim.eval("&comments"))
-    for c in comments:
-        if c[0] == "SINGLE_CHAR":
-            return c[1:][0]
-    return comments[0][1:]
+    c = commentstring.split("%s")
+    if line == "top":
+        return (c[0], "")
+
+    if line == "mid":
+        return (" " * len(c[0]), "")
+
+    if line == "bot":
+        return (" " * len(c[0]), c[1])
+
+    return ("", "")
