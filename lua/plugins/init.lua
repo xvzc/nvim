@@ -79,12 +79,6 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"xvzc/ipaste",
-    dir = "~/_personal/ipaste.nvim/",
-		config = function()
-		end,
-	},
-	{
 		"hrsh7th/nvim-cmp",
 		config = function()
 			require("plugins.nvim-cmp")
