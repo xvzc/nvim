@@ -16,15 +16,14 @@ vim.keymap.set('n', '<leader>d', '"+d', silent_noremap)
 vim.keymap.set('v', '<leader>d', '"+d', silent_noremap)
 vim.keymap.set('n', '<leader>D', '"+D', silent_noremap)
 
--- select
 vim.keymap.set('n', '<leader>p', '"+p', silent_noremap)
+
 vim.keymap.set('n', '<F5>', '<C-l>', silent_noremap)
 vim.keymap.set('n', '<leader>a', 'gg<S-v><S-g>', silent_noremap)
 
 -- diagnostics
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { noremap = true, silent = true })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { noremap = true, silent = true })
-vim.keymap.set('n', '<C-s>', ':w<CR>', { noremap = true, silent = true })
 
 -- move lines
 -- vim.keymap.set('n', '<C-j>', ':m .+1<CR>==', silent_noremap)

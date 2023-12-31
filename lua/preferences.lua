@@ -1,10 +1,12 @@
-vim.g.mapleader = ' '
+vim.g.mapleader = " "
 
 vim.o.undofile = true
-vim.o.encoding = 'UTF-8'
+vim.o.encoding = "UTF-8"
+vim.opt.spelllang = "en_us"
+vim.opt.spell = true
 -- vim.o.tenc = 'UTF-8' -- terminal's encoding
 
-vim.o.foldmethod = 'indent'
+vim.o.foldmethod = "indent"
 vim.o.foldlevel = 99
 
 vim.o.ignorecase = true
@@ -30,23 +32,22 @@ vim.o.hlsearch = true -- Search highlight
 vim.o.history = 1000
 vim.o.updatetime = 250
 vim.o.number = true
+vim.o.relativenumber = true
 
 -- gitgutter sign column
-vim.o.signcolumn = 'yes'
+vim.o.signcolumn = "yes"
 vim.o.pumheight = 10
 vim.o.pumblend = 0
-vim.opt.listchars = { space = '_', tab = '>~', trail = ' ' }
-
+vim.opt.listchars = { space = "_", tab = ">~", trail = " " }
 
 -- vim.o.noshowmode = true
 vim.o.showtabline = 0
 
 vim.o.cursorline = true
 
-vim.o.shortmess = vim.o.shortmess .. 'c'
-vim.o.mouse = ''
+vim.o.shortmess = vim.o.shortmess .. "c"
+vim.o.mouse = "a"
 vim.o.viminfo = "'100,<1000,s100,h"
 
 vim.o.sol = false
 vim.o.showmode = false
-

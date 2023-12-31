@@ -14,6 +14,6 @@
 
 vim.cmd([[
 set winminheight=0
-hi WinSeparator guifg=#FFFFFF
+hi WinSeparator guifg=#ffc4c4
 ]])
 
