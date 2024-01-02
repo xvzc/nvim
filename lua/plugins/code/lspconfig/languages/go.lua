@@ -4,10 +4,7 @@ local common = require("plugins.code.lspconfig.common")
 -- golang config
 lspconfig.gopls.setup({
 	capabilities = common.capabilities,
-	on_attach = function()
-		common.on_attach()
-		vim.bo.tabstop = 2
-	end,
+	on_attach = common.on_attch,
 })
 
 lspconfig.golangci_lint_ls.setup({

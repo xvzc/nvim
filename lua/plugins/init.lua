@@ -15,6 +15,16 @@ require("lazy").setup({
 	-- │ CODE │
 	-- └──────┘
 	{
+		"mfussenegger/nvim-dap",
+		event = "VeryLazy",
+		config = function()
+			require("plugins.code.dap")
+		end,
+		dependencies = {
+			"rcarriga/nvim-dap-ui",
+		},
+	},
+	{
 		"neovim/nvim-lspconfig",
 		config = function()
 			require("plugins.code.lspconfig")
@@ -212,6 +222,13 @@ require("lazy").setup({
 	-- ┌──────┐
 	-- │ UTIL │
 	-- └──────┘
+	{
+		"jackMort/ChatGPT.nvim",
+		event = "VeryLazy",
+		config = function()
+      require("plugins.util.chatgpt")
+		end,
+	},
 	{ "tpope/vim-fugitive", event = "VeryLazy" },
 	{ "godlygeek/tabular", event = "VeryLazy" },
 	{

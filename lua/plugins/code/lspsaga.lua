@@ -48,7 +48,7 @@ saga.setup({
     force_max_height = false,
     keys = {
       tabe = 't',
-      toggle_or_open = '<CR>',
+      toggle_or_open = {'<CR>', 'o'},
       vsplit = 'v',
       split = 's',
       quit = { 'q', '<ESC>' },
