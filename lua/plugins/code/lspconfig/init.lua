@@ -37,7 +37,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			buffer = 0,
 		})
 
-		vim.keymap.set("n", "<C-l>", "<cmd>GuardFmt<CR>", { noremap = true })
+		vim.keymap.set("n", "<C-l>", "<cmd>GuardFmt<CR>")
 
 		vim.keymap.set("n", "gd", "<cmd>Lspsaga finder def<CR>", opts)
 		vim.keymap.set("n", "gr", "<cmd>Lspsaga finder ref<CR>", opts)

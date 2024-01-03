@@ -12,5 +12,6 @@ lspconfig.clangd.setup({
 	capabilities = capabilities,
 	on_attach = function(client, bufnr)
 		common.on_attach(client, bufnr)
+		vim.keymap.set("n", "<C-l>", vim.lsp.buf.format)
 	end,
 })
