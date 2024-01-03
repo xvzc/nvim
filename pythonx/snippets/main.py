@@ -43,8 +43,10 @@ def _parse_comments(s):
         return rv
 
 
-def box_comment(line: str):
+def box_comment(line: str = "inline"):
     commentstring = vim.eval("&commentstring")
+    if not commentstring:
+        return ("", "")
     if commentstring.endswith("%s"):
         c = commentstring[:-2]
         return (c.rstrip(), "")
@@ -58,5 +60,8 @@ def box_comment(line: str):
 
     if line == "bot":
         return (" " * len(c[0]), c[1])
+
+    if line == "inline":
+        return (c[0], c[1])
 
     return ("", "")

@@ -32,7 +32,7 @@ snippet #! "Shebang"
 endsnippet
 
 snippet modeline "Vim modeline"
-`!p snip.rv = comment()` vim:ft=${1:filetype} ts=${2:2} sw=${3:2}
+`!p snip.rv = box_comment()[0]` vim:ft=${1:filetype} ts=${2:2} sw=${3:2} `!p snip.rv = box_comment()[1]`
 endsnippet
 
 #########
@@ -106,10 +106,10 @@ endsnippet
 # ┗━━━━━━━━━━━━━━━━┛
 
 snippet ### "Horizontal rule filled with ###"
-`!p snip.rv = comment() + " " + '#' * 60`
+`!p snip.rv = box_comment()[0] + " " + '#' * 60` + box_comment()[1]
 endsnippet
 
 snippet --- "Horizontal rule filled with ━"
-`!p snip.rv = comment() + " " + '━' * 60`
+`!p snip.rv = box_comment()[0] + " " + '━' * 60` + box_comment()[1]
 endsnippet
 
