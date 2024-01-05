@@ -222,13 +222,6 @@ require("lazy").setup({
 	-- ┌──────┐
 	-- │ UTIL │
 	-- └──────┘
-	{
-		"jackMort/ChatGPT.nvim",
-		event = "VeryLazy",
-		config = function()
-      require("plugins.util.chatgpt")
-		end,
-	},
 	{ "tpope/vim-fugitive", event = "VeryLazy" },
 	{ "godlygeek/tabular", event = "VeryLazy" },
 	{
