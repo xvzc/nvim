@@ -5,6 +5,10 @@ ft("python"):fmt("black"):lint({
 	cmd = "pylint",
 })
 
+ft("sh"):fmt("shfmt"):lint({
+	cmd = "shfmt",
+})
+
 ft("cpp"):fmt({
 	cmd = "clang-format",
 	args = { "-style=google" },
