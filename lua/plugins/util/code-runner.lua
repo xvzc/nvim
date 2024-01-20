@@ -27,6 +27,7 @@ local filetype = {
 		}
 		return table.concat(command, " ")
 	end,
+	boj = "boj submit $end",
 	python = { "python3" },
 	zsh = "zsh",
 	sh = "bash",
@@ -52,12 +53,19 @@ code_runner.setup({
 	startinsert = true,
 	term = {
 		position = "bot",
-		size = 15,
+		size = 25,
 	},
 	filetype_path = "",
 	project_path = "",
 	filetype = filetype,
 	project = project,
+})
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = { os.getenv("HOME") .. "/_personal/algorithms/boj/problems/*" },
+	callback = function()
+		vim.keymap.set("n", "<C-M-s>", ":w<CR>:RunCode boj<CR>", { silent = true })
+	end,
 })
 
 vim.keymap.set("n", "<C-M-r>", ":w<CR>:RunCode<CR>", { silent = true })

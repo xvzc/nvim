@@ -10,12 +10,16 @@ local pylint_ignore = {
 -- python config
 lspconfig.pylsp.setup({
 	capabilities = common.capabilities,
-	on_attach = common.on_attach,
+	on_attach = function(client, bufnr)
+		client.server_capabilities.documentFormattingProvider = false
+		common.on_attach(client, bufnr)
+	end,
 	settings = {
 		pylsp = {
 			plugins = {
 				black = { enabled = true },
 				pyflakes = { enabled = false },
+				pycodestyle = { enabled = false },
 				flake8 = {
 					enabled = true,
 				},

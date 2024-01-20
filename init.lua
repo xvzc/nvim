@@ -17,9 +17,9 @@ vim.opt.rtp:prepend(lazypath)
 
 vim.g.mapleader = " "
 
+require("preferences")
 require("plugins")
 require("clipboard")
-require("preferences")
 require("keymaps")
 require("styles")
 require("autocmds")

@@ -2,30 +2,30 @@ local cmp = require("cmp")
 local common = require("plugins.code.nvim-cmp.common")
 
 local function format_item(entry, vim_item)
-			vim_item.kind = common.kind_icons[vim_item.kind]
+	vim_item.kind = common.kind_icons[vim_item.kind]
 
-			-- This concatonates the icons with the name of the item kind
-			local MAX_LABEL_LENGTH = 20
-			local label = vim.trim(vim_item.abbr)
-			if string.len(label) > MAX_LABEL_LENGTH then
-				label = vim.fn.strcharpart(label, 0, MAX_LABEL_LENGTH) .. ".."
-			end
+	-- This concatonates the icons with the name of the item kind
+	local MAX_LABEL_LENGTH = 20
+	local label = vim.trim(vim_item.abbr)
+	if string.len(label) > MAX_LABEL_LENGTH then
+		label = vim.fn.strcharpart(label, 0, MAX_LABEL_LENGTH) .. ".."
+	end
 
-			vim_item.abbr = label
+	vim_item.abbr = label
 
-			if entry.source.name == "nvim_lsp" then
-				vim_item.abbr = "•" .. vim_item.abbr
-			end
+	if entry.source.name == "nvim_lsp" then
+		vim_item.abbr = "•" .. vim_item.abbr
+	end
 
-			-- Source
-			vim_item.menu = ({
-				buffer = "[BUF]",
-				nvim_lsp = "[LSP]",
-				ultisnips = "[SNI]",
-				latex_symbols = "[LTX]",
-			})[entry.source.name]
+	-- Source
+	vim_item.menu = ({
+		buffer = "[BUF]",
+		nvim_lsp = "[LSP]",
+		ultisnips = "[SNI]",
+		latex_symbols = "[LTX]",
+	})[entry.source.name]
 
-			return vim_item
+	return vim_item
 end
 
 cmp.setup({
@@ -33,7 +33,7 @@ cmp.setup({
 	mapping = require("plugins.code.nvim-cmp.mapping"),
 	formatting = {
 		fields = { "kind", "abbr", "menu" },
-    format = format_item,
+		format = format_item,
 	},
 	snippet = {
 		expand = function(args)
@@ -42,9 +42,8 @@ cmp.setup({
 	},
 	sources = cmp.config.sources({
 		{ name = "ultisnips", priority = 1000 }, -- For ultisnips users.
-		{ name = "path" },
-		{ name = "buffer" },
 		{
+			priority = 999,
 			name = "nvim_lsp",
 			entry_filter = function(entry, _)
 				local kind = require("cmp.types").lsp.CompletionItemKind[entry:get_kind()]
@@ -54,6 +53,8 @@ cmp.setup({
 				return true
 			end,
 		},
+		{ name = "buffer", 998 },
+		{ name = "path", 997 },
 	}),
 	experimental = {
 		ghost_text = false,

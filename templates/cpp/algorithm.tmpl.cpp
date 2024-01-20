@@ -1,29 +1,25 @@
 #include <bits/stdc++.h>
 
-#define debug \
-  if constexpr (IS_LOCAL) std::cout
+#ifdef LOCAL
+#define IF_LOCAL if constexpr (true)
+#else
+#define IF_LOCAL if constexpr (false)
+#endif
+
+#define debug IF_LOCAL std::cout << "[DEBUG] "
 #define endl '\n'
 #define fi first
 #define se second
 #define all(x) (x).begin(), (x).end()
-
-#ifdef LOCAL
-constexpr bool IS_LOCAL = true;
-#else
-constexpr bool IS_LOCAL = false;
-#endif
 
 typedef long long ll;
 typedef unsigned long long ull;
 
 using namespace std;
 
-/* Authored by {{ author }}, {{ timestamp }} */
+/* Authored by xvzc, 2024-01-19 12:50:48 */
 int main() {
-  ios_base::sync_with_stdio(false);
-  cin.tie(0);
-
-  if constexpr (IS_LOCAL) (void)!freopen("input.txt", "r", stdin);
+  ios_base::sync_with_stdio(false), cin.tie(0);
 
   return 0;
 }

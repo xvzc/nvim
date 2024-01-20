@@ -1,8 +1,6 @@
 local lspconfig = require("lspconfig")
 local common = require("plugins.code.lspconfig.common")
 
--- vim.notify(vim.inspect(vim.api.nvim_get_runtime_file("lua", true)))
-
 -- lua config
 lspconfig.lua_ls.setup({
 	settings = {
@@ -10,9 +8,9 @@ lspconfig.lua_ls.setup({
 			runtime = {
 				version = "LuaJIT",
 			},
-			-- diagnostics = {
-			--   globals = { 'vim' },
-			-- },
+			diagnostics = {
+				globals = { "vim" },
+			},
 			workspace = {
 				checkThirdParty = false, -- removes asking for luassert
 			},
@@ -23,6 +21,7 @@ lspconfig.lua_ls.setup({
 	},
 	capabilities = common.capabilities,
 	on_attach = function(client, bufnr)
+		client.server_capabilities.documentFormattingProvider = false
 		local workspace = client.config.settings.Lua.workspace
 		workspace.library = vim.api.nvim_get_runtime_file("lua", true)
 

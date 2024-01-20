@@ -13,7 +13,7 @@ lspconfig.clangd.setup({
 	},
 	capabilities = capabilities,
 	on_attach = function(client, bufnr)
-		common.on_attach(client, bufnr)
 		-- client.server_capabilities.documentFormattingProvider = false
+		common.on_attach(client, bufnr)
 	end,
 })

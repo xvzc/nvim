@@ -1,4 +1,4 @@
-return {
+require("todo-comments").setup({
     search = {
     command = "rg",
     args = {
@@ -9,5 +9,5 @@ return {
       "--column",
     },
   }
-}
+})
 
