@@ -66,6 +66,6 @@ end, { silent = true })
 
 vim.keymap.set("n", "<leader>q", "<cmd>bd<cr>", { silent = true })
 
-vim.keymap.set("n", "<M-Tab>", "<cmd>BufferLineCycleNext<CR>", { silent = true })
+vim.keymap.set("n", "<C-Tab>", "<cmd>BufferLineCycleNext<CR>", { silent = true })
 
-vim.keymap.set("n", "<M-S-Tab>", "<cmd>BufferLineCyclePrev<CR>", { silent = true })
+vim.keymap.set("n", "<C-S-Tab>", "<cmd>BufferLineCyclePrev<CR>", { silent = true })

@@ -113,12 +113,12 @@ require("lazy").setup({
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
-		config = config("plugins.ui.noice")
+		config = config("plugins.ui.noice"),
 	},
 	{
 		"rebelot/kanagawa.nvim",
 		priority = 1000,
-		config = config("plugins.ui.kanagawa")
+		config = config("plugins.ui.kanagawa"),
 	},
 	{
 		"glepnir/dashboard-nvim",
@@ -139,7 +139,7 @@ require("lazy").setup({
 		"nvim-neo-tree/neo-tree.nvim",
 		event = "VeryLazy",
 		branch = "v2.x",
-		config = config("plugins.ui.neo-tree")
+		config = config("plugins.ui.neo-tree"),
 	},
 	{
 		"karb94/neoscroll.nvim",
@@ -163,11 +163,11 @@ require("lazy").setup({
 		event = "VeryLazy",
 		config = config("plugins.ui.symbols-outline"),
 	},
-	-- {
-	-- 	"lewis6991/gitsigns.nvim",
-	-- 	config = config("plugins.ui.gitsigns"),
-	-- 	event = "VeryLazy",
-	-- },
+	{
+		"lewis6991/gitsigns.nvim",
+		config = config("plugins.ui.gitsigns"),
+		event = "VeryLazy",
+	},
 	-- ┌──────┐
 	-- │ UTIL │
 	-- └──────┘
@@ -176,8 +176,8 @@ require("lazy").setup({
 	{
 		"xvzc/chezmoi.nvim",
 		dir = "~/_personal/chezmoi.nvim/",
-		event = "BufReadPre",
-		config = config("plugins.util.chezmoi")
+		-- event = "BufReadPre",
+		config = config("plugins.util.chezmoi"),
 	},
 	{
 		"numToStr/Comment.nvim",
@@ -231,15 +231,15 @@ require("lazy").setup({
 	{
 		"andweeb/presence.nvim",
 		event = "BufWinEnter",
-		config = config("plugins.misc.presence")
+		config = config("plugins.misc.presence"),
 	},
 	{
 		"keaising/im-select.nvim",
 		event = "VeryLazy",
-		config = config("plugins.misc.im-select")
+		config = config("plugins.misc.im-select"),
 	},
 	{
 		"farmergreg/vim-lastplace",
-		config = config("plugins.misc.vim-lastplace")
+		config = config("plugins.misc.vim-lastplace"),
 	},
 })

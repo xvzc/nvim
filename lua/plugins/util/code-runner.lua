@@ -6,29 +6,34 @@ hi CodeRunner guifg=#D0C8C8 guibg=#1C2219
 hi CodeRunnerBorder guifg=#949693 guibg=#1C2219
 ]])
 
+local is_boj = function()
+	return string.find(vim.api.nvim_buf_get_name(0), "/algorithms/boj")
+end
+
 local filetype = {
 	typescript = "yarn run ts-node",
 	rust = "cd $dir && rustc $fileName && $dir/$fileNameWithoutExt",
 	cpp = function()
-		if string.find(vim.api.nvim_buf_get_name(0), "/algorithms/boj") then
+		if is_boj() then
 			return "boj run $end"
 		end
 
-		local workspace = require("neoconf.workspace").get()
-		local project = neoconf.get("project", nil, {
-			file = "Makefile",
-		})
-
 		local command = {
-			"cd " .. workspace.root_dir .. " &&",
-			project.compile.all .. " &&",
-			workspace.root_dir .. "/" .. project.target .. " &&",
-			project.clean .. " $end",
+			"cd $dir &&",
+			"g++ -std=c++17 -O2 -DLOCAL -Wall -Wno-sign-compare $fileName -o $dir/a.out &&",
+			"$dir/a.out &&",
+			"rm -rf $dir/a.out",
 		}
 		return table.concat(command, " ")
 	end,
 	boj = "boj submit $end",
-	python = { "python3" },
+	python = function()
+		if is_boj() then
+			return "boj run $end"
+		end
+
+    return "python3"
+  end,
 	zsh = "zsh",
 	sh = "bash",
 	terraform = "terraform plan $end",

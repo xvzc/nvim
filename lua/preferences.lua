@@ -2,9 +2,6 @@ vim.g.mapleader = " "
 
 vim.o.undofile = true
 vim.o.encoding = "UTF-8"
-vim.opt.spelllang = "en_us"
-vim.opt.spell = true
--- vim.o.tenc = 'UTF-8' -- terminal's encoding
 
 vim.o.foldmethod = "indent"
 vim.o.foldlevel = 99
