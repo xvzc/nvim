@@ -13,8 +13,9 @@
 -- hi Cursor guifg=#121212 guibg=#afd700
 
 vim.cmd([[
-set winminheight=0
-hi WinSeparator guifg=#ffc4c4
-hi Normal guibg=None
+  set winminheight=0
+  hi WinSeparator guifg=#ffc4c4
+  hi Normal guibg=None
+  hi Comment guifg=#8c8787
 ]])
 

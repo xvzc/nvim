@@ -28,6 +28,7 @@ require("lazy").setup({
 		event = "VeryLazy",
 		config = config("plugins.code.dap"),
 		dependencies = {
+			"nvim-neotest/nvim-nio",
 			"rcarriga/nvim-dap-ui",
 		},
 	},
@@ -65,6 +66,7 @@ require("lazy").setup({
 		"nvim-neotest/neotest",
 		config = config("plugins.code.neotest"),
 		dependencies = {
+			"nvim-neotest/nvim-nio",
 			"antoinemadec/FixCursorHold.nvim",
 			"nvim-neotest/neotest-python",
 		},
@@ -138,7 +140,7 @@ require("lazy").setup({
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		event = "VeryLazy",
-		branch = "v2.x",
+    dir = "~/_personal/neo-tree.nvim/",
 		config = config("plugins.ui.neo-tree"),
 	},
 	{

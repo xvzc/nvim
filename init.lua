@@ -22,5 +22,4 @@ require("plugins")
 require("clipboard")
 require("keymaps")
 require("styles")
-require("autocmds")
 

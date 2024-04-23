@@ -1,79 +1,75 @@
-require("neo-tree").setup({
-	close_if_last_window = true,
-	enable_diagnostics = false,
-	sort_function = nil,
-	default_component_configs = {
-		-- icon = {
-		-- 	folder_closed = "",
-		-- 	folder_open = "",
-		-- 	folder_empty = "",
-		-- 	default = "*",
-		-- 	highlight = "NeoTreeFileIcon",
-		-- },
-		modified = {
-			symbol = "",
-			highlight = "NeoTreeModified",
-		},
-		git_status = {
-			symbols = {
-				added = "✚",
-				modified = "",
-				unstaged = "*",
-			},
-		},
-	},
+local fs = require("neo-tree.sources.filesystem")
 
-	window = {
-		width = 35,
-		mappings = {
-			["o"] = "open",
-			["h"] = "navigate_up",
-			["."] = "none",
-			["<Tab>"] = "set_root",
-			["l"] = {
-				"toggle_node",
-				nowait = true, -- disable `nowait` if you have existing combos starting with this char that you want to use
-			},
-		},
-		commands = {
-			sync_root = function(state)
-				vim.notify(vim.inspect(state))
-			end,
-		},
-	},
-	filesystem = {
-		bind_to_cwd = true,
-		filtered_items = {
-			hide_by_name = {
-				"node_modules",
-			},
-			never_show = {
-				".DS_Store",
-			},
-		},
-		follow_current_file = false,
-		group_empty_dirs = false,
-		window = {
-			mappings = {
-				["D"] = "none",
-				["#"] = "fuzzy_sorter", -- fuzzy sorting using the fzy algorithm
-			},
-		},
-	},
-	buffers = {
-		follow_current_file = true,
-		group_empty_dirs = true,
-		show_unloaded = true,
-	},
-	git_status = {
-		window = {
-			position = "float",
-		},
-	},
+require("neo-tree").setup({
+  close_if_last_window = true,
+  enable_diagnostics = false,
+  sort_function = nil,
+  default_component_configs = {
+    modified = {
+      symbol = "",
+      highlight = "NeoTreeModified",
+    },
+    git_status = {
+      symbols = {
+        added = "✚",
+        modified = "",
+        unstaged = "*",
+      },
+    },
+    follow_current_file = {
+      enabled = true,
+    },
+  },
+  commands = {
+    sync_root = function(state)
+      if state.search_pattern then
+        fs.reset_search(state, false)
+      end
+
+      local node = state.tree:get_node()
+      local id = node.type == "directory" and node.id or node._parent_id
+      fs._navigate_internal(state, id, nil, nil, false)
+    end,
+  },
+
+  window = {
+    width = 40,
+  },
+
+  filesystem = {
+    bind_to_cwd = true,
+    group_empty_dirs = false,
+    filtered_items = {
+      hide_by_name = {
+        "node_modules",
+      },
+      never_show = {
+        ".DS_Store",
+      },
+    },
+    window = {
+      mappings = {
+        ["p"] = { "toggle_preview", config = { use_float = false, use_image_nvim = true } },
+        ["h"] = "navigate_up",
+        ["l"] = "sync_root",
+        ["o"] = { "open", nowait = true },
+
+        -- -- disabled
+        ["P"] = "noop", -- toggle_preview
+        ["oc"] = "noop", -- order_by_created
+        ["od"] = "noop", -- order_by_diagnostics
+        ["om"] = "noop", -- order_by_modified
+        ["og"] = "noop", -- order_by_git_status
+        ["on"] = "noop", -- order_by_name
+        ["os"] = "noop", -- order_by_size
+        ["ot"] = "noop", -- order_by_type
+      },
+    },
+  },
 })
 
 vim.keymap.set("n", "<leader>e", function()
-	require("neo-tree.command").execute({
-		toggle = true,
-	})
+  require("neo-tree.command").execute({
+    toggle = true,
+  })
 end, { silent = true })

@@ -37,13 +37,20 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { noremap = true, silent = t
 vim.keymap.set("n", "go", "gf", silent_noremap)
 
 vim.keymap.set("n", "<esc>", function()
-	if vim.api.nvim_get_vvar("hlsearch") == 1 then
-		return ":nohl<CR><esc>"
-	end
-	return "<esc>"
+  if vim.api.nvim_get_vvar("hlsearch") == 1 then
+    return ":nohl<CR><esc>"
+  end
+  return "<esc>"
 end, silent_noremap_expr)
 
 vim.keymap.set("n", "<S-F5>", function()
-	vim.notify("Reload neovim config")
-	vim.cmd([[:source ~/.config/nvim/init.lua]])
+  vim.notify("Reload neovim config")
+  vim.cmd([[:source ~/.config/nvim/init.lua]])
 end, { silent = true })
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { "**/algorithm/boj/*" },
+  callback = function()
+    vim.keymap.set("n", "<C-M-s>", ":!boj submit", silent_noremap)
+  end,
+})

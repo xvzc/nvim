@@ -12,8 +12,11 @@ vim.o.smartcase = true
 vim.o.mousehide = true -- Hide the mouse cursor while typing
 
 vim.o.termguicolors = true
+vim.o.laststatus = 3
 
 vim.o.conceallevel = 1
+vim.g.tex_conceal = "amd"
+-- vim.o.whichwrap = "lh"
 -- vim.o.background = 'dark'
 
 vim.o.cindent = true -- C sytle auto indent
