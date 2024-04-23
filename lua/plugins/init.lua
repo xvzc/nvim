@@ -140,7 +140,7 @@ require("lazy").setup({
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		event = "VeryLazy",
-    dir = "~/_personal/neo-tree.nvim/",
+    -- dir = "~/_personal/neo-tree.nvim/",
 		config = config("plugins.ui.neo-tree"),
 	},
 	{
@@ -177,8 +177,8 @@ require("lazy").setup({
 	{ "godlygeek/tabular", event = "VeryLazy" },
 	{
 		"xvzc/chezmoi.nvim",
-		dir = "~/_personal/chezmoi.nvim/",
-		-- event = "BufReadPre",
+		-- dir = "~/_personal/chezmoi.nvim/",
+		event = "BufReadPre",
 		config = config("plugins.util.chezmoi"),
 	},
 	{

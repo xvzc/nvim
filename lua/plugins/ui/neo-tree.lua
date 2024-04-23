@@ -1,5 +1,3 @@
-local fs = require("neo-tree.sources.filesystem")
-
 require("neo-tree").setup({
   close_if_last_window = true,
   enable_diagnostics = false,
@@ -19,17 +17,6 @@ require("neo-tree").setup({
     follow_current_file = {
       enabled = true,
     },
-  },
-  commands = {
-    sync_root = function(state)
-      if state.search_pattern then
-        fs.reset_search(state, false)
-      end
-
-      local node = state.tree:get_node()
-      local id = node.type == "directory" and node.id or node._parent_id
-      fs._navigate_internal(state, id, nil, nil, false)
-    end,
   },
 
   window = {
@@ -51,7 +38,7 @@ require("neo-tree").setup({
       mappings = {
         ["p"] = { "toggle_preview", config = { use_float = false, use_image_nvim = true } },
         ["h"] = "navigate_up",
-        ["l"] = "sync_root",
+        ["l"] = "set_root",
         ["o"] = { "open", nowait = true },
 
         -- -- disabled
