@@ -52,7 +52,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
 
     vim.keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts)
-    vim.keymap.set("n", "<leader>o", "<cmd>SymbolsOutline<CR>", { noremap = true, silent = true })
+    vim.keymap.set("n", "<leader>o", "<cmd>Outline<CR>", { noremap = true, silent = true })
     vim.keymap.set("n", "<F1>", vim.lsp.buf.signature_help, { noremap = true, silent = true })
   end,
 })
