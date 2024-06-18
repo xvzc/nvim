@@ -1,6 +1,6 @@
 -- :help vim.lsp.diagnostic.on_publish_diagnostics
 local on_attach = function(client, bufnr)
-  client.server_capabilities.semanticTokensProvider = nil
+  -- client.server_capabilities.semanticTokensProvider = nil
 
   if client.server_capabilities.document_highlight then
     vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {

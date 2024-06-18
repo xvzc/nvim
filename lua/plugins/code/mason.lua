@@ -46,7 +46,7 @@ local ensure_installed = {
   "shfmt",
   "shellcheck",
   "stylua",
-  "luacheck",
+  -- "luacheck",
 }
 
 -- Copy bits header.

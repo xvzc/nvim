@@ -16,13 +16,14 @@ local mapping = cmp.mapping.preset.insert({
 			end
 		end,
 	}),
-	["<CR>"] = cmp.mapping(function(fallback)
-		if cmp.get_active_entry() then
-			cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace })
-		else
-			fallback()
-		end
-	end, { "i" }),
+	-- ["<CR>"] = cmp.mapping(function(fallback)
+ --    -- cmp.confirm({ select = false, behavior = cmp.ConfirmBehavior.Replace })
+	-- 	if cmp.get_active_entry() then
+	-- 		cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace })
+	-- 	else
+	-- 		fallback()
+	-- 	end
+	-- end, { "i" }),
 	["<C-d>"] = cmp.mapping(function(fallback)
 		if cmp.visible() then
 			cmp.abort()
