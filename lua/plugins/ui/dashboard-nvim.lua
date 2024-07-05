@@ -15,7 +15,6 @@ local header = {
 }
 
 
-
 local center = {
   {
     icon = '  ',

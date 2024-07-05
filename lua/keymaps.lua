@@ -34,8 +34,6 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { noremap = true, silent = t
 -- vim.keymap.set('v', "<C-k>", ":m '<-2<CR>gv", silent_noremap) -- move line down(v)
 
 -- open file
-vim.keymap.set("n", "go", "gf", silent_noremap)
-
 vim.keymap.set("n", "<esc>", function()
   if vim.api.nvim_get_vvar("hlsearch") == 1 then
     return ":nohl<CR><esc>"

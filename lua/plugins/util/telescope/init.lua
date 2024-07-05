@@ -1,6 +1,7 @@
 local telescope = require("telescope")
 local actions = require("telescope.actions")
 local common = require("plugins.util.telescope.common")
+local custom = require("plugins.util.telescope.custom")
 
 local function merge_config(opts)
   opts.defaults = opts.defaults or {}
@@ -74,3 +75,25 @@ telescope.load_extension("fzf")
 telescope.load_extension("skeleton")
 telescope.load_extension("chezmoi")
 telescope.load_extension("todo-comments")
+
+vim.keymap.set("n", "<C-g>", function()
+  custom.command_picker(common.theme.dropdown())
+end, { noremap = true, silent = true })
+
+vim.keymap.set(
+  "n",
+  "<leader>c",
+  telescope.extensions.chezmoi.find_files,
+  { noremap = true, silent = true }
+)
+
+vim.keymap.set("n", "<leader>v", function()
+  require("telescope.builtin").find_files({
+    cwd = "~/.config/nvim",
+  })
+end, { noremap = true, silent = true })
+
+-- func = builtin.find_files,
+-- opts = {
+--   cwd = ,
+-- },

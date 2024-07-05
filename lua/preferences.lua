@@ -1,5 +1,6 @@
 vim.g.mapleader = " "
 
+vim.o.swapfile = false
 vim.o.undofile = true
 vim.o.encoding = "UTF-8"
 

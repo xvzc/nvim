@@ -15,7 +15,16 @@
 vim.cmd([[
   set winminheight=0
   hi WinSeparator guifg=#ffc4c4
-  hi Normal guibg=None
+  "hi Normal guibg=None
   hi Comment guifg=#8c8787
 ]])
+
+local normal = vim.api.nvim_get_hl(0, { name = "Normal"})
+
+vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#ffc4c4" })
+-- vim.api.nvim_set_hl(0, "Normal", { bg = "None" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = normal.bg, fg = normal.fg })
+vim.api.nvim_set_hl(0, "FloatBorder", { bg = normal.bg })
+vim.cmd.colorscheme "catppuccin"
+
 

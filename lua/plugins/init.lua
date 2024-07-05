@@ -117,11 +117,12 @@ require("lazy").setup({
     event = "VeryLazy",
     config = config("plugins.ui.noice"),
   },
-  {
-    "rebelot/kanagawa.nvim",
-    priority = 1000,
-    config = config("plugins.ui.kanagawa"),
-  },
+  -- {
+  --   "rebelot/kanagawa.nvim",
+  --   priority = 1000,
+  --   config = config("plugins.ui.kanagawa"),
+  -- },
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   {
     "glepnir/dashboard-nvim",
     config = config("plugins.ui.dashboard-nvim"),
@@ -162,8 +163,8 @@ require("lazy").setup({
   },
   {
     "hedyhli/outline.nvim",
-  -- 	event = "VeryLazy",
-  	config = config("plugins.code.outline"),
+    -- 	event = "VeryLazy",
+    config = config("plugins.code.outline"),
     opts = {
       -- Your setup opts here
     },
@@ -185,13 +186,12 @@ require("lazy").setup({
   { "godlygeek/tabular", event = "VeryLazy" },
   {
     "xvzc/chezmoi.nvim",
-    -- dir = "~/_personal/chezmoi.nvim/",
+    dir = "~/_personal/chezmoi.nvim/",
     event = "BufReadPre",
     config = config("plugins.util.chezmoi"),
   },
   {
     "numToStr/Comment.nvim",
-    config = true,
     event = "VeryLazy",
   },
   {
