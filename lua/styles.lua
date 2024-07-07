@@ -27,4 +27,8 @@ vim.api.nvim_set_hl(0, "NormalFloat", { bg = normal.bg, fg = normal.fg })
 vim.api.nvim_set_hl(0, "FloatBorder", { bg = normal.bg })
 vim.cmd.colorscheme "catppuccin"
 
+vim.cmd [[
+hi DiagnosticUnderlineError guisp='Red' gui=undercurl
+hi DiagnosticUnderlineWarn guisp='Cyan' gui=undercurl
+]]
 

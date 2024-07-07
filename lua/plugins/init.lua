@@ -153,7 +153,7 @@ require("lazy").setup({
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
     event = "VeryLazy",
-    config = config("plugins.ui.treesitter"),
+    config = config("plugins.code.treesitter"),
     dependencies = {
       {
         "nvim-treesitter/nvim-treesitter-textobjects",
@@ -237,11 +237,6 @@ require("lazy").setup({
   -- ┌──────┐
   -- │ MISC │
   -- └──────┘
-  {
-    "andweeb/presence.nvim",
-    event = "BufWinEnter",
-    config = config("plugins.misc.presence"),
-  },
   {
     "keaising/im-select.nvim",
     event = "VeryLazy",
