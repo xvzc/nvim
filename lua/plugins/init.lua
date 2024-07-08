@@ -246,4 +246,8 @@ require("lazy").setup({
     "farmergreg/vim-lastplace",
     config = config("plugins.misc.vim-lastplace"),
   },
+  {
+    "norcalli/nvim-colorizer.lua",
+    config = config("plugins.misc.colorizer"),
+  },
 })

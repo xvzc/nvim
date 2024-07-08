@@ -9,6 +9,7 @@ vim.o.foldlevel = 99
 
 vim.o.ignorecase = true
 vim.o.smartcase = true
+vim.o.winminheight = 0
 
 vim.o.mousehide = true -- Hide the mouse cursor while typing
 
@@ -17,6 +18,7 @@ vim.o.laststatus = 3
 
 vim.o.conceallevel = 1
 vim.g.tex_conceal = "amd"
+
 -- vim.o.whichwrap = "lh"
 -- vim.o.background = 'dark'
 
