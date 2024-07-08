@@ -39,6 +39,7 @@ local lsp_util = require("lspconfig/util")
 lspconfig.rust_analyzer.setup {
   on_attach = common.on_attach,
   capabilities = common.capabilities,
+  handlers = common.handlers,
   filetyps = { "rust" },
   root_dir = lsp_util.root_pattern("Cargo.toml"),
   settings = {

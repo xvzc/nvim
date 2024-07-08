@@ -14,6 +14,7 @@ lspconfig.pylsp.setup({
 		client.server_capabilities.documentFormattingProvider = false
 		common.on_attach(client, bufnr)
 	end,
+  handlers = common.handlers,
 	settings = {
 		pylsp = {
 			plugins = {

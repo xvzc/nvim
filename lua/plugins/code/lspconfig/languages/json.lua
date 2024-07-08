@@ -6,4 +6,5 @@ lspconfig.jsonls.setup({
 	on_attach = function(client, bufnr)
 		common.on_attach(client, bufnr)
 	end,
+  handlers = common.handlers,
 })

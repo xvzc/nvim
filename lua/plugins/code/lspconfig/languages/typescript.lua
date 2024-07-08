@@ -8,6 +8,7 @@ lspconfig.tsserver.setup({
 		client.server_capabilities.documentFormattingProvider = false
 		common.on_attach(client, bufnr)
 	end,
+  handlers = common.handlers,
 	filetypes = {
 		"javascript",
 		"javascriptreact",

@@ -9,7 +9,7 @@ vim.diagnostic.config({
     prefix = "",
   },
   virtual_text = false,
-  update_in_insert = false
+  update_in_insert = true
 })
 
 local signs = { Error = "󰅚", Warn = "󰀪", Hint = "", Info = "" }

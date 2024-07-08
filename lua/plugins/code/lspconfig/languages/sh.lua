@@ -5,4 +5,5 @@ local common = require("plugins.code.lspconfig.common")
 lspconfig.bashls.setup({
 	capabilities = common.capabilities,
 	on_attach = common.on_attach,
+  handlers = common.handlers,
 })

@@ -10,4 +10,5 @@ lspconfig.gopls.setup({
 lspconfig.golangci_lint_ls.setup({
 	capabilities = common.capabilities,
 	on_attach = common.on_attach,
+  handlers = common.handlers,
 })
