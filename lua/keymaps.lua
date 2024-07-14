@@ -25,6 +25,9 @@ vim.keymap.set("n", "<leader>a", "gg<S-v><S-g>", silent_noremap)
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { noremap = true, silent = true })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { noremap = true, silent = true })
 
+vim.keymap.set("n", "<C-a>", "<nop>")
+vim.keymap.set("n", "<C-x>", "nop")
+
 -- move lines
 -- vim.keymap.set('n', '<C-j>', ':m .+1<CR>==', silent_noremap)
 -- vim.keymap.set('n', '<C-k>', ':m .-2<CR>==', silent_noremap)
