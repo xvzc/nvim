@@ -30,30 +30,33 @@ local lsp_util = require("lspconfig/util")
 --           command = "clippy",
 --         },
 --         completion = { autocomplete = true }
---
 --       },
 --     },
 --   },
 -- }
 
-lspconfig.rust_analyzer.setup {
+lspconfig.rust_analyzer.setup({
   on_attach = common.on_attach,
   capabilities = common.capabilities,
   handlers = common.handlers,
-  filetyps = { "rust" },
+  filetypes = { "rust" },
   root_dir = lsp_util.root_pattern("Cargo.toml"),
   settings = {
     ["rust-analyzer"] = {
       enabled = true,
       diagnostics = {
-        enable = false,
+        enable = true,
+        experimental = {
+          enable = true,
+        },
       },
       cargo = {
         allFeatures = true,
       },
+      completion = { autocomplete = true },
     },
-  }
-}
+  },
+})
 
 -- local rt = require("rust-tools")
 -- rt.setup(opts)
