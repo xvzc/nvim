@@ -9,14 +9,12 @@ vim.keymap.set("n", "<leader>j", "<C-w>j", silent_noremap)
 vim.keymap.set("n", "<leader>k", "<C-w>k", silent_noremap)
 vim.keymap.set("n", "<leader>l", "<C-w>l", silent_noremap)
 
-vim.keymap.set("n", "<leader>y", '"+y', silent_noremap)
-vim.keymap.set("v", "<leader>y", '"+y', silent_noremap)
+vim.keymap.set({"n", "v"}, "<leader>y", '"+y', silent_noremap)
 
-vim.keymap.set("n", "<leader>d", '"+d', silent_noremap)
-vim.keymap.set("v", "<leader>d", '"+d', silent_noremap)
+vim.keymap.set({"n", "v"}, "<leader>d", '"+d', silent_noremap)
 vim.keymap.set("n", "<leader>D", '"+D', silent_noremap)
 
-vim.keymap.set("n", "<leader>p", '"+p', silent_noremap)
+vim.keymap.set({"n", "v"}, "<leader>p", '"+p', silent_noremap)
 
 vim.keymap.set("n", "<F5>", "<C-l>", silent_noremap)
 vim.keymap.set("n", "<leader>a", "gg<S-v><S-g>", silent_noremap)
