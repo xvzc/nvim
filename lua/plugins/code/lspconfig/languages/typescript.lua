@@ -2,7 +2,7 @@ local lspconfig = require("lspconfig")
 local common = require("plugins.code.lspconfig.common")
 
 -- typescript config
-lspconfig.tsserver.setup({
+lspconfig.ts_ls.setup({
 	capabilities = common.capabilities,
 	on_attach = function(client, bufnr)
 		client.server_capabilities.documentFormattingProvider = false
