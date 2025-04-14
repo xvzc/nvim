@@ -9,6 +9,7 @@ vim.diagnostic.config({
     prefix = "",
   },
   virtual_text = false,
+  severity_sort = true,
   update_in_insert = true
 })
 

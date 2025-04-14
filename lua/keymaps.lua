@@ -17,7 +17,7 @@ vim.keymap.set("n", "<leader>D", '"+D', silent_noremap)
 vim.keymap.set({"n", "v"}, "<leader>p", '"+p', silent_noremap)
 
 vim.keymap.set("n", "<F5>", "<C-l>", silent_noremap)
-vim.keymap.set("n", "<leader>a", "gg<S-v><S-g>", silent_noremap)
+vim.keymap.set("v", "A", "gg^oG$", silent_noremap)
 
 -- diagnostics
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { noremap = true, silent = true })

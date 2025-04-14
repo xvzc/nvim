@@ -23,14 +23,14 @@ local custom = {
     name = "skeleton",
     func = telescope.extensions.skeleton.load_template,
     opts = {
-      path_display = common.path_display.tail,
+      path_display = { "tail" },
     },
   },
   {
     name = "chezmoi",
     func = telescope.extensions.chezmoi.find_files,
     opts = {
-      path_display = common.path_display.tail,
+      path_display = { "tail" },
     },
   },
   {

@@ -72,16 +72,7 @@ local bottom_pane = function(opts)
   return vim.tbl_deep_extend("force", theme_opts, opts)
 end
 
-local tail = function(opts, path)
-	local tail = require("telescope.utils").path_tail(path)
-	return string.format("%s", tail)
-end
-
-
 return {
-  path_display = {
-    tail = tail
-  },
   theme = {
     bottom_pane = bottom_pane,
     dropdown = dropdown

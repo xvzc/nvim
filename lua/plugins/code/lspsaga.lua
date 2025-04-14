@@ -1,6 +1,6 @@
-local saga = require('lspsaga')
+local lspsaga = require('lspsaga')
 
-saga.setup({
+lspsaga.setup({
   code_action = {
     num_shortcut = true,
     keys = {
@@ -55,3 +55,4 @@ saga.setup({
     },
   },
 })
+

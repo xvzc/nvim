@@ -80,12 +80,9 @@ vim.keymap.set("n", "<C-g>", function()
   custom.command_picker(common.theme.dropdown())
 end, { noremap = true, silent = true })
 
-vim.keymap.set(
-  "n",
-  "<leader>c",
-  telescope.extensions.chezmoi.find_files,
-  { noremap = true, silent = true }
-)
+vim.keymap.set("n", "<leader>c", function()
+  telescope.extensions.chezmoi.find_files(nil)
+end, { noremap = true, silent = true })
 
 vim.keymap.set("n", "<leader>v", function()
   require("telescope.builtin").find_files({

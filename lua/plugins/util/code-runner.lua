@@ -20,13 +20,13 @@ local filetype = {
 
 		local command = {
 			"cd $dir &&",
-			"g++ -std=c++17 -O2 -DLOCAL -Wall -Wno-sign-compare $fileName -o $dir/a.out &&",
+			"g++ -std=c++20 -O2 -Wall -Wno-sign-compare $fileName -o $dir/a.out &&",
 			"$dir/a.out &&",
 			"rm -rf $dir/a.out",
 		}
 		return table.concat(command, " ")
 	end,
-	boj = "boj submit $end",
+	boj_submit = "boj submit $end",
 	python = function()
 		if is_boj() then
 			return "boj run $end"
@@ -69,7 +69,7 @@ code_runner.setup({
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	pattern = { os.getenv("HOME") .. "/_personal/algorithms/boj/problems/*" },
 	callback = function()
-		vim.keymap.set("n", "<C-M-s>", ":w<CR>:RunCode boj<CR>", { silent = true })
+		vim.keymap.set("n", "<C-M-s>", ":w<CR>:RunCode boj_submit<CR>", { silent = true })
 	end,
 })
 

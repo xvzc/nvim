@@ -73,15 +73,15 @@ noice.setup({
       view = "split",
       opts = { enter = true, format = "details" },
       filter_opts = { reverse = true },
-      filter = {
-        any = {
-          { event = "notify" },
-          { error = true },
-          { warning = true },
-          { event = "msg_show", kind = { "" } },
-          { event = "lsp", kind = "message" },
-        },
-      },
+      -- filter = {
+      --   any = {
+      --     { event = "notify" },
+      --     { error = true },
+      --     { warning = true },
+      --     { event = "msg_show", kind = { "" } },
+      --     { event = "lsp", kind = "message" },
+      --   },
+      -- },
     },
   },
 })

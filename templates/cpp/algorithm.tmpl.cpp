@@ -15,21 +15,22 @@
 typedef long long ll;
 typedef unsigned long long ull;
 
-using namespace std;
-
 template <typename X, typename Y>
-ostream& operator<<(ostream& os, const pair<X, Y>& p) {
+std::ostream &operator<<(std::ostream &os, const std::pair<X, Y> &p) {
   os << "(" << p.first << ", " << p.second << ")";
   return os;
 }
 
-template <class C, class T, class Container>
-basic_ostream<C, T>& operator<<(basic_ostream<C, T>& os, Container const& c) {
+template <class K, class V, class C>
+std::basic_ostream<K, V> &operator<<(std::basic_ostream<K, V> &os, C const &c) {
   auto it = cbegin(c);
   os << "{";
-  while (it != cend(c)) os << *it++ && it != cend(c) && os << ", ";
+  while (it != cend(c))
+    os << *it++ && it != cend(c) && os << ", ";
   return os << "}";
 }
+
+using namespace std;
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
@@ -38,4 +39,3 @@ int main() {
 
   return 0;
 }
-
