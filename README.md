@@ -10,4 +10,3 @@ pip install pynvim
 ```
 export Author='xvzc' # This name will be automatically inserted when loading templates
 ```
-
