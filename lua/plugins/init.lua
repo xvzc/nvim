@@ -188,7 +188,7 @@ require("lazy").setup({
   {
     "nvim-neo-tree/neo-tree.nvim",
     event = "VeryLazy",
-    -- dir = "~/_personal/neo-tree.nvim/",
+    -- dir = "~/personal/neo-tree.nvim/",
     config = config("plugins.ui.neo-tree"),
   },
   {
@@ -204,7 +204,7 @@ require("lazy").setup({
     dependencies = {
       {
         "nvim-treesitter/nvim-treesitter-textobjects",
-        -- dir = "~/_personal/nvim-treesitter-textobjects/",
+        -- dir = "~/personal/nvim-treesitter-textobjects/",
       },
     },
   },
@@ -233,7 +233,7 @@ require("lazy").setup({
   { "godlygeek/tabular", event = "VeryLazy" },
   {
     "xvzc/chezmoi.nvim",
-    dir = "~/_personal/chezmoi.nvim/",
+    dir = "~/personal/chezmoi.nvim/",
     event = "BufReadPre",
     config = config("plugins.util.chezmoi"),
   },
@@ -248,7 +248,7 @@ require("lazy").setup({
   },
   {
     "xvzc/skeleton.nvim",
-    -- dir = "~/_personal/skeleton.nvim/",
+    -- dir = "~/personal/skeleton.nvim/",
     config = config("plugins.util.skeleton"),
     event = "VeryLazy",
   },

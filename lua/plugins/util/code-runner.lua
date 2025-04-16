@@ -67,7 +67,7 @@ code_runner.setup({
 })
 
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-	pattern = { os.getenv("HOME") .. "/_personal/algorithms/boj/problems/*" },
+	pattern = { os.getenv("HOME") .. "/personal/algorithms/boj/problems/*" },
 	callback = function()
 		vim.keymap.set("n", "<C-M-s>", ":w<CR>:RunCode boj_submit<CR>", { silent = true })
 	end,

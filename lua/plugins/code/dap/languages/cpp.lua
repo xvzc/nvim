@@ -54,7 +54,7 @@ dap.configurations.cpp = {
 		type = "lldb",
 		request = "launch",
 		stopAtEntry = true,
-		program = "~/_personal/algorithms/boj/problems/14500/build/main.out",
+		program = "~/personal/algorithms/boj/problems/14500/build/main.out",
 		cwd = function()
 			return workspace.get().root_dir
 		end,
