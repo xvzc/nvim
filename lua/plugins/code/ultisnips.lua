@@ -23,12 +23,14 @@ snoremap <silent> <S-Tab> <Esc>:call UltiSnips#JumpBackwards()<CR>
 
 local ultisnips_augroup = vim.api.nvim_create_augroup("UltisipsCustomGroup", { clear = true })
 vim.api.nvim_create_autocmd("User", {
-	pattern = { "UltiSnipsEnterFirstSnippet" },
-	group = ultisnips_augroup,
-	callback = function()
-		vim.diagnostic.disable()
-		vim.defer_fn(vim.diagnostic.enable, 1000)
-	end,
+  pattern = { "UltiSnipsEnterFirstSnippet" },
+  group = ultisnips_augroup,
+  callback = function()
+    vim.diagnostic.enable(false)
+    vim.defer_fn(function()
+      vim.diagnostic.enable(true)
+    end, 1000)
+  end,
 })
 
 -- vim.api.nvim_create_autocmd("User", {
@@ -38,9 +40,8 @@ vim.api.nvim_create_autocmd("User", {
 -- })
 
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-	pattern = "**/docker-compose.*",
-	callback = function()
-		vim.cmd("UltiSnipsAddFiletypes yaml.docker-compose")
-	end,
+  pattern = "**/docker-compose.*",
+  callback = function()
+    vim.cmd("UltiSnipsAddFiletypes yaml.docker-compose")
+  end,
 })
-

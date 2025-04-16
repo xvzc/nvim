@@ -1,4 +1,3 @@
-local neoconf = require("neoconf")
 local code_runner = require("code_runner")
 
 vim.cmd([[

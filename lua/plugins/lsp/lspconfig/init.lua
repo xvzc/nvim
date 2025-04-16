@@ -8,16 +8,18 @@ vim.diagnostic.config({
     header = "",
     prefix = "",
   },
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = "󰅚",
+      [vim.diagnostic.severity.WARN] = "󰀪",
+      [vim.diagnostic.severity.HINT] = "",
+      [vim.diagnostic.severity.INFO] = "",
+    },
+  },
   virtual_text = false,
   severity_sort = true,
-  update_in_insert = true
+  update_in_insert = false,
 })
-
-local signs = { Error = "󰅚", Warn = "󰀪", Hint = "", Info = "" }
-for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
 
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspConfig", {}),
@@ -54,9 +56,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
-local config_dir = vim.fn.stdpath("config") .. "/lua/plugins/code/lspconfig/languages"
+local config_dir = vim.fn.stdpath("config") .. "/lua/plugins/lsp/lspconfig/languages"
 for _, file in ipairs(vim.fn.readdir(config_dir, [[v:val =~ '\.lua$']])) do
-  require("plugins.code.lspconfig.languages." .. file:gsub("%.lua$", ""))
+  require("plugins.lsp.lspconfig.languages." .. file:gsub("%.lua$", ""))
 end
 
 -- until this issue solved: https://github.com/neovim/neovim/issues/20456

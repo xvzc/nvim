@@ -1,5 +1,5 @@
 local lspconfig = require("lspconfig")
-local common = require("plugins.code.lspconfig.common")
+local common = require("plugins.lsp.lspconfig.common")
 local lsp_util = require("lspconfig/util")
 
 -- local opts = {

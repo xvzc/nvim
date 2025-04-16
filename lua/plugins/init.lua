@@ -20,39 +20,25 @@ require("lazy").setup({
     "rcarriga/nvim-notify",
     config = config("plugins.ui.notify"),
   },
-  -- ┌──────┐
-  -- │ CODE │
-  -- └──────┘
-  {
-    "mfussenegger/nvim-dap",
-    event = "VeryLazy",
-    config = config("plugins.code.dap"),
-    dependencies = {
-      "nvim-neotest/nvim-nio",
-      "rcarriga/nvim-dap-ui",
-    },
-  },
+  -- ┌─────┐
+  -- │ LSP │
+  -- └─────┘
   {
     "neovim/nvim-lspconfig",
-    config = config("plugins.code.lspconfig"),
+    config = config("plugins.lsp.lspconfig"),
     dependencies = {
       {
         "williamboman/mason.nvim",
-        config = config("plugins.code.mason"),
+        config = config("plugins.lsp.mason"),
         dependencies = {
           { "williamboman/mason-lspconfig.nvim" },
         },
       },
       {
-        "folke/neoconf.nvim",
-        event = "VeryLazy",
-        config = config("plugins.code.neoconf"),
-      },
-      {
         "glepnir/lspsaga.nvim",
         branch = "main",
         event = "VeryLazy",
-        config = config("plugins.code.lspsaga"),
+        config = config("plugins.lsp.lspsaga"),
       },
       -- { 'simrat39/rust-tools.nvim',     ft = { 'rust' } },
       { "yuezk/vim-js", ft = { "js" } },
@@ -60,6 +46,26 @@ require("lazy").setup({
       { "HerringtonDarkholme/yats.vim", ft = { "js" } },
       { "maxmellon/vim-jsx-pretty", ft = { "jsx" } },
       { "hashivim/vim-terraform", ft = { "tf", "terraform" } },
+    },
+  },
+  {
+    "nvimtools/none-ls.nvim",
+    event = "VeryLazy",
+    config = config("plugins.lsp.null-ls"),
+  },
+  -- ┌──────┐
+  -- │ CODE │
+  -- └──────┘
+  {
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate",
+    event = "VeryLazy",
+    config = config("plugins.code.treesitter"),
+    dependencies = {
+      {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        -- dir = "~/personal/nvim-treesitter-textobjects/",
+      },
     },
   },
   {
@@ -75,12 +81,7 @@ require("lazy").setup({
     "CRAG666/code_runner.nvim",
     priority = 1,
     event = "BufReadPre",
-    config = config("plugins.util.code-runner"),
-  },
-  {
-    "nvimtools/none-ls.nvim",
-    event = "VeryLazy",
-    config = config("plugins.code.null-ls"),
+    config = config("plugins.code.code-runner"),
   },
   {
     "SirVer/ultisnips",
@@ -106,53 +107,6 @@ require("lazy").setup({
       {
         "quangnguyen30192/cmp-nvim-ultisnips",
         config = true,
-      },
-    },
-  },
-  {
-    "yetone/avante.nvim",
-    event = "VeryLazy",
-    config = config("plugins.code.avante"),
-    version = false, -- Never set this value to "*"! Never!
-    -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-    build = "make",
-    -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "stevearc/dressing.nvim",
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-      --- The below dependencies are optional,
-      "echasnovski/mini.pick", -- for file_selector provider mini.pick
-      "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-      "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
-      "ibhagwan/fzf-lua", -- for file_selector provider fzf
-      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-      "zbirenbaum/copilot.lua", -- for providers='copilot'
-      {
-        -- support for image pasting
-        "HakonHarnes/img-clip.nvim",
-        event = "VeryLazy",
-        opts = {
-          -- recommended settings
-          default = {
-            embed_image_as_base64 = false,
-            prompt_for_file_name = false,
-            drag_and_drop = {
-              insert_mode = true,
-            },
-            -- required for Windows users
-            use_absolute_path = true,
-          },
-        },
-      },
-      {
-        -- Make sure to set this up properly if you have lazy=true
-        "MeanderingProgrammer/render-markdown.nvim",
-        opts = {
-          file_types = { "markdown", "Avante" },
-        },
-        ft = { "markdown", "Avante" },
       },
     },
   },
@@ -197,21 +151,9 @@ require("lazy").setup({
     event = "VeryLazy",
   },
   {
-    "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
-    event = "VeryLazy",
-    config = config("plugins.code.treesitter"),
-    dependencies = {
-      {
-        "nvim-treesitter/nvim-treesitter-textobjects",
-        -- dir = "~/personal/nvim-treesitter-textobjects/",
-      },
-    },
-  },
-  {
     "hedyhli/outline.nvim",
     -- 	event = "VeryLazy",
-    config = config("plugins.code.outline"),
+    config = config("plugins.ui.outline"),
     opts = {
       -- Your setup opts here
     },
@@ -278,9 +220,50 @@ require("lazy").setup({
     event = "VeryLazy",
   },
   {
-    "folke/todo-comments.nvim",
+    "yetone/avante.nvim",
     event = "VeryLazy",
-    config = config("plugins.util.todo-comments"),
+    config = config("plugins.util.avante"),
+    version = false, -- Never set this value to "*"! Never!
+    -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+    build = "make",
+    -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "stevearc/dressing.nvim",
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      --- The below dependencies are optional,
+      "echasnovski/mini.pick", -- for file_selector provider mini.pick
+      "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
+      "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+      "zbirenbaum/copilot.lua", -- for providers='copilot'
+      {
+        -- support for image pasting
+        "HakonHarnes/img-clip.nvim",
+        event = "VeryLazy",
+        opts = {
+          -- recommended settings
+          default = {
+            embed_image_as_base64 = false,
+            prompt_for_file_name = false,
+            drag_and_drop = {
+              insert_mode = true,
+            },
+            -- required for Windows users
+            use_absolute_path = true,
+          },
+        },
+      },
+      {
+        -- Make sure to set this up properly if you have lazy=true
+        "MeanderingProgrammer/render-markdown.nvim",
+        opts = {
+          file_types = { "markdown", "Avante" },
+        },
+        ft = { "markdown", "Avante" },
+      },
+    },
   },
   -- ┌──────┐
   -- │ MISC │
@@ -297,5 +280,10 @@ require("lazy").setup({
   {
     "norcalli/nvim-colorizer.lua",
     config = config("plugins.misc.colorizer"),
+  },
+  {
+    "folke/todo-comments.nvim",
+    event = "VeryLazy",
+    config = config("plugins.misc.todo-comments"),
   },
 })

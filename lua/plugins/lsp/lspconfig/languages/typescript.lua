@@ -1,5 +1,5 @@
 local lspconfig = require("lspconfig")
-local common = require("plugins.code.lspconfig.common")
+local common = require("plugins.lsp.lspconfig.common")
 
 -- typescript config
 lspconfig.ts_ls.setup({

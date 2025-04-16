@@ -1,5 +1,5 @@
 local lspconfig = require("lspconfig")
-local common = require("plugins.code.lspconfig.common")
+local common = require("plugins.lsp.lspconfig.common")
 
 local pylint_ignore = {
   "missing-module-docstring",
