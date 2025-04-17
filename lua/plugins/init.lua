@@ -175,7 +175,7 @@ require("lazy").setup({
   { "godlygeek/tabular", event = "VeryLazy" },
   {
     "xvzc/chezmoi.nvim",
-    dir = "~/personal/chezmoi.nvim/",
+    -- dir = "~/personal/chezmoi.nvim/",
     event = "BufReadPre",
     config = config("plugins.util.chezmoi"),
   },

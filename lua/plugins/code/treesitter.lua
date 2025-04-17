@@ -34,7 +34,7 @@ treesitter.setup({
     "gomod",
     "sql",
     "terraform",
-    "org",
+    -- "org",
   },
   highlight = {
     enable = true,
