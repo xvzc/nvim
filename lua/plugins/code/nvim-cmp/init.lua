@@ -52,8 +52,8 @@ cmp.setup({
     ghost_text = false,
   },
   window = {
-    documentation = cmp.config.window.bordered(),
-    completion = cmp.config.window.bordered(),
+    -- documentation = cmp.config.window.bordered(),
+    -- completion = cmp.config.window.bordered(),
   },
 })
 

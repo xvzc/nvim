@@ -25,3 +25,10 @@ vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
     vim.o.filetype = 'snippets'
   end
 })
+
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+  pattern = '*/.ssh/config.d/*',
+  callback = function()
+    vim.o.filetype = 'sshconfig'
+  end
+})

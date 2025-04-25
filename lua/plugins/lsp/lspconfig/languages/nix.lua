@@ -7,7 +7,7 @@ lspconfig.nixd.setup({
   settings = {
     nixd = {
       formatting = {
-        command = { "alejandra" },
+        command = { "nixfmt" },
       },
     },
   },
