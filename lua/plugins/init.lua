@@ -214,12 +214,6 @@ require("lazy").setup({
     config = config("plugins.util.nvim-surround"),
   },
   {
-    "akinsho/toggleterm.nvim",
-    -- 'voldikss/vim-floaterm',
-    config = config("plugins.util.toggleterm"),
-    event = "VeryLazy",
-  },
-  {
     "yetone/avante.nvim",
     event = "VeryLazy",
     config = config("plugins.util.avante"),

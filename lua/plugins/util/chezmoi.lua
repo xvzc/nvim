@@ -1,5 +1,3 @@
-local toggleterm = require("toggleterm")
-
 require("chezmoi").setup({
   edit = {
     watch = true,
