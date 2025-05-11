@@ -4,3 +4,5 @@ plugins/packer_compiled.lua
 .luarc.json
 lazy-lock.json
 **/__pycache__/
+
+.envrc
