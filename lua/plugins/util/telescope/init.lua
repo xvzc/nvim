@@ -87,15 +87,9 @@ vim.keymap.set("n", "<leader>b", function()
   }))
 end, silent_noremap)
 
-vim.keymap.set("n", "<leader>c", function()
-  telescope.extensions.chezmoi.find_files(nil)
-end, silent_noremap)
-
-vim.keymap.set("n", "<leader>v", function()
-  require("telescope.builtin").find_files({
-    cwd = "~/.config/nvim",
-  })
-end, silent_noremap)
+-- vim.keymap.set("n", "<leader>c", function()
+--   telescope.extensions.chezmoi.find_files()
+-- end, silent_noremap)
 
 -- func = builtin.find_files,
 -- opts = {

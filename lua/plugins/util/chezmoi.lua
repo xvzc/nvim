@@ -2,12 +2,23 @@ require("chezmoi").setup({
   edit = {
     watch = true,
     force = true,
-    after = function()end
-
   },
-  notification = {
-    on_open = false,
-    on_watch = true,
+  events = {
+    on_open = {
+      notification = {
+        enable = false,
+      },
+    },
+    on_watch = {
+      notification = {
+        enable = true,
+      },
+    },
+    on_apply = {
+      notification = {
+        enable = true,
+      },
+    },
   },
   telescope = {
     select = { "<CR>" },
