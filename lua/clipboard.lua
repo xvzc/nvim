@@ -15,14 +15,14 @@ vim.g.clipboard = {
   },
 }
 
--- local is_darwin = vim.fn.has("macunix")
--- vim.g.clipboard = {
---   copy = {
---     ["+"] = osc52.copy("+"),
---     ["*"] = osc52.copy("*"),
---   },
---   paste = {
---     ["+"] = is_darwin and "pbpaste" or "xclip -o -selection clipboard",
---     ["*"] = is_darwin and "pbpaste" or "xclip -o -selection clipboard",
---   },
--- }
+local is_darwin = vim.fn.has("macunix")
+vim.g.clipboard = {
+  copy = {
+    ["+"] = osc52.copy("+"),
+    ["*"] = osc52.copy("*"),
+  },
+  paste = {
+    ["+"] = is_darwin and "pbpaste" or "xclip -o -selection clipboard",
+    ["*"] = is_darwin and "pbpaste" or "xclip -o -selection clipboard",
+  },
+}
