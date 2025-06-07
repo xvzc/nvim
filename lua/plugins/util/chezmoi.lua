@@ -1,7 +1,10 @@
 require("chezmoi").setup({
+  extra_args = {
+    "--no-tty",
+  },
   edit = {
-    watch = true,
-    force = true,
+    watch = false,
+    force = false,
   },
   events = {
     on_open = {
