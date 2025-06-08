@@ -19,7 +19,7 @@ if is_tmux or is_ssh then
   return
 end
 
-local is_darwin = vim.fn.has("macunix")
+local is_darwin = (vim.fn.has("macunix") == 1)
 vim.g.clipboard = {
   copy = {
     ["+"] = osc52.copy("+"),
