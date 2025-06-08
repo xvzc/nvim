@@ -1,7 +1,7 @@
 local osc52 = require("vim.ui.clipboard.osc52")
 
 local is_tmux = vim.env.TMUX ~= nil and vim.env.TMUX ~= ""
-local is_ssh = vim.env.SSH ~= nil and vim.env.SSH ~= ""
+local is_ssh = vim.env.SSH_TTY ~= nil and vim.env.SSH ~= ""
 
 if is_tmux or is_ssh then
   vim.g.clipboard = {
