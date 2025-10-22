@@ -6,3 +6,4 @@ plugins/packer_compiled.lua
 lazy-lock.json
 
 .envrc
+.direnv

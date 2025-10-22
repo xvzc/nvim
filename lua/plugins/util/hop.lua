@@ -1,17 +1,28 @@
-local hop = require("hop")
-local directions = require("hop.hint").HintDirection
+local keys = {
+  {
+    mode = { "n" },
+    "<leader>f",
+    function()
+      require("hop").hint_char1()
+    end,
+    { silent = true, noremap = true },
+  },
+  {
+    mode = { "n" },
+    "<leader><leader>f",
+    function()
+      require("hop").hint_char2()
+    end,
+    { silent = true, noremap = true },
+  },
+}
 
-hop.setup({
-	keys = "hklyuiopnmqwertzxcvbasdgjf",
-	teasing = false,
-})
-
--- Keymaps
-local opts = { silent = true, noremap = true }
-vim.keymap.set("n", "<leader>f", function()
-	hop.hint_char1()
-end, opts)
-
-vim.keymap.set("n", "<leader><leader>f", function()
-	hop.hint_char2({})
-end, opts)
+return {
+  "phaazon/hop.nvim",
+  event = "VeryLazy",
+  keys = keys,
+  opts = {
+    keys = "hklyuiopnmqwertzxcvbasdgjf",
+    teasing = false,
+  },
+}

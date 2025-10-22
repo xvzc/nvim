@@ -1,5 +1,3 @@
-vim.cmd.colorscheme("catppuccin") -- This should be at the first line
-
 -- ┌───────────────────┐
 -- │ GENERAL HIGHLIGHT │
 -- └───────────────────┘

@@ -1,6 +1,8 @@
 local silent_noremap = { silent = true, noremap = true }
 local silent_noremap_expr = { silent = true, noremap = true, expr = true }
 
+vim.g.mapleader = " "
+
 vim.keymap.set("n", "<leader>-", ":sp<CR><C-w>j", silent_noremap)
 vim.keymap.set("n", "<leader>_", ":vsp<CR><C-w>l", silent_noremap)
 
@@ -9,12 +11,12 @@ vim.keymap.set("n", "<leader>j", "<C-w>j", silent_noremap)
 vim.keymap.set("n", "<leader>k", "<C-w>k", silent_noremap)
 vim.keymap.set("n", "<leader>l", "<C-w>l", silent_noremap)
 
-vim.keymap.set({"n", "v"}, "<leader>y", '"+y', silent_noremap)
+vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', silent_noremap)
 
-vim.keymap.set({"n", "v"}, "<leader>d", '"+d', silent_noremap)
+vim.keymap.set({ "n", "v" }, "<leader>d", '"+d', silent_noremap)
 vim.keymap.set("n", "<leader>D", '"+D', silent_noremap)
 
-vim.keymap.set({"n", "v"}, "<leader>p", '"+p', silent_noremap)
+vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', silent_noremap)
 
 vim.keymap.set("n", "<F5>", "<C-l>", silent_noremap)
 vim.keymap.set("v", "A", "gg^oG$", silent_noremap)
@@ -24,21 +26,19 @@ vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { noremap = true, silent = t
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { noremap = true, silent = true })
 
 vim.keymap.set("n", "<C-a>", "<nop>")
-vim.keymap.set("n", "<C-x>", "<nop>")
-
--- move lines
--- vim.keymap.set('n', '<C-j>', ':m .+1<CR>==', silent_noremap)
--- vim.keymap.set('n', '<C-k>', ':m .-2<CR>==', silent_noremap)
--- vim.keymap.set('v', '<C-j>', "om1om2:m '>+1<CR>`1V`2==`1V`2", silent_noremap)
--- vim.keymap.set('v', '<C-k>', "om1om2:m '<-2<CR>`1V`2==`1V`2", silent_noremap)
--- vim.keymap.set('v', "<C-j>", ":m '>+1<CR>gv", silent_noremap) -- move line up(v)
--- vim.keymap.set('v', "<C-k>", ":m '<-2<CR>gv", silent_noremap) -- move line down(v)
 
 -- open file
 vim.keymap.set("n", "<esc>", function()
   if vim.api.nvim_get_vvar("hlsearch") == 1 then
     return ":nohl<CR><esc>"
   end
+
+  for _, wid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
+    if vim.api.nvim_win_get_config(wid).zindex then
+      return ":fclose!<CR><esc>"
+    end
+  end
+
   return "<esc>"
 end, silent_noremap_expr)
 
