@@ -26,6 +26,7 @@ vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { noremap = true, silent = t
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { noremap = true, silent = true })
 
 vim.keymap.set("n", "<C-a>", "<nop>")
+vim.keymap.set("n", "q:", "<nop>")
 
 -- open file
 vim.keymap.set("n", "<esc>", function()
