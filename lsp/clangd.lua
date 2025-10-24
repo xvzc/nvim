@@ -1,5 +1,8 @@
 return {
-  filetypes = { "c", "cpp" },
+  Command = {
+    "clangd",
+    "--header-insertion=never",
+  },
   cmd = {
     "clangd",
     "--header-insertion=never",

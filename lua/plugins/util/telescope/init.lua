@@ -82,9 +82,9 @@ local function config()
     builtin.buffers(theme.dropdown({}))
   end, silent_noremap)
 
-  vim.keymap.set("n", "<leader>c", function()
-    telescope.extensions.chezmoi.find_files()
-  end, silent_noremap)
+  -- vim.keymap.set("n", "<leader>c", function()
+  --   telescope.extensions.chezmoi.find_files()
+  -- end, silent_noremap)
 end
 
 return {
@@ -93,5 +93,7 @@ return {
   config = config,
   dependencies = {
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    "xvzc/skeleton.nvim",
+    "xvzc/chezmoi.nvim"
   },
 }

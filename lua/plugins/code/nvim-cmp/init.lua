@@ -1,44 +1,30 @@
-local const = require("plugins.code.nvim-cmp.modules.const")
-
-local function format_item(entry, vim_item)
-  vim_item.kind = const.kind_icons[vim_item.kind]
-
-  -- This concatonates the icons with the name of the item kind
-  local MAX_LABEL_LENGTH = 30
-  local label = vim.trim(vim_item.abbr)
-  if string.len(label) > MAX_LABEL_LENGTH then
-    label = vim.fn.strcharpart(label, 0, MAX_LABEL_LENGTH) .. ".."
-  end
-
-  vim_item.abbr = label
-
-  return vim_item
-end
-
 local function config()
   local cmp = require("cmp")
+  local util = require("plugins.code.nvim-cmp.modules.util")
+  local mapping = require("plugins.code.nvim-cmp.modules.mapping")
   cmp.setup({
-    preselect = cmp.PreselectMode.None,
-    mapping = require("plugins.code.nvim-cmp.modules.mapping"),
+    -- preselect = cmp.PreselectMode.None,
+    mapping = mapping.global,
+    expand = function(args)
+      require("luasnip").lsp_expand(args.body)
+    end,
+    enabled = util.should_enable,
     formatting = {
       fields = { "abbr", "kind" },
-      format = format_item,
-    },
-    snippet = {
-      expand = function(args)
-        vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-      end,
+      format = util.format_item,
     },
     sources = cmp.config.sources({
-      { name = "ultisnips", priority = 1000 }, -- For ultisnips users.
+      { name = "luasnip", priority = 1000 },
       {
         priority = 999,
         name = "nvim_lsp",
         entry_filter = function(entry, _)
-          local kind = require("cmp.types").lsp.CompletionItemKind[entry:get_kind()]
-          if kind == "Text" then
+          local kind =
+            require("cmp.types").lsp.CompletionItemKind[entry:get_kind()]
+          if vim.tbl_contains({ "Text" }, kind) then
             return false
           end
+
           return true
         end,
       },
@@ -63,26 +49,28 @@ local function config()
   })
 
   cmp.setup.cmdline("/", {
-    mapping = cmp.mapping.preset.cmdline(),
+    mapping = mapping.cmdline,
     sources = {
       { name = "buffer" },
     },
   })
 
   cmp.setup.cmdline(":", {
-    mapping = cmp.mapping.preset.cmdline(),
+    mapping = mapping.cmdline,
     sources = cmp.config.sources({
       { name = "path" },
     }, {
       { name = "cmdline" },
     }),
   })
+
+  require("plugins.code.nvim-cmp.modules.style").apply_style()
 end
 
 return {
   "hrsh7th/nvim-cmp",
   config = config,
-  -- event = "VeryLazy",
+  event = "VeryLazy",
   dependencies = {
     {
       "windwp/nvim-autopairs",
@@ -96,9 +84,10 @@ return {
     { "lukas-reineke/cmp-under-comparator" },
     { "hrsh7th/cmp-cmdline" },
     { "hrsh7th/cmp-nvim-lsp-document-symbol" },
-    {
-      "quangnguyen30192/cmp-nvim-ultisnips",
-      config = true,
-    },
+    { "saadparwaiz1/cmp_luasnip" },
+    -- {
+    --   "quangnguyen30192/cmp-nvim-ultisnips",
+    --   config = true,
+    -- },
   },
 }

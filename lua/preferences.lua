@@ -41,7 +41,8 @@ vim.o.relativenumber = true
 vim.o.signcolumn = "yes"
 vim.o.pumheight = 10
 vim.o.pumblend = 0
-vim.opt.listchars = { space = "_", tab = ">~", trail = " " }
+vim.opt.list = true
+vim.opt.listchars = { lead = " ", space = " ", tab = ">~", trail = " " }
 
 -- vim.o.noshowmode = true
 vim.o.showtabline = 0
@@ -53,7 +54,7 @@ vim.o.mouse = "a"
 
 vim.o.viminfo = "'100,<1000,s100,h"
 -- '100 Marks will be remembered for the last 100 edited files.
--- <1000 Limits the number of lines saved for each register to 1000 lines; 
+-- <1000 Limits the number of lines saved for each register to 1000 lines;
 -- if a register contains more than 1000 lines, only the first 1000 lines are saved.
 -- s100 Registers with more than 100 KB of text are skipped.
 -- h Disables search highlighting when Vim starts.

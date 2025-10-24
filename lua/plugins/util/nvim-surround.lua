@@ -1,13 +1,13 @@
--- vim.keymap.del("s", "s", { silent = true, remap = true })
+local function config()
+  require("nvim-surround").setup({})
 
-local keys = {
-  { mode = { "n" }, "s", "ysiw", { silent = true, remap = true } },
-  { mode = { "v" }, "s", "S", { silent = true, remap = true } },
-}
+  vim.keymap.set({ "n" }, "s", "ysiw", { silent = true, remap = true })
+  vim.keymap.set("x", "s", "S", { silent = true, remap = true })
+end
 
 return {
   "kylechui/nvim-surround",
-  keys = keys,
-  version = "*", -- Use for stability; omit to use `main` branch for the latest features
+  version = "^3.0.0", -- Use for stability; omit to use `main` branch for the latest features
   event = "VeryLazy",
+  config = config,
 }

@@ -12,7 +12,7 @@ local function config()
     \ UltiSnips#CanJumpForwards() ? "\<C-r>=UltiSnips#JumpForwards()\<CR>" :
     \ UltiSnips#CanExpandSnippet() ? "\<C-r>=UltiSnips#ExpandSnippet()\<CR>" :
     \ "\<Tab>"
-
+    "
     snoremap <silent> <Tab> <Esc>:call UltiSnips#JumpForwards()<CR>
 
     inoremap <silent><expr> <S-Tab>
@@ -35,11 +35,11 @@ local function config()
     end,
   })
 
-  -- vim.api.nvim_create_autocmd("User", {
-  -- 	pattern = { "UltiSnipsExitLastSnippet" },
-  -- 	group = ultisnips_augroup,
-  -- 	callback = function() end,
-  -- })
+  vim.api.nvim_create_autocmd("User", {
+    pattern = { "UltiSnipsExitLastSnippet" },
+    group = ultisnips_augroup,
+    callback = function() end,
+  })
 
   vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     pattern = "**/docker-compose.*",
@@ -48,7 +48,9 @@ local function config()
     end,
   })
 end
+
 return {
-  "SirVer/ultisnips",
-  config = config,
+  -- "SirVer/ultisnips",
+  -- enabled = true,
+  -- config = config,
 }

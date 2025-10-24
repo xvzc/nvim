@@ -23,16 +23,6 @@ local function config()
   vim.lsp.enable("tflint")
   vim.lsp.enable("ts_ls")
 
-  -- leave this until this issue gets solved
-  -- https://github.com/neovim/neovim/issues/20456
-  -- vim.cmd([[
-  --   augroup MyLuaHLBugFix
-  --     autocmd!
-  --     autocmd! ColorScheme,VimEnter * highlight! \
-  --     link luaParenError Normal | highlight! link luaError Normal
-  --   augroup END
-  -- ]])
-
   vim.lsp.handlers["client/registerCapability"] = (function(overridden)
     return function(err, res, ctx)
       local result = overridden(err, res, ctx)
@@ -73,9 +63,10 @@ local function config()
     border = border,
   })
 
-  handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-    border = border,
-  })
+  handlers["textDocument/signatureHelp"] =
+    vim.lsp.with(vim.lsp.handlers.signature_help, {
+      border = border,
+    })
 
   handlers["textDocument/publishDiagnostics"] =
     vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -122,14 +113,42 @@ local function config()
       vim.keymap.set("n", "gr", "<cmd>Lspsaga finder ref<CR>", opts)
       vim.keymap.set("n", "gi", "<cmd>Lspsaga finder imp<CR>", opts)
 
-      vim.keymap.set("n", "<leader>gc", "<cmd>Lspsaga code_action<CR>", opts)
-      vim.keymap.set("n", "<leader>i", "<cmd>Lspsaga show_line_diagnostics ++unfocus<CR>", opts)
+      vim.keymap.set("n", "<leader>c", function()
+        require("lspsaga.codeaction"):code_action()
+      end, opts)
+      vim.keymap.set(
+        "n",
+        "<leader>i",
+        "<cmd>Lspsaga show_cursor_diagnostics ++unfocus<CR>",
+        opts
+      )
+      vim.keymap.set(
+        "n",
+        "<leader>I",
+        "<cmd>Lspsaga show_workspace_diagnostics ++focus<CR>",
+        opts
+      )
 
-      vim.keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
-      vim.keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
+      vim.keymap.set(
+        "n",
+        "<leader>[",
+        "<cmd>Lspsaga diagnostic_jump_prev<CR>",
+        opts
+      )
+      vim.keymap.set(
+        "n",
+        "<leader>]",
+        "<cmd>Lspsaga diagnostic_jump_next<CR>",
+        opts
+      )
 
       vim.keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts)
-      vim.keymap.set("n", "<F1>", vim.lsp.buf.signature_help, { noremap = true, silent = true })
+      vim.keymap.set(
+        "n",
+        "<F1>",
+        vim.lsp.buf.signature_help,
+        { noremap = true, silent = true }
+      )
     end,
   })
 end

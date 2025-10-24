@@ -1,7 +1,6 @@
 -- ┌───────────────────┐
 -- │ GENERAL HIGHLIGHT │
 -- └───────────────────┘
-
 local normal = vim.api.nvim_get_hl(0, { name = "Normal" })
 local cursorline = vim.api.nvim_get_hl(0, { name = "CursorLine" })
 
@@ -14,6 +13,21 @@ vim.api.nvim_set_hl(0, "Comment", { fg = "#8c8787" })
 vim.api.nvim_set_hl(0, "CursorLine", { bg = cursorline.bg })
 vim.api.nvim_set_hl(0, "CursorLineNr", { bg = cursorline.bg })
 vim.api.nvim_set_hl(0, "CursorLineSign", { bg = cursorline.bg })
+
+local cursorline_dynamic = {
+  ["v"] = normal.bg,
+  ["V"] = normal.bg,
+  ["i"] = cursorline.bg,
+  ["n"] = cursorline.bg,
+}
+vim.api.nvim_create_autocmd({ "ModeChanged" }, {
+  callback = function()
+    local cur = vim.api.nvim_get_mode()
+    vim.api.nvim_set_hl(0, "CursorLine", { bg = cursorline_dynamic[cur.mode] })
+    vim.api.nvim_set_hl(0, "CursorLineNr", { bg = cursorline_dynamic[cur.mode] })
+    vim.api.nvim_set_hl(0, "CursorLineSign", { bg = cursorline_dynamic[cur.mode] })
+  end,
+})
 
 -- ┌──────────────────────┐
 -- │ DIAGNOSTIC HIGHLIGHT │
