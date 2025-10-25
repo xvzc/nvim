@@ -16,10 +16,25 @@ local keys = {
   { mode = { "n" }, "<leader>7", create_navigation_func(7), { silent = true } },
   { mode = { "n" }, "<leader>8", create_navigation_func(8), { silent = true } },
   { mode = { "n" }, "<leader>9", create_navigation_func(9), { silent = true } },
-  { mode = { "n" }, "<leader>0", create_navigation_func(10), { silent = true } },
+  {
+    mode = { "n" },
+    "<leader>0",
+    create_navigation_func(10),
+    { silent = true },
+  },
   { mode = { "n" }, "<leader>q", "<cmd>bd<cr>", { silent = true } },
-  { mode = { "n" }, "<C-Tab>", "<cmd>BufferLineCycleNext<CR>", { silent = true } },
-  { mode = { "n" }, "<C-S-Tab>", "<cmd>BufferLineCyclePrev<CR>", { silent = true } },
+  {
+    mode = { "n" },
+    "<C-Tab>",
+    "<cmd>BufferLineCycleNext<CR>",
+    { silent = true },
+  },
+  {
+    mode = { "n" },
+    "<C-S-Tab>",
+    "<cmd>BufferLineCyclePrev<CR>",
+    { silent = true },
+  },
 }
 
 return {

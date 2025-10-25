@@ -38,20 +38,21 @@ vim.keymap.set(
 vim.keymap.set("n", "<C-a>", "<nop>")
 vim.keymap.set("n", "q:", "<nop>")
 
--- open file
-vim.keymap.set("n", "<esc>", function()
-  if vim.api.nvim_get_vvar("hlsearch") == 1 then
-    return ":nohl<CR><esc>"
-  end
-
-  for _, wid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
-    if vim.api.nvim_win_get_config(wid).zindex then
-      return ":fclose!<CR><esc>"
-    end
-  end
-
-  return "<esc>"
-end, silent_noremap_expr)
+--
+-- -- open file
+-- vim.keymap.set("n", "<F5>", function()
+--   if vim.api.nvim_get_vvar("hlsearch") == 1 then
+--     return ":nohl<CR><esc>"
+--   end
+--
+--   for _, wid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
+--     if vim.api.nvim_win_get_config(wid).zindex then
+--       return ":fclose!<CR><esc>"
+--     end
+--   end
+--
+--   return "<esc>"
+-- end, silent_noremap_expr)
 
 vim.keymap.set("n", "<S-F5>", function()
   vim.notify("Reload neovim config")

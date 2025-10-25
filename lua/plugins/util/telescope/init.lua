@@ -94,6 +94,6 @@ return {
   dependencies = {
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     "xvzc/skeleton.nvim",
-    "xvzc/chezmoi.nvim"
+    "xvzc/chezmoi.nvim",
   },
 }
