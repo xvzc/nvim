@@ -37,4 +37,13 @@ return {
   "aserowy/tmux.nvim",
   keys = keys,
   config = true,
+  opts = {
+    navigation = {
+      -- cycles to opposite pane while navigating into the border
+      cycle_navigation = false,
+      -- enables default keybindings (C-hjkl) for normal mode
+      enable_default_keybindings = false,
+      persist_zoom = false,
+    },
+  },
 }
