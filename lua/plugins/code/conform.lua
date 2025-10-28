@@ -6,7 +6,7 @@ local function config()
     -- Conform will run the first available formatter
     c = { "clang-format" },
     sh = { "shfmt" },
-    go = { "gofmt" },
+    go = { "golangci-lint" },
     cpp = { "clang-format" },
     nix = { "nixfmt", lsp_format = "fallback" },
     lua = { "stylua" },
