@@ -1,4 +1,3 @@
-# save this as shell.nix
 {
   pkgs ? import <nixpkgs> { },
 }:

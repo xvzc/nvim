@@ -1,6 +1,6 @@
 local keys = {
   {
-    mode = { "n" },
+    mode = { "n", "i" },
     "<C-h>",
     function()
       require("tmux").move_left()
@@ -8,7 +8,7 @@ local keys = {
     { silent = true },
   },
   {
-    mode = { "n" },
+    mode = { "n", "i" },
     "<C-j>",
     function()
       require("tmux").move_bottom()
@@ -16,7 +16,7 @@ local keys = {
     { silent = true },
   },
   {
-    mode = { "n" },
+    mode = { "n", "i" },
     "<C-k>",
     function()
       require("tmux").move_top()
@@ -24,7 +24,7 @@ local keys = {
     { silent = true },
   },
   {
-    mode = { "n" },
+    mode = { "n", "i" },
     "<C-l>",
     function()
       require("tmux").move_right()
@@ -35,6 +35,7 @@ local keys = {
 
 return {
   "aserowy/tmux.nvim",
+  enabled = true,
   keys = keys,
   config = true,
   opts = {

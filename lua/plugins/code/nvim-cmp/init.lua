@@ -6,15 +6,21 @@ local function config()
     -- preselect = cmp.PreselectMode.None,
     mapping = mapping.global,
     expand = function(args)
-      require("luasnip").lsp_expand(args.body)
+      (vim.snippet ~= nil and vim.snippet.expand or vim.fn["UltiSnips#Anon"])(
+        args.body
+      )
     end,
+    -- expand = function(args)
+    --   require("luasnip").lsp_expand(args.body)
+    -- end,
     enabled = util.should_enable,
     formatting = {
       fields = { "abbr", "kind" },
       format = util.format_item,
     },
     sources = cmp.config.sources({
-      { name = "luasnip", priority = 1000 },
+      { name = "ultisnips", priority = 1000 },
+      -- { name = "luasnip", priority = 1000 },
       {
         priority = 999,
         name = "nvim_lsp",
@@ -84,10 +90,10 @@ return {
     { "lukas-reineke/cmp-under-comparator" },
     { "hrsh7th/cmp-cmdline" },
     { "hrsh7th/cmp-nvim-lsp-document-symbol" },
-    { "saadparwaiz1/cmp_luasnip" },
-    -- {
-    --   "quangnguyen30192/cmp-nvim-ultisnips",
-    --   config = true,
-    -- },
+    -- { "saadparwaiz1/cmp_luasnip" },
+    {
+      "quangnguyen30192/cmp-nvim-ultisnips",
+      config = true,
+    },
   },
 }

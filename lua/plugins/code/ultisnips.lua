@@ -2,7 +2,7 @@ local function config()
   vim.g.UltiSnipsExpandTrigger = "<C-F19>"
   vim.g.UltiSnipsJumpForwardTrigger = "<C-F19>"
   vim.g.UltiSnipsJumpBackwardTrigger = "<C-F19>"
-  --
+
   -- vim.g.UltiSnipsEnableSnipMate = 1
   vim.g.UltiSnipsEditSplit = "vertical"
   -- vim.g.UltiSnipsSnippetStorageDirectoryForUltiSnipsEdit = "~/.config/nvim/snippets/"
@@ -22,7 +22,8 @@ local function config()
     snoremap <silent> <S-Tab> <Esc>:call UltiSnips#JumpBackwards()<CR>
   ]])
 
-  local ultisnips_augroup = vim.api.nvim_create_augroup("UltisipsCustomGroup", { clear = true })
+  local ultisnips_augroup =
+    vim.api.nvim_create_augroup("UltisipsCustomGroup", { clear = true })
 
   vim.api.nvim_create_autocmd("User", {
     pattern = { "UltiSnipsEnterFirstSnippet" },
@@ -50,7 +51,8 @@ local function config()
 end
 
 return {
-  -- "SirVer/ultisnips",
-  -- enabled = true,
-  -- config = config,
+  "SirVer/ultisnips",
+  enabled = true,
+  cond = true,
+  config = config,
 }
