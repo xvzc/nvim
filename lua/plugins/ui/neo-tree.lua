@@ -11,11 +11,11 @@ local keys = {
 
 return {
   "nvim-neo-tree/neo-tree.nvim",
+  enabled = true,
   event = "VeryLazy",
-  -- dir = "~/personal/neo-tree.nvim/",
-  -- config = config("plugins.ui.neo-tree"),
   keys = keys,
   opts = {
+    use_default_mappings = false,
     close_if_last_window = true,
     enable_diagnostics = false,
     sort_function = nil,
@@ -53,20 +53,19 @@ return {
       },
       window = {
         mappings = {
-          ["p"] = { "toggle_preview", config = { use_float = false, use_image_nvim = true } },
+          ["o"] = { "open", nowait = true },
+          ["<CR>"] = { "open", nowait = true },
+          ["<BS>"] = "navigate_up",
+          ["-"] = "open_split",
+          ["_"] = "open_vsplit",
           ["h"] = "navigate_up",
           ["l"] = "set_root",
-          ["o"] = { "open", nowait = true },
-
-          -- -- disabled
-          ["P"] = "noop", -- toggle_preview
-          ["oc"] = "noop", -- order_by_created
-          ["od"] = "noop", -- order_by_diagnostics
-          ["om"] = "noop", -- order_by_modified
-          ["og"] = "noop", -- order_by_git_status
-          ["on"] = "noop", -- order_by_name
-          ["os"] = "noop", -- order_by_size
-          ["ot"] = "noop", -- order_by_type
+          ["q"] = "close_window",
+          ["."] = "set_root",
+          ["p"] = {
+            "toggle_preview",
+            config = { use_float = false, use_image_nvim = true },
+          },
         },
       },
     },
