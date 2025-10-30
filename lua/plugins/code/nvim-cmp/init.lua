@@ -3,7 +3,7 @@ local function config()
   local util = require("plugins.code.nvim-cmp.modules.util")
   local mapping = require("plugins.code.nvim-cmp.modules.mapping")
   cmp.setup({
-    -- preselect = cmp.PreselectMode.None,
+    preselect = cmp.PreselectMode.None,
     mapping = mapping.global,
     expand = function(args)
       (vim.snippet ~= nil and vim.snippet.expand or vim.fn["UltiSnips#Anon"])(
