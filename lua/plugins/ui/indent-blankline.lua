@@ -1,20 +1,14 @@
-vim.opt.list = true
-vim.opt.listchars:append("space:⋅")
+local function config()
+  -- local highlight = {
+  --   "CursorColumn",
+  --   "Whitespace",
+  -- }
+  --
+  -- local normal = vim.api.nvim_get_hl(0, { name = "Normal" })
+  vim.api.nvim_set_hl(0, "CustomIndentColor", { fg = "#33333d" })
+  -- vim.api.nvim_set_hl(0, "CustomSpaceColor", { fg = normal.bg })
 
-local highlight = {
-  "CursorColumn",
-  "Whitespace",
-}
-
-local normal = vim.api.nvim_get_hl(0, { name = "Normal" })
-vim.api.nvim_set_hl(0, "CustomIndentColor", { fg = "#33333d" })
--- vim.api.nvim_set_hl(0, "CustomSpaceColor", { fg = normal.bg })
-
-return {
-  "lukas-reineke/indent-blankline.nvim",
-  enabled = true,
-  main = "ibl",
-  opts = {
+  require("ibl").setup({
     whitespace = {
       highlight = "CustomIndentColor",
       remove_blankline_trail = false,
@@ -42,5 +36,12 @@ return {
         "",
       },
     },
-  },
+  })
+end
+
+return {
+  "lukas-reineke/indent-blankline.nvim",
+  enabled = true,
+  main = "ibl",
+  config = config,
 }

@@ -42,7 +42,7 @@ vim.o.signcolumn = "yes"
 vim.o.pumheight = 10
 vim.o.pumblend = 0
 vim.opt.list = true
-vim.opt.listchars = { lead = " ", space = " ", tab = ">~", trail = " " }
+vim.opt.listchars = { lead = " ", space = "⋅", tab = "  ", trail = " " }
 
 -- vim.o.noshowmode = true
 vim.o.showtabline = 0
