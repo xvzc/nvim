@@ -6,10 +6,10 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>-", ":sp<CR><C-w>j", silent_noremap)
 vim.keymap.set("n", "<leader>_", ":vsp<CR><C-w>l", silent_noremap)
 
-vim.keymap.set("n", "<leader>h", "<C-w>h", silent_noremap)
-vim.keymap.set("n", "<leader>j", "<C-w>j", silent_noremap)
-vim.keymap.set("n", "<leader>k", "<C-w>k", silent_noremap)
-vim.keymap.set("n", "<leader>l", "<C-w>l", silent_noremap)
+-- vim.keymap.set("n", "<leader>h", "<C-w>h", silent_noremap)
+-- vim.keymap.set("n", "<leader>j", "<C-w>j", silent_noremap)
+-- vim.keymap.set("n", "<leader>k", "<C-w>k", silent_noremap)
+-- vim.keymap.set("n", "<leader>l", "<C-w>l", silent_noremap)
 
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', silent_noremap)
 
