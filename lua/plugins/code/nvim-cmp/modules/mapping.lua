@@ -15,8 +15,6 @@ M.global = {
   ["<C-y>"] = cmp.mapping(function(fallback)
     if cmp.visible_docs() then
       cmp.mapping.scroll_docs(2)
-    elseif cmp.visible() then
-      cmp.confirm()
     else
       fallback()
     end
