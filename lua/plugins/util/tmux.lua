@@ -39,12 +39,26 @@ return {
   keys = keys,
   config = true,
   opts = {
+    copy_sync = {
+      enable = false,
+    },
+    resize = {
+      enable_default_keybindings = false,
+    },
+    swap = {
+      enable_default_keybindings = false,
+    },
     navigation = {
       -- cycles to opposite pane while navigating into the border
       cycle_navigation = false,
       -- enables default keybindings (C-hjkl) for normal mode
       enable_default_keybindings = false,
       persist_zoom = false,
+      -- synchronizes registers when pressing p and P.
+      sync_registers_keymap_put = false,
+
+      -- synchronizes registers when pressing (C-r) and ".
+      sync_registers_keymap_reg = false,
     },
   },
 }
