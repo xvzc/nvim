@@ -44,7 +44,7 @@ return {
       bind_to_cwd = true,
       group_empty_dirs = false,
       filtered_items = {
-        children_inherit_highlights = true,
+        children_inherit_highlights = false,
         hide_by_name = {
           "node_modules",
         },
