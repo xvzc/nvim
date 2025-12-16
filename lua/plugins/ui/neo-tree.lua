@@ -5,7 +5,7 @@ local keys = {
     function()
       require("neo-tree.command").execute({ toggle = true })
     end,
-    { silent = true },
+    silent = true,
   },
 }
 
@@ -44,6 +44,7 @@ return {
       bind_to_cwd = true,
       group_empty_dirs = false,
       filtered_items = {
+        children_inherit_highlights = true,
         hide_by_name = {
           "node_modules",
         },

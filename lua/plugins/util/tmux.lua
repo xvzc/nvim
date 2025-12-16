@@ -5,7 +5,7 @@ local keys = {
     function()
       require("tmux").move_left()
     end,
-    { silent = true },
+    silent = true,
   },
   {
     mode = { "n", "i" },
@@ -13,7 +13,7 @@ local keys = {
     function()
       require("tmux").move_bottom()
     end,
-    { silent = true },
+    silent = true,
   },
   {
     mode = { "n", "i" },
@@ -21,7 +21,7 @@ local keys = {
     function()
       require("tmux").move_top()
     end,
-    { silent = true },
+    silent = true,
   },
   {
     mode = { "n", "i" },
@@ -29,7 +29,7 @@ local keys = {
     function()
       require("tmux").move_right()
     end,
-    { silent = true },
+    silent = true,
   },
 }
 

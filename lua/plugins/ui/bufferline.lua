@@ -7,33 +7,33 @@ local function create_navigation_func(n)
 end
 
 local keys = {
-  { mode = { "n" }, "<leader>1", create_navigation_func(1), { silent = true } },
-  { mode = { "n" }, "<leader>2", create_navigation_func(2), { silent = true } },
-  { mode = { "n" }, "<leader>3", create_navigation_func(3), { silent = true } },
-  { mode = { "n" }, "<leader>4", create_navigation_func(4), { silent = true } },
-  { mode = { "n" }, "<leader>5", create_navigation_func(5), { silent = true } },
-  { mode = { "n" }, "<leader>6", create_navigation_func(6), { silent = true } },
-  { mode = { "n" }, "<leader>7", create_navigation_func(7), { silent = true } },
-  { mode = { "n" }, "<leader>8", create_navigation_func(8), { silent = true } },
-  { mode = { "n" }, "<leader>9", create_navigation_func(9), { silent = true } },
+  { mode = { "n" }, "<leader>1", create_navigation_func(1), silent = true },
+  { mode = { "n" }, "<leader>2", create_navigation_func(2), silent = true },
+  { mode = { "n" }, "<leader>3", create_navigation_func(3), silent = true },
+  { mode = { "n" }, "<leader>4", create_navigation_func(4), silent = true },
+  { mode = { "n" }, "<leader>5", create_navigation_func(5), silent = true },
+  { mode = { "n" }, "<leader>6", create_navigation_func(6), silent = true },
+  { mode = { "n" }, "<leader>7", create_navigation_func(7), silent = true },
+  { mode = { "n" }, "<leader>8", create_navigation_func(8), silent = true },
+  { mode = { "n" }, "<leader>9", create_navigation_func(9), silent = true },
   {
     mode = { "n" },
     "<leader>0",
     create_navigation_func(10),
-    { silent = true },
+    silent = true,
   },
   { mode = { "n" }, "<leader>q", "<cmd>bd<cr>", { silent = true } },
   {
     mode = { "n" },
     "<C-Tab>",
     "<cmd>BufferLineCycleNext<CR>",
-    { silent = true },
+    silent = true,
   },
   {
     mode = { "n" },
     "<C-S-Tab>",
     "<cmd>BufferLineCyclePrev<CR>",
-    { silent = true },
+    silent = true,
   },
 }
 

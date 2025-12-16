@@ -1,6 +1,6 @@
 local keys = {
-  { mode = { "n" }, "<leader>ne", "<cmd>Noice errors<cr>", { silent = true } },
-  { mode = { "n" }, "<leader>na", "<cmd>Noice all<cr>", { silent = true } },
+  { mode = { "n" }, "<leader>ne", "<cmd>Noice errors<cr>", silent = true },
+  { mode = { "n" }, "<leader>na", "<cmd>Noice all<cr>", silent = true },
 }
 
 return {
