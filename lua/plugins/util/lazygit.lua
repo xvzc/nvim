@@ -17,6 +17,7 @@ vim.g.lazygit_use_neovim_remote = 1
 
 return {
   "kdheepak/lazygit.nvim",
+  enabled = false,
   keys = {
     { mode = { "n" }, "<leader>gg", ":LazyGit<CR>", { silent = true } },
   },

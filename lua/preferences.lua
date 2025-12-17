@@ -52,6 +52,10 @@ vim.o.cursorline = true
 vim.o.shortmess = vim.o.shortmess .. "c"
 vim.o.mouse = "a"
 
+-- disdable builtin tree plugin
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 vim.o.viminfo = "'100,<1000,s100,h"
 -- '100 Marks will be remembered for the last 100 edited files.
 -- <1000 Limits the number of lines saved for each register to 1000 lines;

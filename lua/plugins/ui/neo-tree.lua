@@ -11,7 +11,7 @@ local keys = {
 
 return {
   "nvim-neo-tree/neo-tree.nvim",
-  enabled = true,
+  enabled = false,
   event = "VeryLazy",
   keys = keys,
   opts = {
@@ -54,15 +54,19 @@ return {
       },
       window = {
         mappings = {
-          ["o"] = { "open", nowait = true },
+          ["a"] = { "open", nowait = true },
+          -- ["l"] = { "open", nowait = true },
           ["<CR>"] = { "open", nowait = true },
           ["<BS>"] = "navigate_up",
+          ["u"] = "navigate_up",
+          -- ["h"] = "navigate_up",
+
           ["-"] = "open_split",
           ["_"] = "open_vsplit",
-          ["R"] = "refresh",
-          ["h"] = "navigate_up",
+
+          ["r"] = "refresh",
+
           ["H"] = "toggle_hidden",
-          ["l"] = "set_root",
           ["q"] = "close_window",
           ["."] = "set_root",
           ["p"] = {

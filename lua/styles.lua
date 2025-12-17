@@ -1,3 +1,5 @@
+local M = {}
+
 -- ┌───────────────────┐
 -- │ GENERAL HIGHLIGHT │
 -- └───────────────────┘
@@ -24,16 +26,8 @@ vim.api.nvim_create_autocmd({ "ModeChanged" }, {
   callback = function()
     local cur = vim.api.nvim_get_mode()
     vim.api.nvim_set_hl(0, "CursorLine", { bg = cursorline_dynamic[cur.mode] })
-    vim.api.nvim_set_hl(
-      0,
-      "CursorLineNr",
-      { bg = cursorline_dynamic[cur.mode] }
-    )
-    vim.api.nvim_set_hl(
-      0,
-      "CursorLineSign",
-      { bg = cursorline_dynamic[cur.mode] }
-    )
+    vim.api.nvim_set_hl(0, "CursorLineNr", { bg = cursorline_dynamic[cur.mode] })
+    vim.api.nvim_set_hl(0, "CursorLineSign", { bg = cursorline_dynamic[cur.mode] })
   end,
 })
 
