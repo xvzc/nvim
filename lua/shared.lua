@@ -1,10 +1,10 @@
 local M = {}
 
-M.get_dynamic_float_size = function(w_ratio, h_ratio)
+M.get_dynamic_float_size = function(w_ratio, h_ratio, w_max, h_max)
   local screen_w = vim.opt.columns:get()
   local screen_h = vim.opt.lines:get() - vim.opt.cmdheight:get()
-  local window_w = screen_w * w_ratio
-  local window_h = screen_h * h_ratio
+  local window_w = math.min(screen_w * w_ratio, w_max)
+  local window_h = math.min(screen_h * h_ratio, h_max)
   local window_w_int = math.floor(window_w)
   local window_h_int = math.floor(window_h)
   local center_x = (screen_w - window_w) / 2

@@ -72,10 +72,10 @@ return {
       ["g\\"] = { "actions.toggle_trash", mode = "n" },
     },
     float = {
-      padding = 30,
+      padding = 2,
       border = shared.get_bold_square_borders(),
       win_options = {
-        winblend = 10,
+        winblend = 0,
       },
       -- optionally override the oil buffers window title with custom function: fun(winid: integer): string
       get_win_title = function()
@@ -86,13 +86,13 @@ return {
       -- This is the config that will be passed to nvim_open_win.
       -- Change values here to customize the layout
       override = function(conf)
-        local info = shared.get_dynamic_float_size(0.45, 0.65)
+        local info = shared.get_dynamic_float_size(0.7, 0.8, 70, 35)
         conf.width = info.width
         conf.height = info.height
         conf.row = info.row
         conf.col = info.col
+
         -- conf.padding = 10
-        -- vim.notify(vim.inspect(conf))
         return conf
       end,
     },

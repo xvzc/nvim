@@ -20,7 +20,7 @@ return {
         quit_on_focus_loss = true,
         open_win_config = function()
           local shared = require("shared")
-          local info = shared.get_dynamic_float_size(0.45, 0.65)
+          local info = shared.get_dynamic_float_size(0.7, 0.8, 70, 35)
           return {
             border = shared.get_bold_square_borders(),
             relative = "editor",
