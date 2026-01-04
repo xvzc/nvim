@@ -1,5 +1,9 @@
 vim.cmd("filetype plugin indent on")
 
+if vim.g.vscode then
+  return
+end
+
 vim.loader.enable()
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

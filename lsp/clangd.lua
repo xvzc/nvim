@@ -6,5 +6,6 @@ return {
   cmd = {
     "clangd",
     "--header-insertion=never",
+    -- "--query-driver=/run/current-system/sw/bin/g++,/run/current-system/sw/bin/gcc*",
   },
 }
