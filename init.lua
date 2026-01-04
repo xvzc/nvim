@@ -1,6 +1,7 @@
 vim.cmd("filetype plugin indent on")
 
 if vim.g.vscode then
+  require("vscode-neovim")
   return
 end
 
