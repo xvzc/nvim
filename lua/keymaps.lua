@@ -22,21 +22,29 @@ vim.keymap.set("n", "<F5>", "<C-l>", silent_noremap)
 vim.keymap.set("x", "A", "gg^oG$", silent_noremap)
 
 -- diagnostics
-vim.keymap.set(
-  "n",
-  "[d",
-  vim.diagnostic.goto_prev,
-  { noremap = true, silent = true }
-)
-vim.keymap.set(
-  "n",
-  "]d",
-  vim.diagnostic.goto_next,
-  { noremap = true, silent = true }
-)
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { noremap = true, silent = true })
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { noremap = true, silent = true })
 
 vim.keymap.set("n", "<C-a>", "<nop>")
 vim.keymap.set("n", "q:", "<nop>")
+
+-- Remap <Esc> in Insert mode to ensure exit
+vim.keymap.set("i", "<Esc>", function()
+  local esc = vim.api.nvim_replace_termcodes("<Esc>", true, false, true)
+
+  -- Send the first Escape key (non-recursive)
+  vim.api.nvim_feedkeys(esc, "n", false)
+
+  -- Check mode in the next event loop
+  vim.schedule(function()
+    local mode = vim.api.nvim_get_mode().mode
+
+    -- If still in insert mode, send Escape again
+    if mode == "i" then
+      vim.api.nvim_feedkeys(esc, "n", false)
+    end
+  end)
+end)
 
 --
 -- -- open file
