@@ -19,8 +19,13 @@ return {
     "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
   },
   opts = {
-    provider = "copilot",
+    provider = "ollama",
     providers = {
+      ollama = {
+        model = "qwen3-coder-next",
+        -- endpoint = "http://nixos-desktop-01.tailb7f463.ts.net:11434",
+        endpoint = "http://100.72.11.17:11434",
+      },
       copilot = {
         model = "claude-3.5-sonnet",
         extra_request_body = {

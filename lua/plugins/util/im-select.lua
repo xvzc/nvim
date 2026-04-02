@@ -1,6 +1,7 @@
 if vim.loop.os_uname().sysname == "Darwin" then
   return {
     "keaising/im-select.nvim",
+    enabled = false,
     event = "VeryLazy",
     config = true,
     opts = {
