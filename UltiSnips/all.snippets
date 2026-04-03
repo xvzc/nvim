@@ -89,13 +89,13 @@ endglobal
 snippet box "Box (uses thiner unicode ──)"
 `!p snip.rv = box_comment("top")[0] + ' ┏' + '━' * (t_len(1) + 2) + '┓' + box_comment("top")[1]`
 `!p snip.rv = box_comment("mid")[0]` ┃ $1 ┃ `!p snip.rv = box_comment("mid")[1]`$0
-`!p snip.rv = box_comment("bot")[0] + ' ┗' + '━' * (t_len(1) + 2) + '┻' + '━' * (75 - t_len(1)) + box_comment("bot")[1]`
+`!p snip.rv = box_comment("bot")[0] + ' ┗' + '━' * (t_len(1) + 2) + '┻' + '━' * (67 - t_len(1)) + box_comment("bot")[1]`
 endsnippet
 
 # ┏━━━━━━━━━━━━━━━━┓
 # ┃ Splitter Lines ┃
 # ┗━━━━━━━━━━━━━━━━┛
 snippet --- "Horizontal rule filled with ━"
-`!p snip.rv = box_comment()[0] + " " + '━' * 79 + box_comment()[1]`
+`!p snip.rv = box_comment()[0] + " " + '━' * 71 + box_comment()[1]`
 endsnippet
 
