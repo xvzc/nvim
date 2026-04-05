@@ -1,6 +1,6 @@
 return {
   "yetone/avante.nvim",
-  enabled = true,
+  enabled = false,
   version = false, -- Never set this value to "*"! Never!
   event = "VeryLazy",
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
