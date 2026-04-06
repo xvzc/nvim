@@ -13,6 +13,7 @@ local function config()
     python = { "black", lsp_format = "fallback" },
     rust = { "rustfmt", lsp_format = "fallback" },
     javascript = { "prettierd", "prettier", stop_after_first = true },
+    terraform = { "terraform_fmt", lsp_format = "fallback" },
   }
 
   -- local test = vim.fn.map(vim.fn.keys(formatters_by_ft), function(each)
@@ -36,6 +37,7 @@ end
 
 return {
   "stevearc/conform.nvim",
+  enabled = true,
   event = "VeryLazy",
   config = config,
   keys = {
