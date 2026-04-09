@@ -15,12 +15,16 @@ vim.api.nvim_create_autocmd("FileType", {
       local nt_api = require("nvim-tree.api")
       local node = nt_api.tree.get_node_under_cursor()
       nt_api.tree.close()
-      if node.type == "file" then
-        local dir = vim.fn.fnamemodify(node.absolute_path, ":h")
-        oil.open_float(dir)
-      else
-        oil.open_float(node.absolute_path)
-      end
+
+      local cur_dir = vim.fn.fnamemodify(node.absolute_path, ":h")
+      oil.open_float(cur_dir)
+
+      -- if node.type == "file" then
+      --   local dir = vim.fn.fnamemodify(node.absolute_path, ":h")
+      --   oil.open_float(dir)
+      -- else
+      --   oil.open_float(node.absolute_path)
+      -- end
     end, { silent = true, noremap = true, buffer = ev.buf })
   end,
 })
@@ -33,9 +37,9 @@ vim.api.nvim_create_autocmd("FileType", {
     -- vim.keymap.set("n", "a", api.node.open.edit, opts("open_or_edit"))
     vim.keymap.set("n", "q", function()
       local oil = require("oil")
-      local dir = oil.get_current_dir(ev.buf)
+      -- local dir = oil.get_current_dir(ev.buf)
       oil.close()
-      require("nvim-tree.api").tree.open(dir)
+      require("nvim-tree.api").tree.open()
     end, { nowait = true, silent = true, noremap = true, buffer = ev.buf })
   end,
 })
@@ -51,7 +55,7 @@ return {
   -- Optional dependencies
   -- dependencies = { { "nvim-mini/mini.icons", opts = {} } },
   dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
-  enabled = false,
+  enabled = true,
   lazy = false,
   -- config = config,
   -- keys = keys,
@@ -59,8 +63,8 @@ return {
     use_default_keymaps = false,
     show_hidden = false,
     win_options = {
-      number = false,
-      relativenumber = false,
+      number = true,
+      relativenumber = true,
     },
     keymaps = {
       ["<CR>"] = "actions.select",
@@ -74,7 +78,7 @@ return {
     },
     float = {
       padding = 2,
-      border = shared.single_square_borders(),
+      border = shared.double_square_borders(),
       win_options = {
         winblend = 0,
       },
@@ -98,7 +102,7 @@ return {
       end,
     },
     confirmation = {
-      border = shared.single_square_borders(),
+      border = shared.double_square_borders(),
       win_options = {
         winblend = 0,
       },

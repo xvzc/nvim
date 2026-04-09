@@ -1,6 +1,6 @@
 return {
   "nvim-tree/nvim-tree.lua",
-  enabled = false,
+  enabled = true,
   -- dir = "~/personal/nvim-tree.lua",
   event = "VeryLazy",
   init = function()
@@ -23,7 +23,7 @@ return {
           local shared = require("shared")
           local info = shared.get_dynamic_float_size(0.7, 0.8, 70, 35)
           return {
-            border = shared.get_bold_square_borders(),
+            border = shared.double_square_borders(),
             relative = "editor",
             row = info.row,
             col = info.col,

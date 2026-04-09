@@ -103,33 +103,33 @@ return {
     },
   },
   -- { "nvim-mini/mini.pick", version = "*" },
-  {
-    "nvim-mini/mini.files",
-    version = "*",
-    opts = {
-      mappings = {
-        close = "q",
-        go_in = "l",
-        go_in_plus = "<CR>",
-        go_out = "h",
-        go_out_plus = "<BS>",
-        mark_goto = "'",
-        mark_set = "m",
-        reset = "<F5>",
-        -- reveal_cwd = "R",
-        show_help = "g?",
-        synchronize = "=",
-        trim_left = "<",
-        trim_right = ">",
-      },
-    },
-    init = function()
-      vim.keymap.set("n", "<leader>e", function()
-        local mini_files = require("mini.files")
-        if not mini_files.close() then
-          mini_files.open()
-        end
-      end, { silent = true, noremap = true })
-    end,
-  },
+  -- {
+  --   "nvim-mini/mini.files",
+  --   version = "*",
+  --   opts = {
+  --     mappings = {
+  --       close = "q",
+  --       go_in = "l",
+  --       go_in_plus = "<CR>",
+  --       go_out = "h",
+  --       go_out_plus = "<BS>",
+  --       mark_goto = "'",
+  --       mark_set = "m",
+  --       reset = "<F5>",
+  --       -- reveal_cwd = "R",
+  --       show_help = "g?",
+  --       synchronize = "=",
+  --       trim_left = "<",
+  --       trim_right = ">",
+  --     },
+  --   },
+  --   init = function()
+  --     vim.keymap.set("n", "<leader>e", function()
+  --       local mini_files = require("mini.files")
+  --       if not mini_files.close() then
+  --         mini_files.open()
+  --       end
+  --     end, { silent = true, noremap = true })
+  --   end,
+  -- },
 }
