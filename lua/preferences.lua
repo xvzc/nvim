@@ -65,3 +65,4 @@ vim.o.viminfo = "'100,<1000,s100,h"
 
 vim.o.sol = false
 vim.o.showmode = false
+vim.o.autoread = true

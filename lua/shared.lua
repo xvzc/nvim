@@ -18,7 +18,10 @@ M.get_dynamic_float_size = function(w_ratio, h_ratio, w_max, h_max)
   }
 end
 
-M.get_bold_square_borders = function()
+M.single_square_borders = function()
+  return { "┌", "─", "┐", "│", "┘", "─", "└", "│" }
+end
+M.double_square_borders = function()
   return { "╔", "═", "╗", "║", "╝", "═", "╚", "║" }
 end
 
