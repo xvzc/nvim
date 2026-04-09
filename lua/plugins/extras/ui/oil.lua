@@ -44,21 +44,13 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- local keys = {
---   { "o", toggle_on_nvim_tree, mode = { "n" }, desc = "Toggle Oil/nvim-tree" },
--- }
-
 return {
   "stevearc/oil.nvim",
-  ---@module 'oil'
-  ---@type oil.SetupOpts
-  -- Optional dependencies
-  -- dependencies = { { "nvim-mini/mini.icons", opts = {} } },
-  dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+  dependencies = { "nvim-tree/nvim-web-devicons" },
   enabled = true,
   lazy = false,
-  -- config = config,
-  -- keys = keys,
+  ---@module 'oil'
+  ---@type oil.SetupOpts
   opts = {
     use_default_keymaps = false,
     show_hidden = false,
@@ -82,14 +74,9 @@ return {
       win_options = {
         winblend = 0,
       },
-      -- optionally override the oil buffers window title with custom function: fun(winid: integer): string
       get_win_title = function()
         return "Editing with oil.nvim"
       end,
-      -- preview_split: Split direction: "auto", "left", "right", "above", "below".
-      preview_split = "right",
-      -- This is the config that will be passed to nvim_open_win.
-      -- Change values here to customize the layout
       override = function(conf)
         local info = shared.get_dynamic_float_size(0.7, 0.8, 70, 35)
         conf.width = info.width
@@ -99,6 +86,25 @@ return {
 
         -- conf.padding = 10
         return conf
+      end,
+    },
+    view_options = {
+      show_hidden = true,
+      is_hidden_file = function(name, bufnr)
+        local m = name:match("^%.")
+        return m ~= nil
+      end,
+      is_always_hidden = function(name, bufnr)
+        return false
+      end,
+      natural_order = "fast",
+      case_insensitive = false,
+      sort = {
+        { "type", "asc" },
+        { "name", "asc" },
+      },
+      highlight_filename = function(entry, is_hidden, is_link_target, is_link_orphan)
+        return nil
       end,
     },
     confirmation = {
