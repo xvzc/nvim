@@ -83,8 +83,7 @@ return {
       additional_vim_regex_highlighting = { "org" },
     },
   },
-  config = function(opts)
-    require("nvim-treesitter").setup(opts)
+  init = function()
     vim.api.nvim_create_autocmd("FileType", {
       pattern = enabled_languages,
       callback = function()
