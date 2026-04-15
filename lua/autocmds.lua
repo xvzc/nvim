@@ -8,3 +8,12 @@ vim.api.nvim_create_autocmd("CursorMoved", {
     end
   end,
 })
+
+vim.api.nvim_create_autocmd("VimResized", {
+  group = vim.api.nvim_create_augroup("DiffAutoResize", { clear = true }),
+  callback = function()
+    if vim.wo.diff then
+      vim.cmd("wincmd =")
+    end
+  end,
+})
