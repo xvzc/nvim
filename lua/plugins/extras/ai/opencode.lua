@@ -37,42 +37,6 @@ return {
         },
       },
     },
-    {
-      "Cannon07/claude-preview.nvim",
-      event = "VeryLazy",
-      enabled = true,
-      build = function()
-        local src_dir = vim.fn.stdpath("data")
-          .. "/lazy/claude-preview.nvim/opencode-plugin"
-        local dest_dir = vim.fn.expand("~/.config/opencode/plugins/nvim-preview")
-
-        vim.fn.mkdir(dest_dir, "p")
-        vim.fn.system(
-          string.format(
-            "rsync -av --delete %s/ %s/",
-            vim.fn.shellescape(src_dir),
-            vim.fn.shellescape(dest_dir)
-          )
-        )
-      end,
-      opts = {
-        diff = {
-          layout = "inline",
-          labels = { current = "prev", proposed = "final" },
-          auto_close = true, -- close diff after accept
-          equalize = true, -- 50/50 split widths (tab/vsplit only)
-          full_file = true, -- show full file, not just diff hunks (tab/vsplit only)
-        },
-        highlights = {
-          -- inline = { -- inline layout
-          --   added = { bg = "#364a36" }, -- added line background
-          --   removed = { bg = "#471c1c" }, -- removed line background
-          --   added_text = { bg = "#364a36" }, -- changed characters (added)
-          --   removed_text = { bg = "#471c1c" }, -- changed characters (removed)
-          -- },
-        },
-      },
-    },
   },
   config = function()
     vim.g.opencode_opts = {
@@ -80,10 +44,10 @@ return {
         enabled = true,
         reload = true,
         permissions = {
-          enabled = false,
+          enabled = true,
           idle_delay_ms = 1000,
           edits = {
-            enabled = false,
+            enabled = true,
           },
         },
       },
