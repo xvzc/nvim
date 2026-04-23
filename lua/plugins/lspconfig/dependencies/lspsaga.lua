@@ -3,7 +3,6 @@ return {
   branch = "main",
   event = "VeryLazy",
   opts = {
-
     code_action = {
       num_shortcut = true,
       keys = {
@@ -32,7 +31,7 @@ return {
       },
     },
     lightbulb = {
-      enable = true,
+      enable = false,
       enable_in_insert = true,
       sign = true,
       sign_priority = 40,

@@ -22,6 +22,7 @@ local function config()
   vim.lsp.enable("terraformls")
   vim.lsp.enable("tflint")
   vim.lsp.enable("ts_ls")
+  vim.lsp.enable("tinymist")
 
   vim.lsp.handlers["client/registerCapability"] = (function(overridden)
     return function(err, res, ctx)
@@ -119,13 +120,7 @@ local function config()
       vim.keymap.set(
         "n",
         "<leader>i",
-        "<cmd>Lspsaga show_cursor_diagnostics ++unfocus<CR>",
-        opts
-      )
-      vim.keymap.set(
-        "n",
-        "<leader>I",
-        "<cmd>Lspsaga show_workspace_diagnostics ++focus<CR>",
+        "<cmd>Lspsaga show_cursor_diagnostics ++focus<CR>",
         opts
       )
 

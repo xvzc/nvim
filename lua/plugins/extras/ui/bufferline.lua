@@ -22,7 +22,6 @@ local keys = {
     create_navigation_func(10),
     silent = true,
   },
-  { mode = { "n" }, "<leader>q", "<cmd>bd<cr>", { silent = true } },
   {
     mode = { "n" },
     "<C-Tab>",

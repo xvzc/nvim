@@ -7,10 +7,12 @@ pkgs.mkShell {
     nixfmt-rfc-style
     stylua
     lua-language-server
+    tinymist
   ];
 
   shellHook = # sh
     ''
       export name="nix:nvim"
+      export NVIM_APPNAME="nvim"
     '';
 }

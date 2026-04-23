@@ -11,6 +11,15 @@ vim.keymap.set("n", "<leader>_", ":vsp<CR><C-w>l", silent_noremap)
 -- vim.keymap.set("n", "<leader>k", "<C-w>k", silent_noremap)
 -- vim.keymap.set("n", "<leader>l", "<C-w>l", silent_noremap)
 
+vim.keymap.set("n", "<leader>q", function()
+  local config = vim.api.nvim_win_get_config(0)
+  if config.relative ~= "" then
+    vim.api.nvim_win_close(0, false)
+  else
+    vim.api.nvim_buf_delete(0, {})
+  end
+end)
+
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', silent_noremap)
 
 vim.keymap.set({ "n", "v" }, "<leader>d", '"+d', silent_noremap)

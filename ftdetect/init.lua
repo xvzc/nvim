@@ -32,3 +32,8 @@ vim.filetype.add({
   },
 })
 
+vim.filetype.add({
+  extension = {
+    pxml = "pxml",
+  },
+})

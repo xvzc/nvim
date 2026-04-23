@@ -22,14 +22,16 @@ vim.g.tex_conceal = "amd"
 -- vim.o.whichwrap = "lh"
 -- vim.o.background = 'dark'
 
-vim.o.cindent = true -- C sytle auto indent
+vim.o.cindent = false -- C sytle auto indent
+vim.o.smartindent = false -- C sytle auto indent
+vim.opt.autoindent = false
 
 vim.o.scrolloff = 2
-vim.o.shiftwidth = 4
+vim.o.shiftwidth = 2
 
 vim.o.expandtab = true
 
-vim.o.tabstop = 4
+vim.o.tabstop = 2
 
 vim.o.hlsearch = true -- Search highlight
 vim.o.history = 1000

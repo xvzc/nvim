@@ -6,7 +6,7 @@ vim.api.nvim_create_autocmd("FileType", {
   group = group,
   pattern = "NvimTree",
   callback = function(ev)
-    vim.keymap.set("n", "o", function()
+    vim.keymap.set({ "n" }, "o", function()
       if vim.bo.filetype ~= "NvimTree" then
         return
       end
@@ -35,7 +35,7 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function(ev)
     -- vim.keymap.set("n", "a", api.node.open.edit, opts("open_or_edit"))
     -- vim.keymap.set("n", "a", api.node.open.edit, opts("open_or_edit"))
-    vim.keymap.set("n", "q", function()
+    vim.keymap.set({ "n" }, "q", function()
       local oil = require("oil")
       -- local dir = oil.get_current_dir(ev.buf)
       oil.close()

@@ -76,10 +76,7 @@ return {
   config = config,
   event = "VeryLazy",
   dependencies = {
-    {
-      "windwp/nvim-autopairs",
-      config = true,
-    },
+    { "windwp/nvim-autopairs" },
     { "hrsh7th/cmp-buffer" },
     { "hrsh7th/cmp-nvim-lsp" },
     { "hrsh7th/cmp-nvim-lsp-signature-help" },

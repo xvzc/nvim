@@ -3,6 +3,7 @@ local enabled_languages = {
   "c",
   "cpp",
   "go",
+  "html",
   "lua",
   "vim",
   "bash",
@@ -22,7 +23,8 @@ local enabled_languages = {
   "sql",
   "terraform",
   "nix",
-  -- "org",
+  "xml",
+  "typst",
 }
 
 local function map_selection()
@@ -66,41 +68,32 @@ end
 return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
-  branch = "master",
-  -- event = "VeryLazy",
-  lazy = false,
-  main = "nvim-treesitter.configs",
-  opts = {
-    auto_install = true,
-    sync_install = false,
-    ensure_installed = enabled_languages,
-    indent = {
-      enable = true,
-    },
-    highlight = {
-      enable = true,
-      disable = { "help" },
-      additional_vim_regex_highlighting = { "org" },
-    },
-  },
+  branch = "main",
+  config = function()
+    require("nvim-treesitter").install(enabled_languages)
+  end,
+  event = "VeryLazy",
+  -- lazy = false,
   init = function()
     vim.api.nvim_create_autocmd("FileType", {
       pattern = enabled_languages,
+      nested = true,
       callback = function()
+        -- vim.treesitter.start()
+        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        vim.wo[0][0].foldmethod = "expr"
         vim.treesitter.start()
       end,
     })
   end,
   dependencies = {
+    -- "rrethy/nvim-treesitter-endwise",
     {
       "nvim-treesitter/nvim-treesitter-textobjects",
       branch = "main",
       init = function()
         map_selection()
       end,
-      -- config = function(opts)
-      --   require("nvim-treesitter-textobjects").setup(opts)
-      -- end,
       opts = {
         swap = {
           enable = true,
