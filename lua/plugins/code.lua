@@ -40,6 +40,7 @@ return {
           rust = { "rustfmt", lsp_format = "fallback" },
           javascript = { "prettierd", "prettier", stop_after_first = true },
           terraform = { "terraform_fmt", lsp_format = "fallback" },
+          toml = { "tombi", lsp_format = "fallback" },
         },
       })
       require("conform").formatters.injected = {

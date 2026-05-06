@@ -89,4 +89,28 @@ return {
       vim.g.lastplace_open_folds = 0
     end,
   },
+  {
+    "xvzc/cbox.nvim",
+    enabled = true,
+    event = "VeryLazy",
+    -- dir = "~/personal/cbox.nvim",
+    keys = {
+      {
+        mode = { "n", "x" },
+        "gb",
+        function()
+          require("cbox").toggle({ theme = "thin", visual_line = { style = "line" } })
+        end,
+        { silent = true },
+      },
+      {
+        mode = { "n", "x" },
+        "gB",
+        function()
+          require("cbox").toggle({ theme = "bold", visual_line = { style = "line" } })
+        end,
+        { silent = true },
+      },
+    },
+  },
 }

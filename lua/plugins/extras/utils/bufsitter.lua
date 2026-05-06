@@ -50,7 +50,7 @@ return {
   "xvzc/bufsitter.nvim",
   enabled = true,
   -- event = "VeryLazy",
-  dir = "~/personal/bufsitter.nvim",
+  -- dir = "~/personal/bufsitter.nvim",
   opts = {
     scratch = {
       win = {
