@@ -80,7 +80,7 @@ return {
 
           require("opencode").prompt(
             vim.fn.fnamemodify(node.absolute_path, ":~") .. "\n",
-            {}
+            { submit = false }
           )
         end, { silent = true, noremap = true, buffer = ev.buf })
       end,
@@ -88,11 +88,11 @@ return {
 
     -- Recommended/example keymaps
     vim.keymap.set({ "n" }, "<leader>aa", function()
-      require("opencode").prompt("@buffer\n", {})
+      require("opencode").prompt("@buffer\n", { submit = false })
     end, { desc = "Add the buffer to context" })
 
     vim.keymap.set({ "x" }, "<leader>aa", function()
-      require("opencode").prompt("@this\n", {})
+      require("opencode").prompt("@this\n", { submit = false })
     end, { desc = "Add the selection to context" })
 
     vim.keymap.set({ "n" }, "<leader>ad", function()
