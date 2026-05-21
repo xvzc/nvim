@@ -79,7 +79,7 @@ return {
           local node = nt_api.tree.get_node_under_cursor()
 
           require("opencode").prompt(
-            vim.fn.fnamemodify(node.absolute_path, ":~") .. "\n",
+            vim.fn.fnamemodify(node.absolute_path, ":~") .. " ",
             { submit = false }
           )
         end, { silent = true, noremap = true, buffer = ev.buf })
@@ -88,11 +88,11 @@ return {
 
     -- Recommended/example keymaps
     vim.keymap.set({ "n" }, "<leader>aa", function()
-      require("opencode").prompt("@buffer\n", { submit = false })
+      require("opencode").prompt("@buffer ", { submit = false })
     end, { desc = "Add the buffer to context" })
 
     vim.keymap.set({ "x" }, "<leader>aa", function()
-      require("opencode").prompt("@this\n", { submit = false })
+      require("opencode").prompt("@this ", { submit = false })
     end, { desc = "Add the selection to context" })
 
     vim.keymap.set({ "n" }, "<leader>ad", function()
