@@ -52,7 +52,7 @@ end
 
 return {
   "SirVer/ultisnips",
-  enabled = true,
+  enabled = false,
   cond = true,
   config = config,
 }
