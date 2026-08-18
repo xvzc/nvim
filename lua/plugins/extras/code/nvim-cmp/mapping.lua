@@ -36,9 +36,9 @@ M.global = {
 
   ["<Tab>"] = cmp.mapping({
     i = function(fallback)
-      if vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
-        fallback()
-      elseif vim.snippet.active() then
+      -- if vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
+      --   fallback()
+      if vim.snippet.active() then
         vim.snippet.jump(1)
       elseif cmp.visible() then
         cmp.confirm({ select = true })

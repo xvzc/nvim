@@ -10,7 +10,7 @@ local function config()
     preselect = cmp.PreselectMode.None,
     mapping = mapping.global,
     expand = function(args)
-      (vim.snippet ~= nil and vim.snippet.expand or vim.fn["UltiSnips#Anon"])(args.body)
+      (vim.snippet ~= nil and vim.snippet.expand)(args.body)
     end,
     enabled = util.should_enable,
     formatting = {
@@ -18,7 +18,7 @@ local function config()
       format = util.format_item,
     },
     sources = cmp.config.sources({
-      { name = "ultisnips", priority = 1000 },
+      -- { name = "ultisnips", priority = 1000 },
       -- { name = "luasnip", priority = 1000 },
       {
         priority = 999,
