@@ -86,9 +86,9 @@ return {
     { "hrsh7th/cmp-cmdline" },
     { "hrsh7th/cmp-nvim-lsp-document-symbol" },
     -- { "saadparwaiz1/cmp_luasnip" },
-    {
-      "quangnguyen30192/cmp-nvim-ultisnips",
-      config = true,
-    },
+    -- {
+    --   "quangnguyen30192/cmp-nvim-ultisnips",
+    --   config = true,
+    -- },
   },
 }
