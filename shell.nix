@@ -13,6 +13,5 @@ pkgs.mkShell {
   shellHook = # sh
     ''
       export name="nix:nvim"
-      export NVIM_APPNAME="nvim"
     '';
 }

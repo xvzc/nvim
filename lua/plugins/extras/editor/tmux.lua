@@ -35,7 +35,7 @@ local keys = {
 
 return {
   "aserowy/tmux.nvim",
-  enabled = true,
+  enabled = vim.env.TMUX ~= nil and vim.env.TMUX ~= "",
   keys = keys,
   config = true,
   opts = {

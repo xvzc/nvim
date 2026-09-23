@@ -14,6 +14,12 @@ return {
     end, { silent = true, noremap = true })
   end,
   opts = {
+    filters = {
+      exclude = {
+        ".config/pi/agent/pkgs",
+        ".config/pi/agent/local"
+      },
+    },
     view = {
       -- width = 38,
       float = {
